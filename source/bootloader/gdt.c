@@ -1,5 +1,5 @@
-#include <sys/gdt/gdt32.h>
-#include <sys/gdt/gdt_desc.h>
+#include "sys/gdt/gdt32.h"
+#include "sys/gdt/gdt_desc.h"
 
 __attribute__((__section__(".bootloader_gdt")))
 const struct __attribute__((packed)) {
