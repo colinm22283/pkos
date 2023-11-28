@@ -28,6 +28,11 @@ SECTIONS {
         *(.rodata*);
         *(.data*);
     }
+    .heap : {
+        _heap_base = .;
+        . += 0x500;
+        _heap_top = .;
+    }
 }
 
 

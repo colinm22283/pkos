@@ -1,13 +1,22 @@
 #include <stdbool.h>
 #include <stdint.h>
 
-__attribute__((noreturn)) void _kernel_entry() {
-    uint16_t * console_mem = (uint16_t *) 0xB8000;
+#include <heap.h>
 
-    console_mem[0] = 'B' | 0x0f00;
-    console_mem[1] = 'O' | 0x0f00;
-    console_mem[2] = 'O' | 0x0f00;
-    console_mem[3] = 'T' | 0x0f00;
+uint8_t * console_loc = (uint8_t *) 0xB8000;
+
+static inline void print_char(char c) {
+    *(console_loc++) = c;
+    console_loc++;
+}
+
+__attribute__((noreturn)) void _kernel_entry() {
+    _heap_init();
+
+    print_char('B');
+    print_char('o');
+    print_char('o');
+    print_char('t');
 
     while (true);
 }

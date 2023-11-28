@@ -11,8 +11,9 @@ CFLAGS32=-m32 $(CFLAGS)
 CXXFLAGS16=-fno-rtti $(CFLAGS16)
 CXXFLAGS32=-fno-rtti $(CFLAGS32)
 ASMFLAGS=
-LDSCRIPT=source/linker/bootloader.ld
-LDFLAGS=-T $(LDSCRIPT)
+
+LDSCRIPTS=source/linker/bootloader.ld
+LDFLAGS=$(foreach d, $(LDSCRIPTS), -T$d)
 
 BUILD_DIR=build
 OBJ_DIR=$(BUILD_DIR)/obj
@@ -30,6 +31,11 @@ clean:
 	rm -rf $(OBJ_DIR)/*
 	rm -f $(BUILD_DIR)/*.img
 	rm -f $(BUILD_DIR)/*.bin
+
+include make/targets.mk
+include make/targets16.mk
+include make/targets32.mk
+include make/targets64.mk
 
 include source/bootloader/bootloader.mk
 include source/kernel/kernel.mk
