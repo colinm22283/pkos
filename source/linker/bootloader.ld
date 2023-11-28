@@ -26,5 +26,12 @@ SECTIONS {
     .text : AT(0x0200) {
         *(.text*);
         *(.rodata*);
+        *(.data*);
+    }
+
+    .heap : {
+        _heap_base = .;
+        . += 512;
+        _heap_top = .;
     }
 }
