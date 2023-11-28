@@ -1,9 +1,9 @@
-CC16=i686-elf-gcc
-CC32=i686-elf-gcc
-CXX16=i686-elf-gcc
-CXX32=i686-elf-gcc
-ASM=i686-elf-as
-LD=i686-elf-ld
+CC16=/usr/local/cross/bin/i686-elf-gcc
+CC32=/usr/local/cross/bin/i686-elf-gcc
+CXX16=/usr/local/cross/bin/i686-elf-gcc
+CXX32=/usr/local/cross/bin/i686-elf-gcc
+ASM=/usr/local/cross/bin/i686-elf-as
+LD=/usr/local/cross/bin/i686-elf-ld
 
 CFLAGS=-c -ffreestanding -fno-exceptions -nostdlib -fno-stack-protector -Wall -Wextra -lgcc -I source/system/include
 CFLAGS16=-m16 $(CFLAGS)
