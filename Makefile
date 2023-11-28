@@ -5,7 +5,7 @@ CXX32=/usr/local/cross/bin/i686-elf-gcc
 ASM=/usr/local/cross/bin/i686-elf-as
 LD=/usr/local/cross/bin/i686-elf-ld
 
-CFLAGS=-c -ffreestanding -fno-exceptions -nostdlib -fno-stack-protector -Wall -Wextra -lgcc -I source/system/include
+CFLAGS=-c -ffreestanding -fno-exceptions -nostdlib -fno-stack-protector -Wall -Wextra -lgcc
 CFLAGS16=-m16 $(CFLAGS)
 CFLAGS32=-m32 $(CFLAGS)
 CXXFLAGS16=-fno-rtti $(CFLAGS16)
@@ -18,6 +18,7 @@ BUILD_DIR=build
 OBJ_DIR=$(BUILD_DIR)/obj
 SOURCE_DIR=source
 
+INCLUDE_DIRS=source/system/include
 OBJECTS=
 
 .PHONY: all
@@ -30,7 +31,7 @@ clean:
 	rm -f $(BUILD_DIR)/*.img
 	rm -f $(BUILD_DIR)/*.bin
 
-include make/bootloader.mk
-include make/kernel.mk
+include source/bootloader/bootloader.mk
+include source/kernel/kernel.mk
 include make/link.mk
 include make/image.mk
