@@ -2,21 +2,13 @@
 #include <stdint.h>
 
 #include <heap.h>
-
-uint8_t * console_loc = (uint8_t *) 0xB8000;
-
-static inline void print_char(char c) {
-    *(console_loc++) = c;
-    console_loc++;
-}
+#include <bios_console.h>
 
 __attribute__((noreturn)) void _kernel_entry() {
     _heap_init();
 
-    print_char('B');
-    print_char('o');
-    print_char('o');
-    print_char('t');
+    print_string("Boot Success!\nTest: ");
+    print_uint32(43523532);
 
     while (true);
 }

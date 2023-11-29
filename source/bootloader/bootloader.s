@@ -32,7 +32,8 @@ _start:
     xor %dh, %dh
     xor %bx, %bx
     mov %bx, %es
-    mov $0x7E00, %bx
+    mov $0x7E, %bh
+    xor %bl, %bl
     int $0x13
 
     # load the gdt

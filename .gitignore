@@ -1,7 +1,4 @@
 /cmake-build-debug/
 /cmake-build-release/
 /build/*
-!/build/emulate.sh
-!/build/emulate-gdb.sh
-!/build/objdump.sh
-!/build/objdump16.sh
+!/build/*.sh
