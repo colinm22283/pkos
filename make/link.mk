@@ -1,2 +1,2 @@
-$(BUILD_DIR)/pkos.bin: $(LDSCRIPT) bootloader kernel
+$(BUILD_DIR)/pkos.bin: $(LDSCRIPTS) bootloader kernel
 	$(LD) $(LDFLAGS) $(OBJECTS) -o $@

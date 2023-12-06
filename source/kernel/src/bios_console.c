@@ -6,8 +6,8 @@
 #define CONSOLE_WIDTH (40)
 #define CONSOLE_HEIGHT (25)
 
-uint16_t * console_loc = CONSOLE_BASE;
-uint16_t * console_next_loc = CONSOLE_BASE + CONSOLE_WIDTH;
+uint16_t * volatile console_loc = CONSOLE_BASE;
+uint16_t * volatile console_next_loc = CONSOLE_BASE + CONSOLE_WIDTH;
 
 void print_char(char c) {
     if (c == '\n') {
@@ -22,9 +22,14 @@ void print_string(const char * c) {
 }
 
 void print_uint32(uint32_t num) {
+    if (num == 0) {
+        print_char('0');
+        return;
+    }
     uint8_t num_len = 0;
     for (uint32_t x = num; x > 0; x /= 10) num_len++;
     console_loc += num_len;
+
     while (num > 0) {
         *((uint8_t *) --console_loc) = '0' + (num % 10);
         num /= 10;
@@ -32,6 +37,6 @@ void print_uint32(uint32_t num) {
 }
 
 void print_int32(int32_t num) {
-    print_char('-');
+    if (num < 0) print_char('-');
     print_uint32((uint32_t) num);
 }

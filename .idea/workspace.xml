@@ -23,12 +23,18 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6121c507-c3db-4645-9343-74e78b57e4ca" name="Changes" comment="Added a gdb emulation option">
-      <change afterPath="$PROJECT_DIR$/source/kernel/include/bios_console.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/kernel/src/bios_console.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="6121c507-c3db-4645-9343-74e78b57e4ca" name="Changes" comment="Added a console library for testing">
+      <change afterPath="$PROJECT_DIR$/source/kernel/include/file_system.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/kernel/src/heap.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/objdump-tgt.sh" beforeDir="false" afterPath="$PROJECT_DIR$/build/objdump-tgt.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/bootloader/bootloader.s" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/bootloader.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/kernel/include/heap.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/include/heap.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/source/kernel/kernel.mk" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/kernel.mk" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/kernel/src/bios_console.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/src/bios_console.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/source/kernel/src/entry.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/src/entry.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/kernel/src/heap.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/linker/bootloader.ld" beforeDir="false" afterPath="$PROJECT_DIR$/source/linker/bootloader.ld" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,6 +94,9 @@
       </map>
     </option>
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectApplicationVersion">
     <option name="ide" value="CLion" />
     <option name="majorVersion" value="2023" />
@@ -102,24 +111,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "cf.first.check.clang-format": "false",
-    "cidr.known.project.marker": "true",
-    "git-widget-placeholder": "v2",
-    "last_opened_file_path": "/home/colin/projects/pkos/build",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;v2&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/colin/projects/pkos/build&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/build" />
@@ -133,9 +142,9 @@
     </key>
   </component>
   <component name="RunManager" selected="Makefile Application.Emulate">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
+    <configuration name="Emulate Debug" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" WORKING_DIR="file://$PROJECT_DIR$/build" PASS_PARENT_ENVS_2="true" PROJECT_NAME="pkos" TARGET_NAME="all" CONFIG_NAME="all" version="1" RUN_PATH="$PROJECT_DIR$/build/emulate-gdb.sh">
       <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
       </method>
     </configuration>
     <configuration name="Emulate" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" WORKING_DIR="file://$PROJECT_DIR$/build" PASS_PARENT_ENVS_2="true" PROJECT_NAME="pkos" TARGET_NAME="all" CONFIG_NAME="all" version="1" RUN_PATH="$PROJECT_DIR$/build/emulate.sh">
@@ -165,6 +174,7 @@
     </configuration>
     <list>
       <item itemvalue="Makefile Application.Emulate" />
+      <item itemvalue="Makefile Application.Emulate Debug" />
       <item itemvalue="Makefile Application.all" />
       <item itemvalue="Makefile Application.bootloader" />
       <item itemvalue="Makefile Application.kernel" />
@@ -185,7 +195,7 @@
       <workItem from="1700894804304" duration="5000" />
       <workItem from="1700894816740" duration="25000" />
       <workItem from="1700894848605" duration="6000" />
-      <workItem from="1701191223411" duration="10831000" />
+      <workItem from="1701191223411" duration="24634000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit for v2">
       <option name="closed" value="true" />
@@ -227,7 +237,15 @@
       <option name="project" value="LOCAL" />
       <updated>1701209936044</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Added a console library for testing">
+      <option name="closed" value="true" />
+      <created>1701221956883</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1701221956883</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -245,6 +263,7 @@
     <MESSAGE value="Added kernel include dir" />
     <MESSAGE value="Fixed 16/32/64 bit building" />
     <MESSAGE value="Added a gdb emulation option" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added a gdb emulation option" />
+    <MESSAGE value="Added a console library for testing" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added a console library for testing" />
   </component>
 </project>

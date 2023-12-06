@@ -27,7 +27,7 @@ _start:
 
     # load kernel memory
     mov $0x02, %ah
-    mov $0x01, %al # number of sectors
+    mov $0x04, %al # number of sectors
     mov $0x0002, %cx
     xor %dh, %dh
     xor %bx, %bx

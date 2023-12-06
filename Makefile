@@ -1,7 +1,7 @@
 CC16=/usr/local/cross/bin/i686-elf-gcc
 CC32=/usr/local/cross/bin/i686-elf-gcc
-CXX16=/usr/local/cross/bin/i686-elf-gcc
-CXX32=/usr/local/cross/bin/i686-elf-gcc
+CXX16=/usr/local/cross/bin/i686-elf-g++
+CXX32=/usr/local/cross/bin/i686-elf-g++
 ASM=/usr/local/cross/bin/i686-elf-as
 LD=/usr/local/cross/bin/i686-elf-ld
 
@@ -27,17 +27,22 @@ all: $(BUILD_DIR)/pkos.img
 
 .PHONY: clean
 clean:
-	mkdir -p $(OBJ_DIR)
-	rm -rf $(OBJ_DIR)/*
+	rm -rf $(OBJ_DIR)
 	rm -f $(BUILD_DIR)/*.img
 	rm -f $(BUILD_DIR)/*.bin
+
+.PHONY: full
+full:
+	make clean
+	make all
+
+include source/bootloader/bootloader.mk
+include source/kernel/kernel.mk
+
+include make/link.mk
+include make/image.mk
 
 include make/targets.mk
 include make/targets16.mk
 include make/targets32.mk
 include make/targets64.mk
-
-include source/bootloader/bootloader.mk
-include source/kernel/kernel.mk
-include make/link.mk
-include make/image.mk

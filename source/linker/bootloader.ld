@@ -28,13 +28,10 @@ SECTIONS {
         *(.rodata*);
         *(.data*);
     }
-    .heap : {
+    .heap 0x8800 : {
         _heap_base = .;
-        . += 0x500;
+        . += 0x5000;
         _heap_top = .;
+        _heap_size = _heap_top - _heap_base;
     }
 }
-
-
- gdt_code = 0x08;
- gdt_data = 0x10;
