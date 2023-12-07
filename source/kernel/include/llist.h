@@ -19,7 +19,7 @@ static inline void llist_init(llist_t * llist) {
 
 static inline int * llist_add(llist_t * llist, int ele) {
     llist_node_t * temp = llist->head;
-    llist->head = _heap_alloc(sizeof(llist_node_t));
+    llist->head = (llist_node_t *) heap_alloc(sizeof(llist_node_t));
     llist->head->next = temp;
     llist->head->value = ele;
     return &llist->head->value;
@@ -28,14 +28,14 @@ static inline int * llist_add(llist_t * llist, int ele) {
 static inline void llist_pop(llist_t * llist) {
     llist_node_t * temp = llist->head;
     llist->head = llist->head->next;
-    if (_heap_free(temp)) print_string("HEAP ERROR!\n");
+    heap_free(temp);
 }
 
 static inline void llist_free(llist_t * llist) {
     llist_node_t * node = llist->head;
     while (node != NULL) {
         llist_node_t * temp = node->next;
-        _heap_free(node);
+        heap_free(node);
         node = temp;
     }
 }

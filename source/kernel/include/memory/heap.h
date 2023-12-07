@@ -1,7 +1,8 @@
 #pragma once
 
 #include <stddef.h>
+#include <stdint.h>
 
-void _heap_init();
-void * _heap_alloc(uint32_t size);
-int _heap_free(void * mem);
+void heap_init();
+void * heap_alloc(uint32_t size);
+int heap_free(void * mem);

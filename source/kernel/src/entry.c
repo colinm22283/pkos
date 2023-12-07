@@ -1,5 +1,5 @@
-#include <stdbool.h>
 #include <stdint.h>
+#include <stdbool.h>
 
 #include <memory/heap.h>
 #include <bios_console.h>
@@ -13,7 +13,7 @@ static inline void strcpy(char * dst, const char * src) {
 __attribute__((noreturn)) void _kernel_entry() {
     print_string("Boot Success!\n");
 
-    _heap_init();
+    heap_init();
 
     llist_t list;
     llist_init(&list);

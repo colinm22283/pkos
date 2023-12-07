@@ -1,16 +1,9 @@
 .code32
 
-#.set _heap_size, _heap_top - _heap_base
-
-#.section .heap
-#_heap_base:
-#.skip 0x500
-#_heap_top:
-
 .section .text
-.global _heap_init
-.type _heap_init, @function
-_heap_init:
+.global heap_init
+.type heap_init, @function
+heap_init:
     push %ebp
     mov %esp, %ebp
 
@@ -25,9 +18,9 @@ _heap_init:
     leave
     ret
 
-.global _heap_alloc
-.type _heap_alloc, @function
-_heap_alloc:
+.global heap_alloc
+.type heap_alloc, @function
+heap_alloc:
     push %ebp
     mov %esp, %ebp
 
@@ -98,9 +91,9 @@ _heap_alloc:
         leave
         ret
 
-.global _heap_free
-.type _heap_free, @function
-_heap_free:
+.global heap_free
+.type heap_free, @function
+heap_free:
     push %ebp
     mov %esp, %ebp
 
