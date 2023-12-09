@@ -5,7 +5,7 @@
 #include <memory/heap.h>
 
 typedef struct llist_node_s {
-    int value;
+    uint32_t value;
     struct llist_node_s * next;
 } llist_node_t;
 
@@ -17,7 +17,7 @@ static inline void llist_init(llist_t * llist) {
     llist->head = NULL;
 }
 
-static inline int * llist_add(llist_t * llist, int ele) {
+static inline uint32_t * llist_add(llist_t * llist, uint32_t ele) {
     llist_node_t * temp = llist->head;
     llist->head = (llist_node_t *) heap_alloc(sizeof(llist_node_t));
     llist->head->next = temp;

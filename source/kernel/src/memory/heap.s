@@ -15,7 +15,7 @@ heap_init:
     movl $0, (%eax)
     movl $0, 4(%eax)
 
-    leave
+    pop %ebp
     ret
 
 .global heap_alloc
@@ -23,6 +23,7 @@ heap_init:
 heap_alloc:
     push %ebp
     mov %esp, %ebp
+    push %ebx
 
     movl 8(%ebp), %edx
     add $8, %edx
@@ -81,14 +82,16 @@ heap_alloc:
 
         pop %eax
         add $4, %eax
-        leave
+        pop %ebx
+        pop %ebp
         ret
 
     .not_found:
         # return nullptr
         mov $0, %eax
 
-        leave
+        pop %ebx
+        pop %ebp
         ret
 
 .global heap_free
@@ -96,6 +99,7 @@ heap_alloc:
 heap_free:
     push %ebp
     mov %esp, %ebp
+    push %ebx
 
     movl 8(%ebp), %edx
     sub $4, %edx
@@ -111,7 +115,8 @@ heap_free:
     cmp $(_heap_top - 8), %edx
     jbe .block_valid # edx <= _heap_top - 8
         mov $1, %eax
-        leave
+        pop %ebx
+        pop %ebp
         ret
     .block_valid:
 
@@ -155,7 +160,8 @@ heap_free:
         movl %eax, (%ebx)
 
         mov $0, %eax
-        leave
+        pop %ebx
+        pop %ebp
         ret
     .prev_is_not_free:
 
@@ -164,5 +170,6 @@ heap_free:
     movl %eax, (%edx)
 
     mov $0, %eax
-    leave
+    pop %ebx
+    pop %ebp
     ret

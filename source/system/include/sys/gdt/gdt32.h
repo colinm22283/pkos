@@ -2,9 +2,9 @@
 
 #include <stdint.h>
 
-#include "gdt_flags.h"
+#include <sys/gdt/gdt_flags.h>
 
-typedef struct __attribute__((packed)) {
+typedef struct __PACKED {
     uint16_t limit_lower : 16;
     uint32_t base_lower  : 24;
     uint8_t access       : 8;

@@ -24,14 +24,24 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6121c507-c3db-4645-9343-74e78b57e4ca" name="Changes" comment="Heap is here, heap is heere">
-      <change beforePath="$PROJECT_DIR$/make/link.mk" beforeDir="false" afterPath="$PROJECT_DIR$/make/link.mk" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/include/bios_console.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/include/bios_console.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/include/llist.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/include/llist.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/include/memory/heap.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/include/memory/heap.hpp" afterDir="false" />
+    <list default="true" id="6121c507-c3db-4645-9343-74e78b57e4ca" name="Changes" comment="changed a few things">
+      <change afterPath="$PROJECT_DIR$/make/config.mk" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/kernel/include/memory.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/kernel/include/memory/memcpy.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/kernel/include/string.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/kernel/include/string/strcpy.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/kernel/src/memory/memcpy.s" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/kernel/src/string/strcpy.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/bootloader/bootloader.s" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/bootloader.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/kernel/include/bios_console.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/include/bios_console.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/kernel/include/llist.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/include/llist.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/kernel/include/memory/heap.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/include/memory/heap.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/kernel/kernel.mk" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/kernel.mk" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/source/kernel/src/bios_console.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/src/bios_console.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/source/kernel/src/entry.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/src/entry.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/system/include/cstdint" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/kernel/src/memory/heap.s" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/src/memory/heap.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/system/include/pkdef.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/system/include/pkdef.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -141,6 +151,11 @@
     </key>
   </component>
   <component name="RunManager" selected="Makefile Application.Emulate">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Emulate Debug" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" WORKING_DIR="file://$PROJECT_DIR$/build" PASS_PARENT_ENVS_2="true" PROJECT_NAME="pkos" TARGET_NAME="all" CONFIG_NAME="all" version="1" RUN_PATH="$PROJECT_DIR$/build/emulate-gdb.sh">
       <method v="2">
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
@@ -202,6 +217,7 @@
       <workItem from="1700894848605" duration="6000" />
       <workItem from="1701191223411" duration="24634000" />
       <workItem from="1701664587745" duration="27221000" />
+      <workItem from="1701981226023" duration="6433000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit for v2">
       <option name="closed" value="true" />
@@ -259,7 +275,15 @@
       <option name="project" value="LOCAL" />
       <updated>1701821308857</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="changed a few things">
+      <option name="closed" value="true" />
+      <created>1701981259623</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1701981259623</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -279,6 +303,7 @@
     <MESSAGE value="Added a gdb emulation option" />
     <MESSAGE value="Added a console library for testing" />
     <MESSAGE value="Heap is here, heap is heere" />
-    <option name="LAST_COMMIT_MESSAGE" value="Heap is here, heap is heere" />
+    <MESSAGE value="changed a few things" />
+    <option name="LAST_COMMIT_MESSAGE" value="changed a few things" />
   </component>
 </project>

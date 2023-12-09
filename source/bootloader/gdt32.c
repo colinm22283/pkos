@@ -1,8 +1,10 @@
+#include <defs.h>
+
 #include <sys/gdt/gdt32.h>
 #include <sys/gdt/gdt_desc.h>
 
-__attribute__((__section__(".bootloader_gdt")))
-const struct __attribute__((packed)) {
+__SECTION(".bootloader_gdt")
+const struct __PACKED {
     gdt32_entry_t null;
     gdt32_entry_t code;
     gdt32_entry_t data;
@@ -38,5 +40,4 @@ const struct __attribute__((packed)) {
             GDT_ACCESS_READ_WRITE,
     },
 };
-__attribute__((__section__(".bootloader_gdt_descriptor")))
-const gdt_descriptor_t gdt_descriptor = DEFINE_GDT_DESCRIPTOR(gdt32);
+__SECTION(".bootloader_gdt_descriptor") const gdt_descriptor_t gdt32_descriptor = DEFINE_GDT_DESCRIPTOR(gdt32);

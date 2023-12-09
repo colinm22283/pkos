@@ -15,6 +15,8 @@ SECTIONS {
         *(.bootloader_rodata);
         *(.bootloader_gdt);
         *(.bootloader_gdt_descriptor);
+        *(.bootloader_gdt64);
+        *(.bootloader_gdt64_descriptor);
     }
 
     .sig 0x7DFE : AT(0x01FE) {
@@ -23,11 +25,27 @@ SECTIONS {
 
     . = 0x7E00;
 
-    .text : AT(0x0200) {
+    .bootloader32 : AT(0x0200) {
+        *(.bootloader32_text);
+        *(.bootloader32_rodata);
+    }
+
+    . = ALIGN(512);
+
+    _bootloader_sectors = (. - 0x200) / 512;
+
+    .paging_tables : {
+        _page_table_base = .;
+        . += 500;
+        _page_table_top = .;
+    }
+
+    .text : {
         *(.text*);
         *(.rodata*);
         *(.data*);
     }
+
     .heap 0x8800 : {
         _heap_base = .;
         . += 0x5000;

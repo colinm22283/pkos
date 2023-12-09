@@ -10,8 +10,8 @@
 
 
 .section .bootloader_text, "a"
-    .global _start
-    .type _start, @function
+.global _start
+.type _start, @function
 _start:
     # disable interrupts
     cli
@@ -21,13 +21,12 @@ _start:
     int $0x15
 
     # set console graphics mode
-    xor %ah, %ah
-	mov $0x01, %al
+	mov $0x0001, %ax
 	int $0x10
 
     # load kernel memory
     mov $0x02, %ah
-    mov $0x04, %al # number of sectors
+    mov $_bootloader_sectors, %al
     mov $0x0002, %cx
     xor %dh, %dh
     xor %bx, %bx
@@ -37,15 +36,15 @@ _start:
     int $0x13
 
     # load the gdt
-    lgdt [gdt_descriptor]
+    lgdt [gdt32_descriptor]
     mov %cr0, %eax
     or  $1, %al
     mov %eax, %cr0
 
-    jmp $0x08, $protected_mode_entry
+    jmp $0x08, $.protected_mode_entry
 
 .code32
-protected_mode_entry:
+.protected_mode_entry:
     # set the segment registers
     mov $0x10, %ax
     mov %ax, %ds
@@ -57,5 +56,8 @@ protected_mode_entry:
     # set the stack pointer
     mov $_stack_top, %esp
 
+    # check if long mode is available
+    jmp _bootloader32_entry
+
     # enter the kernel
-	jmp _kernel_entry
+	#jmp kernel_entry

@@ -40,3 +40,11 @@ void print_int32(int32_t num) {
     if (num < 0) print_char('-');
     print_uint32((uint32_t) num);
 }
+
+void print_uint8(uint8_t num) {
+    print_uint32((uint32_t) num);
+}
+void print_int8(int8_t num) {
+    if (num < 0) print_char('-');
+    print_uint8((uint8_t) num);
+}
