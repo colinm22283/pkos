@@ -1,30 +1,21 @@
-.code32
+.code64
 
+.section .text, "a"
 .global memcpy
 .type memcpy, @function
 memcpy:
-    push %ebp
-    mov  %esp, %ebp
-    push %ebx
+    test %rdx, %rdx
+    jz   .ret
 
-    movl 8(%ebp),  %edx # dest
-    movl 12(%ebp), %ecx # src
-    movl 16(%ebp), %eax # size
-
+    mov %rdx, %rcx
     .loop:
-        cmp  $0,     %eax
-        je   .exit
+        movb (%rsi), %dl
+        movb %dl,    (%rdi)
 
-        movb (%ecx), %bl
-        movb %bl,    (%edx)
+        inc %rsi
+        inc %rdi
 
-        sub  $1,     %eax
-        add  $1,     %ecx
-        add  $1,     %edx
+        loop .loop
 
-        jmp  .loop
-    .exit:
-
-    pop %ebx
-    pop %ebp
+    .ret:
     ret

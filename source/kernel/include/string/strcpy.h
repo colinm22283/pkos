@@ -2,4 +2,4 @@
 
 #include <defs.h>
 
-__STDCALL void strcpy(char * dest, char * src);
+__SYSV_ABI void strcpy(char * dest, char * src);

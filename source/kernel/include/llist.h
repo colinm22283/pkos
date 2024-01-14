@@ -2,7 +2,7 @@
 
 #include <stddef.h>
 
-#include <memory/heap.h>
+#include "memory/heap.h"
 
 typedef struct llist_node_s {
     uint32_t value;

@@ -1,12 +1,11 @@
 #pragma once
 
-typedef struct __attribute__((packed)) {
+#include <defs.h>
+
+typedef struct __PACKED {
     uint16_t size : 16;
-    union __attribute__((packed)) {
-        uint32_t u32 : 32;
-        uint64_t u64 : 64;
-        const void * pointer;
-    } offset;
+
+    const void * pointer;
 } gdt_descriptor_t;
 
-#define DEFINE_GDT_DESCRIPTOR(gdt_table) { .offset.pointer = &gdt_table, .size = sizeof(gdt_table) - 1, }
+#define DEFINE_GDT_DESCRIPTOR(gdt_table) { .pointer = &gdt_table, .size = sizeof(gdt_table) - 1, }

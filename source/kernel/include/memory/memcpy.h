@@ -4,4 +4,4 @@
 
 #include <defs.h>
 
-__STDCALL void memcpy(void * dest, void * src, size_t size);
+__SYSV_ABI void memcpy(void * dest, void * src, size_t size);

@@ -9,3 +9,7 @@ $(OBJ_DIR)/32/%.o: $(SOURCE_DIR)/%.c $(CHEADERS)
 $(OBJ_DIR)/32/%.o: $(SOURCE_DIR)/%.cpp $(CHEADERS) $(CXXHEADERS)
 	mkdir -p $(@D)
 	$(CXX32) $(CXXFLAGS32) $(INCLUDE_PARAMS) $< -o $@
+
+$(OBJ_DIR)/32/%.o: $(SOURCE_DIR)/%.s
+	mkdir -p $(@D)
+	$(ASM32) $(ASMFLAGS) $< -o $@

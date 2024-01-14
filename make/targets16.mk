@@ -9,3 +9,7 @@ $(OBJ_DIR)/16/%.o: $(SOURCE_DIR)/%.c $(CHEADERS)
 $(OBJ_DIR)/16/%.o: $(SOURCE_DIR)/%.cpp $(CHEADERS) $(CXXHEADERS)
 	mkdir -p $(@D)
 	$(CXX16) $(CXXFLAGS16) $(INCLUDE_PARAMS) $< -o $@
+
+$(OBJ_DIR)/16/%.o: $(SOURCE_DIR)/%.s
+	mkdir -p $(@D)
+	$(ASM) $(ASMFLAGS) $< -o $@
