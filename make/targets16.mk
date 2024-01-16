@@ -12,4 +12,4 @@ $(OBJ_DIR)/16/%.o: $(SOURCE_DIR)/%.cpp $(CHEADERS) $(CXXHEADERS)
 
 $(OBJ_DIR)/16/%.o: $(SOURCE_DIR)/%.s
 	mkdir -p $(@D)
-	$(ASM) $(ASMFLAGS) $< -o $@
+	$(ASM16) $(ASMFLAGS) $< -o $@

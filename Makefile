@@ -8,6 +8,7 @@ CXX16=/usr/local/cross/bin/i686-elf-g++
 CXX32=/usr/local/cross/bin/i686-elf-g++
 CXX64=/usr/local/cross64/bin/x86_64-elf-g++
 
+ASM16=/usr/local/cross/bin/i686-elf-as
 ASM32=/usr/local/cross/bin/i686-elf-as
 ASM64=/usr/local/cross64/bin/x86_64-elf-as
 
@@ -23,8 +24,8 @@ CXXFLAGS32=-fno-rtti $(CFLAGS32)
 CXXFLAGS64=-fno-rtti $(CFLAGS64)
 ASMFLAGS=
 
-LDSCRIPT=source/linker/global.ld
-LDFLAGS=-T$(LDSCRIPT)
+LDSCRIPTS=$(SOURCE_DIR)/linker/memory.ld
+LDFLAGS=$(foreach d, $(LDSCRIPTS), -T$d)
 
 BUILD_DIR=build
 BIN_DIR=$(BUILD_DIR)/bin
@@ -49,11 +50,11 @@ full:
 	make clean
 	make all
 
-include source/bootloader32/bootloader32.mk
-include source/bootloader64/bootloader64.mk
-include source/kernel/kernel.mk
+include $(SOURCE_DIR)/bootsector/bootsector.mk
+include $(SOURCE_DIR)/bootloader/bootloader.mk
 
 include make/image.mk
 
+include make/targets16.mk
 include make/targets32.mk
 include make/targets64.mk
