@@ -15,10 +15,10 @@ typedef struct __PACKED {
     uint8_t  p            :  1;
     uint64_t offset_upper : 48;
     uint32_t _reserved2   : 32;
-} idt_entry_t;
+} idt64_entry_t;
 
 typedef struct __PACKED {
-    idt_entry_t
+    idt64_entry_t
         div0,
         _res0,
         nmi,
@@ -41,20 +41,18 @@ typedef struct __PACKED {
         simd_fp_error,
         _res2;
 
-    idt_entry_t _undefined_entries0[11];
+    idt64_entry_t _undefined_entries0[11];
 
-    idt_entry_t mapped_irqs[16];
+    idt64_entry_t mapped_irqs[16];
 
-    idt_entry_t _undefined_entries1[80];
+    idt64_entry_t _undefined_entries1[80];
 
-    idt_entry_t system_interrupt;
+    idt64_entry_t system_interrupt;
+} idt32_t;
 
-//    idt_entry_t _undefined_entries1[100];
-} idt_t;
-
-#define DEFINE_IDT_ENTRY_INTERRUPT(handler) ((idt_entry_t) {     \
-    .offset_lower = (uint16_t) (((uint64_t) &handler) & 0xFFFF), \
-    .offset_upper = ((uint64_t) &handler) >> 16,                 \
+#define DEFINE_IDT64_ENTRY_INTERRUPT(handler) ((idt64_entry_t) {     \
+    .offset_lower = (uint16_t) (((uint32_t) &handler) & 0xFFFF), \
+    .offset_upper = ((uint32_t) &handler) >> 16,                 \
     .ist = 0,                                                    \
     .dpl = 0,                                                    \
     .p = 1,                                                      \
@@ -65,7 +63,7 @@ typedef struct __PACKED {
     ._reserved2 = 0,                                             \
 })
 
-#define DEFINE_IDT_ENTRY_TRAP(handler) ((idt_entry_t) {               \
+#define DEFINE_IDT64_ENTRY_TRAP(handler) ((idt64_entry_t) {               \
     .offset_lower = (uint16_t) (((uint64_t) &handler) & 0xFFFF), \
     .offset_upper = ((uint64_t) &handler) << 16,                 \
     .ist = 0,                                                    \
@@ -78,3 +76,15 @@ typedef struct __PACKED {
     ._reserved2 = 0,                                             \
 })
 
+#define DEFINE_IDT64_ENTRY_NULL ((idt64_entry_t) { \
+    .offset_lower = 0, \
+    .offset_upper = 0, \
+    .ist = 0,          \
+    .dpl = 0,          \
+    .p = 0,            \
+    .gate_type = 0,    \
+    .selector = 0,     \
+    ._reserved0 = 0,   \
+    ._reserved1 = 0,   \
+    ._reserved2 = 0,   \
+})

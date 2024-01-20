@@ -5,6 +5,8 @@ BS_OD_32=$(OBJ_DIR)/32/bootsector
 BS_OBJS+=$(BS_OD_16)/bootsector.o
 BS_OBJS+=$(BS_OD_32)/gdt32.o
 
+include $(MAKE_SCRIPTS)
+
 $(BIN_DIR)/bootsector.bin: $(BS_OBJS) $(BS_SOURCE_DIR)/bootsector.ld
 	mkdir -p $(BIN_DIR)
 	$(LD32) $(LDFLAGS) -T$(BS_SOURCE_DIR)/bootsector.ld $(BS_OBJS) -o $@

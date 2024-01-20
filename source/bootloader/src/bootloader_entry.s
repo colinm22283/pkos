@@ -1,8 +1,8 @@
 .code32
 
-.section .bootloader, "a"
-.global protected_mode_entry
-protected_mode_entry:
+.section .bootloader_entry, "a"
+.global bootloader_entry
+bootloader_entry:
     # set the segment registers
     mov $0x10, %ax
     mov %ax,   %ds
@@ -13,11 +13,6 @@ protected_mode_entry:
 
     # set the stack pointer
     mov $stack_top, %esp
-
-    # print the pkbootloader string
-    mov  $title_string, %eax
-    call print_string_nl
-    call print_newline
 
     # check for cpuid support
     pushfl
@@ -48,13 +43,10 @@ protected_mode_entry:
     mov $0x0002, %ax
     jz boot_error
 
-    # print page table allocation message
-    mov $page_table_alloc_string, %eax
-    call print_string_nl
+    # initialize the interrupt table
+    call int_init
 
-
+    # enter the shell environment
+    jmp shell_entry
 
     hlt
-
-title_string: .asciz "PKOS Bootloader V1 Booting..."
-page_table_alloc_string: .asciz "Allocating page tables..."

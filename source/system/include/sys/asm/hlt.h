@@ -1,3 +1,5 @@
 #pragma once
 
-#define hlt() do { asm volatile ("cli; hlt"); } while (0)
+static inline void hlt() {
+    asm volatile ("hlt");
+}

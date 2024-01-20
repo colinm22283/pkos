@@ -9,4 +9,4 @@ typedef struct __PACKED {
     void * offset;
 } idt_ptr_t;
 
-#define DEFINE_IDT_DESCRIPTOR(idt) { .size = sizeof(idt) - 1, .offset = &idt, }
+#define DEFINE_IDT_POINTER(idt) ((idt_ptr_t) { .size = sizeof((idt)) - 1, .offset = &(idt), })

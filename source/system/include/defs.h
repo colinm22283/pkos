@@ -1,8 +1,10 @@
 #pragma once
 
-#define __STDCALL __attribute__((stdcall))
+#define __STDCALL    __attribute__((stdcall))
 #define __VECTORCALL __attribute__((vectorcall))
-#define __SYSV_ABI __attribute__((sysv_abi))
+#define __SYSV_ABI   __attribute__((sysv_abi))
+#define __FASTCALL   __attribute__((fastcall))
+#define __CDECL      __attribute__((cdecl))
 
 #define __PACKED __attribute__((packed))
 #define __NORETURN __attribute__((noreturn))
@@ -14,5 +16,5 @@
 #define __SECTION(section_name) __attribute__((__section__(section_name)))
 #define __ALIGNED(alignment) __attribute__((aligned(alignment)))
 
-#define GDT_CODE_SEG (0x10)
-#define GDT_DATA_SEG (0x20)
+#define GDT_CODE_SEG (0x08)
+#define GDT_DATA_SEG (0x10)

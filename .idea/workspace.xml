@@ -22,88 +22,70 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6121c507-c3db-4645-9343-74e78b57e4ca" name="Changes" comment="End of v3. Need to rethink the bootloader for a higher half kernel.">
-      <change afterPath="$PROJECT_DIR$/source/bootloader/boot_error.s" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootloader/bootloader.ld" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootloader/bootloader.mk" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootloader/bootloader32.s" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootloader/bootloader64.s" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootloader/console/console.s" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootloader/console/print_hex.s" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootloader/console/print_newline.s" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootloader/console/print_string.s" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootloader/gdt64.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootloader/page_tables.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootsector/bootsector.ld" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootsector/bootsector.mk" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootsector/bootsector.s" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootsector/gdt32.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/linker/memory.ld" afterDir="false" />
+    <list default="true" id="6121c507-c3db-4645-9343-74e78b57e4ca" name="Changes" comment="V4 Initial Commit">
+      <change afterPath="$PROJECT_DIR$/source/bootloader/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/bootloader/include/console/char.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/bootloader/include/console/color.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/bootloader/include/console/console.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/bootloader/include/console/newline.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/bootloader/include/console/print.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/bootloader/include/console/put.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/bootloader/include/interrupt/fatal_handler.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/bootloader/include/interrupt/idt.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/bootloader/include/interrupt/init.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/bootloader/include/interrupt/keyboard_handler_entry.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/bootloader/include/interrupt/keyboard_lut.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/bootloader/include/interrupt/null_handler.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/bootloader/include/interrupt/null_pic_handler_entry.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/bootloader/include/pic/mask.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/bootloader/include/pic/remap.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/bootloader/include/shell/keyboard_handler.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/bootloader/src/console/console.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/bootloader/src/console/newline.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/bootloader/src/console/print.s" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/bootloader/src/console/print_color.s" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/bootloader/src/console/put.s" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/bootloader/src/interrupt/fatal_handler.s" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/bootloader/src/interrupt/idt.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/bootloader/src/interrupt/init.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/bootloader/src/interrupt/keyboard_handler.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/bootloader/src/interrupt/keyboard_handler_entry.s" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/bootloader/src/interrupt/keyboard_lut.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/bootloader/src/interrupt/null_handler.s" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/bootloader/src/interrupt/null_pic_handler.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/bootloader/src/interrupt/null_pic_handler_entry.s" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/bootloader/src/pic/mask.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/bootloader/src/pic/remap.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/bootloader/src/shell/keyboard_handler.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/bootloader/src/shell/shell_entry.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/bootsector/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/system/include/sys/asm/cli.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/system/include/sys/asm/int.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/system/include/sys/asm/lidt.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/system/include/sys/asm/sti.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/system/include/sys/halt.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/system/include/sys/idt/idt32.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/make/image.mk" beforeDir="false" afterPath="$PROJECT_DIR$/make/image.mk" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/make/targets16.mk" beforeDir="false" afterPath="$PROJECT_DIR$/make/targets16.mk" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader32/bootloader32.ld" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader32/bootloader32.mk" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader32/bootloader32.s" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader32/gdt32.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader64/bootloader64.ld" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader64/bootloader64.mk" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader64/bootloader64.s" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader64/gdt64.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader64/tss64.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/include/bios_console.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/include/idt.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/include/interrupt/apic.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/include/interrupt/init.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/include/interrupt/interrupt.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/include/interrupt/interrupts.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/include/interrupt/pic.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/include/interrupt/system/print.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/include/llist.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/include/memory.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/include/memory/heap.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/include/memory/memcpy.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/include/memory/memset.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/include/memory_manager/mm_global.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/include/memory_manager/mm_init.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/include/paging/paging.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/include/paging/tables.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/include/string.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/include/string/strcmp.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/include/string/strcpy.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/include/util/busy_wait.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/kernel.ld" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/kernel.mk" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/src/bios_console.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/src/entry.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/src/idt.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/src/interrupt/handlers/internal/gpf_handler.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/src/interrupt/handlers/internal/gpf_handler_entry.s" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/src/interrupt/handlers/internal/keyboard_handler.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/src/interrupt/handlers/internal/keyboard_handler_entry.s" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/src/interrupt/handlers/internal/page_fault_handler.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/src/interrupt/handlers/internal/page_fault_handler_entry.s" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/src/interrupt/handlers/internal/system_handler.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/src/interrupt/handlers/internal/system_handler_entry.s" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/src/interrupt/handlers/internal/unimp_handler.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/src/interrupt/handlers/internal/unimp_handler_entry.s" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/src/interrupt/handlers/irq/null_pic_handler.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/src/interrupt/handlers/irq/null_pic_handler_entry.s" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/src/interrupt/init.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/src/interrupt/pic.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/src/memory/heap.s" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/src/memory/heap_old.s" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/src/memory/memcpy.s" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/src/memory/memset.s" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/src/memory_manager/mm_init.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/src/paging/paging.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/src/string/strcmp.s" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/src/string/strcpy.s" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/linker/global.ld" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/system/include/sys/gdt/gdt_desc.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/system/include/sys/gdt/gdt_ptr.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/system/include/sys/paging/pdpt.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/system/include/sys/paging/pdpt.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/system/include/sys/paging/pdt.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/system/include/sys/paging/pdt.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/bootloader/boot_error.s" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/boot_error.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/bootloader/bootloader.ld" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/bootloader.ld" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/bootloader/bootloader.mk" beforeDir="false" afterPath="$PROJECT_DIR$/shrapnel/bootloader.mk" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/bootloader/bootloader32.s" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/bootloader_entry.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/bootloader/bootloader64.s" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/bootloader/console/console.s" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/bootloader/console/print_hex.s" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/bootloader/console/print_newline.s" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/bootloader/console/print_string.s" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/bootloader/gdt64.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/gdt64.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/bootloader/page_tables.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/page_tables.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/bootsector/bootsector.mk" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/bootsector/bootsector.s" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootsector/bootsector.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/system/include/defs.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/system/include/defs.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/system/include/sys/asm/hlt.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/system/include/sys/asm/hlt.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/system/include/sys/asm/in.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/system/include/sys/asm/in.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/system/include/sys/idt/idt.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/system/include/sys/idt/idt64.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/system/include/sys/idt/idt_ptr.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/system/include/sys/idt/idt_ptr.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/system/include/sys/interrupt.h" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -214,11 +196,11 @@
       <recent name="$PROJECT_DIR$/source" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/source/bootsector" />
-      <recent name="$PROJECT_DIR$/source/bootloader/console" />
-      <recent name="$PROJECT_DIR$/source/kernel/src" />
-      <recent name="$PROJECT_DIR$/source/kernel/include/memory" />
-      <recent name="$PROJECT_DIR$/source/system/include/sys/tss" />
+      <recent name="$PROJECT_DIR$/source/bootloader/inc/interrupt" />
+      <recent name="$PROJECT_DIR$/source/bootloader/src/interrupts" />
+      <recent name="$PROJECT_DIR$/shrapnel" />
+      <recent name="$PROJECT_DIR$/source/bootloader" />
+      <recent name="$PROJECT_DIR$/source/bootloader/src" />
     </key>
   </component>
   <component name="RunManager" selected="Native Application.Emulate">
@@ -272,6 +254,11 @@
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
     <list>
       <item itemvalue="Native Application.Emulate Debug" />
       <item itemvalue="Native Application.Emulate" />
@@ -310,6 +297,18 @@
       <workItem from="1705098498480" duration="385000" />
       <workItem from="1705262586558" duration="3725000" />
       <workItem from="1705343499939" duration="9298000" />
+      <workItem from="1705431252414" duration="156000" />
+      <workItem from="1705435769303" duration="1941000" />
+      <workItem from="1705438043014" duration="24000" />
+      <workItem from="1705438073052" duration="62000" />
+      <workItem from="1705438139917" duration="13783000" />
+      <workItem from="1705511301469" duration="161000" />
+      <workItem from="1705522586564" duration="2732000" />
+      <workItem from="1705591781145" duration="835000" />
+      <workItem from="1705608504604" duration="1860000" />
+      <workItem from="1705610369435" duration="3291000" />
+      <workItem from="1705683542387" duration="4187000" />
+      <workItem from="1705698052480" duration="4747000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit for v2">
       <option name="closed" value="true" />
@@ -375,7 +374,15 @@
       <option name="project" value="LOCAL" />
       <updated>1701981259623</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="V4 Initial Commit">
+      <option name="closed" value="true" />
+      <created>1705431272438</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1705431272438</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -396,6 +403,7 @@
     <MESSAGE value="Added a console library for testing" />
     <MESSAGE value="Heap is here, heap is heere" />
     <MESSAGE value="changed a few things" />
-    <option name="LAST_COMMIT_MESSAGE" value="changed a few things" />
+    <MESSAGE value="V4 Initial Commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="V4 Initial Commit" />
   </component>
 </project>

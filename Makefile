@@ -1,40 +1,43 @@
 include make/config.mk
 
-CC16=/usr/local/cross/bin/i686-elf-gcc
-CC32=/usr/local/cross/bin/i686-elf-gcc
-CC64=/usr/local/cross64/bin/x86_64-elf-gcc
+export CC16=/usr/local/cross/bin/i686-elf-gcc
+export CC32=/usr/local/cross/bin/i686-elf-gcc
+export CC64=/usr/local/cross64/bin/x86_64-elf-gcc
 
-CXX16=/usr/local/cross/bin/i686-elf-g++
-CXX32=/usr/local/cross/bin/i686-elf-g++
-CXX64=/usr/local/cross64/bin/x86_64-elf-g++
+export CXX16=/usr/local/cross/bin/i686-elf-g++
+export CXX32=/usr/local/cross/bin/i686-elf-g++
+export CXX64=/usr/local/cross64/bin/x86_64-elf-g++
 
-ASM16=/usr/local/cross/bin/i686-elf-as
-ASM32=/usr/local/cross/bin/i686-elf-as
-ASM64=/usr/local/cross64/bin/x86_64-elf-as
+export ASM16=/usr/local/cross/bin/i686-elf-as
+export ASM32=/usr/local/cross/bin/i686-elf-as
+export ASM64=/usr/local/cross64/bin/x86_64-elf-as
 
-LD32=/usr/local/cross/bin/i686-elf-ld
-LD64=/usr/local/cross64/bin/x86_64-elf-ld
+export LD32=/usr/local/cross/bin/i686-elf-ld
+export LD64=/usr/local/cross64/bin/x86_64-elf-ld
 
-CFLAGS=-c -ffreestanding -fno-exceptions -nostdlib -fno-stack-protector -fno-asynchronous-unwind-tables -mno-red-zone -Wall -Wextra
-CFLAGS16=-m16 $(CFLAGS)
-CFLAGS32=-m32 $(CFLAGS)
-CFLAGS64=-m64 -mcmodel=large $(CFLAGS)
-CXXFLAGS16=-fno-rtti $(CFLAGS16)
-CXXFLAGS32=-fno-rtti $(CFLAGS32)
-CXXFLAGS64=-fno-rtti $(CFLAGS64)
-ASMFLAGS=
+export CFLAGS=-c -ffreestanding -fno-exceptions -nostdlib -fno-stack-protector -fno-asynchronous-unwind-tables -mno-red-zone -Wall -Wextra
+export CFLAGS16=-m16 $(CFLAGS)
+export CFLAGS32=-m32 $(CFLAGS)
+export CFLAGS64=-m64 -mcmodel=large $(CFLAGS)
+export CXXFLAGS16=-fno-rtti $(CFLAGS16)
+export CXXFLAGS32=-fno-rtti $(CFLAGS32)
+export CXXFLAGS64=-fno-rtti $(CFLAGS64)
+export ASMFLAGS=
 
-LDSCRIPTS=$(SOURCE_DIR)/linker/memory.ld
-LDFLAGS=$(foreach d, $(LDSCRIPTS), -T$d)
+export BUILD_DIR=$(CURDIR)/build
+export BIN_DIR=$(BUILD_DIR)/bin
+export OBJ_DIR=$(BUILD_DIR)/obj
+export SOURCE_DIR=$(CURDIR)/source
 
-BUILD_DIR=build
-BIN_DIR=$(BUILD_DIR)/bin
-OBJ_DIR=$(BUILD_DIR)/obj
-SOURCE_DIR=source
+export MAKE_DIR=$(CURDIR)/make
+export MAKE_SCRIPTS=$(MAKE_DIR)/targets16.mk $(MAKE_DIR)/targets32.mk $(MAKE_DIR)/targets64.mk
 
-INCLUDE_DIRS=source/system/include
+export LDSCRIPTS=$(SOURCE_DIR)/linker/memory.ld
+export LDFLAGS=$(foreach d, $(LDSCRIPTS), -T$d)
 
-CFLAGS+=-O$(OPTIMIZATION)
+export INCLUDE_DIRS=$(SOURCE_DIR)/system/include
+
+export CFLAGS+=-O$(OPTIMIZATION)
 
 .PHONY: all
 all: $(BUILD_DIR)/pkos.img
@@ -50,11 +53,14 @@ full:
 	make clean
 	make all
 
-include $(SOURCE_DIR)/bootsector/bootsector.mk
-include $(SOURCE_DIR)/bootloader/bootloader.mk
-
 include make/image.mk
+include $(MAKE_SCRIPTS)
 
-include make/targets16.mk
-include make/targets32.mk
-include make/targets64.mk
+.PHONY: $(BIN_DIR)/bootloader.bin
+$(BIN_DIR)/bootloader.bin:
+	cd source/bootloader && $(MAKE)
+
+.PHONY: $(BIN_DIR)/bootsector.bin
+$(BIN_DIR)/bootsector.bin:
+	cd source/bootsector && $(MAKE)
+
