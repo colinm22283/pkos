@@ -1,19 +1,19 @@
 include make/config.mk
 
-export CC16=/usr/local/cross/bin/i686-elf-gcc
-export CC32=/usr/local/cross/bin/i686-elf-gcc
-export CC64=/usr/local/cross64/bin/x86_64-elf-gcc
+export CC16=/opt/cross/bin/i686-elf-gcc
+export CC32=/opt/cross/bin/i686-elf-gcc
+export CC64=/opt/cross64/bin/x86_64-elf-gcc
 
-export CXX16=/usr/local/cross/bin/i686-elf-g++
-export CXX32=/usr/local/cross/bin/i686-elf-g++
-export CXX64=/usr/local/cross64/bin/x86_64-elf-g++
+export CXX16=/opt/cross/bin/i686-elf-g++
+export CXX32=/opt/cross/bin/i686-elf-g++
+export CXX64=/opt/cross64/bin/x86_64-elf-g++
 
-export ASM16=/usr/local/cross/bin/i686-elf-as
-export ASM32=/usr/local/cross/bin/i686-elf-as
-export ASM64=/usr/local/cross64/bin/x86_64-elf-as
+export ASM16=/opt/cross/bin/i686-elf-as
+export ASM32=/opt/cross/bin/i686-elf-as
+export ASM64=/opt/cross64/bin/x86_64-elf-as
 
-export LD32=/usr/local/cross/bin/i686-elf-ld
-export LD64=/usr/local/cross64/bin/x86_64-elf-ld
+export LD32=/opt/cross/bin/i686-elf-ld
+export LD64=/opt/cross64/bin/x86_64-elf-ld
 
 export CFLAGS=-c -ffreestanding -fno-exceptions -nostdlib -fno-stack-protector -fno-asynchronous-unwind-tables -mno-red-zone -Wall -Wextra
 export CFLAGS16=-m16 $(CFLAGS)

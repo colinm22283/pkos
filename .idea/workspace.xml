@@ -23,69 +23,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6121c507-c3db-4645-9343-74e78b57e4ca" name="Changes" comment="V4 Initial Commit">
-      <change afterPath="$PROJECT_DIR$/source/bootloader/Makefile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootloader/include/console/char.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootloader/include/console/color.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootloader/include/console/console.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootloader/include/console/newline.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootloader/include/console/print.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootloader/include/console/put.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootloader/include/interrupt/fatal_handler.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootloader/include/interrupt/idt.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootloader/include/interrupt/init.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootloader/include/interrupt/keyboard_handler_entry.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootloader/include/interrupt/keyboard_lut.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootloader/include/interrupt/null_handler.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootloader/include/interrupt/null_pic_handler_entry.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootloader/include/pic/mask.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootloader/include/pic/remap.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootloader/include/shell/keyboard_handler.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootloader/src/console/console.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootloader/src/console/newline.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootloader/src/console/print.s" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootloader/src/console/print_color.s" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootloader/src/console/put.s" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootloader/src/interrupt/fatal_handler.s" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootloader/src/interrupt/idt.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootloader/src/interrupt/init.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootloader/src/interrupt/keyboard_handler.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootloader/src/interrupt/keyboard_handler_entry.s" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootloader/src/interrupt/keyboard_lut.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootloader/src/interrupt/null_handler.s" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootloader/src/interrupt/null_pic_handler.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootloader/src/interrupt/null_pic_handler_entry.s" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootloader/src/pic/mask.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootloader/src/pic/remap.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootloader/src/shell/keyboard_handler.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootloader/src/shell/shell_entry.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootsector/Makefile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/system/include/sys/asm/cli.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/system/include/sys/asm/int.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/system/include/sys/asm/lidt.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/system/include/sys/asm/sti.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/system/include/sys/halt.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/system/include/sys/idt/idt32.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/boot_error.s" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/boot_error.s" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/bootloader.ld" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/bootloader.ld" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/bootloader.mk" beforeDir="false" afterPath="$PROJECT_DIR$/shrapnel/bootloader.mk" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/bootloader32.s" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/bootloader_entry.s" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/bootloader64.s" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/console/console.s" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/console/print_hex.s" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/console/print_newline.s" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/console/print_string.s" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/gdt64.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/gdt64.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/page_tables.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/page_tables.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootsector/bootsector.mk" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootsector/bootsector.s" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootsector/bootsector.s" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/system/include/defs.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/system/include/defs.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/system/include/sys/asm/hlt.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/system/include/sys/asm/hlt.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/system/include/sys/asm/in.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/system/include/sys/asm/in.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/system/include/sys/idt/idt.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/system/include/sys/idt/idt64.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/system/include/sys/idt/idt_ptr.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/system/include/sys/idt/idt_ptr.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/system/include/sys/interrupt.h" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,6 +34,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -204,12 +144,27 @@
     </key>
   </component>
   <component name="RunManager" selected="Native Application.Emulate">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Emulate Debug" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" WORKING_DIR="file://$PROJECT_DIR$/build" PASS_PARENT_ENVS_2="true" PROJECT_NAME="pkos" TARGET_NAME="all" CONFIG_NAME="all" version="1" RUN_PATH="$PROJECT_DIR$/build/emulate-gdb.sh">
       <method v="2">
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
       </method>
     </configuration>
     <configuration name="Emulate Debug" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" WORKING_DIR="file://$PROJECT_DIR$/build" PASS_PARENT_ENVS_2="true" PROJECT_NAME="pkos" TARGET_NAME="all" CONFIG_NAME="all" version="1" RUN_PATH="$PROJECT_DIR$/build/emulate-gdb.sh">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Emulate Debug" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" WORKING_DIR="file://$PROJECT_DIR$/build" PASS_PARENT_ENVS_2="true" PROJECT_NAME="pkos" TARGET_NAME="all" CONFIG_NAME="all" version="1" RUN_PATH="$PROJECT_DIR$/build/emulate-gdb.sh">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Emulate" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" WORKING_DIR="file://$PROJECT_DIR$/build" PASS_PARENT_ENVS_2="true" PROJECT_NAME="pkos" TARGET_NAME="all" CONFIG_NAME="all" version="1" RUN_PATH="$PROJECT_DIR$/build/emulate.sh">
       <method v="2">
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
       </method>
@@ -234,12 +189,27 @@
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Makefile" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="pkos" TARGET_NAME="Makefile" CONFIG_NAME="Makefile" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="all" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="pkos" TARGET_NAME="all" CONFIG_NAME="all" version="1">
       <method v="2">
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
       </method>
     </configuration>
     <configuration name="all" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="pkos" TARGET_NAME="all" CONFIG_NAME="all" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="all" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="pkos" TARGET_NAME="all" CONFIG_NAME="all" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="full" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="pkos" TARGET_NAME="full" CONFIG_NAME="full" version="1">
       <method v="2">
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
       </method>
