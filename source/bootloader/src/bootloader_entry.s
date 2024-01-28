@@ -25,8 +25,8 @@ bootloader_entry:
     popl   %ebx
     pushl  %ecx
     popfl
-    xor    %ecx, %ebx
-    mov $0x0000, %eax
+    xor    %ecx,    %ebx
+    mov    $0x0000, %eax
     jz     boot_error
 
     # check for extended function support

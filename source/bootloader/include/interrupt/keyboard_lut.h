@@ -2,4 +2,4 @@
 
 #include <stdint.h>
 
-extern const uint8_t keyboard_lut[128];
+extern const char keyboard_lut[128];

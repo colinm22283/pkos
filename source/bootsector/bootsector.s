@@ -26,12 +26,13 @@ bootloader16_entry:
     jc  bios_extensions_not_found
 
     # load the rest of the bootloader into memory
-    mov $(0x0200 | 7), %ax # number of sectors
+    mov $(0x0200 | 8), %ax # number of sectors
     mov $0x7E00, %bx
     mov $0x0002, %cx
     mov $0x0080, %dx
     int $0x13
     jc  bootloader_load_error
+
 
     # enable A20 line
     stc
@@ -81,4 +82,3 @@ print_error_string:
 bios_extensions_not_found_str: .string "BIOS EXTENSIONS NOT FOUND"
 bootloader_load_error_str:     .string "BOOTLOADER LOAD ERROR"
 a20_failure_str:               .string "A20 LINE ENABLE FAILED"
-
