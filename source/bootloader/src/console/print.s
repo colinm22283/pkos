@@ -5,7 +5,7 @@ console_print:
     push %ebp
     mov  %esp, %ebp
 
-    mov  8(%esp),              %eax
+    mov  8(%esp), %eax
 
     movb (%eax), %dl
     test %dl,    %dl

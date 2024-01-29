@@ -29,6 +29,7 @@ OBJS+=$(BL_OD_32)/console/console.o
 OBJS+=$(BL_OD_32)/console/newline.o
 OBJS+=$(BL_OD_32)/console/print.o
 OBJS+=$(BL_OD_32)/console/print_color.o
+OBJS+=$(BL_OD_32)/console/print_hex.o
 OBJS+=$(BL_OD_32)/console/put.o
 OBJS+=$(BL_OD_32)/console/backspace.o
 
@@ -40,6 +41,7 @@ OBJS+=$(BL_OD_32)/shell/execute.o
 
 OBJS+=$(BL_OD_32)/commands/echo.o
 OBJS+=$(BL_OD_32)/commands/exit.o
+OBJS+=$(BL_OD_32)/commands/boot.o
 
 include $(MAKE_SCRIPTS)
 

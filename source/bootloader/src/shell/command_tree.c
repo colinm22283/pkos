@@ -2,6 +2,7 @@
 
 #include <commands/echo.h>
 #include <commands/exit.h>
+#include <commands/boot.h>
 
 #define SHELL_COMMAND_TREE_ENTRY_NULL ((shell_command_tree_t) { .command_ptr = NULL, .next_char = { NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, }, })
 
@@ -12,6 +13,11 @@ shell_command_tree_t shell_command_tree_echo;
 shell_command_tree_t shell_command_tree_ex;
 shell_command_tree_t shell_command_tree_exi;
 shell_command_tree_t shell_command_tree_exit;
+
+shell_command_tree_t shell_command_tree_b;
+shell_command_tree_t shell_command_tree_bo;
+shell_command_tree_t shell_command_tree_boo;
+shell_command_tree_t shell_command_tree_boot;
 
 shell_command_tree_t * shell_command_tree_root[26];
 
@@ -31,4 +37,9 @@ void shell_command_tree_init() {
     shell_command_tree_exi.next_char['T' - 'A'] = &shell_command_tree_exit;
     shell_command_tree_exit.command_ptr = command_exit;
 
+    shell_command_tree_root['B' - 'A'] = &shell_command_tree_b;
+    shell_command_tree_b.next_char['O' - 'A'] = &shell_command_tree_bo;
+    shell_command_tree_bo.next_char['O' - 'A'] = &shell_command_tree_boo;
+    shell_command_tree_boo.next_char['T' - 'A'] = &shell_command_tree_boot;
+    shell_command_tree_boot.command_ptr = command_boot;
 }

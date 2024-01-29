@@ -5,6 +5,7 @@
 #include <console/print.h>
 #include <console/put.h>
 #include <console/newline.h>
+#include <console/print_hex.h>
 
 #include <shell/input.h>
 #include <shell/execute.h>
@@ -27,6 +28,11 @@ __NORETURN void shell_entry(void) {
         uint32_t result = shell_execute(shell_input_buffer);
         if (result == 0xFFFFFFFF) {
             console_print("Command not found\n");
+        }
+        else if (result > 0) {
+            console_print("Command exited with code 0x");
+            console_print_hex(result);
+            console_newline();
         }
     }
 }
