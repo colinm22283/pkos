@@ -15,12 +15,15 @@ SECTIONS {
         *(.bootloader_entry);
         *(.text*);
         *(.rodata*);
-        *(.gdt64);
-        *(.gdt64_ptr);
     } > usable_memory_2
 
-    .page_tables : {
+    . = 0x9E00;
+
+    .bootloader_bss (NOLOAD) : {
+        *(.bss*);
+        *(.gdt64);
+        *(.gdt64_ptr);
         . = ALIGN(4096);
         *(.page_tables);
-    } > usable_memory_2
+    }
 }

@@ -22,3 +22,5 @@ enum {
     CONSOLE_COLOR_YELLOW,
     CONSOLE_COLOR_WHITE = 0xF,
 };
+
+#define CONSOLE_COLOR(fg, bg) ((fg) | ((bg) << 4))

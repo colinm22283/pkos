@@ -6,6 +6,7 @@
 #include <console/put.h>
 #include <console/newline.h>
 #include <console/print_hex.h>
+#include <console/clear.h>
 
 #include <shell/input.h>
 #include <shell/execute.h>
@@ -16,6 +17,7 @@
 __NORETURN void shell_entry(void) {
     shell_command_tree_init();
 
+    console_clear();
     console_print("PK Bootloader V1.0\n");
 
     while (true) {

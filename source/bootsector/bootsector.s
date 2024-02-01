@@ -6,6 +6,11 @@ bootloader16_entry:
     # disable interrupts
     cli
 
+    xor %ax, %ax
+    mov %ax, %ds
+    mov %ax, %es
+    mov %ax, %ss
+
     # set a stack pointer
     mov $stack_top, %sp
 
@@ -25,14 +30,18 @@ bootloader16_entry:
     int $0x13
     jc  bios_extensions_not_found
 
-    # load the rest of the bootloader into memory
-    mov $(0x0200 | 8), %ax # number of sectors
-    mov $0x7E00, %bx
-    mov $0x0002, %cx
-    mov $0x0080, %dx
+    # load the bootloader into memory
+    #mov $(0x0200 | 8), %ax # number of sectors
+    #mov $0x7E00, %bx
+    #mov $0x0002, %cx
+    #mov $0x0080, %dx
+    #int $0x13
+    #jc  bootloader_load_error
+    mov $0x42,               %ah
+    mov $0x80,               %dl
+    mov $extended_read_data, %si
     int $0x13
     jc  bootloader_load_error
-
 
     # enable A20 line
     stc
@@ -82,3 +91,11 @@ print_error_string:
 bios_extensions_not_found_str: .string "BIOS EXTENSIONS NOT FOUND"
 bootloader_load_error_str:     .string "BOOTLOADER LOAD ERROR"
 a20_failure_str:               .string "A20 LINE ENABLE FAILED"
+
+extended_read_data:
+    .byte  0x10
+    .byte  0x00
+    .short 16 # blocks to transfer
+    .short 0x7E00
+    .short 0x0000
+    .int   1

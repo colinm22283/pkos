@@ -1,8 +1,14 @@
 #include <commands/exit.h>
 #include <console/print.h>
+#include <console/clear.h>
+
+#include <sys/halt.h>
 
 __CDECL uint32_t command_exit(uint32_t argc, const char ** argv) {
-    console_print("exit unimplemented :(\n");
+    console_clear();
+    console_print("Ready for power off.\n");
 
-    return 0;
+    halt();
+
+//    return 0;
 }
