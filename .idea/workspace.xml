@@ -22,35 +22,8 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6121c507-c3db-4645-9343-74e78b57e4ca" name="Changes" comment="Exit codes!">
-      <change afterPath="$PROJECT_DIR$/source/bootloader/include/commands/clear.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootloader/include/console/clear.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootloader/include/console/color_lut.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootloader/include/page_tables.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootloader/include/string/strcmp.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootloader/src/commands/clear.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootloader/src/console/clear.s" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootloader/src/console/color_lut.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootloader/src/interrupt/fatal_handler.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootloader/src/string/strcmp.s" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/bootloader.ld" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/bootloader.ld" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/include/console/color.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/include/console/color.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/include/interrupt/fatal_handler.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/include/interrupt/fatal_handler_entry.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/src/commands/boot.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/commands/boot.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/src/commands/exit.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/commands/exit.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/src/gdt64.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/gdt64.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/src/interrupt/fatal_handler.s" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/interrupt/fatal_handler_entry.s" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/src/interrupt/init.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/interrupt/init.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/src/page_tables.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/page_tables.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/src/shell/command_tree.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/shell/command_tree.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootsector/bootsector.s" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootsector/bootsector.s" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/system/include/sys/halt.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/system/include/sys/halt.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/system/include/sys/paging/pdpt.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/system/include/sys/paging/pdpt.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/system/include/sys/paging/pdt.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/system/include/sys/paging/pdt.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/system/include/sys/paging/pml4t.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/system/include/sys/paging/pml4t.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/system/include/sys/paging/pt.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/system/include/sys/paging/pt.h" afterDir="false" />
+    <list default="true" id="6121c507-c3db-4645-9343-74e78b57e4ca" name="Changes" comment="Added more commands">
+      <change beforePath="$PROJECT_DIR$/source/bootloader/src/console/color_lut.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/console/color_lut.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -296,7 +269,7 @@
       <workItem from="1706720311377" duration="1206000" />
       <workItem from="1706721524471" duration="3181000" />
       <workItem from="1706804987531" duration="831000" />
-      <workItem from="1706819454099" duration="2598000" />
+      <workItem from="1706819454099" duration="2912000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit for v2">
       <option name="closed" value="true" />
@@ -394,7 +367,15 @@
       <option name="project" value="LOCAL" />
       <updated>1706546509708</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Added more commands">
+      <option name="closed" value="true" />
+      <created>1706822721930</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1706822721930</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -419,7 +400,8 @@
     <MESSAGE value="Modified makefile for new build system location" />
     <MESSAGE value="Bootloader command line is now working" />
     <MESSAGE value="Exit codes!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Exit codes!" />
+    <MESSAGE value="Added more commands" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added more commands" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
