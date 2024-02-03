@@ -31,7 +31,9 @@ OBJS+=$(BL_OD_32)/console/print_hex.o
 OBJS+=$(BL_OD_32)/console/put.o
 OBJS+=$(BL_OD_32)/console/backspace.o
 OBJS+=$(BL_OD_32)/console/clear.o
+OBJS+=$(BL_OD_32)/console/clear_color.o
 OBJS+=$(BL_OD_32)/console/color_lut.o
+OBJS+=$(BL_OD_32)/console/set_color.o
 
 OBJS+=$(BL_OD_32)/shell/shell_entry.o
 OBJS+=$(BL_OD_32)/shell/keyboard_handler.o
@@ -43,6 +45,7 @@ OBJS+=$(BL_OD_32)/commands/echo.o
 OBJS+=$(BL_OD_32)/commands/exit.o
 OBJS+=$(BL_OD_32)/commands/boot.o
 OBJS+=$(BL_OD_32)/commands/clear.o
+OBJS+=$(BL_OD_32)/commands/color.o
 
 OBJS+=$(BL_OD_32)/string/strcmp.o
 

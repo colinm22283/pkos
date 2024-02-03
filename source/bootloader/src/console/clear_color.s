@@ -1,15 +1,19 @@
 .code32
 
-.global console_clear
-console_clear:
+.global console_clear_color
+console_clear_color:
     push %ebp
-    mov  %esp, %ebp
+    mov  %esp,    %ebp
 
-    mov  $0xB8000,   %eax
+    xor  %al,        %al
+    movb 8(%esp),    %ah
     mov  $(80 * 25), %ecx
+    mov  $0xB8000,   %edx
+
     .loop:
-        movb $0x00, (%eax)
-        add  $2,    %eax
+        movw %ax, (%edx)
+
+        add  $2,  %edx
 
         loop .loop
 
@@ -18,5 +22,5 @@ console_clear:
     add $(80 * 2), %eax
     mov %eax,      (console_newline_ptr)
 
-    pop  %ebp
+    pop %ebp
     ret

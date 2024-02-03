@@ -6,7 +6,7 @@
 
 __CDECL uint32_t command_exit(uint32_t argc, const char ** argv) {
     console_clear();
-    console_print("Ready for power off.\n");
+    console_print("Ready to power off.\n");
 
     halt();
 
