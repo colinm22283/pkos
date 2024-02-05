@@ -28,6 +28,7 @@ OBJS+=$(BL_OD_32)/console/newline.o
 OBJS+=$(BL_OD_32)/console/print.o
 OBJS+=$(BL_OD_32)/console/print_color.o
 OBJS+=$(BL_OD_32)/console/print_hex.o
+OBJS+=$(BL_OD_32)/console/print_dec.o
 OBJS+=$(BL_OD_32)/console/put.o
 OBJS+=$(BL_OD_32)/console/backspace.o
 OBJS+=$(BL_OD_32)/console/clear.o
@@ -46,8 +47,12 @@ OBJS+=$(BL_OD_32)/commands/exit.o
 OBJS+=$(BL_OD_32)/commands/boot.o
 OBJS+=$(BL_OD_32)/commands/clear.o
 OBJS+=$(BL_OD_32)/commands/color.o
+OBJS+=$(BL_OD_32)/commands/fibonacci.o
 
 OBJS+=$(BL_OD_32)/string/strcmp.o
+
+OBJS+=$(BL_OD_32)/memory/memcpy.o
+OBJS+=$(BL_OD_32)/memory/memset.o
 
 OBJS+=$(BL_OD_32)/gdt64.o
 OBJS+=$(BL_OD_32)/page_tables.o

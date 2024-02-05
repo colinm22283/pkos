@@ -23,7 +23,6 @@ SECTIONS {
         *(.bss*);
         *(.gdt64);
         *(.gdt64_ptr);
-        . = ALIGN(4096);
         *(.page_tables);
     }
 }

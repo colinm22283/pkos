@@ -5,6 +5,7 @@
 #include <commands/boot.h>
 #include <commands/clear.h>
 #include <commands/color.h>
+#include <commands/fibonacci.h>
 
 #define SHELL_COMMAND_TREE_ENTRY_NULL ((shell_command_tree_t) { .command_ptr = NULL, .next_char = { NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, }, })
 
@@ -31,6 +32,16 @@ shell_command_tree_t shell_command_tree_co;
 shell_command_tree_t shell_command_tree_col;
 shell_command_tree_t shell_command_tree_colo;
 shell_command_tree_t shell_command_tree_color;
+
+shell_command_tree_t shell_command_tree_f;
+shell_command_tree_t shell_command_tree_fi;
+shell_command_tree_t shell_command_tree_fib;
+shell_command_tree_t shell_command_tree_fibo;
+shell_command_tree_t shell_command_tree_fibon;
+shell_command_tree_t shell_command_tree_fibona;
+shell_command_tree_t shell_command_tree_fibonac;
+shell_command_tree_t shell_command_tree_fibonacc;
+shell_command_tree_t shell_command_tree_fibonacci;
 
 shell_command_tree_t * shell_command_tree_root[26];
 
@@ -68,4 +79,15 @@ void shell_command_tree_init() {
     shell_command_tree_col.next_char['O' - 'A'] = &shell_command_tree_colo;
     shell_command_tree_colo.next_char['R' - 'A'] = &shell_command_tree_color;
     shell_command_tree_color.command_ptr = command_color;
+
+    shell_command_tree_root['F' - 'A'] = &shell_command_tree_f;
+    shell_command_tree_f.next_char['I' - 'A'] = &shell_command_tree_fi;
+    shell_command_tree_fi.next_char['B' - 'A'] = &shell_command_tree_fib;
+    shell_command_tree_fib.next_char['O' - 'A'] = &shell_command_tree_fibo;
+    shell_command_tree_fibo.next_char['N' - 'A'] = &shell_command_tree_fibon;
+    shell_command_tree_fibon.next_char['A' - 'A'] = &shell_command_tree_fibona;
+    shell_command_tree_fibona.next_char['C' - 'A'] = &shell_command_tree_fibonac;
+    shell_command_tree_fibonac.next_char['C' - 'A'] = &shell_command_tree_fibonacc;
+    shell_command_tree_fibonacc.next_char['I' - 'A'] = &shell_command_tree_fibonacci;
+    shell_command_tree_fibonacci.command_ptr = command_fibonacci;
 }

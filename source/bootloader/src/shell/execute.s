@@ -27,6 +27,10 @@ shell_execute:
         movb (%eax), %cl
         test %cl, %cl
         jnz ..not_zero
+            movl (%edx), %ecx
+            test %ecx,   %ecx
+            jz   .return_not_found
+
             push %ebx
             push %esi
             push %edi

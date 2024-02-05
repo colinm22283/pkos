@@ -22,21 +22,29 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6121c507-c3db-4645-9343-74e78b57e4ca" name="Changes" comment="Modified the LUT">
-      <change afterPath="$PROJECT_DIR$/source/bootloader/include/commands/color.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootloader/include/console/set_color.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootloader/src/commands/color.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootloader/src/console/clear_color.s" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootloader/src/console/set_color.s" afterDir="false" />
+    <list default="true" id="6121c507-c3db-4645-9343-74e78b57e4ca" name="Changes" comment="Cool stuff">
+      <change afterPath="$PROJECT_DIR$/source/bootloader/include/commands/fibonacci.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/bootloader/include/console/print_dec.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/bootloader/include/memory/memcpy.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/bootloader/include/memory/memset.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/bootloader/src/commands/fibonacci.s" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/bootloader/src/console/print_dec.s" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/bootloader/src/memory/memcpy.s" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/bootloader/src/memory/memset.s" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/source/bootloader/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/include/console/clear.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/include/console/clear.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/src/commands/clear.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/commands/clear.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/src/commands/exit.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/commands/exit.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/src/console/clear.s" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/console/clear.s" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/src/console/color_lut.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/console/color_lut.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/src/console/newline.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/console/newline.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/bootloader/bootloader.ld" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/bootloader.ld" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/bootloader/include/page_tables.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/include/page_tables.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/bootloader/src/commands/boot.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/commands/boot.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/bootloader/src/page_tables.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/page_tables.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/source/bootloader/src/shell/command_tree.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/shell/command_tree.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/bootloader/src/shell/execute.s" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/shell/execute.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/bootloader/src/shell/keyboard_handler.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/shell/keyboard_handler.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/bootloader/src/shell/shell_entry.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/shell/shell_entry.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/system/include/sys/paging/pdpt.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/system/include/sys/paging/pdpt.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/system/include/sys/paging/pdt.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/system/include/sys/paging/pdt.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/system/include/sys/paging/pml4t.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/system/include/sys/paging/pml4t.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/system/include/sys/paging/pt.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/system/include/sys/paging/pt.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -156,6 +164,11 @@
     </key>
   </component>
   <component name="RunManager" selected="Native Application.Emulate">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Emulate Debug" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" WORKING_DIR="file://$PROJECT_DIR$/build" PASS_PARENT_ENVS_2="true" PROJECT_NAME="pkos" TARGET_NAME="all" CONFIG_NAME="all" version="1" RUN_PATH="$PROJECT_DIR$/build/emulate-gdb.sh">
       <method v="2">
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
@@ -280,6 +293,10 @@
       <workItem from="1706819454099" duration="5678000" />
       <workItem from="1706894894215" duration="2345000" />
       <workItem from="1706913440108" duration="10000" />
+      <workItem from="1706922993268" duration="5773000" />
+      <workItem from="1707085744286" duration="7000" />
+      <workItem from="1707107727445" duration="1465000" />
+      <workItem from="1707152815622" duration="3458000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit for v2">
       <option name="closed" value="true" />
@@ -393,7 +410,15 @@
       <option name="project" value="LOCAL" />
       <updated>1706822850814</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Cool stuff">
+      <option name="closed" value="true" />
+      <created>1706984891295</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1706984891295</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -420,7 +445,8 @@
     <MESSAGE value="Exit codes!" />
     <MESSAGE value="Added more commands" />
     <MESSAGE value="Modified the LUT" />
-    <option name="LAST_COMMIT_MESSAGE" value="Modified the LUT" />
+    <MESSAGE value="Cool stuff" />
+    <option name="LAST_COMMIT_MESSAGE" value="Cool stuff" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

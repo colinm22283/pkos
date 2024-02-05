@@ -7,6 +7,7 @@
 #include <console/newline.h>
 #include <console/print_hex.h>
 #include <console/clear.h>
+#include <console/print_dec.h>
 
 #include <shell/input.h>
 #include <shell/execute.h>
@@ -24,7 +25,6 @@ __NORETURN void shell_entry(void) {
         console_print("PKBL> ");
 
         while (!shell_ready_to_execute) wait_for_interrupt();
-        shell_ready_to_execute = false;
 
         console_newline();
         uint32_t result = shell_execute(shell_input_buffer);
@@ -36,5 +36,8 @@ __NORETURN void shell_entry(void) {
             console_print_hex(result);
             console_newline();
         }
+
+
+        shell_ready_to_execute = false;
     }
 }
