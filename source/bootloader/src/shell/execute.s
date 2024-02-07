@@ -1,6 +1,6 @@
 .code32
 
-.section .text, "a"
+.section .text
 .global shell_execute
 shell_execute:
     push %ebp

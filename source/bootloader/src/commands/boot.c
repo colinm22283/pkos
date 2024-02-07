@@ -15,7 +15,7 @@ static inline void print_done() {
     console_print("done!\n");
 }
 
-__CDECL uint32_t command_boot(uint32_t argc, const char ** argv) {
+__CDECL uint32_t command_boot(__UNUSED uint32_t argc, __UNUSED const char ** argv) {
     console_print("Beginning boot sequence...\n");
 
     print_init("file system");
