@@ -24,45 +24,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6121c507-c3db-4645-9343-74e78b57e4ca" name="Changes" comment="Added a fibonacci command and fixed some bugs">
-      <change afterPath="$PROJECT_DIR$/source/bootloader/include/commands/calc.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootloader/include/console/print_sdec.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootloader/include/console/print_shex.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootloader/include/math/pow.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootloader/include/string/stoi.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootloader/include/string/strlen.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootloader/src/commands/calc.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootloader/src/console/print_sdec.s" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootloader/src/math/pow.s" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootloader/src/string/stoi.s" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootloader/src/string/strlen.s" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootsector/memory_map.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/linker/global.ld" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/system/include/sys/memory_map/memory_map.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/make/config.mk" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/make/targets16.mk" beforeDir="false" afterPath="$PROJECT_DIR$/make/targets16.mk" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/make/targets32.mk" beforeDir="false" afterPath="$PROJECT_DIR$/make/targets32.mk" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/make/targets64.mk" beforeDir="false" afterPath="$PROJECT_DIR$/make/targets64.mk" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/include/interrupt/keyboard_lut.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/include/interrupt/keyboard_lut.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/src/commands/boot.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/commands/boot.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/src/commands/exit.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/commands/exit.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/src/commands/fibonacci.s" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/commands/fibonacci.s" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/src/console/color_lut.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/console/color_lut.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/src/interrupt/fatal_handler.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/interrupt/fatal_handler.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/src/interrupt/keyboard_handler.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/interrupt/keyboard_handler.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/src/interrupt/keyboard_lut.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/interrupt/keyboard_lut.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/src/memory/memset.s" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/memory/memset.s" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/src/shell/command_tree.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/shell/command_tree.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/src/shell/execute.s" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/shell/execute.s" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/src/shell/shell_entry.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/shell/shell_entry.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootsector/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootsector/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootsector/bootsector.s" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootsector/bootsector.s" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootsector/gdt32.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootsector/gdt32.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/linker/memory.ld" beforeDir="false" afterPath="$PROJECT_DIR$/source/linker/memory.ld" afterDir="false" />
-    </list>
+    <list default="true" id="6121c507-c3db-4645-9343-74e78b57e4ca" name="Changes" comment="Calc command added" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -333,7 +295,7 @@
       <workItem from="1707245048855" duration="5686000" />
       <workItem from="1707255490323" duration="445000" />
       <workItem from="1707258675658" duration="639000" />
-      <workItem from="1707279322875" duration="6614000" />
+      <workItem from="1707279322875" duration="7029000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit for v2">
       <option name="closed" value="true" />
@@ -463,7 +425,15 @@
       <option name="project" value="LOCAL" />
       <updated>1707158623740</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Calc command added">
+      <option name="closed" value="true" />
+      <created>1707325700487</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1707325700487</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -492,7 +462,8 @@
     <MESSAGE value="Modified the LUT" />
     <MESSAGE value="Cool stuff" />
     <MESSAGE value="Added a fibonacci command and fixed some bugs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added a fibonacci command and fixed some bugs" />
+    <MESSAGE value="Calc command added" />
+    <option name="LAST_COMMIT_MESSAGE" value="Calc command added" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

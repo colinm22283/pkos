@@ -30,6 +30,9 @@ __CDECL uint32_t command_calc(uint32_t argc, const char ** argv) {
     uint8_t  operator;
 
     if (stoi(&operand_a, argv[1])) {
+        console_print("Operand ");
+        console_print(argv[1]);
+        console_print(" is not a valid number!\n");
         return 3;
     }
 
@@ -47,6 +50,9 @@ __CDECL uint32_t command_calc(uint32_t argc, const char ** argv) {
     }
 
     if (stoi(&operand_b, argv[3])) {
+        console_print("Operand ");
+        console_print(argv[3]);
+        console_print(" is not a valid number!\n");
         return 5;
     }
 
