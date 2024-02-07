@@ -3,22 +3,22 @@
 #include <string/strcmp.h>
 
 const char * console_color_str_lut[16] = {
-    "BLACK",
-    "BLUE",
-    "GREEN",
-    "CYAN",
-    "RED",
-    "MAGENTA",
-    "BROWN",
-    "LGRAY",
-    "DGRAY",
-    "LBLUE",
-    "LGREEN",
-    "LCYAN",
-    "LRED",
-    "LMAGENTA",
-    "YELLOW",
-    "WHITE",
+    "black",
+    "blue",
+    "green",
+    "cyan",
+    "red",
+    "magenta",
+    "brown",
+    "lgray",
+    "dgray",
+    "lblue",
+    "lgreen",
+    "lcyan",
+    "lred",
+    "lmagenta",
+    "yellow",
+    "white",
 };
 
 uint8_t console_color_str_lookup(const char * str) {

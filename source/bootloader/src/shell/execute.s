@@ -14,7 +14,10 @@ shell_execute:
     jz   .return_good
 
     inc  %eax
-    sub  $65,  %cl
+    sub  $97,  %cl
+
+    cmp  $26,  %cl
+    jae  .return_not_found
 
     mov  $shell_command_tree_root, %edx
     movl (%edx, %ecx, 4),          %edx
@@ -82,7 +85,12 @@ shell_execute:
         ..not_zero:
 
         inc %eax
-        sub $64,  %cl
+        sub $96,  %cl
+
+        cmp  $27,  %cl
+        jae  .return_not_found
+        test %cl,  %cl
+        jz   .return_not_found
 
         movl (%edx, %ecx, 4), %edx
 

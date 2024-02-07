@@ -12,8 +12,10 @@
   <component name="CMakeRunConfigurationManager">
     <generated>
       <config projectName="pkos" targetName="Makefile" />
+      <config projectName="pkos" targetName="rebuild" />
+      <config projectName="pkos" targetName="bootloader" />
       <config projectName="pkos" targetName="all" />
-      <config projectName="pkos" targetName="full" />
+      <config projectName="pkos" targetName="bootsector" />
     </generated>
   </component>
   <component name="CMakeSettings">
@@ -22,29 +24,44 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6121c507-c3db-4645-9343-74e78b57e4ca" name="Changes" comment="Cool stuff">
-      <change afterPath="$PROJECT_DIR$/source/bootloader/include/commands/fibonacci.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootloader/include/console/print_dec.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootloader/include/memory/memcpy.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootloader/include/memory/memset.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootloader/src/commands/fibonacci.s" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootloader/src/console/print_dec.s" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootloader/src/memory/memcpy.s" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootloader/src/memory/memset.s" afterDir="false" />
+    <list default="true" id="6121c507-c3db-4645-9343-74e78b57e4ca" name="Changes" comment="Added a fibonacci command and fixed some bugs">
+      <change afterPath="$PROJECT_DIR$/source/bootloader/include/commands/calc.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/bootloader/include/console/print_sdec.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/bootloader/include/console/print_shex.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/bootloader/include/math/pow.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/bootloader/include/string/stoi.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/bootloader/include/string/strlen.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/bootloader/src/commands/calc.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/bootloader/src/console/print_sdec.s" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/bootloader/src/math/pow.s" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/bootloader/src/string/stoi.s" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/bootloader/src/string/strlen.s" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/bootsector/memory_map.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/linker/global.ld" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/system/include/sys/memory_map/memory_map.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/make/config.mk" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/make/targets16.mk" beforeDir="false" afterPath="$PROJECT_DIR$/make/targets16.mk" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/make/targets32.mk" beforeDir="false" afterPath="$PROJECT_DIR$/make/targets32.mk" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/make/targets64.mk" beforeDir="false" afterPath="$PROJECT_DIR$/make/targets64.mk" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/source/bootloader/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/bootloader.ld" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/bootloader.ld" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/include/page_tables.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/include/page_tables.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/bootloader/include/interrupt/keyboard_lut.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/include/interrupt/keyboard_lut.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/source/bootloader/src/commands/boot.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/commands/boot.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/src/page_tables.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/page_tables.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/bootloader/src/commands/exit.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/commands/exit.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/bootloader/src/commands/fibonacci.s" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/commands/fibonacci.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/bootloader/src/console/color_lut.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/console/color_lut.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/bootloader/src/interrupt/fatal_handler.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/interrupt/fatal_handler.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/bootloader/src/interrupt/keyboard_handler.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/interrupt/keyboard_handler.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/bootloader/src/interrupt/keyboard_lut.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/interrupt/keyboard_lut.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/bootloader/src/memory/memset.s" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/memory/memset.s" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/source/bootloader/src/shell/command_tree.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/shell/command_tree.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/source/bootloader/src/shell/execute.s" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/shell/execute.s" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/src/shell/keyboard_handler.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/shell/keyboard_handler.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/source/bootloader/src/shell/shell_entry.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/shell/shell_entry.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/system/include/sys/paging/pdpt.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/system/include/sys/paging/pdpt.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/system/include/sys/paging/pdt.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/system/include/sys/paging/pdt.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/system/include/sys/paging/pml4t.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/system/include/sys/paging/pml4t.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/system/include/sys/paging/pt.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/system/include/sys/paging/pt.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/bootsector/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootsector/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/bootsector/bootsector.s" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootsector/bootsector.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/bootsector/gdt32.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootsector/gdt32.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/linker/memory.ld" beforeDir="false" afterPath="$PROJECT_DIR$/source/linker/memory.ld" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -219,12 +236,22 @@
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
       </method>
     </configuration>
-    <configuration name="full" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="pkos" TARGET_NAME="full" CONFIG_NAME="full" version="1">
+    <configuration name="bootloader" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="pkos" TARGET_NAME="bootloader" CONFIG_NAME="bootloader" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="bootsector" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="pkos" TARGET_NAME="bootsector" CONFIG_NAME="bootsector" version="1">
       <method v="2">
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
       </method>
     </configuration>
     <configuration name="full" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="pkos" TARGET_NAME="full" CONFIG_NAME="full" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="rebuild" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="pkos" TARGET_NAME="rebuild" CONFIG_NAME="rebuild" version="1">
       <method v="2">
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
       </method>
@@ -234,7 +261,10 @@
       <item itemvalue="Native Application.Emulate" />
       <item itemvalue="Native Application.Makefile" />
       <item itemvalue="Native Application.all" />
+      <item itemvalue="Native Application.bootloader" />
+      <item itemvalue="Native Application.bootsector" />
       <item itemvalue="Native Application.full" />
+      <item itemvalue="Native Application.rebuild" />
     </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -296,7 +326,14 @@
       <workItem from="1706922993268" duration="5773000" />
       <workItem from="1707085744286" duration="7000" />
       <workItem from="1707107727445" duration="1465000" />
-      <workItem from="1707152815622" duration="3458000" />
+      <workItem from="1707152815622" duration="9397000" />
+      <workItem from="1707183668013" duration="146000" />
+      <workItem from="1707241466945" duration="3498000" />
+      <workItem from="1707245009569" duration="23000" />
+      <workItem from="1707245048855" duration="5686000" />
+      <workItem from="1707255490323" duration="445000" />
+      <workItem from="1707258675658" duration="639000" />
+      <workItem from="1707279322875" duration="6614000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit for v2">
       <option name="closed" value="true" />
@@ -418,7 +455,15 @@
       <option name="project" value="LOCAL" />
       <updated>1706984891295</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Added a fibonacci command and fixed some bugs">
+      <option name="closed" value="true" />
+      <created>1707158623740</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1707158623740</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -446,7 +491,8 @@
     <MESSAGE value="Added more commands" />
     <MESSAGE value="Modified the LUT" />
     <MESSAGE value="Cool stuff" />
-    <option name="LAST_COMMIT_MESSAGE" value="Cool stuff" />
+    <MESSAGE value="Added a fibonacci command and fixed some bugs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added a fibonacci command and fixed some bugs" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -18,6 +18,9 @@ static inline void print_done() {
 __CDECL uint32_t command_boot(uint32_t argc, const char ** argv) {
     console_print("Beginning boot sequence...\n");
 
+    print_init("file system");
+    print_done();
+
     print_init("64bit gdt");
     gdt64_init();
     print_done();
@@ -25,8 +28,6 @@ __CDECL uint32_t command_boot(uint32_t argc, const char ** argv) {
     print_init("paging tables");
     page_tables_init();
     print_done();
-
-
 
     return 1;
 }

@@ -11,8 +11,8 @@ command_fibonacci:
 
     sub  $8,   %esp
 
-    mov  $1,   (%esp)
-    mov  $1,   4(%esp)
+    movl $1,   (%esp)
+    movl $1,   4(%esp)
 
     .loop:
         call console_newline

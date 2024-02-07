@@ -1,5 +1,3 @@
-#pragma once
-
 #include <defs.h>
 
 #include <console/print.h>

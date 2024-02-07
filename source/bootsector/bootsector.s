@@ -31,17 +31,15 @@ bootloader16_entry:
     jc  bios_extensions_not_found
 
     # load the bootloader into memory
-    #mov $(0x0200 | 8), %ax # number of sectors
-    #mov $0x7E00, %bx
-    #mov $0x0002, %cx
-    #mov $0x0080, %dx
-    #int $0x13
-    #jc  bootloader_load_error
     mov $0x42,               %ah
     mov $0x80,               %dl
     mov $extended_read_data, %si
     int $0x13
     jc  bootloader_load_error
+
+    # load the memory map
+    mov $memory_map, %eax
+
 
     # enable A20 line
     stc
@@ -57,7 +55,7 @@ bootloader16_entry:
     or  $1, %al
     mov %eax, %cr0
 
-    # enter the protected mode portion of the kernel
+    # enter the bootloader in protected mode
     ljmp $0x08, $protected_mode_entry
 
 bios_extensions_not_found:

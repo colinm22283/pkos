@@ -4,6 +4,7 @@ BS_OD_32=$(OBJ_DIR)/32/bootsector
 
 BS_OBJS+=$(BS_OD_16)/bootsector.o
 BS_OBJS+=$(BS_OD_32)/gdt32.o
+BS_OBJS+=$(BS_OD_32)/memory_map.o
 
 include $(MAKE_SCRIPTS)
 

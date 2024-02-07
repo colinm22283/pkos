@@ -1,5 +1,3 @@
-include make/config.mk
-
 export CC16=/opt/cross/bin/i686-elf-gcc
 export CC32=/opt/cross/bin/i686-elf-gcc
 export CC64=/opt/cross64/bin/x86_64-elf-gcc
@@ -32,12 +30,10 @@ export SOURCE_DIR=$(CURDIR)/source
 export MAKE_DIR=$(CURDIR)/make
 export MAKE_SCRIPTS=$(MAKE_DIR)/targets16.mk $(MAKE_DIR)/targets32.mk $(MAKE_DIR)/targets64.mk
 
-export LDSCRIPTS=$(SOURCE_DIR)/linker/memory.ld
+export LDSCRIPTS=$(SOURCE_DIR)/linker/memory.ld $(SOURCE_DIR)/linker/global.ld
 export LDFLAGS=$(foreach d, $(LDSCRIPTS), -T$d)
 
 export INCLUDE_DIRS=$(SOURCE_DIR)/system/include
-
-export CFLAGS+=-O$(OPTIMIZATION)
 
 .PHONY: all
 all: $(BUILD_DIR)/pkos.img
@@ -48,13 +44,20 @@ clean:
 	rm -rf $(BIN_DIR)
 	rm -f $(BUILD_DIR)/*.img
 
-.PHONY: full
-full:
+.PHONY: rebuild
+rebuild:
 	make clean
 	make all
 
 include make/image.mk
 include $(MAKE_SCRIPTS)
+
+.PHONY: bootloader
+bootloader: $(BIN_DIR)/bootloader.bin
+.PHONY: bootsector
+bootsector: $(BIN_DIR)/bootsector.bin
+.PHONY: image
+image: $(BUILD_DIR)/pkos.img
 
 .PHONY: $(BIN_DIR)/bootloader.bin
 $(BIN_DIR)/bootloader.bin:
