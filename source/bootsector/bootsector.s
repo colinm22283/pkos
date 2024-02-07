@@ -39,7 +39,7 @@ bootloader16_entry:
 
     # load the memory map
     mov $memory_map, %eax
-
+    # TODO
 
     # enable A20 line
     stc
