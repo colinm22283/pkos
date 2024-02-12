@@ -7,6 +7,7 @@
 #include <console/newline.h>
 #include <console/print_hex.h>
 #include <console/clear.h>
+#include <console/print_dec.h>
 #include <console/print_sdec.h>
 
 #include <shell/input.h>
@@ -16,6 +17,8 @@
 #include <sys/wait_for_interrupt.h>
 
 #include <memory/memcpy.h>
+
+#include <memory_map.h>
 
 __NORETURN void shell_entry(void) {
     shell_command_tree_init();

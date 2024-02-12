@@ -7,6 +7,7 @@
 #include <commands/color.h>
 #include <commands/fibonacci.h>
 #include <commands/calc.h>
+#include <commands/lsmem.h>
 
 #define SHELL_COMMAND_TREE_ENTRY_NULL ((shell_command_tree_t) { .command_ptr = NULL, .next_char = { NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, }, })
 
@@ -47,6 +48,12 @@ shell_command_tree_t shell_command_tree_fibona;
 shell_command_tree_t shell_command_tree_fibonac;
 shell_command_tree_t shell_command_tree_fibonacc;
 shell_command_tree_t shell_command_tree_fibonacci;
+
+shell_command_tree_t shell_command_tree_l;
+shell_command_tree_t shell_command_tree_ls;
+shell_command_tree_t shell_command_tree_lsm;
+shell_command_tree_t shell_command_tree_lsme;
+shell_command_tree_t shell_command_tree_lsmem;
 
 shell_command_tree_t * shell_command_tree_root[26];
 
@@ -101,4 +108,11 @@ void shell_command_tree_init() {
     shell_command_tree_fibonac.next_char['C' - 'A'] = &shell_command_tree_fibonacc;
     shell_command_tree_fibonacc.next_char['I' - 'A'] = &shell_command_tree_fibonacci;
     shell_command_tree_fibonacci.command_ptr = command_fibonacci;
+
+    shell_command_tree_root['L' - 'A'] = &shell_command_tree_l;
+    shell_command_tree_l.next_char['S' - 'A'] = &shell_command_tree_ls;
+    shell_command_tree_ls.next_char['M' - 'A'] = &shell_command_tree_lsm;
+    shell_command_tree_lsm.next_char['E' - 'A'] = &shell_command_tree_lsme;
+    shell_command_tree_lsme.next_char['M' - 'A'] = &shell_command_tree_lsmem;
+    shell_command_tree_lsmem.command_ptr = command_lsmem;
 }

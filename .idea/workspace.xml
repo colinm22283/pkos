@@ -25,19 +25,23 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6121c507-c3db-4645-9343-74e78b57e4ca" name="Changes" comment="added todo">
+    <list default="true" id="6121c507-c3db-4645-9343-74e78b57e4ca" name="Changes" comment="Removed assembler warnings">
+      <change afterPath="$PROJECT_DIR$/source/bootloader/include/commands/lsmem.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/bootloader/include/math/abs.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/bootloader/include/memory_map.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/bootloader/src/commands/lsmem.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/bootloader/src/memory_map.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/bootloader/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/Makefile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/source/bootloader/src/commands/boot.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/commands/boot.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/src/commands/exit.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/commands/exit.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/src/commands/fibonacci.s" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/commands/fibonacci.s" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/src/console/clear_color.s" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/console/clear_color.s" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/src/console/set_color.s" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/console/set_color.s" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/src/math/pow.s" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/math/pow.s" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/src/shell/execute.s" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/shell/execute.s" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/src/string/stoi.s" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/string/stoi.s" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/src/string/strcmp.s" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/string/strcmp.s" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/src/string/strlen.s" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/string/strlen.s" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/system/include/defs.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/system/include/defs.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/bootloader/src/page_tables.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/page_tables.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/bootloader/src/shell/command_tree.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/shell/command_tree.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/bootloader/src/shell/shell_entry.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/shell/shell_entry.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/bootsector/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootsector/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/bootsector/bootsector.ld" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootsector/bootsector.ld" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/bootsector/bootsector.s" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootsector/bootsector.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/bootsector/memory_map.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootsector/memory_map.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/linker/global.ld" beforeDir="false" afterPath="$PROJECT_DIR$/source/linker/global.ld" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,6 +71,9 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_HOME_DIR$/bin/clang/linux/x64/include/stdint.h" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MacroExpansionManager">
     <option name="directoryName" value="4tm5zafm" />
@@ -131,7 +138,7 @@
     &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
     &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;v4&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/colin/projects/pkrepo-server&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/colin/projects/pkos/source/bootloader/src&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -143,6 +150,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/source/bootloader/src" />
       <recent name="$PROJECT_DIR$/source/bootsector" />
       <recent name="$PROJECT_DIR$/build" />
       <recent name="$PROJECT_DIR$/source/bootloader64" />
@@ -315,7 +323,11 @@
       <workItem from="1707245048855" duration="5686000" />
       <workItem from="1707255490323" duration="445000" />
       <workItem from="1707258675658" duration="639000" />
-      <workItem from="1707279322875" duration="7637000" />
+      <workItem from="1707279322875" duration="10027000" />
+      <workItem from="1707363229707" duration="175000" />
+      <workItem from="1707437211961" duration="120000" />
+      <workItem from="1707768651098" duration="1262000" />
+      <workItem from="1707771580378" duration="5431000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit for v2">
       <option name="closed" value="true" />
@@ -469,7 +481,15 @@
       <option name="project" value="LOCAL" />
       <updated>1707325937654</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Removed assembler warnings">
+      <option name="closed" value="true" />
+      <created>1707326389845</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1707326389845</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -501,7 +521,8 @@
     <MESSAGE value="Calc command added" />
     <MESSAGE value="Added some error checking to calc" />
     <MESSAGE value="added todo" />
-    <option name="LAST_COMMIT_MESSAGE" value="added todo" />
+    <MESSAGE value="Removed assembler warnings" />
+    <option name="LAST_COMMIT_MESSAGE" value="Removed assembler warnings" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -10,5 +10,5 @@ include $(MAKE_SCRIPTS)
 
 $(BIN_DIR)/bootsector.bin: $(BS_OBJS) $(BS_SOURCE_DIR)/bootsector.ld
 	mkdir -p $(BIN_DIR)
-	$(LD32) $(LDFLAGS) -T$(BS_SOURCE_DIR)/bootsector.ld $(BS_OBJS) -o $@
+	$(LD32) $(LDFLAGS) -T$(BS_SOURCE_DIR)/bootsector.ld $(BS_OBJS) -o $@ -Map=$@.map
 	truncate $@ -s 512

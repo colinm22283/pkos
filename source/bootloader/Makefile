@@ -50,6 +50,7 @@ OBJS+=$(BL_OD_32)/commands/clear.o
 OBJS+=$(BL_OD_32)/commands/color.o
 OBJS+=$(BL_OD_32)/commands/fibonacci.o
 OBJS+=$(BL_OD_32)/commands/calc.o
+OBJS+=$(BL_OD_32)/commands/lsmem.o
 
 OBJS+=$(BL_OD_32)/string/strcmp.o
 OBJS+=$(BL_OD_32)/string/strlen.o
@@ -62,12 +63,13 @@ OBJS+=$(BL_OD_32)/math/pow.o
 
 OBJS+=$(BL_OD_32)/gdt64.o
 OBJS+=$(BL_OD_32)/page_tables.o
+OBJS+=$(BL_OD_32)/memory_map.o
 
 OPTIMIZATION=s
 
 $(BIN_DIR)/bootloader.bin: $(OBJS) $(BL_SOURCE_DIR)/bootloader.ld
 	mkdir -p $(BIN_DIR)
-	$(LD32) $(LDFLAGS) -T$(BL_SOURCE_DIR)/bootloader.ld $(OBJS) -o $@
+	$(LD32) $(LDFLAGS) -T$(BL_SOURCE_DIR)/bootloader.ld $(OBJS) -o $@ -Map=$@.map
 	truncate $@ -s 8192
 
 include $(MAKE_SCRIPTS)

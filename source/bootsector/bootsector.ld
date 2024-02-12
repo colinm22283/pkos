@@ -1,11 +1,11 @@
 OUTPUT_FORMAT("binary");
 ENTRY(bootloader16_entry);
 SECTIONS {
-    . = 0x0500;
+    . = 0x0500 + 0x404;
     .stack (NOLOAD) : {
         stack_base = .;
-        . += 0x07C00 - 0x00500 - 8;
-        . = ALIGN(8);
+        . += 0x07C00 - 0x00500 - 0x404 - 16;
+        . = ALIGN(16);
         stack_top = .;
     } > usable_memory_1
 

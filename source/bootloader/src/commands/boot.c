@@ -18,9 +18,6 @@ static inline void print_done() {
 __CDECL uint32_t command_boot(__UNUSED uint32_t argc, __UNUSED const char ** argv) {
     console_print("Beginning boot sequence...\n");
 
-    print_init("file system");
-    print_done();
-
     print_init("64bit gdt");
     gdt64_init();
     print_done();

@@ -38,8 +38,45 @@ bootloader16_entry:
     jc  bootloader_load_error
 
     # load the memory map
-    mov $memory_map, %eax
-    # TODO
+    mov $0xE820,     %eax
+    xor %ebx,        %ebx
+    mov $24,         %ecx
+    mov $0x534D4150, %edx
+    mov $memory_map, %di
+
+    pushw $0
+    mov   %sp, %bp
+
+    mov   $0,  %si
+
+    .memory_map_loop:
+        push %di
+        int  $0x15
+        pop  %di
+        jc   ..memory_map_loop_exit
+        test %ebx,        %ebx
+        jz   ..memory_map_loop_exit
+
+        movw (%bp), %ax
+        inc  %ax
+        movw %ax,    (%bp)
+
+        mov  $0xE820,     %eax
+        mov  $24,         %ecx
+        mov  $0x534D4150, %edx
+        add  $24,         %di
+
+        inc  %si
+        cmp  $42,        %si
+        jbe  .memory_map_loop
+    ..memory_map_loop_exit:
+
+    movw (%bp), %ax
+    movw %ax,    (memory_map_size)
+    xor  %ax,    %ax
+    movw %ax,    (memory_map_size + 2)
+
+    add  $2,     %esp
 
     # enable A20 line
     stc
