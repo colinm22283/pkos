@@ -112,6 +112,9 @@ a20_failure:
 detect_memory_failure:
     mov $32, %cx
     mov $detect_memory_failure_str, %bp
+
+# bp is the string
+# cx is the string length
 print_error_string:
     # print the message
     mov $0x1301,                        %ax
