@@ -16,7 +16,7 @@ void shell_keyboard_key_down_handler(char c) {
             shell_read_command();
         }
         else {
-            if (shell_input_char(c)) console_put(c);
+            if (c >= 32 && c <= 126 && shell_input_char(c)) console_put(c);
         }
     }
 }

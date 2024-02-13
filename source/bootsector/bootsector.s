@@ -69,6 +69,8 @@ bootloader16_entry:
         inc  %si
         cmp  $42,        %si
         jbe  .memory_map_loop
+    # fault if the maximum amount of sections are reached
+    jmp detect_memory_failure
     ..memory_map_loop_exit:
 
     movw (%bp), %ax
@@ -106,6 +108,10 @@ bootloader_load_error:
 a20_failure:
     mov $22, %cx
     mov $a20_failure_str, %bp
+    jmp print_error_string
+detect_memory_failure:
+    mov $32, %cx
+    mov $detect_memory_failure_str, %bp
 print_error_string:
     # print the message
     mov $0x1301,                        %ax
@@ -126,6 +132,7 @@ print_error_string:
 bios_extensions_not_found_str: .string "BIOS EXTENSIONS NOT FOUND"
 bootloader_load_error_str:     .string "BOOTLOADER LOAD ERROR"
 a20_failure_str:               .string "A20 LINE ENABLE FAILED"
+detect_memory_failure_str:      .string "MEMORY DETECT EXCEDED MAX AMOUNT"
 
 extended_read_data:
     .byte  0x10
