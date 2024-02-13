@@ -46,6 +46,9 @@ bootloader_entry:
     # initialize the interrupt table
     call int_init
 
+    # sort the memory map
+    call memory_map_sort
+
     # enter the shell environment
     jmp shell_entry
 

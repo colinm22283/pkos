@@ -25,10 +25,11 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6121c507-c3db-4645-9343-74e78b57e4ca" name="Changes" comment="Added workspace.xml">
+    <list default="true" id="6121c507-c3db-4645-9343-74e78b57e4ca" name="Changes" comment="Modified bootloader">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/src/shell/keyboard_handler.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/shell/keyboard_handler.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootsector/bootsector.s" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootsector/bootsector.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/bootloader/include/memory_map.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/include/memory_map.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/bootloader/src/bootloader_entry.s" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/bootloader_entry.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/bootloader/src/memory_map.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/memory_map.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -314,7 +315,7 @@
       <workItem from="1707791824718" duration="629000" />
       <workItem from="1707804677483" duration="564000" />
       <workItem from="1707805247085" duration="946000" />
-      <workItem from="1707840157114" duration="374000" />
+      <workItem from="1707840157114" duration="1336000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit for v2">
       <option name="closed" value="true" />
@@ -492,7 +493,23 @@
       <option name="project" value="LOCAL" />
       <updated>1707779930970</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Blocked out bad chars">
+      <option name="closed" value="true" />
+      <created>1707840558667</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1707840558667</updated>
+    </task>
+    <task id="LOCAL-00024" summary="Modified bootloader">
+      <option name="closed" value="true" />
+      <created>1707840919037</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1707840919037</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -527,7 +544,9 @@
     <MESSAGE value="Removed assembler warnings" />
     <MESSAGE value="Memory is now mapped by the boot sector" />
     <MESSAGE value="Added workspace.xml" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added workspace.xml" />
+    <MESSAGE value="Blocked out bad chars" />
+    <MESSAGE value="Modified bootloader" />
+    <option name="LAST_COMMIT_MESSAGE" value="Modified bootloader" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
