@@ -9,3 +9,8 @@
 
 #define PORT_KB_IN  (0x60)
 #define PORT_KB_OUT (0x61)
+
+#define ATA_PIO_PRIMARY           ((void *) 0x1F0)
+#define ATA_PIO_SECONDARY         ((void *) 0x170)
+#define ATA_PIO_PRIMARY_CONTROL   ((void *) 0x3F6)
+#define ATA_PIO_SECONDARY_CONTROL ((void *) 0x376)

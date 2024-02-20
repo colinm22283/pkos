@@ -11,7 +11,8 @@
 
 #include <sys/asm/lidt.h>
 #include <sys/asm/sti.h>
-#include <sys/asm/hlt.h>
+
+#include <memory/memset.h>
 
 void int_init(void) {
     pic_remap(0x20, 0x28);
@@ -20,7 +21,7 @@ void int_init(void) {
 
     idt.div0                     = DEFINE_IDT32_ENTRY_INTERRUPT(int_fatal_handler_entry);
     idt.nmi                      = DEFINE_IDT32_ENTRY_INTERRUPT(int_fatal_handler_entry);
-    idt.bp_int3                  = DEFINE_IDT32_ENTRY_INTERRUPT(int_null_handler);
+    idt.bp_int3                  = DEFINE_IDT32_ENTRY_INTERRUPT(int_fatal_handler_entry);
     idt.ovf                      = DEFINE_IDT32_ENTRY_INTERRUPT(int_fatal_handler_entry);
     idt.bound_range              = DEFINE_IDT32_ENTRY_INTERRUPT(int_fatal_handler_entry);
     idt.invalid_opcode           = DEFINE_IDT32_ENTRY_INTERRUPT(int_fatal_handler_entry);
@@ -45,6 +46,10 @@ void int_init(void) {
     idt.mapped_irqs[1] = DEFINE_IDT32_ENTRY_INTERRUPT(int_keyboard_handler_entry);
     for (uint16_t i = 2; i < 8; i++) idt.mapped_irqs[i] = DEFINE_IDT32_ENTRY_INTERRUPT(int_null_pic1_handler_entry);
     for (uint16_t i = 8; i < 16; i++) idt.mapped_irqs[i] = DEFINE_IDT32_ENTRY_INTERRUPT(int_null_pic2_handler_entry);
+
+    memset(idt._undefined_entries0, 0, sizeof(idt32_entry_t) * 11);
+    memset(idt._undefined_entries1, 0, sizeof(idt32_entry_t) * 80);
+    memset(idt._undefined_entries2, 0, sizeof(idt32_entry_t) * 127);
 
     lidt(&idt_ptr);
     sti();

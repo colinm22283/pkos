@@ -47,6 +47,8 @@ typedef struct __PACKED {
     idt32_entry_t _undefined_entries1[80];
 
     idt32_entry_t system_interrupt;
+
+    idt32_entry_t _undefined_entries2[127];
 } idt32_t;
 
 #define DEFINE_IDT32_ENTRY_INTERRUPT(handler) ((idt32_entry_t) { \

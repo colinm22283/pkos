@@ -1,11 +1,13 @@
 #include <defs.h>
 
 #include <console/print.h>
+#include <console/clear.h>
 
 #include <sys/halt.h>
 
 __NORETURN void int_fatal_handler(void) {
-    console_print_color("FATAL ERROR ENCOUNTERED\nHALTING\n", CONSOLE_COLOR(CONSOLE_COLOR_RED, CONSOLE_COLOR_BLACK));
+    console_clear_color(CONSOLE_COLOR(CONSOLE_COLOR_WHITE, CONSOLE_COLOR_BLUE));
+    console_print("FATAL ERROR ENCOUNTERED\nHALTING\n");
 
     halt();
 }

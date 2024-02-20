@@ -30,6 +30,7 @@ OBJS+=$(BL_OD_32)/console/print_color.o
 OBJS+=$(BL_OD_32)/console/print_hex.o
 OBJS+=$(BL_OD_32)/console/print_dec.o
 OBJS+=$(BL_OD_32)/console/print_sdec.o
+OBJS+=$(BL_OD_32)/console/print_bool.o
 OBJS+=$(BL_OD_32)/console/put.o
 OBJS+=$(BL_OD_32)/console/backspace.o
 OBJS+=$(BL_OD_32)/console/clear.o
@@ -48,8 +49,8 @@ OBJS+=$(BL_OD_32)/commands/exit.o
 OBJS+=$(BL_OD_32)/commands/boot.o
 OBJS+=$(BL_OD_32)/commands/clear.o
 OBJS+=$(BL_OD_32)/commands/color.o
-OBJS+=$(BL_OD_32)/commands/fibonacci.o
-OBJS+=$(BL_OD_32)/commands/calc.o
+#OBJS+=$(BL_OD_32)/commands/fibonacci.o
+#OBJS+=$(BL_OD_32)/commands/calc.o
 OBJS+=$(BL_OD_32)/commands/lsmem.o
 
 OBJS+=$(BL_OD_32)/string/strcmp.o
@@ -64,6 +65,14 @@ OBJS+=$(BL_OD_32)/math/pow.o
 OBJS+=$(BL_OD_32)/gdt64.o
 OBJS+=$(BL_OD_32)/page_tables.o
 OBJS+=$(BL_OD_32)/memory_map.o
+
+OBJS+=$(BL_OD_32)/disc/reset.o
+OBJS+=$(BL_OD_32)/disc/detect.o
+OBJS+=$(BL_OD_32)/disc/select.o
+OBJS+=$(BL_OD_32)/disc/read.o
+
+OBJS+=$(BL_OD_32)/boot/sequence.o
+OBJS+=$(BL_OD_32)/boot/disc.o
 
 OPTIMIZATION=s
 
