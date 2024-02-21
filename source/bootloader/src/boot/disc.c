@@ -10,8 +10,10 @@
 #include <console/print.h>
 #include <console/print_hex.h>
 #include <console/newline.h>
+#include <console/print_bool.h>
 
 #include <sys/asm/hlt.h>
+#include <sys/asm/out.h>
 
 #include <memory/memset.h>
 
@@ -42,6 +44,15 @@ bool boot_disc_init() {
     else if (disc_select(io_port, DISC_SELECT_SLAVE)) boot_disc_master_selected = false;
     else return false;
 
+    outb_ptr(&control_port->device_control, 0b10);
+
+    console_newline();
+    if (io_port == ATA_PIO_PRIMARY) console_print("PRIMARY\n");
+    else console_print("SECONDARY\n");
+    console_print("Master selected: ");
+    console_print_bool(boot_disc_master_selected);
+    console_newline();
+
     uint16_t data[256];
     memset(data, 0, sizeof(uint16_t) * 256);
     uint32_t error_value = disc_read28(
@@ -58,7 +69,6 @@ bool boot_disc_init() {
         return false;
     }
 
-    console_newline();
     int index = 0;
     for (int i = 0; i < 256 / 6; i++) {
         for (int j = 0; j < 6; j++) {

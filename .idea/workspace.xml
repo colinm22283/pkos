@@ -25,33 +25,9 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6121c507-c3db-4645-9343-74e78b57e4ca" name="Changes" comment="Added sort method to memory map">
-      <change afterPath="$PROJECT_DIR$/source/bootloader/include/boot/disc.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootloader/include/boot/sequence.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootloader/include/console/print_bool.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootloader/include/disc/detect.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootloader/include/disc/read.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootloader/include/disc/reset.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootloader/include/disc/select.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootloader/src/boot/disc.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootloader/src/boot/sequence.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootloader/src/console/print_bool.s" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootloader/src/disc/detect.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootloader/src/disc/read.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootloader/src/disc/reset.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootloader/src/disc/select.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/system/include/sys/ata/pio.h" afterDir="false" />
+    <list default="true" id="6121c507-c3db-4645-9343-74e78b57e4ca" name="Changes" comment="Almost have disk driver working">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/src/commands/boot.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/commands/boot.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/src/interrupt/fatal_handler.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/interrupt/fatal_handler.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/src/interrupt/init.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/interrupt/init.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/src/shell/command_tree.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/shell/command_tree.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/system/include/sys/asm/in.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/system/include/sys/asm/in.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/system/include/sys/asm/int.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/system/include/sys/asm/int.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/system/include/sys/asm/out.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/system/include/sys/asm/out.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/system/include/sys/idt/idt32.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/system/include/sys/idt/idt32.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/system/include/sys/ports.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/system/include/sys/ports.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/bootloader/src/boot/disc.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/boot/disc.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -351,7 +327,7 @@
       <workItem from="1708243876393" duration="9785000" />
       <workItem from="1708375108436" duration="1658000" />
       <workItem from="1708389570700" duration="642000" />
-      <workItem from="1708460057982" duration="3387000" />
+      <workItem from="1708460057982" duration="5355000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit for v2">
       <option name="closed" value="true" />
@@ -553,7 +529,15 @@
       <option name="project" value="LOCAL" />
       <updated>1707841615715</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Almost have disk driver working">
+      <option name="closed" value="true" />
+      <created>1708463683753</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1708463683753</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -566,7 +550,6 @@
     <isAutomaticFoundErrors value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Initial Commit for v2" />
     <MESSAGE value="Fully working" />
     <MESSAGE value="Added kernel include dir" />
     <MESSAGE value="Fixed 16/32/64 bit building" />
@@ -591,7 +574,8 @@
     <MESSAGE value="Blocked out bad chars" />
     <MESSAGE value="Modified bootloader" />
     <MESSAGE value="Added sort method to memory map" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added sort method to memory map" />
+    <MESSAGE value="Almost have disk driver working" />
+    <option name="LAST_COMMIT_MESSAGE" value="Almost have disk driver working" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
