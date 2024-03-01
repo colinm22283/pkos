@@ -1,4 +1,5 @@
 #include <boot/disc.h>
+#include <boot/kernel.h>
 
 #include <disc/detect.h>
 #include <disc/reset.h>
@@ -21,6 +22,9 @@ bool boot_disc_primary_present;
 bool boot_disc_secondary_present;
 bool boot_disc_master_selected;
 
+ata_pio_io_port_t * io_port;
+ata_pio_control_port_t * control_port;
+
 bool boot_disc_init() {
     boot_disc_primary_present = disc_detect(ATA_PIO_PRIMARY);
     boot_disc_primary_present = disc_detect(ATA_PIO_SECONDARY);
@@ -28,8 +32,6 @@ bool boot_disc_init() {
     if (boot_disc_primary_present) disc_reset(ATA_PIO_PRIMARY_CONTROL);
     if (boot_disc_secondary_present) disc_reset(ATA_PIO_SECONDARY_CONTROL);
 
-    ata_pio_io_port_t * io_port;
-    ata_pio_control_port_t * control_port;
     if (boot_disc_primary_present) {
         io_port = ATA_PIO_PRIMARY;
         control_port = ATA_PIO_PRIMARY_CONTROL;
@@ -46,45 +48,17 @@ bool boot_disc_init() {
 
     outb_ptr(&control_port->device_control, 0b10);
 
-    console_newline();
-    if (io_port == ATA_PIO_PRIMARY) console_print("PRIMARY\n");
-    else console_print("SECONDARY\n");
-    console_print("Master selected: ");
-    console_print_bool(boot_disc_master_selected);
-    console_newline();
+    return true;
+}
 
-    uint16_t data[256];
-    memset(data, 0, sizeof(uint16_t) * 256);
-    uint32_t error_value = disc_read28(
+bool boot_disc_load_kernel() {
+    if (disc_read48(
         io_port,
-        boot_disc_master_selected ? DISC_READ28_MASTER : DISC_READ28_SLAVE,
-        0,
-        1,
-        data
-    );
-    if (error_value) {
-        console_print("ERROR: 0x");
-        console_print_hex(error_value);
-        console_newline();
-        return false;
-    }
-
-    int index = 0;
-    for (int i = 0; i < 256 / 6; i++) {
-        for (int j = 0; j < 6; j++) {
-            console_print(" 0x");
-            console_print_hex(((uint8_t) data[index] & 0xF0) >> 4);
-            console_print_hex((uint8_t) data[index] & 0x0F);
-            console_print(" 0x");
-            console_print_hex(((uint8_t) (data[index] >> 8) & 0xF0) >> 4);
-            console_print_hex((uint8_t) (data[index] >> 8) & 0x0F);
-
-            hlt();
-
-            index++;
-        }
-        console_newline();
-    }
+        boot_disc_master_selected ? DISC_READ48_MASTER : DISC_READ48_SLAVE,
+        KERNEL_LBA_START,
+        KERNEL_SECTORS,
+        (void *) 0x100000
+    )) return false;
 
     return true;
 }

@@ -6,19 +6,19 @@
 #include <defs.h>
 
 typedef struct {
-    uint8_t  execute_disable :  1;
-    uint8_t  protection_key  :  4;
-    uint16_t _available0     :  7;
-    uint64_t address         : 40;
-    uint8_t  _available1     :  4;
-    uint8_t  page_size       :  1;
-    uint8_t  _available2     :  1;
-    uint8_t  accessed        :  1;
-    uint8_t  cache_disable   :  1;
-    uint8_t  write_through   :  1;
-    uint8_t  user_super      :  1;
-    uint8_t  read_write      :  1;
     uint8_t  present         :  1;
+    uint8_t  read_write      :  1;
+    uint8_t  user_super      :  1;
+    uint8_t  write_through   :  1;
+    uint8_t  cache_disable   :  1;
+    uint8_t  accessed        :  1;
+    uint8_t  _available2     :  1;
+    uint8_t  page_size       :  1;
+    uint8_t  _available1     :  4;
+    uint64_t address         : 40;
+    uint16_t _available0     :  7;
+    uint8_t  protection_key  :  4;
+    uint8_t  execute_disable :  1;
 } __PACKED pt64_entry_t;
 
 typedef pt64_entry_t __ALIGNED(4096) pt64_t[512];

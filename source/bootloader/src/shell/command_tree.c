@@ -95,8 +95,7 @@ void shell_command_tree_init() {
     shell_command_tree_c.next_char['A' - 'A'] = &shell_command_tree_ca;
     shell_command_tree_ca.next_char['L' - 'A'] = &shell_command_tree_cal;
     shell_command_tree_cal.next_char['C' - 'A'] = &shell_command_tree_calc;
-//    shell_command_tree_calc.command_ptr = command_calc;
-
+    shell_command_tree_calc.command_ptr = command_calc;
 
     shell_command_tree_root['F' - 'A'] = &shell_command_tree_f;
     shell_command_tree_f.next_char['I' - 'A'] = &shell_command_tree_fi;
@@ -107,7 +106,7 @@ void shell_command_tree_init() {
     shell_command_tree_fibona.next_char['C' - 'A'] = &shell_command_tree_fibonac;
     shell_command_tree_fibonac.next_char['C' - 'A'] = &shell_command_tree_fibonacc;
     shell_command_tree_fibonacc.next_char['I' - 'A'] = &shell_command_tree_fibonacci;
-//    shell_command_tree_fibonacci.command_ptr = command_fibonacci;
+    shell_command_tree_fibonacci.command_ptr = command_fibonacci;
 
     shell_command_tree_root['L' - 'A'] = &shell_command_tree_l;
     shell_command_tree_l.next_char['S' - 'A'] = &shell_command_tree_ls;

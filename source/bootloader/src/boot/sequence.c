@@ -1,5 +1,10 @@
 #include <boot/sequence.h>
 #include <boot/disc.h>
+#include <boot/enter_kernel.h>
+#include <boot/kernel.h>
+#include <boot/config.h>
+
+#include <disc/read.h>
 
 #include <console/print.h>
 #include <console/print_bool.h>
@@ -31,13 +36,24 @@ uint32_t boot_sequence_start() {
     console_print("\n  Disc selected: ");
     console_print(boot_disc_master_selected ? "MASTER\n" : "SLAVE\n");
 
-    print_init("64bit gdt");
-    gdt64_init();
+    print_init("kernel memory");
+    if (!boot_disc_load_kernel()) return 2;
     print_done();
 
     print_init("paging tables");
     page_tables_init();
     print_done();
 
-    return 1;
+    gdt64_ptr.int_pointer = (uint64_t) (uint32_t) &gdt64;
+
+    bool boot_result;
+#ifdef BOOT_CONFIG_64_BIT_ENABLE
+    boot_result = enter_kernel64();
+#else
+    boot_result = enter_kernel32();
+#endif
+
+    if (!boot_result) return 3;
+
+    return 0;
 }

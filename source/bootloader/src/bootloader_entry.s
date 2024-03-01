@@ -49,7 +49,11 @@ bootloader_entry:
     # sort the memory map
     call memory_map_sort
 
-    # enter the shell environment
+    # attempt to boot the kernel
+    call boot_sequence_start
+
+    # enter the shell environment if boot fails
     jmp shell_entry
 
+    cli
     hlt

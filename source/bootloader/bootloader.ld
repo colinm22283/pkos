@@ -15,14 +15,16 @@ SECTIONS {
         *(.bootloader_entry);
         *(.text*);
         *(.rodata*);
+        *(.gdt64);
+        *(.gdt64_ptr);
     } > usable_memory_2
 
-    . = 0x9E00;
+    . = 0xAE00;
 
     .bootloader_bss (NOLOAD) : {
         *(.bss*);
-        *(.gdt64);
-        *(.gdt64_ptr);
         *(.page_tables);
     }
+
+    kernel_entry = 0x100000;
 }

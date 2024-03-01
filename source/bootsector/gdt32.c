@@ -1,7 +1,6 @@
 #include "defs.h"
 
-#include "sys/gdt/gdt32.h"
-#include "sys/gdt/gdt_ptr.h"
+#include <sys/gdt/gdt32.h>
 
 __SECTION(".gdt32") const struct __PACKED {
     gdt32_entry_t null;
@@ -42,4 +41,4 @@ __SECTION(".gdt32") const struct __PACKED {
     },
 };
 
-__SECTION(".gdt32_ptr") const gdt_ptr_t gdt32_ptr = DEFINE_GDT_POINTER(gdt32);
+__SECTION(".gdt32_ptr") const gdt32_ptr_t gdt32_ptr = DEFINE_GDT32_POINTER(gdt32);

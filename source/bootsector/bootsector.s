@@ -31,11 +31,16 @@ bootloader16_entry:
     jc  bios_extensions_not_found
 
     # load the bootloader into memory
-    mov $0x42,               %ah
-    mov $0x80,               %dl
-    mov $extended_read_data, %si
+    mov $0x42,                 %ah
+    mov $0x80,                 %dl
+    mov $extended_read_data_1, %si
     int $0x13
-    jc  bootloader_load_error
+    jc  bootloader_load_error_1
+    mov $0x42,                 %ah
+    mov $0x80,                 %dl
+    mov $extended_read_data_2, %si
+    int $0x13
+    jc  bootloader_load_error_2
 
     # load the memory map
     mov $0xE820,     %eax
@@ -101,9 +106,13 @@ bios_extensions_not_found:
     mov $25, %cx
     mov $bios_extensions_not_found_str, %bp
     jmp print_error_string
-bootloader_load_error:
-    mov $21, %cx
-    mov $bootloader_load_error_str, %bp
+bootloader_load_error_1:
+    mov $23, %cx
+    mov $bootloader_load_error_1_str, %bp
+    jmp print_error_string
+bootloader_load_error_2:
+    mov $23, %cx
+    mov $bootloader_load_error_2_str, %bp
     jmp print_error_string
 a20_failure:
     mov $22, %cx
@@ -133,14 +142,25 @@ print_error_string:
     hlt
 
 bios_extensions_not_found_str: .string "BIOS EXTENSIONS NOT FOUND"
-bootloader_load_error_str:     .string "BOOTLOADER LOAD ERROR"
+bootloader_load_error_1_str:     .string "BOOTLOADER LOAD ERROR 1"
+bootloader_load_error_2_str:     .string "BOOTLOADER LOAD ERROR 2"
 a20_failure_str:               .string "A20 LINE ENABLE FAILED"
 detect_memory_failure_str:      .string "MEMORY DETECT EXCEDED MAX AMOUNT"
 
-extended_read_data:
+extended_read_data_1:
     .byte  0x10
     .byte  0x00
     .short 16 # blocks to transfer
     .short 0x7E00
     .short 0x0000
-    .int   1
+    .int  1
+    .int  0
+
+extended_read_data_2:
+    .byte  0x10
+    .byte  0x00
+    .short 8  # blocks to transfer
+    .short 0x9E00
+    .short 0x0000
+    .int   17
+    .int   0

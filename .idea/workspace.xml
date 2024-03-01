@@ -14,6 +14,7 @@
       <config projectName="pkos" targetName="Makefile" />
       <config projectName="pkos" targetName="rebuild" />
       <config projectName="pkos" targetName="bootloader" />
+      <config projectName="pkos" targetName="kernel" />
       <config projectName="pkos" targetName="image" />
       <config projectName="pkos" targetName="all" />
       <config projectName="pkos" targetName="bootsector" />
@@ -25,9 +26,33 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6121c507-c3db-4645-9343-74e78b57e4ca" name="Changes" comment="Almost have disk driver working">
+    <list default="true" id="6121c507-c3db-4645-9343-74e78b57e4ca" name="Changes" comment="Almost have disk driver working continued">
+      <change afterPath="$PROJECT_DIR$/source/bootloader/include/boot/config.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/bootloader/include/boot/enter_kernel.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/bootloader/include/boot/kernel.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/bootloader/src/boot/64/long_mode_available.s" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/bootloader/src/boot/enter_kernel.s" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/kernel/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/kernel/kernel.ld" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/kernel/src/main.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/make/image.mk" beforeDir="false" afterPath="$PROJECT_DIR$/make/image.mk" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/bootloader/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/bootloader/bootloader.ld" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/bootloader.ld" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/bootloader/include/boot/disc.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/include/boot/disc.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/bootloader/include/disc/read.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/include/disc/read.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/source/bootloader/src/boot/disc.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/boot/disc.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/bootloader/src/boot/sequence.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/boot/sequence.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/bootloader/src/bootloader_entry.s" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/bootloader_entry.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/bootloader/src/disc/read.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/disc/read.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/bootloader/src/disc/select.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/disc/select.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/bootloader/src/page_tables.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/page_tables.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/bootloader/src/shell/command_tree.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/shell/command_tree.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/bootsector/bootsector.s" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootsector/bootsector.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/system/include/sys/asm/in.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/system/include/sys/asm/in.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/system/include/sys/asm/out.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/system/include/sys/asm/out.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/system/include/sys/ata/pio.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/system/include/sys/ata/pio.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -144,14 +169,19 @@
       <recent name="$PROJECT_DIR$/source" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/source/kernel/src" />
       <recent name="$PROJECT_DIR$/source/bootloader/include" />
       <recent name="$PROJECT_DIR$/source/bootloader/inc/interrupt" />
       <recent name="$PROJECT_DIR$/source/bootloader/src/interrupts" />
       <recent name="$PROJECT_DIR$/shrapnel" />
-      <recent name="$PROJECT_DIR$/source/bootloader" />
     </key>
   </component>
   <component name="RunManager" selected="Native Application.Emulate">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Emulate Debug" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" WORKING_DIR="file://$PROJECT_DIR$/build" PASS_PARENT_ENVS_2="true" PROJECT_NAME="pkos" TARGET_NAME="all" CONFIG_NAME="all" version="1" RUN_PATH="$PROJECT_DIR$/build/emulate-gdb.sh">
       <method v="2">
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
@@ -222,6 +252,11 @@
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
       </method>
     </configuration>
+    <configuration name="kernel" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="pkos" TARGET_NAME="kernel" CONFIG_NAME="kernel" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="rebuild" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="pkos" TARGET_NAME="rebuild" CONFIG_NAME="rebuild" version="1">
       <method v="2">
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
@@ -236,6 +271,7 @@
       <item itemvalue="Native Application.bootsector" />
       <item itemvalue="Native Application.full" />
       <item itemvalue="Native Application.image" />
+      <item itemvalue="Native Application.kernel" />
       <item itemvalue="Native Application.rebuild" />
     </list>
   </component>
@@ -328,6 +364,8 @@
       <workItem from="1708375108436" duration="1658000" />
       <workItem from="1708389570700" duration="642000" />
       <workItem from="1708460057982" duration="5355000" />
+      <workItem from="1708489589613" duration="559000" />
+      <workItem from="1709148393384" duration="11615000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit for v2">
       <option name="closed" value="true" />
@@ -537,7 +575,15 @@
       <option name="project" value="LOCAL" />
       <updated>1708463683753</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="Almost have disk driver working continued">
+      <option name="closed" value="true" />
+      <created>1708489600800</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1708489600800</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -550,7 +596,6 @@
     <isAutomaticFoundErrors value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Fully working" />
     <MESSAGE value="Added kernel include dir" />
     <MESSAGE value="Fixed 16/32/64 bit building" />
     <MESSAGE value="Added a gdb emulation option" />
@@ -575,7 +620,8 @@
     <MESSAGE value="Modified bootloader" />
     <MESSAGE value="Added sort method to memory map" />
     <MESSAGE value="Almost have disk driver working" />
-    <option name="LAST_COMMIT_MESSAGE" value="Almost have disk driver working" />
+    <MESSAGE value="Almost have disk driver working continued" />
+    <option name="LAST_COMMIT_MESSAGE" value="Almost have disk driver working continued" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

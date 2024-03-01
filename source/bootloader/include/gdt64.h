@@ -1,7 +1,6 @@
 #pragma once
 
 #include <sys/gdt/gdt64.h>
-#include <sys/gdt/gdt_ptr.h>
 
 typedef struct __PACKED {
     gdt64_entry_t null;
@@ -11,6 +10,4 @@ typedef struct __PACKED {
 
 extern __SECTION(".gdt64") gdt64_t gdt64;
 
-extern __SECTION(".gdt64_ptr") gdt_ptr_t gdt64_ptr;
-
-void gdt64_init();
+extern __SECTION(".gdt64_ptr") gdt64_ptr_t gdt64_ptr;

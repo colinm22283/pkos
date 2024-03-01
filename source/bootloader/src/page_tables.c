@@ -16,10 +16,16 @@ void page_tables_init() {
     memset(&identity_pt,   0, sizeof(pt64_t));
 
     // identity map the first 2MB
-    PML4T64_SET_ADDRESS(pml4t[0],        &identity_pdpt);
-    PDPT64_SET_ADDRESS(identity_pdpt[0], &identity_pdt );
-    PDT_SET_ADDRESS(identity_pdt[0],     &identity_pt  );
-
+    PML4T64_SET_ADDRESS(pml4t[0],        identity_pdpt);
+    PDPT64_SET_ADDRESS(identity_pdpt[0], identity_pdt );
+    PDT_SET_ADDRESS(identity_pdt[0],     identity_pt  );
     pt64_map_2mb(&identity_pt, 0x00000000);
+
+    pml4t[0].present = 1;
+    pml4t[0].read_write = 1;
+    identity_pdpt[0].present = 1;
+    identity_pdpt[0].read_write = 1;
+    identity_pdt[0].present = 1;
+    identity_pdt[0].read_write = 1;
 }
 

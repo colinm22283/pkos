@@ -52,12 +52,18 @@ rebuild:
 include make/image.mk
 include $(MAKE_SCRIPTS)
 
+.PHONY: kernel
+kernel: $(BIN_DIR)/kernel.bin
 .PHONY: bootloader
 bootloader: $(BIN_DIR)/bootloader.bin
 .PHONY: bootsector
 bootsector: $(BIN_DIR)/bootsector.bin
 .PHONY: image
 image: $(BUILD_DIR)/pkos.img
+
+.PHONY: $(BIN_DIR)/kernel.bin
+$(BIN_DIR)/kernel.bin:
+	cd source/kernel && $(MAKE)
 
 .PHONY: $(BIN_DIR)/bootloader.bin
 $(BIN_DIR)/bootloader.bin:

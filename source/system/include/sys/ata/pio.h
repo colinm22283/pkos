@@ -4,6 +4,12 @@
 
 #include <defs.h>
 
+enum {
+    ATA_PIO_COMMAND_READ     = 0x20,
+    ATA_PIO_COMMAND_READ_EXT = 0x24,
+    ATA_PIO_COMMAND_IDENTIFY = 0xEC,
+};
+
 typedef struct {
     uint8_t address_mark_not_found      : 1;
     uint8_t track_zero_not_found        : 1;
