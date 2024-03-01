@@ -52,6 +52,7 @@ OBJS+=$(BL_OD_32)/commands/color.o
 OBJS+=$(BL_OD_32)/commands/fibonacci.o
 OBJS+=$(BL_OD_32)/commands/calc.o
 OBJS+=$(BL_OD_32)/commands/lsmem.o
+OBJS+=$(BL_OD_32)/commands/gtn.o
 
 OBJS+=$(BL_OD_32)/string/strcmp.o
 OBJS+=$(BL_OD_32)/string/strlen.o
@@ -61,6 +62,10 @@ OBJS+=$(BL_OD_32)/memory/memcpy.o
 OBJS+=$(BL_OD_32)/memory/memset.o
 
 OBJS+=$(BL_OD_32)/math/pow.o
+
+OBJS+=$(BL_OD_32)/keyboard/keyboard.o
+OBJS+=$(BL_OD_32)/keyboard/getch.o
+OBJS+=$(BL_OD_32)/keyboard/readline.o
 
 OBJS+=$(BL_OD_32)/gdt64.o
 OBJS+=$(BL_OD_32)/page_tables.o

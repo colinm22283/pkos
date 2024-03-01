@@ -4,6 +4,8 @@
 
 #include <shell/keyboard_handler.h>
 
+#include <keyboard/keyboard.h>
+
 #include <sys/asm/out.h>
 #include <sys/asm/in.h>
 #include <sys/ports.h>
@@ -32,10 +34,22 @@ void int_keyboard_handler() {
     else {
         if (shift_down) {
             char shifted_ascii_char = keyboard_lut_shift[raw_char];
-            if (!released) shell_keyboard_key_down_handler(shifted_ascii_char);
+            if (released) {
+                keyboard_key_up_handler(shifted_ascii_char);
+            }
+            else {
+                keyboard_key_down_handler(shifted_ascii_char);
+                shell_keyboard_key_down_handler(shifted_ascii_char);
+            }
         }
         else {
-            if (!released) shell_keyboard_key_down_handler(ascii_char);
+            if (released) {
+                keyboard_key_up_handler(ascii_char);
+            }
+            else {
+                keyboard_key_down_handler(ascii_char);
+                shell_keyboard_key_down_handler(ascii_char);
+            }
         }
     }
 

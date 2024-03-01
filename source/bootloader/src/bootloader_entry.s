@@ -50,7 +50,7 @@ bootloader_entry:
     call memory_map_sort
 
     # attempt to boot the kernel
-    call boot_sequence_start
+    #call boot_sequence_start
 
     # enter the shell environment if boot fails
     jmp shell_entry

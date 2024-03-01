@@ -4,13 +4,19 @@
 
 #include <sys/halt.h>
 
-__NORETURN __SECTION(".kernel_entry") void kernel_entry() {
-    char * console_buffer = (char *) 0xB8000;
+#include <driver/disc_pio.h>
 
-    *(console_buffer + 0) = 'B';
-    *(console_buffer + 2) = 'O';
-    *(console_buffer + 4) = 'O';
-    *(console_buffer + 6) = 'T';
+__NORETURN __SECTION(".kernel_entry") void kernel_entry() {
+    driver_disc_pio_load(&driver_table);
+    driver_table.disc.start();
+
+    uint16_t device_count = driver_table.disc.device_count();
+
+    driver_table.disc.select_device(0);
+
+    driver_table.disc.read(0, 1, (void *) 0xB8000);
+
+    driver_table.disc.stop();
 
     halt();
 }

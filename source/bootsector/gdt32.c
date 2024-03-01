@@ -2,7 +2,7 @@
 
 #include <sys/gdt/gdt32.h>
 
-__SECTION(".gdt32") const struct __PACKED {
+__SECTION(".gdt32") struct __PACKED {
     gdt32_entry_t null;
     gdt32_entry_t code;
     gdt32_entry_t data;
