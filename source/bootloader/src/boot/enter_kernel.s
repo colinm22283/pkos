@@ -49,4 +49,4 @@ entry_64:
     mov %ax,   %gs
     mov %ax,   %ss
 
-    call kernel_entry
+    jmp kernel_entry

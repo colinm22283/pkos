@@ -67,7 +67,9 @@ OBJS+=$(BL_OD_32)/keyboard/keyboard.o
 OBJS+=$(BL_OD_32)/keyboard/getch.o
 OBJS+=$(BL_OD_32)/keyboard/readline.o
 
+OBJS+=$(BL_OD_32)/gdt16.o
 OBJS+=$(BL_OD_32)/gdt64.o
+OBJS+=$(BL_OD_32)/bios_idt_ptr.o
 OBJS+=$(BL_OD_32)/page_tables.o
 OBJS+=$(BL_OD_32)/memory_map.o
 
@@ -79,6 +81,7 @@ OBJS+=$(BL_OD_32)/disc/read.o
 OBJS+=$(BL_OD_32)/boot/sequence.o
 OBJS+=$(BL_OD_32)/boot/disc.o
 OBJS+=$(BL_OD_32)/boot/enter_kernel.o
+OBJS+=$(BL_OD_32)/boot/graphics_mode.o
 OBJS+=$(BL_OD_32)/boot/64/long_mode_available.o
 
 OPTIMIZATION=s

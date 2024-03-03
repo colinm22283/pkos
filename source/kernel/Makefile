@@ -6,6 +6,7 @@ INCLUDE_DIRS+=$(CURDIR)/include
 KN_OBJS+=$(KN_OD_64)/driver_table/driver_table.o
 
 KN_OBJS+=$(KN_OD_64)/driver/disc_pio.o
+KN_OBJS+=$(KN_OD_64)/driver/video_bios.o
 
 KN_OBJS+=$(KN_OD_64)/main.o
 

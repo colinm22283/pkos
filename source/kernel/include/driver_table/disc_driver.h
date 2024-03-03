@@ -4,8 +4,8 @@
 #include <stdbool.h>
 
 typedef struct {
-    void (* start)(void);
-    void (* stop)(void);
+    bool (* start)(void);
+    bool (* stop)(void);
 
     uint16_t (* device_count)(void);
     bool (* select_device)(uint16_t);

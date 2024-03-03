@@ -5,4 +5,9 @@ SECTIONS {
     .kernel_entry : AT(0) {
         *(.kernel_entry);
     } > kernel_memory
+
+    .text : {
+        *(.text);
+        *(.data);
+    } > kernel_memory
 }

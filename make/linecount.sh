@@ -1,0 +1,1 @@
+wc -l $(find . -type f -name '*.c') $(find . -type f -name '*.h') $(find . -type f -name '*.s')

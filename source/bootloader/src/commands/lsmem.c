@@ -11,6 +11,7 @@
 #include <memory_map.h>
 
 const char * type_lut[] = {
+    "",
     "USABLE",
     "RESERVED",
     "ACPI RECLAIMABLE",

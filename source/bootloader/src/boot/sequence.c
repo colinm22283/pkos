@@ -3,6 +3,7 @@
 #include <boot/enter_kernel.h>
 #include <boot/kernel.h>
 #include <boot/config.h>
+#include <boot/graphics_mode.h>
 
 #include <disc/read.h>
 
@@ -44,7 +45,9 @@ uint32_t boot_sequence_start() {
     page_tables_init();
     print_done();
 
-    gdt64_ptr.int_pointer = (uint64_t) (uint32_t) &gdt64;
+    print_init("BIOS graphics mode");
+    boot_switch_graphics_mode();
+    print_done();
 
     bool boot_result;
 #ifdef BOOT_CONFIG_64_BIT_ENABLE

@@ -232,12 +232,12 @@ const char * get_error_string() {
     return NULL;
 }
 
-void start() { }
-void stop() { }
+bool disc_pio_start() { return true; }
+bool disc_pio_stop() { return true; }
 
 void driver_disc_pio_load(driver_table_t * dt) {
-    dt->disc.start = start;
-    dt->disc.stop = stop;
+    dt->disc.start = disc_pio_start;
+    dt->disc.stop  = disc_pio_stop;
 
     dt->disc.device_count = device_count;
     dt->disc.select_device = select_device;

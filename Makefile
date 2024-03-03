@@ -73,3 +73,6 @@ $(BIN_DIR)/bootloader.bin:
 $(BIN_DIR)/bootsector.bin:
 	cd source/bootsector && $(MAKE)
 
+.PHONY: linecount
+linecount:
+	sh $(MAKE_DIR)/linecount.sh
