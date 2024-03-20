@@ -31,7 +31,7 @@ enter_kernel64:
     # load the 64 bit gdt
     lgdt gdt64_ptr
 
-    call $0x10, $entry_64
+    jmp $0x10, $entry_64
 
 .code32
 .fail_boot:
@@ -49,4 +49,9 @@ entry_64:
     mov %ax,   %gs
     mov %ax,   %ss
 
-    jmp kernel_entry
+    #xor %rsp,       %rsp
+    #mov $stack_top, %esp
+
+    xor %rax,          %rax
+    mov $kernel_entry, %eax
+    jmp *%rax

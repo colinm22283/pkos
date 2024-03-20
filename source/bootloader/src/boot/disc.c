@@ -27,7 +27,7 @@ ata_pio_control_port_t * control_port;
 
 bool boot_disc_init() {
     boot_disc_primary_present = disc_detect(ATA_PIO_PRIMARY);
-    boot_disc_primary_present = disc_detect(ATA_PIO_SECONDARY);
+    boot_disc_secondary_present = disc_detect(ATA_PIO_SECONDARY);
 
     if (boot_disc_primary_present) disc_reset(ATA_PIO_PRIMARY_CONTROL);
     if (boot_disc_secondary_present) disc_reset(ATA_PIO_SECONDARY_CONTROL);

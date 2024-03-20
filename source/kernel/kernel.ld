@@ -1,13 +1,31 @@
 OUTPUT_FORMAT("binary");
-ENTRY(bootloader16_entry);
+ENTRY(kernel_entry);
 SECTIONS {
-    . = 0x100000;
-    .kernel_entry : AT(0) {
+    . = 0xC0000000;
+
+    .kernel_entry . : AT(0) {
         *(.kernel_entry);
     } > kernel_memory
 
-    .text : {
-        *(.text);
-        *(.data);
+    .text . : {
+        *(.text*);
+        *(.data*);
+        *(.rodata*);
     } > kernel_memory
+
+    .bss . (NOLOAD) : {
+        *(.bss*);
+    } > kernel_memory
+
+    .stack . (NOLOAD) : {
+        _stack_base = .;
+        . += 1024;
+        . = ALIGN(8);
+        _stack_top = .;
+    } > kernel_memory
+
+/*    . = 0xC0000000 + 65536;*/
+/*    .allocation_space . (NOLOAD) : {*/
+/*        *(.allocation_space);*/
+/*    }*/
 }

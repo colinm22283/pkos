@@ -30,7 +30,7 @@ __CDECL uint32_t command_gtn(uint32_t argc, const char ** argv) {
     random_number = random_number % (upper_bound - lower_bound + 1);
     random_number += lower_bound;
 
-    uint32_t guess;
+    uint32_t guess = 0;
     do {
         console_print("Enter guess: ");
         char guess_buffer[256];

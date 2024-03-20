@@ -1,7 +1,9 @@
 .code32
 
+.section ".bss"
 gdt32_buffer: .skip 6
 
+.section ".text"
 .global boot_switch_graphics_mode
 boot_switch_graphics_mode:
     cli
@@ -46,7 +48,7 @@ boot_switch_graphics_mode:
     or  $1, %al
     mov %eax, %cr0
 
-    ljmp $0x08, $.entry32
+    jmp $0x08, $.entry32
 
 .code32
 .entry32:

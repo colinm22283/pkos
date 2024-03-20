@@ -10,7 +10,7 @@ driver_table_video_mode_t driver_modes[MODE_COUNT] = {
 };
 
 uint8_t current_color = 0;
-uint8_t * const video_memory = (uint8_t *) 0xA0000;
+static uint8_t * const video_memory = (uint8_t *) 0xA0000;
 
 uint32_t mode_count() {
     return MODE_COUNT;
@@ -64,17 +64,18 @@ void draw_bitmap(const uint8_t * bitmap, uint32_t x, uint32_t y, uint32_t w, uin
 void draw_bitmap_transparent(const uint8_t * bitmap, uint32_t x, uint32_t y, uint32_t w, uint32_t h) {
     uint8_t color = current_color;
 
+    uint32_t div_width = w >> 3;
+
     for (uint32_t _x = 0, __x = 0; _x < w; _x += 8, __x++) {
         for (uint32_t _y = 0; _y < h; _y++) {
-            if ((bitmap[_y * w + __x] >> 7) & 1) video_memory[(y + _y) * driver_modes[0].width + (x + _x + 0)] = color;
-            if ((bitmap[_y * w + __x] >> 6) & 1) video_memory[(y + _y) * driver_modes[0].width + (x + _x + 1)] = color;
-            if ((bitmap[_y * w + __x] >> 5) & 1) video_memory[(y + _y) * driver_modes[0].width + (x + _x + 2)] = color;
-            if ((bitmap[_y * w + __x] >> 4) & 1) video_memory[(y + _y) * driver_modes[0].width + (x + _x + 3)] = color;
-            if ((bitmap[_y * w + __x] >> 3) & 1) video_memory[(y + _y) * driver_modes[0].width + (x + _x + 4)] = color;
-            if ((bitmap[_y * w + __x] >> 2) & 1) video_memory[(y + _y) * driver_modes[0].width + (x + _x + 5)] = color;
-            if ((bitmap[_y * w + __x] >> 1) & 1) video_memory[(y + _y) * driver_modes[0].width + (x + _x + 6)] = color;
-            if ((bitmap[_y * w + __x] >> 0) & 1) video_memory[(y + _y) * driver_modes[0].width + (x + _x + 7)] = color;
-
+            if ((bitmap[_y * div_width + __x] >> 7) & 1) video_memory[(y + _y) * driver_modes[0].width + (x + _x + 0)] = color;
+            if ((bitmap[_y * div_width + __x] >> 6) & 1) video_memory[(y + _y) * driver_modes[0].width + (x + _x + 1)] = color;
+            if ((bitmap[_y * div_width + __x] >> 5) & 1) video_memory[(y + _y) * driver_modes[0].width + (x + _x + 2)] = color;
+            if ((bitmap[_y * div_width + __x] >> 4) & 1) video_memory[(y + _y) * driver_modes[0].width + (x + _x + 3)] = color;
+            if ((bitmap[_y * div_width + __x] >> 3) & 1) video_memory[(y + _y) * driver_modes[0].width + (x + _x + 4)] = color;
+            if ((bitmap[_y * div_width + __x] >> 2) & 1) video_memory[(y + _y) * driver_modes[0].width + (x + _x + 5)] = color;
+            if ((bitmap[_y * div_width + __x] >> 1) & 1) video_memory[(y + _y) * driver_modes[0].width + (x + _x + 6)] = color;
+            if ((bitmap[_y * div_width + __x] >> 0) & 1) video_memory[(y + _y) * driver_modes[0].width + (x + _x + 7)] = color;
         }
     }
 }

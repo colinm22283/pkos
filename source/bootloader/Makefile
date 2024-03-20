@@ -80,7 +80,7 @@ OBJS+=$(BL_OD_32)/disc/read.o
 
 OBJS+=$(BL_OD_32)/boot/sequence.o
 OBJS+=$(BL_OD_32)/boot/disc.o
-OBJS+=$(BL_OD_32)/boot/enter_kernel.o
+OBJS+=$(BL_OD_32)/boot/64/enter_kernel.o
 OBJS+=$(BL_OD_32)/boot/graphics_mode.o
 OBJS+=$(BL_OD_32)/boot/64/long_mode_available.o
 

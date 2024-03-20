@@ -26,5 +26,5 @@ SECTIONS {
         *(.page_tables);
     }
 
-    kernel_entry = 0x100000;
+    kernel_entry = 0xC0000000;
 }

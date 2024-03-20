@@ -10,9 +10,17 @@
 #include <console/print.h>
 #include <console/print_bool.h>
 #include <console/newline.h>
+#include <console/put.h>
+
+#include <shell/input.h>
+
+#include <keyboard/getch.h>
 
 #include <gdt64.h>
 #include <page_tables.h>
+
+#include <sys/halt.h>
+#include <console/print_hex.h>
 
 static inline void print_init(const char * message) {
     console_print("Init ");
@@ -29,12 +37,14 @@ uint32_t boot_sequence_start() {
     if (!boot_disc_init()) return 1;
     print_done();
     console_print("Disc info:\n  Primary");
-    console_print(" drive found: ");
+    console_print(" bus found: ");
     console_print_bool(boot_disc_primary_present);
     console_print("\n  Secondary");
-    console_print(" drive found: ");
+    console_print(" bus found: ");
     console_print_bool(boot_disc_secondary_present);
-    console_print("\n  Disc selected: ");
+    console_print("\n  Bus selected: ");
+    console_print(boot_disc_primary_present ? "PRIMARY" : "SECONDARY");
+    console_print("\n  Drive selected: ");
     console_print(boot_disc_master_selected ? "MASTER\n" : "SLAVE\n");
 
     print_init("kernel memory");
@@ -44,6 +54,21 @@ uint32_t boot_sequence_start() {
     print_init("paging tables");
     page_tables_init();
     print_done();
+
+    shell_ready_to_execute = true;
+    console_print("Finalize boot? (y/n)\n");
+    char input = keyboard_getch();
+    while (input != 'y' && input != 'n') {
+        console_print("Invalid selection '");
+        console_put(input);
+        console_print("'\n");
+
+        input = keyboard_getch();
+    }
+    if (input == 'n') {
+        shell_ready_to_execute = false;
+        return 3;
+    }
 
     print_init("BIOS graphics mode");
     boot_switch_graphics_mode();
@@ -56,7 +81,7 @@ uint32_t boot_sequence_start() {
     boot_result = enter_kernel32();
 #endif
 
-    if (!boot_result) return 3;
+    if (!boot_result) return 4;
 
     return 0;
 }
