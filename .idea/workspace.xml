@@ -27,47 +27,39 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6121c507-c3db-4645-9343-74e78b57e4ca" name="Changes" comment="A less simple driver">
-      <change afterPath="$PROJECT_DIR$/source/kernel/include/entry.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/kernel/include/memory/memcpy.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/kernel/include/memory/memset.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/kernel/include/paging/init.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/kernel/include/paging/map_kernel.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/kernel/include/paging/tables.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/kernel/include/paging/translation.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/kernel/include/stack.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/kernel/src/memory/memcpy.s" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/kernel/src/memory/memset.s" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/kernel/src/paging/alloc.s" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/kernel/src/paging/map_kernel.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/kernel/src/paging/tables.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/system/include/sys/asm/invlpg.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/system/include/sys/asm/nop.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/system/include/sys/msr/msr_numbers.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/system/include/sys/msr/write_msr.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/system/include/sys/paging/load_page_table.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/system/include/sys/stack/load_stack_pointer.h" afterDir="false" />
+    <list default="true" id="6121c507-c3db-4645-9343-74e78b57e4ca" name="Changes" comment="Kernel now maps itself without crashing">
+      <change afterPath="$PROJECT_DIR$/source/kernel/include/filesystem/directory_iterator.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/kernel/include/filesystem/directory_locate.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/kernel/include/filesystem/directory_locate_directory.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/kernel/include/filesystem/directory_locate_file.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/kernel/include/filesystem/directory_parent.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/kernel/include/filesystem/filesystem.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/kernel/include/filesystem/get_root_directory.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/kernel/include/filesystem/init.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/kernel/include/util/string/strcmp.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/kernel/include/util/string/strcmpn.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/kernel/include/util/string/strcpy.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/kernel/include/util/string/strlen.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/kernel/src/filesystem/directory_locate.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/kernel/src/filesystem/directory_parent.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/kernel/src/filesystem/get_root_directory.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/kernel/src/filesystem/init.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/kernel/src/util/string/strcmp.s" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/kernel/src/util/string/strcmpn.s" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/kernel/src/util/string/strcpy.s" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/kernel/src/util/string/strlen.s" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/make/linecount.sh" beforeDir="false" afterPath="$PROJECT_DIR$/make/linecount.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/bootloader.ld" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/bootloader.ld" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/src/boot/disc.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/boot/disc.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/src/boot/enter_kernel.s" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/boot/64/enter_kernel.s" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/src/boot/graphics_mode.s" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/boot/graphics_mode.s" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/source/bootloader/src/boot/sequence.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/boot/sequence.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/src/bootloader_entry.s" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/bootloader_entry.s" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/src/commands/boot.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/commands/boot.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/src/commands/gtn.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/commands/gtn.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/src/interrupt/fatal_handler.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/interrupt/fatal_handler.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/src/page_tables.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/page_tables.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/source/kernel/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/include/driver/terminal.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/kernel/include/driver_table/disc_driver.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/include/driver_table/disc_driver.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/kernel/include/memory/memcpy.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/include/util/memory/memcpy.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/kernel/include/memory/memset.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/include/util/memory/memset.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/source/kernel/kernel.ld" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/kernel.ld" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/src/driver/video_bios.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/src/driver/video_bios.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/src/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/src/entry.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/system/include/defs.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/system/include/defs.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/system/include/sys/paging/pdt.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/system/include/sys/paging/pdt.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/system/include/sys/paging/pt.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/system/include/sys/paging/pt.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/kernel/src/driver/disc_pio.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/src/driver/disc_pio.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/kernel/src/entry.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/src/entry.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/kernel/src/memory/memcpy.s" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/src/util/memory/memcpy.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/kernel/src/memory/memset.s" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/src/util/memory/memset.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/kernel/src/paging/map_kernel.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/src/paging/map_kernel.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -166,7 +158,7 @@
     &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
     &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;v4&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/colin/homework/2024 Spring/cpre575/hw3/part1&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/colin/projects/pkos/source/kernel/include/util/string&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -179,26 +171,21 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/source/kernel/include/util/string" />
       <recent name="$PROJECT_DIR$/source/kernel/include" />
       <recent name="$PROJECT_DIR$/source/kernel/src" />
       <recent name="$PROJECT_DIR$/source/bootloader/src" />
       <recent name="$PROJECT_DIR$/source/bootsector" />
-      <recent name="$PROJECT_DIR$/build" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/source/kernel/include/util" />
+      <recent name="$PROJECT_DIR$/source/kernel/src/util" />
       <recent name="$PROJECT_DIR$/source/bootloader/src/boot/64" />
       <recent name="$PROJECT_DIR$/source/bootloader/include/keyboard" />
       <recent name="$PROJECT_DIR$/source/kernel/include/driver_table" />
-      <recent name="$PROJECT_DIR$/source/kernel/src" />
-      <recent name="$PROJECT_DIR$/source/bootloader/include" />
     </key>
   </component>
   <component name="RunManager" selected="Native Application.Emulate">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Emulate Debug" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" WORKING_DIR="file://$PROJECT_DIR$/build" PASS_PARENT_ENVS_2="true" PROJECT_NAME="pkos" TARGET_NAME="all" CONFIG_NAME="all" version="1" RUN_PATH="$PROJECT_DIR$/build/emulate-gdb.sh">
       <method v="2">
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
@@ -282,6 +269,11 @@
     <configuration name="rebuild" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="pkos" TARGET_NAME="rebuild" CONFIG_NAME="rebuild" version="1">
       <method v="2">
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
     <list>
@@ -399,7 +391,8 @@
       <workItem from="1710789558287" duration="90000" />
       <workItem from="1710789938995" duration="2572000" />
       <workItem from="1710804368858" duration="600000" />
-      <workItem from="1710878801965" duration="9918000" />
+      <workItem from="1710878801965" duration="21844000" />
+      <workItem from="1711040154186" duration="2369000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit for v2">
       <option name="closed" value="true" />
@@ -641,7 +634,15 @@
       <option name="project" value="LOCAL" />
       <updated>1709509376248</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="Kernel now maps itself without crashing">
+      <option name="closed" value="true" />
+      <created>1710963830336</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1710963830336</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -654,7 +655,6 @@
     <isAutomaticFoundErrors value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added a console library for testing" />
     <MESSAGE value="Heap is here, heap is heere" />
     <MESSAGE value="changed a few things" />
     <MESSAGE value="V4 Initial Commit" />
@@ -679,7 +679,8 @@
     <MESSAGE value="THE KERNEL IS LOADED11" />
     <MESSAGE value="A simple driver" />
     <MESSAGE value="A less simple driver" />
-    <option name="LAST_COMMIT_MESSAGE" value="A less simple driver" />
+    <MESSAGE value="Kernel now maps itself without crashing" />
+    <option name="LAST_COMMIT_MESSAGE" value="Kernel now maps itself without crashing" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

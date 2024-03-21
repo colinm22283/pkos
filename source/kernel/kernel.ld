@@ -24,8 +24,11 @@ SECTIONS {
         _stack_top = .;
     } > kernel_memory
 
-/*    . = 0xC0000000 + 65536;*/
-/*    .allocation_space . (NOLOAD) : {*/
-/*        *(.allocation_space);*/
-/*    }*/
+    .allocation_space . (NOLOAD) : {
+        *(.allocation_space);
+    }
+
+    .filesystem . : AT(0x10000) {
+        *(.filesystem);
+    } > kernel_memory
 }

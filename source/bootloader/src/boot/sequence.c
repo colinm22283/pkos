@@ -70,9 +70,9 @@ uint32_t boot_sequence_start() {
         return 3;
     }
 
-    print_init("BIOS graphics mode");
-    boot_switch_graphics_mode();
-    print_done();
+//    print_init("BIOS graphics mode");
+//    boot_switch_graphics_mode();
+//    print_done();
 
     bool boot_result;
 #ifdef BOOT_CONFIG_64_BIT_ENABLE

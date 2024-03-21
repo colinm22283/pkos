@@ -3,7 +3,7 @@
 #include <paging/tables.h>
 #include <paging/translation.h>
 
-#include <memory/memset.h>
+#include <util/memory/memset.h>
 
 #include <sys/paging/load_page_table.h>
 

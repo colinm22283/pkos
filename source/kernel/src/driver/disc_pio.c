@@ -205,7 +205,7 @@ bool select_device(uint16_t device) {
     return true;
 }
 
-bool read(uint32_t lba, uint16_t sector_count, void * dest) {
+bool read(uint32_t lba, uint16_t sector_count, void * dst) {
     ata_pio_io_port_t * io_port = device_io_port();
 
     if (lba > 0xFFFFFF || sector_count > 0xFF) {
@@ -214,7 +214,7 @@ bool read(uint32_t lba, uint16_t sector_count, void * dest) {
             devices[selected_device].drive == DEVICE_DRIVE_MASTER ? READ48_DRIVE_SELECT_MASTER : READ48_DRIVE_SELECT_SLAVE,
             lba,
             sector_count,
-            dest
+            dst
         );
     }
     else {
@@ -223,9 +223,15 @@ bool read(uint32_t lba, uint16_t sector_count, void * dest) {
             devices[selected_device].drive == DEVICE_DRIVE_MASTER ? READ28_DRIVE_SELECT_MASTER : READ28_DRIVE_SELECT_SLAVE,
             lba,
             sector_count,
-            dest
+            dst
         );
     }
+}
+
+bool write(uint32_t lba, uint16_t sector_count, void * src) {
+
+
+    return false;
 }
 
 const char * get_error_string() {
@@ -245,4 +251,5 @@ void driver_disc_pio_load(driver_table_t * dt) {
     dt->disc.get_error_string = get_error_string;
 
     dt->disc.read = read;
+    dt->disc.write = write;
 }
