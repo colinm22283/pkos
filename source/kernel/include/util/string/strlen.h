@@ -2,4 +2,4 @@
 
 #include <defs.h>
 
-__SYSV_ABI uint64_t strlen(char * a);
+__SYSV_ABI uint64_t strlen(const char * a);

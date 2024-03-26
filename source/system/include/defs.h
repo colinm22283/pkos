@@ -11,10 +11,11 @@
 #define __UNUSED               __attribute__((unused))
 #define __INTERRUPT            __attribute__((interrupt))
 #define __INTERRUPT_SUBROUTINE __attribute__((no_caller_saved_registers))
-#define __NONULL               __attribute__((nonull))
+#define __NONNULL               __attribute__((nonnull))
 #define __UNUSED               __attribute__((unused))
 #define __NOINLINE             __attribute__((noinline))
 #define __ALWAYS_INLINE        __attribute__((always_inline))
+#define __MAYBE_UNUSED         __attribute__((unused))
 
 #define __SECTION(section_name) __attribute__((__section__(section_name)))
 #define __ALIGNED(alignment) __attribute__((aligned(alignment)))

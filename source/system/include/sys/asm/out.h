@@ -13,3 +13,11 @@ static inline void outb(uint16_t port, uint8_t byte) {
 static inline void outb_ptr(const port_t * port, uint8_t byte) {
     asm volatile ("outb %b0, %w1" : : "a" (byte), "Nd" ((uint16_t) (intptr_t) port) : "memory");
 }
+
+static inline void outw(uint16_t port, uint16_t word) {
+    asm volatile ("outw %w0, %w1" : : "a" (word), "Nd" (port) : "memory");
+}
+
+static inline void outw_ptr(const port_t * port, uint16_t word) {
+    asm volatile ("outw %w0, %w1" : : "a" (word), "Nd" ((uint16_t) (intptr_t) port) : "memory");
+}

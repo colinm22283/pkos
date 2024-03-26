@@ -20,10 +20,7 @@ KN_OBJS+=$(KN_OD_64)/paging/tables.o
 KN_OBJS+=$(KN_OD_64)/paging/map_kernel.o
 KN_OBJS+=$(KN_OD_64)/paging/alloc.o
 
-KN_OBJS+=$(KN_OD_64)/filesystem/init.o
-KN_OBJS+=$(KN_OD_64)/filesystem/directory_locate.o
-KN_OBJS+=$(KN_OD_64)/filesystem/directory_parent.o
-KN_OBJS+=$(KN_OD_64)/filesystem/get_root_directory.o
+#KN_OBJS+=$(KN_OD_64)/filesystem/init.o
 
 KN_OBJS+=$(KN_OD_64)/entry.o
 

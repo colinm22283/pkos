@@ -7,9 +7,12 @@
 #include <sys/port.h>
 
 enum {
-    ATA_PIO_COMMAND_READ     = 0x20,
-    ATA_PIO_COMMAND_READ_EXT = 0x24,
-    ATA_PIO_COMMAND_IDENTIFY = 0xEC,
+    ATA_PIO_COMMAND_READ        = 0x20,
+    ATA_PIO_COMMAND_READ_EXT    = 0x24,
+    ATA_PIO_COMMAND_WRITE       = 0x30,
+    ATA_PIO_COMMAND_WRITE_EXT   = 0x34,
+    ATA_PIO_COMMAND_CACHE_FLUSH = 0xE7,
+    ATA_PIO_COMMAND_IDENTIFY    = 0xEC,
 };
 
 typedef struct {
