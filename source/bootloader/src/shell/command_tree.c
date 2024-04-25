@@ -9,6 +9,8 @@
 #include <commands/calc.h>
 #include <commands/lsmem.h>
 #include <commands/gtn.h>
+#include <commands/help.h>
+#include <commands/version.h>
 
 #define SHELL_COMMAND_TREE_ENTRY_NULL ((shell_command_tree_t) { .command_ptr = NULL, .next_char = { NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, }, })
 
@@ -54,11 +56,24 @@ shell_command_tree_t shell_command_tree_g;
 shell_command_tree_t shell_command_tree_gt;
 shell_command_tree_t shell_command_tree_gtn;
 
+shell_command_tree_t shell_command_tree_h;
+shell_command_tree_t shell_command_tree_he;
+shell_command_tree_t shell_command_tree_hel;
+shell_command_tree_t shell_command_tree_help;
+
 shell_command_tree_t shell_command_tree_l;
 shell_command_tree_t shell_command_tree_ls;
 shell_command_tree_t shell_command_tree_lsm;
 shell_command_tree_t shell_command_tree_lsme;
 shell_command_tree_t shell_command_tree_lsmem;
+
+shell_command_tree_t shell_command_tree_v;
+shell_command_tree_t shell_command_tree_ve;
+shell_command_tree_t shell_command_tree_ver;
+shell_command_tree_t shell_command_tree_vers;
+shell_command_tree_t shell_command_tree_versi;
+shell_command_tree_t shell_command_tree_versio;
+shell_command_tree_t shell_command_tree_version;
 
 shell_command_tree_t * shell_command_tree_root[26];
 
@@ -118,10 +133,25 @@ void shell_command_tree_init() {
     shell_command_tree_gt.next_char['N' - 'A'] = &shell_command_tree_gtn;
     shell_command_tree_gtn.command_ptr = command_gtn;
 
+    shell_command_tree_root['H' - 'A'] = &shell_command_tree_h;
+    shell_command_tree_h.next_char['E' - 'A'] = &shell_command_tree_he;
+    shell_command_tree_he.next_char['L' - 'A'] = &shell_command_tree_hel;
+    shell_command_tree_hel.next_char['P' - 'A'] = &shell_command_tree_help;
+    shell_command_tree_help.command_ptr = command_help;
+
     shell_command_tree_root['L' - 'A'] = &shell_command_tree_l;
     shell_command_tree_l.next_char['S' - 'A'] = &shell_command_tree_ls;
     shell_command_tree_ls.next_char['M' - 'A'] = &shell_command_tree_lsm;
     shell_command_tree_lsm.next_char['E' - 'A'] = &shell_command_tree_lsme;
     shell_command_tree_lsme.next_char['M' - 'A'] = &shell_command_tree_lsmem;
     shell_command_tree_lsmem.command_ptr = command_lsmem;
+
+    shell_command_tree_root['V' - 'A'] = &shell_command_tree_v;
+    shell_command_tree_v.next_char['E' - 'A'] = &shell_command_tree_ve;
+    shell_command_tree_ve.next_char['R' - 'A'] = &shell_command_tree_ver;
+    shell_command_tree_ver.next_char['S' - 'A'] = &shell_command_tree_vers;
+    shell_command_tree_vers.next_char['I' - 'A'] = &shell_command_tree_versi;
+    shell_command_tree_versi.next_char['O' - 'A'] = &shell_command_tree_versio;
+    shell_command_tree_versio.next_char['N' - 'A'] = &shell_command_tree_version;
+    shell_command_tree_version.command_ptr = command_version;
 }

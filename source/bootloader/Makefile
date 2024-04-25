@@ -53,6 +53,8 @@ OBJS+=$(BL_OD_32)/commands/fibonacci.o
 OBJS+=$(BL_OD_32)/commands/calc.o
 OBJS+=$(BL_OD_32)/commands/lsmem.o
 OBJS+=$(BL_OD_32)/commands/gtn.o
+OBJS+=$(BL_OD_32)/commands/help.o
+OBJS+=$(BL_OD_32)/commands/version.o
 
 OBJS+=$(BL_OD_32)/string/strcmp.o
 OBJS+=$(BL_OD_32)/string/strlen.o

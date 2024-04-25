@@ -18,7 +18,8 @@ KN_OBJS+=$(KN_OD_64)/util/string/strcpy.o
 
 KN_OBJS+=$(KN_OD_64)/paging/tables.o
 KN_OBJS+=$(KN_OD_64)/paging/map_kernel.o
-KN_OBJS+=$(KN_OD_64)/paging/alloc.o
+KN_OBJS+=$(KN_OD_64)/paging/allocator.o
+KN_OBJS+=$(KN_OD_64)/paging/memory_map.o
 
 #KN_OBJS+=$(KN_OD_64)/filesystem/init.o
 

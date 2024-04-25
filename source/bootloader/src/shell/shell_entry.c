@@ -19,12 +19,13 @@
 #include <memory/memcpy.h>
 
 #include <memory_map.h>
+#include <version.h>
 
 __NORETURN void shell_entry(void) {
     shell_command_tree_init();
 
     console_clear();
-    console_print("PK Bootloader V1.0\n");
+    console_print("PK Bootloader V" VERSION_STRING "\n");
 
     while (true) {
         console_print("PKBL> ");
@@ -33,8 +34,10 @@ __NORETURN void shell_entry(void) {
 
         console_newline();
         uint32_t result = shell_execute(shell_input_buffer);
-        if (result == 0xFFFFFFFF) {
-            console_print("Command not found\n");
+        if (result == SHELL_EXECUTE_COMMAND_NOT_FOUND) {
+            console_print("Command not found \"");
+            console_print(shell_input_buffer);
+            console_print("\"\n");
         }
         else if (result > 0) {
             console_print("Command exited with code 0x");

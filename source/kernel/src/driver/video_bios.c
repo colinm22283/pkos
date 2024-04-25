@@ -15,7 +15,7 @@ static uint8_t * const video_memory = (uint8_t *) 0xA0000;
 uint32_t mode_count() {
     return MODE_COUNT;
 }
-driver_table_video_mode_t * get_modes() {
+const driver_table_video_mode_t * get_modes() {
     return driver_modes;
 }
 bool set_mode(uint32_t mode_index) {
@@ -23,7 +23,7 @@ bool set_mode(uint32_t mode_index) {
 
     return true;
 }
-driver_table_video_mode_t * get_mode() {
+const driver_table_video_mode_t * get_mode() {
     return &driver_modes[0];
 }
 
@@ -34,6 +34,30 @@ bool set_color(void * color) {
 }
 void draw_pixel(uint32_t x, uint32_t y) {
     video_memory[y * driver_modes[0].width + x] = current_color;
+}
+void draw_rect(uint32_t x, uint32_t y, uint32_t w, uint32_t h) {
+    uint8_t * top_memory = video_memory;
+    uint8_t * bottom_memory = video_memory + (w * h) - w;
+    uint8_t * left_memory = video_memory + w;
+    uint8_t * right_memory = video_memory + (2 * w) - 1;
+
+    for (uint32_t i = 0; i < w; i++) {
+        *top_memory = current_color;
+        *bottom_memory = current_color;
+        top_memory++;
+        bottom_memory++;
+    }
+    for (uint32_t i = 2; i < h; i++) {
+        *left_memory = current_color;
+        *right_memory = current_color;
+        left_memory += w;
+        right_memory += w;
+    }
+}
+void fill_rect(uint32_t x, uint32_t y, uint32_t w, uint32_t h) {
+    for (uint32_t i = 0; i < w * h; i++) {
+        video_memory[i] = current_color;
+    }
 }
 void draw_image(const void * _image, uint32_t x, uint32_t y, uint32_t w, uint32_t h) {
     const uint8_t * image = _image;
@@ -92,9 +116,11 @@ void driver_video_bios_load(driver_table_t * dt) {
     dt->video.set_mode   = set_mode;
     dt->video.get_mode   = get_mode;
 
-    dt->video.set_color  = set_color;
-    dt->video.draw_pixel = draw_pixel;
-    dt->video.draw_image = draw_image;
-    dt->video.draw_bitmap = draw_bitmap;
+    dt->video.set_color               = set_color;
+    dt->video.draw_pixel              = draw_pixel;
+    dt->video.draw_rect               = draw_rect;
+    dt->video.fill_rect               = fill_rect;
+    dt->video.draw_image              = draw_image;
+    dt->video.draw_bitmap             = draw_bitmap;
     dt->video.draw_bitmap_transparent = draw_bitmap_transparent;
 }

@@ -18,12 +18,14 @@ typedef struct {
     bool (* stop)(void);
 
     uint32_t (* mode_count)(void);
-    driver_table_video_mode_t * (* get_modes)(void);
+    const driver_table_video_mode_t * (* get_modes)(void);
     bool (* set_mode)(uint32_t mode_index);
-    driver_table_video_mode_t * (* get_mode)(void);
+    const driver_table_video_mode_t * (* get_mode)(void);
 
     bool (* set_color)(void * color);
     void (* draw_pixel)(uint32_t x, uint32_t y);
+    void (* draw_rect)(uint32_t x, uint32_t y, uint32_t w, uint32_t h);
+    void (* fill_rect)(uint32_t x, uint32_t y, uint32_t w, uint32_t h);
     void (* draw_image)(const void * image, uint32_t x, uint32_t y, uint32_t w, uint32_t h);
     void (* draw_bitmap)(const uint8_t * bitmap, uint32_t x, uint32_t y, uint32_t w, uint32_t h);
     void (* draw_bitmap_transparent)(const uint8_t * bitmap, uint32_t x, uint32_t y, uint32_t w, uint32_t h);

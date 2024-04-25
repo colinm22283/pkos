@@ -49,9 +49,6 @@ entry_64:
     mov %ax,   %gs
     mov %ax,   %ss
 
-    #xor %rsp,       %rsp
-    #mov $stack_top, %esp
-
     xor %rax,          %rax
     mov $kernel_entry, %eax
     jmp *%rax

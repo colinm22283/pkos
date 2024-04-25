@@ -6,8 +6,8 @@
 #include <sys/asm/cli.h>
 
 __NORETURN static inline void halt() {
+    cli();
     while (true) {
-        cli();
         hlt();
     }
 }

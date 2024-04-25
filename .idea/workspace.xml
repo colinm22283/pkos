@@ -27,30 +27,30 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6121c507-c3db-4645-9343-74e78b57e4ca" name="Changes" comment="Working filesystem kinda">
+    <list default="true" id="6121c507-c3db-4645-9343-74e78b57e4ca" name="Changes" comment="Redoing the filesystem">
+      <change afterPath="$PROJECT_DIR$/source/bootloader/include/commands/help.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/bootloader/include/commands/version.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/bootloader/include/version.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/bootloader/src/commands/help.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/bootloader/src/commands/version.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/kernel/include/paging/allocator.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/kernel/include/paging/memory_map.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/kernel/src/paging/allocator.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/kernel/src/paging/memory_map.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/src/boot/sequence.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/boot/sequence.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/src/disc/read.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/disc/read.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/bootloader/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/bootloader/include/shell/execute.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/include/shell/execute.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/bootloader/src/boot/64/enter_kernel.s" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/boot/64/enter_kernel.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/bootloader/src/boot/64/long_mode_available.s" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/boot/64/long_mode_available.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/bootloader/src/shell/command_tree.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/shell/command_tree.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/bootloader/src/shell/shell_entry.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/shell/shell_entry.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/source/kernel/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/include/filesystem/directory_iterator.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/include/filesystem/directory_locate.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/include/filesystem/directory_locate_directory.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/include/filesystem/directory_locate_file.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/include/filesystem/directory_parent.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/include/filesystem/filesystem.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/include/filesystem/filesystem.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/include/filesystem/get_root_directory.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/include/filesystem/init.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/include/util/string/strcpy.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/include/util/string/strcpy.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/include/util/string/strlen.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/include/util/string/strlen.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/src/driver/disc_pio.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/src/driver/disc_pio.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/kernel/include/driver_table/video_driver.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/include/driver_table/video_driver.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/kernel/include/paging/init.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/kernel/src/driver/video_bios.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/src/driver/video_bios.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/source/kernel/src/entry.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/src/entry.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/src/filesystem/directory_locate.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/src/filesystem/directory_parent.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/src/filesystem/get_root_directory.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/src/filesystem/init.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/system/include/defs.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/system/include/defs.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/system/include/sys/asm/out.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/system/include/sys/asm/out.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/system/include/sys/ata/pio.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/system/include/sys/ata/pio.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/kernel/src/paging/alloc.s" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/system/include/sys/halt.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/system/include/sys/halt.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -156,6 +156,7 @@
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;org.rust.cargo.project.model.impl.CargoExternalSystemProjectAware.subscribe.first.balloon&quot;: &quot;&quot;,
+    &quot;org.rust.first.attach.projects.stats&quot;: &quot;true&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
@@ -177,6 +178,11 @@
     </key>
   </component>
   <component name="RunManager" selected="Native Application.Emulate">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Emulate Debug" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" WORKING_DIR="file://$PROJECT_DIR$/build" PASS_PARENT_ENVS_2="true" PROJECT_NAME="pkos" TARGET_NAME="all" CONFIG_NAME="all" version="1" RUN_PATH="$PROJECT_DIR$/build/emulate-gdb.sh">
       <method v="2">
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
@@ -437,6 +443,14 @@
       <workItem from="1711046835860" duration="9490000" />
       <workItem from="1711169782030" duration="2000" />
       <workItem from="1711313307404" duration="486000" />
+      <workItem from="1711471977664" duration="3189000" />
+      <workItem from="1712080090026" duration="127000" />
+      <workItem from="1713280025774" duration="2373000" />
+      <workItem from="1713639619404" duration="56000" />
+      <workItem from="1713894633357" duration="1997000" />
+      <workItem from="1713902295775" duration="2657000" />
+      <workItem from="1713924760457" duration="3996000" />
+      <workItem from="1713979637066" duration="1033000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit for v2">
       <option name="closed" value="true" />
@@ -694,7 +708,15 @@
       <option name="project" value="LOCAL" />
       <updated>1711042877698</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="Redoing the filesystem">
+      <option name="closed" value="true" />
+      <created>1711472715631</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1711472715631</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -707,7 +729,6 @@
     <isAutomaticFoundErrors value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="changed a few things" />
     <MESSAGE value="V4 Initial Commit" />
     <MESSAGE value="Modified makefile for new build system location" />
     <MESSAGE value="Bootloader command line is now working" />
@@ -732,7 +753,8 @@
     <MESSAGE value="A less simple driver" />
     <MESSAGE value="Kernel now maps itself without crashing" />
     <MESSAGE value="Working filesystem kinda" />
-    <option name="LAST_COMMIT_MESSAGE" value="Working filesystem kinda" />
+    <MESSAGE value="Redoing the filesystem" />
+    <option name="LAST_COMMIT_MESSAGE" value="Redoing the filesystem" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
