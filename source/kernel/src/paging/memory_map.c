@@ -3,8 +3,10 @@
 
 #include <paging/memory_map.h>
 
-__SECTION(".memory_map")      memory_map_entry_t memory_map[(0x200 - 4) / sizeof(memory_map_entry_t)];
-__SECTION(".memory_map_size") const uint32_t     memory_map_size;
+#include <sys/halt.h>
+
+__SECTION(".memory_map")      volatile memory_map_entry_t memory_map[(0x200 - 4) / sizeof(memory_map_entry_t)];
+__SECTION(".memory_map_size") volatile const uint32_t     memory_map_size;
 
 primary_memory_region_t get_primary_memory_region() {
     primary_memory_region_t best_region = { .base = 0, .length = 0, };

@@ -24,6 +24,7 @@ KN_OBJS+=$(KN_OD_64)/paging/memory_map.o
 #KN_OBJS+=$(KN_OD_64)/filesystem/init.o
 
 KN_OBJS+=$(KN_OD_64)/entry.o
+KN_OBJS+=$(KN_OD_64)/entry_error.o
 
 $(BIN_DIR)/kernel.bin: $(KN_OBJS) $(KN_SOURCE_DIR)/kernel.ld
 	mkdir -p $(BIN_DIR)
