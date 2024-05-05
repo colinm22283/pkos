@@ -6,7 +6,7 @@
 
 void write_stack(const char * path) {
     if (root_page.root_directory_address != 0) root_page.root_directory_address += FS_ROOT_OFFSET;
-    root_page.first_free = FS_ROOT_OFFSET + page_count;
+    root_page.first_free = FS_ROOT_OFFSET + 1 + page_count;
 
     for (uint64_t i = 0; i < page_count; i++) {
         switch (pages[i].type) {

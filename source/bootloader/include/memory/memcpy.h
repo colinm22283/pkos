@@ -4,4 +4,4 @@
 
 #include <defs.h>
 
-__CDECL void memcpy(void * dst, void * src, uint32_t size);
+__CDECL void memcpy(void * dst, const void * src, uint32_t size);

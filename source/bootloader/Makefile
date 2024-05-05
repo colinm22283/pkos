@@ -56,6 +56,7 @@ OBJS+=$(BL_OD_32)/commands/gtn.o
 OBJS+=$(BL_OD_32)/commands/help.o
 OBJS+=$(BL_OD_32)/commands/version.o
 OBJS+=$(BL_OD_32)/commands/tree.o
+OBJS+=$(BL_OD_32)/commands/cat.o
 
 OBJS+=$(BL_OD_32)/string/strcmp.o
 OBJS+=$(BL_OD_32)/string/strcmpn.o

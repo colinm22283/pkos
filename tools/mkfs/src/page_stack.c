@@ -1,5 +1,6 @@
 #include <stdbool.h>
 #include <stdlib.h>
+#include <memory.h>
 
 #include <page_stack.h>
 
@@ -23,7 +24,7 @@ void page_stack_free() {
 }
 
 filesystem_page_address_t add_fs_page(filesystem_node_page_t * page) {
-    pages[page_count] = *page;
+    memcpy(&pages[page_count], page, sizeof(filesystem_node_page_t));
 
     page_count++;
 
@@ -70,11 +71,9 @@ void add_dir_index_entry_recur(filesystem_page_address_t index_address, filesyst
 }
 
 filesystem_page_address_t add_dir_index_entry(filesystem_page_address_t index_address, filesystem_node_page_t * page) {
-    add_fs_page(page);
+    filesystem_page_address_t page_address = add_fs_page(page);
 
-    filesystem_page_address_t page_address = page_count - 1;
-
-    add_dir_index_entry_recur(index_address, page_count - 1);
+    add_dir_index_entry_recur(index_address, page_address);
 
     return page_address;
 }

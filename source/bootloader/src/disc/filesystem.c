@@ -6,6 +6,8 @@
 #include <string/strcmp.h>
 #include <string/strcmpn.h>
 
+#include <memory/memcpy.h>
+
 #include <console/print.h>
 #include <console/newline.h>
 #include <console/print_dec.h>
@@ -163,4 +165,47 @@ filesystem_directory_entry_type_t directory_iterator_next(directory_iterator_t *
             default: return FS_DET_NONE;
         }
     }
+}
+
+bool file_reader_init(file_reader_t * reader, file_t file) {
+    filesystem_file_node_page_t file_node;
+    if (disc_read48(ATA_PIO_PRIMARY, DISC_READ48_MASTER, file, 1, (void *) &file_node)) {
+        return false;
+    }
+
+    if (disc_read48(ATA_PIO_PRIMARY, DISC_READ48_MASTER, file_node.root_data_address, 1, (void *) &reader->data_page)) {
+        return false;
+    }
+
+    reader->data_address = file_node.root_data_address;
+    reader->data_location = 0;
+
+    return true;
+}
+uint32_t file_reader_read(file_reader_t * reader, char * buffer, uint32_t bytes) {
+    if (reader->data_address == 0) return 0;
+
+    uint32_t read_bytes = 0;
+
+    while (reader->data_address != 0 && bytes > 0) {
+        if (reader->data_location + bytes >= reader->data_page.size) {
+            memcpy(&buffer[read_bytes], &reader->data_page.data[reader->data_location], reader->data_page.size - reader->data_location);
+            read_bytes += reader->data_page.size - reader->data_location;
+            bytes -= reader->data_page.size - reader->data_location;
+            reader->data_location = 0;
+
+            reader->data_address = reader->data_page.next_data_address;
+            if (disc_read48(ATA_PIO_PRIMARY, DISC_READ48_MASTER, reader->data_address, 1, (void *) &reader->data_page)) {
+                return false;
+            }
+        }
+        else {
+            memcpy(&buffer[read_bytes], &reader->data_page.data[reader->data_location], bytes);
+            read_bytes += bytes;
+            reader->data_location += bytes;
+            bytes = 0;
+        }
+    }
+
+    return read_bytes;
 }

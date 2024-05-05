@@ -5,6 +5,7 @@
 #include <disc/reset.h>
 #include <disc/select.h>
 #include <disc/read.h>
+#include <disc/filesystem.h>
 
 #include <sys/ports.h>
 
@@ -17,6 +18,7 @@
 #include <sys/asm/out.h>
 
 #include <memory/memset.h>
+#include <memory/memcpy.h>
 
 bool boot_disc_primary_present;
 bool boot_disc_secondary_present;
@@ -52,13 +54,26 @@ bool boot_disc_init() {
 }
 
 bool boot_disc_load_kernel() {
-    if (disc_read48(
-        io_port,
-        boot_disc_master_selected ? DISC_READ48_MASTER : DISC_READ48_SLAVE,
-        KERNEL_LBA_START,
-        KERNEL_SECTORS,
-        (void *) 0x100000
-    )) return false;
+    directory_t root_directory = open_filesystem(KERNEL_LBA_START);
+    if (root_directory == 0) return false;
+
+    file_t kernel_file = open_file(root_directory, "kernel");
+    if (kernel_file == 0) return false;
+
+    filesystem_file_node_page_t file_page;
+    if (disc_read48(io_port, boot_disc_master_selected ? DISC_READ48_MASTER : DISC_READ48_SLAVE, kernel_file, 1, (void *) &file_page)) return false;
+
+    char * kernel_ptr = (char *) 0x100000;
+    filesystem_page_address_t address = file_page.root_data_address;
+    while (address != 0) {
+        filesystem_file_data_page_t file_data;
+        if (disc_read48(io_port, boot_disc_master_selected ? DISC_READ48_MASTER : DISC_READ48_SLAVE, address, 1, (void *) &file_data)) return false;
+
+        memcpy(kernel_ptr, file_data.data, file_data.size);
+        kernel_ptr += file_data.size;
+
+        address = file_data.next_data_address;
+    }
 
     return true;
 }

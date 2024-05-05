@@ -29,22 +29,18 @@ void add_file(const char * file_path, filesystem_page_address_t parent_address) 
         (filesystem_node_page_t *) &_file_node_page
     );
 
-    filesystem_file_node_page_t * file_node_page = (filesystem_file_node_page_t *) &pages[file_page_address];
-
     filesystem_file_data_page_t _file_data_page = {
         .tag.in_use = true,
         .type = FILESYSTEM_PAGE_TYPE_FILE_DATA,
         .next_data_address = 0,
         .prev_data_address = 0,
-        .parent_file_address= file_page_address,
+        .parent_file_address = file_page_address,
         .size = 0,
     };
 
     filesystem_page_address_t file_data_page_address = add_fs_page((filesystem_node_page_t *) &_file_data_page);
 
-    filesystem_file_data_page_t * file_data_page = (filesystem_file_data_page_t *) &pages[file_data_page_address];
-
-    file_node_page->root_data_address = file_data_page_address;
+    ((filesystem_file_node_page_t *) &pages[file_page_address])->root_data_address = file_data_page_address;
 
     FILE * file = fopen(file_path, "r");
     while (true) {
@@ -53,16 +49,16 @@ void add_file(const char * file_path, filesystem_page_address_t parent_address) 
 
         if (read_bytes == 0) break;
 
-        memcpy(file_data_page->data, buffer, read_bytes);
-        file_data_page->size = read_bytes;
+        memcpy(((filesystem_file_data_page_t *) &pages[file_data_page_address])->data, buffer, read_bytes);
+        ((filesystem_file_data_page_t *) &pages[file_data_page_address])->size = read_bytes;
 
         if (read_bytes != FILESYSTEM_FILE_DATA_PAGE_SIZE) break;
 
         _file_data_page.prev_data_address = file_data_page_address;
         _file_data_page.next_data_address = 0;
+        filesystem_page_address_t old_address = file_data_page_address;
         file_data_page_address = add_fs_page((filesystem_node_page_t *) &_file_data_page);
-        file_data_page->next_data_address = file_data_page_address;
-        file_data_page = (filesystem_file_data_page_t *) &pages[file_data_page_address];
+        ((filesystem_file_data_page_t *) &pages[old_address])->next_data_address = file_data_page_address;
     }
 }
 
@@ -99,6 +95,7 @@ void recur(const char * directory_path, filesystem_page_address_t parent_address
         .parent_directory_address = directory_page_address,
         .prev_index_address = 0,
     };
+
     for (size_t i = 0; i < FILESYSTEM_DIRECTORY_INDEX_CHILDREN_SIZE; i++) directory_index_page.children[i] = 0;
     filesystem_page_address_t index_page_address = add_fs_page((filesystem_node_page_t *) &directory_index_page);
 
@@ -151,20 +148,19 @@ void parse(const char * input_directory_path) {
         .tag.in_use = true,
         .type = FILESYSTEM_PAGE_TYPE_DIRECTORY,
         .parent_directory_address = 0,
-        .directory_index_address = page_count + 1,
     };
     strcpy(directory_node_page.name, directory_name);
-    add_fs_page((filesystem_node_page_t *) &directory_node_page);
-    filesystem_page_address_t directory_page_address = page_count - 1;
+    filesystem_page_address_t directory_page_address = add_fs_page((filesystem_node_page_t *) &directory_node_page);
 
     filesystem_directory_index_page_t directory_index_page = {
         .tag.in_use = true,
         .type = FILESYSTEM_PAGE_TYPE_DIRECTORY_INDEX,
-        .parent_directory_address = page_count,
+        .parent_directory_address = directory_page_address,
         .prev_index_address = 0,
     };
     for (size_t i = 0; i < FILESYSTEM_DIRECTORY_INDEX_CHILDREN_SIZE; i++) directory_index_page.children[i] = 0;
-    add_fs_page((filesystem_node_page_t *) &directory_index_page);
+
+    ((filesystem_directory_node_page_t *) &pages[directory_page_address])->directory_index_address = add_fs_page((filesystem_node_page_t *) &directory_index_page);
 
     DIR * dir = opendir(input_directory_path);
     if (dir == NULL) exit(3);
@@ -174,7 +170,7 @@ void parse(const char * input_directory_path) {
         if (
             strcmp(entry->d_name, ".") == 0 ||
             strcmp(entry->d_name, "..") == 0
-            ) continue;
+        ) continue;
 
         char new_path_buf[PATH_MAX];
         size_t path_len = strlen(input_directory_path);

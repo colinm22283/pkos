@@ -4,7 +4,7 @@ OBJS=main.o page_stack.o write.o parse.o
 OBJ_DIRS=$(foreach OBJ, $(OBJS), build/obj/$(OBJ))
 
 CC=gcc
-CFLAGS=-O3 -c
+CFLAGS=-O2 -c
 
 LD=ld
 LDFLAGS=-lc

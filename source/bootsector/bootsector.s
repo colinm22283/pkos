@@ -31,8 +31,8 @@ bootloader16_entry:
     jc  bios_extensions_not_found
 
     # load the bootloader into memory
-    mov $0x42,                 %ah
-    mov $0x80,                 %dl
+    mov $0x42,               %ah
+    mov $0x80,               %dl
     mov $extended_read_data, %si
     int $0x13
     jc  bootloader_load_error

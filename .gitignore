@@ -3,3 +3,4 @@
 /build/*
 !/build/*.sh
 !/build/.gdbinit
+tools/*/build/*

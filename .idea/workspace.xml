@@ -29,10 +29,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6121c507-c3db-4645-9343-74e78b57e4ca" name="Changes" comment="Working filesystem in the bootloader">
+      <change afterPath="$PROJECT_DIR$/source/bootloader/include/commands/cat.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/bootloader/src/commands/cat.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/src/commands/tree.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/commands/tree.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/make/filesystem.mk" beforeDir="false" afterPath="$PROJECT_DIR$/make/filesystem.mk" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/bootloader/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/bootloader/bootloader.ld" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/bootloader.ld" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/bootloader/include/disc/filesystem.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/include/disc/filesystem.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/bootloader/include/memory/memcpy.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/include/memory/memcpy.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/bootloader/src/boot/disc.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/boot/disc.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/bootloader/src/disc/filesystem.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/disc/filesystem.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/bootloader/src/shell/command_tree.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/shell/command_tree.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/source/bootsector/bootsector.s" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootsector/bootsector.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/kernel/src/entry.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/src/entry.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/mkfs/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/tools/mkfs/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/mkfs/src/page_stack.c" beforeDir="false" afterPath="$PROJECT_DIR$/tools/mkfs/src/page_stack.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tools/mkfs/src/parse.c" beforeDir="false" afterPath="$PROJECT_DIR$/tools/mkfs/src/parse.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/mkfs/src/write.c" beforeDir="false" afterPath="$PROJECT_DIR$/tools/mkfs/src/write.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -453,6 +466,8 @@
       <workItem from="1714706368027" duration="1828000" />
       <workItem from="1714753099332" duration="28772000" />
       <workItem from="1714889173418" duration="650000" />
+      <workItem from="1714896412184" duration="5779000" />
+      <workItem from="1714939251972" duration="2013000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit for v2">
       <option name="closed" value="true" />

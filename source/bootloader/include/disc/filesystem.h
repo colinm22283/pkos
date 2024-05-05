@@ -116,6 +116,11 @@ typedef struct {
 typedef enum { FS_DET_NONE, FS_DET_FILE, FS_DET_DIRECTORY } filesystem_directory_entry_type_t;
 
 typedef filesystem_page_address_t file_t;
+typedef struct {
+    filesystem_file_data_page_t data_page;
+    filesystem_page_address_t data_address;
+    uint16_t data_location;
+} file_reader_t;
 
 directory_t open_filesystem(filesystem_page_address_t root_address);
 directory_t open_directory(directory_t parent, const char * directory_name);
@@ -126,3 +131,6 @@ bool get_file_name(file_t file, char * buffer);
 
 bool directory_iterator_init(directory_iterator_t * iterator, directory_t directory);
 filesystem_directory_entry_type_t directory_iterator_next(directory_iterator_t * iterator, filesystem_page_address_t * handle);
+
+bool file_reader_init(file_reader_t * reader, file_t file);
+uint32_t file_reader_read(file_reader_t * reader, char * buffer, uint32_t bytes);
