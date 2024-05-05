@@ -20,7 +20,7 @@ void add_file(const char * file_path, filesystem_page_address_t parent_address) 
 
     filesystem_file_node_page_t _file_node_page = {
         .tag.in_use = true,
-        .type = FILESYSTEM_PAGE_TYPE_DIRECTORY,
+        .type = FILESYSTEM_PAGE_TYPE_FILE,
         .parent_directory_address = parent_address,
     };
     strcpy(_file_node_page.name, file_name);

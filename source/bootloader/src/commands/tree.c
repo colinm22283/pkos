@@ -1,5 +1,3 @@
-#pragma once
-
 #include <commands/tree.h>
 
 #include <disc/filesystem.h>
@@ -23,7 +21,7 @@ void recur(directory_t directory, uint8_t indent) {
             get_file_name(address, name_buffer);
 
             for (uint8_t i = 0; i < indent; i++) console_put(' ');
-//            console_print("<FILE> ");
+            console_print("<FILE> ");
             console_print(name_buffer);
             console_newline();
         }
@@ -32,7 +30,7 @@ void recur(directory_t directory, uint8_t indent) {
             get_directory_name(address, name_buffer);
 
             for (uint8_t i = 0; i < indent; i++) console_put(' ');
-//            console_print("<DIR>  ");
+            console_print("<DIR>  ");
             console_print(name_buffer);
             console_newline();
 
@@ -49,7 +47,7 @@ __CDECL uint32_t command_tree(__UNUSED uint32_t argc, __UNUSED const char ** arg
         return 1;
     }
 
-    console_print("/\n");
+    console_print("<DIR>  /\n");
 
     recur(root_directory, 2);
 
