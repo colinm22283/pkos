@@ -35,7 +35,7 @@ strcmp:
 
     .exit_loop:
 
-    sub  %ah,    %al
+    sub %ah, %al
     xor %ah, %ah
 
     .return:

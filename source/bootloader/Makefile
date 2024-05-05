@@ -55,8 +55,10 @@ OBJS+=$(BL_OD_32)/commands/lsmem.o
 OBJS+=$(BL_OD_32)/commands/gtn.o
 OBJS+=$(BL_OD_32)/commands/help.o
 OBJS+=$(BL_OD_32)/commands/version.o
+OBJS+=$(BL_OD_32)/commands/tree.o
 
 OBJS+=$(BL_OD_32)/string/strcmp.o
+OBJS+=$(BL_OD_32)/string/strcmpn.o
 OBJS+=$(BL_OD_32)/string/strlen.o
 OBJS+=$(BL_OD_32)/string/stoi.o
 
@@ -79,6 +81,7 @@ OBJS+=$(BL_OD_32)/disc/reset.o
 OBJS+=$(BL_OD_32)/disc/detect.o
 OBJS+=$(BL_OD_32)/disc/select.o
 OBJS+=$(BL_OD_32)/disc/read.o
+OBJS+=$(BL_OD_32)/disc/filesystem.o
 
 OBJS+=$(BL_OD_32)/boot/sequence.o
 OBJS+=$(BL_OD_32)/boot/disc.o
@@ -91,6 +94,6 @@ OPTIMIZATION=s
 $(BIN_DIR)/bootloader.bin: $(OBJS) $(BL_SOURCE_DIR)/bootloader.ld
 	mkdir -p $(BIN_DIR)
 	$(LD32) $(LDFLAGS) -T$(BL_SOURCE_DIR)/bootloader.ld $(OBJS) -o $@ -Map=$@.map
-	truncate $@ -s 12288
+	truncate $@ -s 32256
 
 include $(MAKE_SCRIPTS)

@@ -12,6 +12,7 @@
   <component name="CMakeRunConfigurationManager">
     <generated>
       <config projectName="pkos" targetName="Makefile" />
+      <config projectName="pkos" targetName="mkfs" />
       <config projectName="pkos" targetName="rebuild" />
       <config projectName="pkos" targetName="bootloader" />
       <config projectName="pkos" targetName="kernel" />
@@ -27,8 +28,37 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6121c507-c3db-4645-9343-74e78b57e4ca" name="Changes" comment="More redoing of filesystem and kernel stuff">
+    <list default="true" id="6121c507-c3db-4645-9343-74e78b57e4ca" name="Changes" comment="Fixed memory map stuff">
+      <change afterPath="$PROJECT_DIR$/make/filesystem.mk" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/bootloader/include/commands/tree.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/bootloader/include/disc/filesystem.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/bootloader/include/string/strcmpn.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/bootloader/src/commands/tree.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/bootloader/src/disc/filesystem.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/bootloader/src/string/strcmpn.s" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tools/mkfs/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tools/mkfs/docs/spec.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tools/mkfs/include/config.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tools/mkfs/include/defs.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tools/mkfs/include/filesystem.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tools/mkfs/include/page_stack.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tools/mkfs/include/parse.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tools/mkfs/include/write.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tools/mkfs/src/main.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tools/mkfs/src/page_stack.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tools/mkfs/src/parse.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tools/mkfs/src/write.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tools/mkfs/test_fs/boot/kernel" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tools/mkfs/test_fs/root_file" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/make/image.mk" beforeDir="false" afterPath="$PROJECT_DIR$/make/image.mk" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/bootloader/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/bootloader/include/boot/kernel.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/include/boot/kernel.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/bootloader/include/shell/command_tree.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/include/shell/command_tree.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/bootloader/src/shell/command_tree.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/shell/command_tree.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/bootloader/src/string/strcmp.s" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/string/strcmp.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/kernel/src/entry.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/src/entry.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,7 +127,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="OCResolveContextSettings">
-    <option name="configuration" value="$PROJECT_DIR$/source/kernel/src/entry.c" />
+    <option name="configuration" value="$PROJECT_DIR$/source/bootloader/src/disc/filesystem.c" />
   </component>
   <component name="ProjectApplicationVersion">
     <option name="ide" value="CLion" />
@@ -113,39 +143,40 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Native Application.Emulate Debug.executor&quot;: &quot;Run&quot;,
-    &quot;Native Application.Emulate.executor&quot;: &quot;Run&quot;,
-    &quot;Native Application.linecount.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
-    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;v4&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/colin/projects/pkos/source/kernel/include/util/string&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;org.rust.cargo.project.model.impl.CargoExternalSystemProjectAware.subscribe.first.balloon&quot;: &quot;&quot;,
-    &quot;org.rust.first.attach.projects.stats&quot;: &quot;true&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Native Application.Emulate Debug.executor": "Run",
+    "Native Application.Emulate.executor": "Run",
+    "Native Application.linecount.executor": "Run",
+    "Native Application.mkfs.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "git-widget-placeholder": "v4",
+    "last_opened_file_path": "/home/colin/projects/pkos/build/bin/root/test_folder",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "org.rust.cargo.project.model.impl.CargoExternalSystemProjectAware.subscribe.first.balloon": "",
+    "org.rust.first.attach.projects.stats": "true",
+    "settings.editor.selected.configurable": "MakefileSettings",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/build/bin/root/test_folder" />
+      <recent name="$PROJECT_DIR$/source/bootloader/include/disc" />
+      <recent name="$PROJECT_DIR$/tools/mkfs/include" />
       <recent name="$PROJECT_DIR$/source/kernel/include/util/string" />
       <recent name="$PROJECT_DIR$/source/kernel/include" />
-      <recent name="$PROJECT_DIR$/source/kernel/src" />
-      <recent name="$PROJECT_DIR$/source/bootloader/src" />
-      <recent name="$PROJECT_DIR$/source/bootsector" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/source/kernel/include/util" />
@@ -156,6 +187,11 @@
     </key>
   </component>
   <component name="RunManager" selected="Native Application.Emulate">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Emulate Debug" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" WORKING_DIR="file://$PROJECT_DIR$/build" PASS_PARENT_ENVS_2="true" PROJECT_NAME="pkos" TARGET_NAME="all" CONFIG_NAME="all" version="1" RUN_PATH="$PROJECT_DIR$/build/emulate-gdb.sh">
       <method v="2">
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
@@ -282,6 +318,11 @@
       </method>
     </configuration>
     <configuration name="linecount" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="pkos" TARGET_NAME="linecount" CONFIG_NAME="linecount" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="mkfs" type="CLionNativeAppRunConfigurationType" PROGRAM_PARAMS="./test_fs build/fs.bin" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" WORKING_DIR="file://$PROJECT_DIR$/tools/mkfs" PASS_PARENT_ENVS_2="true" PROJECT_NAME="pkos" TARGET_NAME="mkfs" CONFIG_NAME="mkfs" version="1" RUN_PATH="$PROJECT_DIR$/tools/mkfs/build/mkfs">
       <method v="2">
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
       </method>
@@ -307,6 +348,7 @@
       <item itemvalue="Native Application.image" />
       <item itemvalue="Native Application.kernel" />
       <item itemvalue="Native Application.linecount" />
+      <item itemvalue="Native Application.mkfs" />
       <item itemvalue="Native Application.rebuild" />
     </list>
   </component>
@@ -431,6 +473,11 @@
       <workItem from="1714541337395" duration="2188000" />
       <workItem from="1714588939365" duration="48000" />
       <workItem from="1714592247894" duration="7000" />
+      <workItem from="1714594097548" duration="3020000" />
+      <workItem from="1714663792233" duration="4000" />
+      <workItem from="1714670920195" duration="175000" />
+      <workItem from="1714706368027" duration="1828000" />
+      <workItem from="1714753099332" duration="28574000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit for v2">
       <option name="closed" value="true" />
@@ -704,7 +751,15 @@
       <option name="project" value="LOCAL" />
       <updated>1714069334372</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="Fixed memory map stuff">
+      <option name="closed" value="true" />
+      <created>1714611668207</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1714611668207</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -717,7 +772,6 @@
     <isAutomaticFoundErrors value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Modified makefile for new build system location" />
     <MESSAGE value="Bootloader command line is now working" />
     <MESSAGE value="Exit codes!" />
     <MESSAGE value="Added more commands" />
@@ -742,7 +796,8 @@
     <MESSAGE value="Working filesystem kinda" />
     <MESSAGE value="Redoing the filesystem" />
     <MESSAGE value="More redoing of filesystem and kernel stuff" />
-    <option name="LAST_COMMIT_MESSAGE" value="More redoing of filesystem and kernel stuff" />
+    <MESSAGE value="Fixed memory map stuff" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed memory map stuff" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

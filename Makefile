@@ -26,6 +26,7 @@ export BUILD_DIR=$(CURDIR)/build
 export BIN_DIR=$(BUILD_DIR)/bin
 export OBJ_DIR=$(BUILD_DIR)/obj
 export SOURCE_DIR=$(CURDIR)/source
+export TOOLS_DIR=$(CURDIR)/tools
 
 export MAKE_DIR=$(CURDIR)/make
 export MAKE_SCRIPTS=$(MAKE_DIR)/targets16.mk $(MAKE_DIR)/targets32.mk $(MAKE_DIR)/targets64.mk
@@ -36,7 +37,7 @@ export LDFLAGS=$(foreach d, $(LDSCRIPTS), -T$d)
 export INCLUDE_DIRS=$(SOURCE_DIR)/system/include
 
 .PHONY: all
-all: $(BUILD_DIR)/pkos.img
+all: $(BUILD_DIR)/pkos.img mkfs
 
 .PHONY: clean
 clean:
@@ -44,12 +45,15 @@ clean:
 	rm -rf $(BIN_DIR)
 	rm -f $(BUILD_DIR)/*.img
 
+	cd tools/mkfs && $(MAKE) clean
+
 .PHONY: rebuild
 rebuild:
 	make clean
 	make all
 
 include make/image.mk
+include make/filesystem.mk
 include $(MAKE_SCRIPTS)
 
 .PHONY: kernel
@@ -76,3 +80,7 @@ $(BIN_DIR)/bootsector.bin:
 .PHONY: linecount
 linecount:
 	sh $(MAKE_DIR)/linecount.sh
+
+.PHONY: mkfs
+mkfs:
+	cd $(TOOLS_DIR)/mkfs && $(MAKE)
