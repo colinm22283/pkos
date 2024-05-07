@@ -1,7 +1,7 @@
 #include <driver/video_bios.h>
 
 #define MODE_COUNT (1)
-driver_table_video_mode_t driver_modes[MODE_COUNT] = {
+const driver_table_video_mode_t driver_modes[MODE_COUNT] = {
     {
         .width = 320,
         .height = 200,
@@ -36,10 +36,10 @@ void draw_pixel(uint32_t x, uint32_t y) {
     video_memory[y * driver_modes[0].width + x] = current_color;
 }
 void draw_rect(uint32_t x, uint32_t y, uint32_t w, uint32_t h) {
-    uint8_t * top_memory = video_memory;
-    uint8_t * bottom_memory = video_memory + (w * h) - w;
-    uint8_t * left_memory = video_memory + w;
-    uint8_t * right_memory = video_memory + (2 * w) - 1;
+    uint8_t * top_memory = video_memory + x + (y * driver_modes[0].width);
+    uint8_t * bottom_memory = video_memory + x + (y * driver_modes[0].width) + ((h - 1) * driver_modes[0].width);
+    uint8_t * left_memory = video_memory + x + ((y + 1) * driver_modes[0].width);
+    uint8_t * right_memory = video_memory + x + ((y + 1) * driver_modes[0].width) + w - 1;
 
     for (uint32_t i = 0; i < w; i++) {
         *top_memory = current_color;
@@ -50,13 +50,17 @@ void draw_rect(uint32_t x, uint32_t y, uint32_t w, uint32_t h) {
     for (uint32_t i = 2; i < h; i++) {
         *left_memory = current_color;
         *right_memory = current_color;
-        left_memory += w;
-        right_memory += w;
+        left_memory += driver_modes[0].width;
+        right_memory += driver_modes[0].width;
     }
 }
 void fill_rect(uint32_t x, uint32_t y, uint32_t w, uint32_t h) {
-    for (uint32_t i = 0; i < w * h; i++) {
-        video_memory[i] = current_color;
+    uint8_t * video_ptr = video_memory + x + (y * driver_modes[0].width);
+    for (uint32_t _y = 0; _y < h; _y++) {
+        for (uint32_t _x = 0; _x < w; _x++) {
+            *(video_ptr++) = current_color;
+        }
+        video_ptr += driver_modes[0].width - w;
     }
 }
 void draw_image(const void * _image, uint32_t x, uint32_t y, uint32_t w, uint32_t h) {

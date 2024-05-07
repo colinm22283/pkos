@@ -21,7 +21,7 @@ KN_OBJS+=$(KN_OD_64)/paging/map_kernel.o
 KN_OBJS+=$(KN_OD_64)/paging/allocator.o
 KN_OBJS+=$(KN_OD_64)/paging/memory_map.o
 
-#KN_OBJS+=$(KN_OD_64)/filesystem/init.o
+KN_OBJS+=$(KN_OD_64)/filesystem/filesystem.o
 
 KN_OBJS+=$(KN_OD_64)/entry.o
 KN_OBJS+=$(KN_OD_64)/entry_error.o

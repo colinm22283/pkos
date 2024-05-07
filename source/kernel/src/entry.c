@@ -68,5 +68,20 @@ __NORETURN __SECTION(".kernel_entry") void kernel_entry() {
     driver_table.disc.stop();
     driver_table.video.stop();
 
+    char image[36];
+    directory_t root = open_filesystem(FILESYSTEM_ROOT_ADDRESS);
+    directory_t folder1 = open_directory(root, "test_folder");
+    directory_t folder2 = open_directory(folder1, "folder_2");
+    file_t image_file = open_file(folder2, "test_image");
+
+    file_reader_t file_reader;
+    file_reader_init(&file_reader, image_file);
+    file_reader_read(&file_reader, image, 36);
+
+    color = 5;
+    driver_table.video.set_color(&color);
+    driver_table.video.draw_rect(9, 9, 8, 8);
+    driver_table.video.draw_image(image, 10, 10, 6, 6);
+
     halt();
 }
