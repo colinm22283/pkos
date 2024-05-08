@@ -2,7 +2,7 @@ DISC_SIZE=32256
 
 export FILESYSTEM_ROOT=$(BIN_DIR)/root
 
-$(BIN_DIR)/filesystem.bin: mkfs $(BIN_DIR)/kernel.bin
+$(BIN_DIR)/filesystem.bin: mkfs kernel drivers
 	mkdir -p $(FILESYSTEM_ROOT)
 
 	mkdir -p $(FILESYSTEM_ROOT)/boot

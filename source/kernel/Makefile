@@ -25,7 +25,7 @@ KN_OBJS+=$(KN_OD_64)/filesystem/filesystem.o
 KN_OBJS+=$(KN_OD_64)/entry.o
 KN_OBJS+=$(KN_OD_64)/entry_error.o
 
-$(BIN_DIR)/kernel.bin: $(KN_OBJS) $(KN_SOURCE_DIR)/kernel.ld drivers
+$(BIN_DIR)/kernel.bin: $(KN_OBJS) $(KN_SOURCE_DIR)/kernel.ld
 	mkdir -p $(BIN_DIR)
 	$(LD64) $(LDFLAGS) -T$(KN_SOURCE_DIR)/kernel.ld $(KN_OBJS) -o $@ -Map=$@.map
 

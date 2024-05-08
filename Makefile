@@ -38,7 +38,7 @@ export LDFLAGS=$(foreach d, $(LDSCRIPTS), -T$d)
 export INCLUDE_DIRS=$(SOURCE_DIR)/system/include
 
 .PHONY: all
-all: $(BUILD_DIR)/pkos.img mkfs
+all: $(BUILD_DIR)/pkos.img
 
 .PHONY: clean
 clean:
@@ -77,6 +77,10 @@ $(BIN_DIR)/bootloader.bin:
 .PHONY: $(BIN_DIR)/bootsector.bin
 $(BIN_DIR)/bootsector.bin:
 	cd source/bootsector && $(MAKE)
+
+.PHONY: drivers
+drivers:
+	cd source/kernel && $(MAKE) drivers
 
 .PHONY: linecount
 linecount:

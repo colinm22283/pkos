@@ -35,7 +35,7 @@ __NORETURN __SECTION(".kernel_entry") void kernel_entry() {
     driver_table.disc.select_device(0);
 
     driver_handle_t handle;
-    if (!load_driver(&handle, "boot/driver/disc_pio.drv")) halt();
+    if (!load_driver(&handle, "boot/driver/video_bios.drv")) halt();
 
     driver_video_set_mode(0);
 

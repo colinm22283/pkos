@@ -1,7 +1,12 @@
 DRIVER_SOURCE_DIR=$(CURDIR)/src
 DRIVER_OD_64=$(OBJ_DIR)/64/kernel/drivers/$(DRIVER_NAME)/src
 
-DRIVER_OBJS=$(DRIVER_OD_64)/main.o $(DRIVER_OD_64)/modes.o $(DRIVER_OD_64)/rect.o $(DRIVER_OD_64)/bitmap.o $(DRIVER_OD_64)/image.o $(DRIVER_OD_64)/pixel.o
+DRIVER_OBJS+=$(DRIVER_OD_64)/main.o
+DRIVER_OBJS+=$(DRIVER_OD_64)/modes.o
+DRIVER_OBJS+=$(DRIVER_OD_64)/rect.o
+DRIVER_OBJS+=$(DRIVER_OD_64)/bitmap.o
+DRIVER_OBJS+=$(DRIVER_OD_64)/image.o
+DRIVER_OBJS+=$(DRIVER_OD_64)/pixel.o
 
 
 INCLUDE_DIRS+=$(CURDIR)/include
