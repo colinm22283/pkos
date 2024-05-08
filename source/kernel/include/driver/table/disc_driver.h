@@ -1,9 +1,11 @@
 #pragma once
 
-#include <stdint.h>
-#include <stdbool.h>
+#include "../../../../../../../../../opt/cross64/lib/gcc/x86_64-elf/14.0.1/include/stdint.h"
+#include "../../../../../../../../../opt/cross64/lib/gcc/x86_64-elf/14.0.1/include/stdbool.h"
 
 typedef struct {
+    void * allocation;
+
     bool (* start)(void);
     bool (* stop)(void);
 

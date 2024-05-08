@@ -57,22 +57,19 @@ bool boot_disc_load_kernel() {
     directory_t root_directory = open_filesystem(KERNEL_LBA_START);
     if (root_directory == 0) return false;
 
-    file_t kernel_file = open_file(root_directory, "kernel");
+    directory_t boot_directory = open_directory(root_directory, "boot");
+    if (boot_directory == 0) return false;
+
+    file_t kernel_file = open_file(boot_directory, "kernel");
     if (kernel_file == 0) return false;
 
-    filesystem_file_node_page_t file_page;
-    if (disc_read48(io_port, boot_disc_master_selected ? DISC_READ48_MASTER : DISC_READ48_SLAVE, kernel_file, 1, (void *) &file_page)) return false;
+    file_reader_t reader;
+    if (!file_reader_init(&reader, kernel_file)) return false;
 
-    char * kernel_ptr = (char *) 0x100000;
-    filesystem_page_address_t address = file_page.root_data_address;
-    while (address != 0) {
-        filesystem_file_data_page_t file_data;
-        if (disc_read48(io_port, boot_disc_master_selected ? DISC_READ48_MASTER : DISC_READ48_SLAVE, address, 1, (void *) &file_data)) return false;
-
-        memcpy(kernel_ptr, file_data.data, file_data.size);
-        kernel_ptr += file_data.size;
-
-        address = file_data.next_data_address;
+    char * kernel_ptr = (char *) 0x100000; // TODO: make sure this is free
+    uint64_t read_bytes;
+    while ((read_bytes = file_reader_read(&reader, kernel_ptr, FILESYSTEM_FILE_DATA_PAGE_SIZE))) {
+        kernel_ptr += read_bytes;
     }
 
     return true;

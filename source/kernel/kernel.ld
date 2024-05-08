@@ -19,7 +19,7 @@ SECTIONS {
 
     .stack . (NOLOAD) : {
         _stack_base = .;
-        . += 1024;
+        . += 4096;
         . = ALIGN(8);
         _stack_top = .;
     } > kernel_memory
@@ -27,8 +27,4 @@ SECTIONS {
     .allocation_space . (NOLOAD) : {
         *(.allocation_space);
     }
-
-    .filesystem . : AT(0x10000) {
-        *(.filesystem);
-    } > kernel_memory
 }

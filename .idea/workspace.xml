@@ -28,15 +28,47 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6121c507-c3db-4645-9343-74e78b57e4ca" name="Changes" comment="Updated cat command behaviour">
-      <change afterPath="$PROJECT_DIR$/source/kernel/src/filesystem/filesystem.c" afterDir="false" />
+    <list default="true" id="6121c507-c3db-4645-9343-74e78b57e4ca" name="Changes" comment="Loaded an image from the filesystem">
+      <change afterPath="$PROJECT_DIR$/source/kernel/drivers/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/kernel/drivers/disc_pio/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/kernel/drivers/disc_pio/include/bitmap.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/kernel/drivers/disc_pio/include/image.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/kernel/drivers/disc_pio/include/main.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/kernel/drivers/disc_pio/include/modes.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/kernel/drivers/disc_pio/include/pixel.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/kernel/drivers/disc_pio/include/rect.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/kernel/drivers/disc_pio/src/bitmap.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/kernel/drivers/disc_pio/src/image.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/kernel/drivers/disc_pio/src/main.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/kernel/drivers/disc_pio/src/modes.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/kernel/drivers/disc_pio/src/pixel.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/kernel/drivers/disc_pio/src/rect.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/kernel/drivers/driver.ld" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/kernel/include/driver/driver.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/kernel/include/driver/driver_interface.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/kernel/include/driver/driver_vector_table.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/kernel/src/driver/driver.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/kernel/src/driver/driver_interface.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/objdump64.sh" beforeDir="false" afterPath="$PROJECT_DIR$/build/objdump64.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/make/filesystem.mk" beforeDir="false" afterPath="$PROJECT_DIR$/make/filesystem.mk" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/bootloader/src/boot/disc.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/boot/disc.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/source/kernel/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/kernel/include/driver/disc_pio.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/include/driver/disc_pio.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/kernel/include/driver/video_bios.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/kernel/include/driver_table/disc_driver.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/include/driver/table/disc_driver.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/kernel/include/driver_table/driver_table.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/include/driver/table/driver_table.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/kernel/include/driver_table/video_driver.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/include/driver/table/video_driver.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/source/kernel/include/filesystem/filesystem.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/include/filesystem/filesystem.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/include/util/string/strcmpn.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/include/util/string/strcmpn.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/src/driver/video_bios.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/src/driver/video_bios.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/kernel/include/util/memory/memcpy.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/include/util/memory/memcpy.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/kernel/kernel.ld" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/kernel.ld" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/kernel/src/driver/video_bios.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/kernel/src/driver_table/driver_table.c" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/source/kernel/src/entry.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/src/entry.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/kernel/src/entry_error.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/src/entry_error.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/kernel/src/filesystem/filesystem.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/src/filesystem/filesystem.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/kernel/src/util/string/strcpy.s" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/src/util/string/strcpy.s" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -157,11 +189,11 @@
       <recent name="$PROJECT_DIR$/source/kernel/include/util/string" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/source/kernel/include/driver/table" />
+      <recent name="$PROJECT_DIR$/source/kernel/include/driver" />
       <recent name="$PROJECT_DIR$/source/kernel/include/util" />
       <recent name="$PROJECT_DIR$/source/kernel/src/util" />
       <recent name="$PROJECT_DIR$/source/bootloader/src/boot/64" />
-      <recent name="$PROJECT_DIR$/source/bootloader/include/keyboard" />
-      <recent name="$PROJECT_DIR$/source/kernel/include/driver_table" />
     </key>
   </component>
   <component name="RunManager" selected="Native Application.Emulate">
@@ -460,7 +492,7 @@
       <workItem from="1714896412184" duration="5779000" />
       <workItem from="1714939251972" duration="2626000" />
       <workItem from="1714954945491" duration="1106000" />
-      <workItem from="1715099230019" duration="2233000" />
+      <workItem from="1715099230019" duration="18263000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit for v2">
       <option name="closed" value="true" />
@@ -766,7 +798,15 @@
       <option name="project" value="LOCAL" />
       <updated>1714941874660</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="Loaded an image from the filesystem">
+      <option name="closed" value="true" />
+      <created>1715115697467</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1715115697467</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -779,7 +819,6 @@
     <isAutomaticFoundErrors value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Modified the LUT" />
     <MESSAGE value="Cool stuff" />
     <MESSAGE value="Added a fibonacci command and fixed some bugs" />
     <MESSAGE value="Calc command added" />
@@ -804,7 +843,8 @@
     <MESSAGE value="Working filesystem in the bootloader" />
     <MESSAGE value="Now loading the kernel from the fs" />
     <MESSAGE value="Updated cat command behaviour" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated cat command behaviour" />
+    <MESSAGE value="Loaded an image from the filesystem" />
+    <option name="LAST_COMMIT_MESSAGE" value="Loaded an image from the filesystem" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

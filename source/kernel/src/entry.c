@@ -3,7 +3,9 @@
 #include <sys/halt.h>
 
 #include <driver/disc_pio.h>
-#include <driver/video_bios.h>
+#include <driver/driver_interface.h>
+#include <driver/driver_vector_table.h>
+#include <driver/driver.h>
 
 #include <paging/map_kernel.h>
 #include <paging/allocator.h>
@@ -24,9 +26,6 @@ __NORETURN __SECTION(".kernel_entry") void kernel_entry() {
     driver_disc_pio_load(&driver_table);
     driver_table.disc.start();
 
-    driver_video_bios_load(&driver_table);
-    driver_table.video.start();
-
     paging_map_kernel();
     if (!page_allocator_init()) {
         kernel_entry_error(1);
@@ -35,53 +34,32 @@ __NORETURN __SECTION(".kernel_entry") void kernel_entry() {
 //    uint16_t device_count = driver_table.disc.device_count();
     driver_table.disc.select_device(0);
 
-    driver_table_video_mode_t * video_modes = driver_table.video.get_modes();
-//    uint32_t video_modes_count = driver_table.video.mode_count();
-    driver_table.video.set_mode(0);
+    driver_handle_t handle;
+    if (!load_driver(&handle, "boot/driver/disc_pio.drv")) halt();
 
-    uint8_t color = 2;
-    driver_table.video.set_color(&color);
+    driver_video_set_mode(0);
 
-    driver_table.video.fill_rect(0, 0, video_modes[0].width, video_modes[0].height);
+    uint8_t color = 1;
+    driver_video_set_color(&color);
+
+    driver_video_fill_rect(10, 10, 50, 50);
 
     uint8_t smile[] = {
         0b00000000,
         0b01000100,
         0b01000100,
         0b00000000,
-        0b10000001,
-        0b01000010,
-        0b00111100,
+        0b10000010,
+        0b01000100,
+        0b00111000,
         0b00000000,
     };
 
-    color = 5;
-    for (uint32_t i = 0; i < video_modes[0].width; i += 8) {
-        for (uint32_t j = 0; j < video_modes[0].height; j += 8) {
-            driver_table.video.set_color(&color);
-            driver_table.video.draw_bitmap_transparent(smile, i, j, 8, 8);
-
-            color++;
-        }
-    }
+    color = 2;
+    driver_video_set_color(&color);
+    driver_video_draw_bitmap_transparent(smile, 20, 20, 8, 8);
 
     driver_table.disc.stop();
-    driver_table.video.stop();
-
-    char image[36];
-    directory_t root = open_filesystem(FILESYSTEM_ROOT_ADDRESS);
-    directory_t folder1 = open_directory(root, "test_folder");
-    directory_t folder2 = open_directory(folder1, "folder_2");
-    file_t image_file = open_file(folder2, "test_image");
-
-    file_reader_t file_reader;
-    file_reader_init(&file_reader, image_file);
-    file_reader_read(&file_reader, image, 36);
-
-    color = 5;
-    driver_table.video.set_color(&color);
-    driver_table.video.draw_rect(9, 9, 8, 8);
-    driver_table.video.draw_image(image, 10, 10, 6, 6);
 
     halt();
 }

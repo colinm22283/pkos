@@ -125,6 +125,7 @@ typedef struct {
 directory_t open_filesystem(filesystem_page_address_t root_address);
 directory_t open_directory(directory_t parent, const char * directory_name);
 file_t open_file(directory_t parent, const char * directory_name);
+file_t open_file_path(directory_t root, const char * path);
 
 bool get_directory_name(directory_t file, char * buffer);
 bool get_file_name(file_t file, char * buffer);
