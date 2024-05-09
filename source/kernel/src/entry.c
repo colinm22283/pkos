@@ -44,16 +44,11 @@ __NORETURN __SECTION(".kernel_entry") void kernel_entry() {
 
     driver_video_fill_rect(10, 10, 50, 50);
 
-    uint8_t smile[] = {
-        0b00000000,
-        0b01000100,
-        0b01000100,
-        0b00000000,
-        0b10000010,
-        0b01000100,
-        0b00111000,
-        0b00000000,
-    };
+    uint8_t smile[8];
+    file_t smile_file = open_file_path(open_filesystem(FILESYSTEM_ROOT_ADDRESS), "home/smile.bmp");
+    file_reader_t reader;
+    file_reader_init(&reader, smile_file);
+    file_reader_read(&reader, (char *) smile, 8);
 
     color = 2;
     driver_video_set_color(&color);

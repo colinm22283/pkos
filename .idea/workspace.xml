@@ -20,6 +20,7 @@
       <config projectName="pkos" targetName="image" />
       <config projectName="pkos" targetName="all" />
       <config projectName="pkos" targetName="bootsector" />
+      <config projectName="pkos" targetName="drivers" />
     </generated>
   </component>
   <component name="CMakeSettings">
@@ -28,26 +29,10 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6121c507-c3db-4645-9343-74e78b57e4ca" name="Changes" comment="This too">
+    <list default="true" id="6121c507-c3db-4645-9343-74e78b57e4ca" name="Changes" comment="Makefile changes and driver renamed">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/make/filesystem.mk" beforeDir="false" afterPath="$PROJECT_DIR$/make/filesystem.mk" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/drivers/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/drivers/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/drivers/disc_pio/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/drivers/video_bios/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/drivers/disc_pio/include/bitmap.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/drivers/video_bios/include/bitmap.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/drivers/disc_pio/include/image.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/drivers/video_bios/include/image.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/drivers/disc_pio/include/main.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/drivers/video_bios/include/main.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/drivers/disc_pio/include/modes.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/drivers/video_bios/include/modes.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/drivers/disc_pio/include/pixel.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/drivers/video_bios/include/pixel.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/drivers/disc_pio/include/rect.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/drivers/video_bios/include/rect.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/drivers/disc_pio/src/bitmap.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/drivers/video_bios/src/bitmap.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/drivers/disc_pio/src/image.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/drivers/video_bios/src/image.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/drivers/disc_pio/src/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/drivers/video_bios/src/main.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/drivers/disc_pio/src/modes.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/drivers/video_bios/src/modes.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/drivers/disc_pio/src/pixel.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/drivers/video_bios/src/pixel.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/drivers/disc_pio/src/rect.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/drivers/video_bios/src/rect.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/src/entry.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/src/entry.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/bootloader/src/commands/cat.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/commands/cat.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/kernel/src/filesystem/filesystem.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/src/filesystem/filesystem.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -176,6 +161,21 @@
     </key>
   </component>
   <component name="RunManager" selected="Native Application.Emulate">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Emulate Debug" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" WORKING_DIR="file://$PROJECT_DIR$/build" PASS_PARENT_ENVS_2="true" PROJECT_NAME="pkos" TARGET_NAME="all" CONFIG_NAME="all" version="1" RUN_PATH="$PROJECT_DIR$/build/emulate-gdb.sh">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Emulate Debug" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" WORKING_DIR="file://$PROJECT_DIR$/build" PASS_PARENT_ENVS_2="true" PROJECT_NAME="pkos" TARGET_NAME="all" CONFIG_NAME="all" version="1" RUN_PATH="$PROJECT_DIR$/build/emulate-gdb.sh">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Emulate Debug" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" WORKING_DIR="file://$PROJECT_DIR$/build" PASS_PARENT_ENVS_2="true" PROJECT_NAME="pkos" TARGET_NAME="all" CONFIG_NAME="all" version="1" RUN_PATH="$PROJECT_DIR$/build/emulate-gdb.sh">
       <method v="2">
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
@@ -191,7 +191,7 @@
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Emulate Debug" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" WORKING_DIR="file://$PROJECT_DIR$/build" PASS_PARENT_ENVS_2="true" PROJECT_NAME="pkos" TARGET_NAME="all" CONFIG_NAME="all" version="1" RUN_PATH="$PROJECT_DIR$/build/emulate-gdb.sh">
+    <configuration name="Emulate" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" WORKING_DIR="file://$PROJECT_DIR$/build" PASS_PARENT_ENVS_2="true" PROJECT_NAME="pkos" TARGET_NAME="all" CONFIG_NAME="all" version="1" RUN_PATH="$PROJECT_DIR$/build/emulate.sh">
       <method v="2">
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
       </method>
@@ -227,6 +227,16 @@
       </method>
     </configuration>
     <configuration name="Makefile" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="pkos" TARGET_NAME="Makefile" CONFIG_NAME="Makefile" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Makefile" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="pkos" TARGET_NAME="Makefile" CONFIG_NAME="Makefile" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="all" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="pkos" TARGET_NAME="all" CONFIG_NAME="all" version="1">
       <method v="2">
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
       </method>
@@ -256,12 +266,37 @@
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
       </method>
     </configuration>
+    <configuration name="bootloader" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="pkos" TARGET_NAME="bootloader" CONFIG_NAME="bootloader" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="bootsector" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="pkos" TARGET_NAME="bootsector" CONFIG_NAME="bootsector" version="1">
       <method v="2">
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
       </method>
     </configuration>
     <configuration name="bootsector" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="pkos" TARGET_NAME="bootsector" CONFIG_NAME="bootsector" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="bootsector" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="pkos" TARGET_NAME="bootsector" CONFIG_NAME="bootsector" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="drivers" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="pkos" TARGET_NAME="drivers" CONFIG_NAME="drivers" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="drivers" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="pkos" TARGET_NAME="drivers" CONFIG_NAME="drivers" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="full" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="pkos" TARGET_NAME="full" CONFIG_NAME="full" version="1">
       <method v="2">
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
       </method>
@@ -286,12 +321,27 @@
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
       </method>
     </configuration>
+    <configuration name="image" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="pkos" TARGET_NAME="image" CONFIG_NAME="image" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="kernel" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="pkos" TARGET_NAME="kernel" CONFIG_NAME="kernel" version="1">
       <method v="2">
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
       </method>
     </configuration>
     <configuration name="kernel" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="pkos" TARGET_NAME="kernel" CONFIG_NAME="kernel" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="kernel" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="pkos" TARGET_NAME="kernel" CONFIG_NAME="kernel" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="linecount" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="pkos" TARGET_NAME="linecount" CONFIG_NAME="linecount" version="1">
       <method v="2">
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
       </method>
@@ -307,6 +357,16 @@
       </method>
     </configuration>
     <configuration name="mkfs" type="CLionNativeAppRunConfigurationType" PROGRAM_PARAMS="./test_fs build/fs.bin" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" WORKING_DIR="file://$PROJECT_DIR$/tools/mkfs" PASS_PARENT_ENVS_2="true" PROJECT_NAME="pkos" TARGET_NAME="mkfs" CONFIG_NAME="mkfs" version="1" RUN_PATH="$PROJECT_DIR$/tools/mkfs/build/mkfs">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="mkfs" type="CLionNativeAppRunConfigurationType" PROGRAM_PARAMS="./test_fs build/fs.bin" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" WORKING_DIR="file://$PROJECT_DIR$/tools/mkfs" PASS_PARENT_ENVS_2="true" PROJECT_NAME="pkos" TARGET_NAME="mkfs" CONFIG_NAME="mkfs" version="1" RUN_PATH="$PROJECT_DIR$/tools/mkfs/build/mkfs">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="rebuild" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="pkos" TARGET_NAME="rebuild" CONFIG_NAME="rebuild" version="1">
       <method v="2">
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
       </method>
@@ -328,6 +388,7 @@
       <item itemvalue="Native Application.all" />
       <item itemvalue="Native Application.bootloader" />
       <item itemvalue="Native Application.bootsector" />
+      <item itemvalue="Native Application.drivers" />
       <item itemvalue="Native Application.full" />
       <item itemvalue="Native Application.image" />
       <item itemvalue="Native Application.kernel" />
@@ -467,7 +528,10 @@
       <workItem from="1714939251972" duration="2626000" />
       <workItem from="1714954945491" duration="1106000" />
       <workItem from="1715099230019" duration="19983000" />
-      <workItem from="1715203011970" duration="688000" />
+      <workItem from="1715203011970" duration="918000" />
+      <workItem from="1715207536438" duration="8000" />
+      <workItem from="1715230231613" duration="200000" />
+      <workItem from="1715284162308" duration="307000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit for v2">
       <option name="closed" value="true" />
@@ -797,7 +861,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715201921842</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="Makefile changes and driver renamed">
+      <option name="closed" value="true" />
+      <created>1715203828716</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1715203828716</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -810,7 +882,6 @@
     <isAutomaticFoundErrors value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Calc command added" />
     <MESSAGE value="Added some error checking to calc" />
     <MESSAGE value="added todo" />
     <MESSAGE value="Removed assembler warnings" />
@@ -835,7 +906,8 @@
     <MESSAGE value="Loaded an image from the filesystem" />
     <MESSAGE value="Loading a driver from a file!" />
     <MESSAGE value="This too" />
-    <option name="LAST_COMMIT_MESSAGE" value="This too" />
+    <MESSAGE value="Makefile changes and driver renamed" />
+    <option name="LAST_COMMIT_MESSAGE" value="Makefile changes and driver renamed" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

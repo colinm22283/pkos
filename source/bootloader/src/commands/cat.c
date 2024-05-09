@@ -29,7 +29,7 @@ uint32_t cat_file(const char * path) {
     }
 
     char buffer[FILESYSTEM_NAME_MAX_SIZE];
-    memcpy(buffer, &path[base_addr], i - base_addr);
+    memcpy(buffer, &path[base_addr], i - base_addr + 1);
 
     file_t file = open_file(directory, buffer);
     if (file == 0) return 4;

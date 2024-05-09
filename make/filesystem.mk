@@ -14,6 +14,7 @@ $(BIN_DIR)/filesystem.bin: mkfs kernel drivers
 	mkdir -p $(FILESYSTEM_ROOT)/home
 	echo "This is a test file 1" > $(FILESYSTEM_ROOT)/home/test_file_1.txt
 	echo "This is a test file 2" > $(FILESYSTEM_ROOT)/home/test_file_2.txt
+	echo -n -e \\x00\\x44\\x44\\x00\\x82\\x44\\x38 > $(FILESYSTEM_ROOT)/home/smile.bmp
 
 	$(TOOLS_DIR)/mkfs/build/mkfs $(FILESYSTEM_ROOT) $(BIN_DIR)/filesystem.bin
 

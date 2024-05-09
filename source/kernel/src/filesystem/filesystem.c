@@ -221,7 +221,7 @@ file_t open_file_path(directory_t root, const char * path) {
     }
 
     char buffer[FILESYSTEM_NAME_MAX_SIZE];
-    memcpy(buffer, &path[base_addr], i - base_addr);
+    memcpy(buffer, &path[base_addr], i - base_addr + 1);
 
     file_t file = open_file(directory, buffer);
 
