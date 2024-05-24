@@ -5,6 +5,7 @@
 #include <interrupt/fatal_handler_entry.h>
 #include <interrupt/null_pic_handler_entry.h>
 #include <interrupt/keyboard_handler_entry.h>
+#include <interrupt/timer_handler_entry.h>
 
 #include <pic/remap.h>
 #include <pic/mask.h>
@@ -17,7 +18,10 @@
 void int_init(void) {
     pic_remap(0x20, 0x28);
 
-    pic_set_mask(0);
+    pic_mask_all();
+
+    pic_clear_mask(0);
+    pic_clear_mask(1);
 
     idt.div0                     = DEFINE_IDT32_ENTRY_INTERRUPT(int_fatal_handler_entry);
     idt.nmi                      = DEFINE_IDT32_ENTRY_INTERRUPT(int_fatal_handler_entry);
@@ -42,7 +46,7 @@ void int_init(void) {
     idt._res1 = DEFINE_IDT32_ENTRY_NULL;
     idt._res2 = DEFINE_IDT32_ENTRY_NULL;
 
-    idt.mapped_irqs[0] = DEFINE_IDT32_ENTRY_INTERRUPT(int_null_pic1_handler_entry);
+    idt.mapped_irqs[0] = DEFINE_IDT32_ENTRY_INTERRUPT(int_timer_handler_entry);
     idt.mapped_irqs[1] = DEFINE_IDT32_ENTRY_INTERRUPT(int_keyboard_handler_entry);
     for (uint16_t i = 2; i < 8; i++) idt.mapped_irqs[i] = DEFINE_IDT32_ENTRY_INTERRUPT(int_null_pic1_handler_entry);
     for (uint16_t i = 8; i < 16; i++) idt.mapped_irqs[i] = DEFINE_IDT32_ENTRY_INTERRUPT(int_null_pic2_handler_entry);

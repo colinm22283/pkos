@@ -5,6 +5,8 @@ console_clear_color:
     push %ebp
     mov  %esp,    %ebp
 
+    call clear_blinker
+
     xor  %al,        %al
     movb 8(%esp),    %ah
     mov  $(80 * 25), %ecx

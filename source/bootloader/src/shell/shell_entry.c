@@ -13,6 +13,7 @@
 #include <shell/input.h>
 #include <shell/execute.h>
 #include <shell/command_tree.h>
+#include <shell/history.h>
 
 #include <sys/wait_for_interrupt.h>
 
@@ -23,6 +24,7 @@
 
 __NORETURN void shell_entry(void) {
     shell_command_tree_init();
+    shell_history_init();
 
     console_clear();
     console_print("PK Bootloader V" VERSION_STRING "\n");

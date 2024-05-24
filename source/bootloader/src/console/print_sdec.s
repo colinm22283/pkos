@@ -4,6 +4,8 @@
 console_print_sdec:
     push %ebp
 
+    call clear_blinker
+
     mov  8(%esp), %eax
     test %eax,    %eax
     jns  .non_neg
@@ -25,6 +27,8 @@ console_print_sdec:
     push %eax
     call console_print_dec
     add  $4, %esp
+
+    call update_blinker
 
     pop  %ebp
     ret

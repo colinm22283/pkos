@@ -1,15 +1,15 @@
-#include <paging/map_kernel.h>
+#include "memory/map_kernel.h"
 
-#include <paging/tables.h>
-#include <paging/translation.h>
+#include "paging/tables.h"
+#include "paging/translation.h"
 
-#include <util/memory/memset.h>
+#include "util/memory/memset.h"
 
-#include <sys/paging/load_page_table.h>
+#include "sys/paging/load_page_table.h"
 
-#include <sys/msr/read_msr.h>
-#include <sys/msr/write_msr.h>
-#include <sys/msr/msr_numbers.h>
+#include "sys/msr/read_msr.h"
+#include "sys/msr/write_msr.h"
+#include "sys/msr/msr_numbers.h"
 
 void paging_map_kernel() {
     // set the NXE flag

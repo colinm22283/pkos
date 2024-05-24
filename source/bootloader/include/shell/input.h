@@ -3,9 +3,13 @@
 #include <stdint.h>
 #include <stdbool.h>
 
+#include <console/print.h>
+
+#include <shell/history.h>
+
 #define SHELL_INPUT_BUFFER_SIZE (256)
 
-extern uint8_t shell_position;
+extern volatile uint8_t shell_position;
 extern char shell_input_buffer[SHELL_INPUT_BUFFER_SIZE];
 extern bool shell_ready_to_execute;
 
@@ -27,6 +31,9 @@ static inline bool shell_backspace() {
 
 static inline void shell_read_command() {
     shell_input_buffer[shell_position] = '\0';
+
+    shell_history_push(shell_input_buffer);
+
     shell_input_buffer[shell_position + 1] = '\0';
     for (int i = 0; shell_input_buffer[i] != '\0'; i++) {
         if (shell_input_buffer[i] == ' ') {

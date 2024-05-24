@@ -8,7 +8,7 @@ void pic_set_mask(unsigned char irq_line) {
     uint16_t port;
     uint8_t value;
 
-    if(irq_line < 8) {
+    if (irq_line < 8) {
         port = PORT_PIC1_DATA;
     } else {
         port = PORT_PIC2_DATA;

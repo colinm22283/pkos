@@ -13,6 +13,9 @@
 #include <commands/version.h>
 #include <commands/tree.h>
 #include <commands/cat.h>
+#include <commands/reset.h>
+#include <commands/ls.h>
+#include <commands/wmem.h>
 
 #define SHELL_COMMAND_TREE_ENTRY_NULL ((shell_command_tree_entry_t) { .command_ptr = NULL, .next_char = { NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, }, })
 
@@ -84,6 +87,17 @@ shell_command_tree_entry_t shell_command_tree_tr;
 shell_command_tree_entry_t shell_command_tree_tre;
 shell_command_tree_entry_t shell_command_tree_tree;
 
+shell_command_tree_entry_t shell_command_tree_r;
+shell_command_tree_entry_t shell_command_tree_re;
+shell_command_tree_entry_t shell_command_tree_res;
+shell_command_tree_entry_t shell_command_tree_rese;
+shell_command_tree_entry_t shell_command_tree_reset;
+
+shell_command_tree_entry_t shell_command_tree_w;
+shell_command_tree_entry_t shell_command_tree_wm;
+shell_command_tree_entry_t shell_command_tree_wme;
+shell_command_tree_entry_t shell_command_tree_wmem;
+
 shell_command_tree_entry_t * shell_command_tree_root[26];
 
 void shell_command_tree_init() {
@@ -153,6 +167,7 @@ void shell_command_tree_init() {
 
     shell_command_tree_root['L' - 'A'] = &shell_command_tree_l;
     shell_command_tree_l.next_char['S' - 'A'] = &shell_command_tree_ls;
+    shell_command_tree_ls.command_ptr = command_ls;
     shell_command_tree_ls.next_char['M' - 'A'] = &shell_command_tree_lsm;
     shell_command_tree_lsm.next_char['E' - 'A'] = &shell_command_tree_lsme;
     shell_command_tree_lsme.next_char['M' - 'A'] = &shell_command_tree_lsmem;
@@ -172,4 +187,17 @@ void shell_command_tree_init() {
     shell_command_tree_tr.next_char['E' - 'A'] = &shell_command_tree_tre;
     shell_command_tree_tre.next_char['E' - 'A'] = &shell_command_tree_tree;
     shell_command_tree_tree.command_ptr = command_tree;
+
+    shell_command_tree_root['R' - 'A'] = &shell_command_tree_r;
+    shell_command_tree_r.next_char['E' - 'A'] = &shell_command_tree_re;
+    shell_command_tree_re.next_char['S' - 'A'] = &shell_command_tree_res;
+    shell_command_tree_res.next_char['E' - 'A'] = &shell_command_tree_rese;
+    shell_command_tree_rese.next_char['T' - 'A'] = &shell_command_tree_reset;
+    shell_command_tree_reset.command_ptr = command_reset;
+
+    shell_command_tree_root['W' - 'A'] = &shell_command_tree_w;
+    shell_command_tree_w.next_char['M' - 'A'] = &shell_command_tree_wm;
+    shell_command_tree_wm.next_char['E' - 'A'] = &shell_command_tree_wme;
+    shell_command_tree_wme.next_char['M' - 'A'] = &shell_command_tree_wmem;
+    shell_command_tree_wmem.command_ptr = command_wmem;
 }

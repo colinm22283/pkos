@@ -2,22 +2,23 @@
 
 .global strlen
 strlen:
-    push %ebp
+    movl 4(%esp),  %edx
 
-    movl 8(%esp), %ecx
-    xor  %ecx,    %eax
+    # edx: string
 
-    movb (%ecx),  %dl
-    test %dl,     %dl
-    jz   .exit
+    xor  %eax,   %eax
+
+    movb (%edx), %cl
+
     .loop:
+        test %cl,    %cl
+        jz   .return
+
         inc  %eax
-        inc  %ecx
+        inc  %edx
 
-        movb (%ecx),  %dl
-        test %dl,     %dl
-        jnz   .loop
+        movb (%edx), %cl
+        jmp  .loop
 
-    .exit:
-    pop  %ebp
+.return:
     ret

@@ -2,8 +2,10 @@
 
 #include <stdbool.h>
 
-extern volatile bool keyboard_awaiting_key;
-extern char keyboard_pressed_key;
+#include <keyboard/keycode.h>
 
-void keyboard_key_down_handler(char key);
-void keyboard_key_up_handler(char key);
+extern volatile bool keyboard_awaiting_key;
+extern keycode_t keyboard_pressed_key;
+
+void keyboard_key_down_handler(keycode_t key);
+void keyboard_key_up_handler(keycode_t key);

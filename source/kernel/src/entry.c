@@ -7,7 +7,9 @@
 #include <driver/driver_vector_table.h>
 #include <driver/driver.h>
 
-#include <paging/map_kernel.h>
+#include <memory/map_kernel.h>
+#include <memory/memory_map.h>
+
 #include <paging/allocator.h>
 
 #include <stack.h>
@@ -27,6 +29,7 @@ __NORETURN __SECTION(".kernel_entry") void kernel_entry() {
     driver_table.disc.start();
 
     paging_map_kernel();
+
     if (!page_allocator_init()) {
         kernel_entry_error(1);
     }

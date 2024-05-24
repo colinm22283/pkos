@@ -5,6 +5,8 @@ console_print:
     push %ebp
     mov  %esp, %ebp
 
+    call clear_blinker
+
     mov  8(%esp), %eax
 
     movb (%eax), %dl
@@ -43,5 +45,7 @@ console_print:
     movl %ecx, (console_output_ptr)
 
 .return:
+    call update_blinker
+
     pop %ebp
     ret

@@ -11,11 +11,12 @@ OBJS+=$(BL_OD_32)/interrupt/init.o
 
 OBJS+=$(BL_OD_32)/interrupt/null_handler.o
 OBJS+=$(BL_OD_32)/interrupt/fatal_handler_entry.o
-OBJS+=$(BL_OD_32)/interrupt/fatal_handler.o
 OBJS+=$(BL_OD_32)/interrupt/null_pic_handler_entry.o
 OBJS+=$(BL_OD_32)/interrupt/null_pic_handler.o
 OBJS+=$(BL_OD_32)/interrupt/keyboard_handler_entry.o
 OBJS+=$(BL_OD_32)/interrupt/keyboard_handler.o
+OBJS+=$(BL_OD_32)/interrupt/timer_handler.o
+OBJS+=$(BL_OD_32)/interrupt/timer_handler_entry.o
 OBJS+=$(BL_OD_32)/interrupt/keyboard_lut.o
 
 OBJS+=$(BL_OD_32)/pic/remap.o
@@ -43,6 +44,9 @@ OBJS+=$(BL_OD_32)/shell/keyboard_handler.o
 OBJS+=$(BL_OD_32)/shell/input.o
 OBJS+=$(BL_OD_32)/shell/command_tree.o
 OBJS+=$(BL_OD_32)/shell/execute.o
+OBJS+=$(BL_OD_32)/shell/timer_handler.o
+OBJS+=$(BL_OD_32)/shell/blinker.o
+OBJS+=$(BL_OD_32)/shell/history.o
 
 OBJS+=$(BL_OD_32)/commands/echo.o
 OBJS+=$(BL_OD_32)/commands/exit.o
@@ -57,11 +61,15 @@ OBJS+=$(BL_OD_32)/commands/help.o
 OBJS+=$(BL_OD_32)/commands/version.o
 OBJS+=$(BL_OD_32)/commands/tree.o
 OBJS+=$(BL_OD_32)/commands/cat.o
+OBJS+=$(BL_OD_32)/commands/reset.o
+OBJS+=$(BL_OD_32)/commands/ls.o
+OBJS+=$(BL_OD_32)/commands/wmem.o
 
 OBJS+=$(BL_OD_32)/string/strcmp.o
 OBJS+=$(BL_OD_32)/string/strcmpn.o
 OBJS+=$(BL_OD_32)/string/strlen.o
 OBJS+=$(BL_OD_32)/string/stoi.o
+OBJS+=$(BL_OD_32)/string/strcpy.o
 
 OBJS+=$(BL_OD_32)/memory/memcpy.o
 OBJS+=$(BL_OD_32)/memory/memset.o
@@ -90,7 +98,7 @@ OBJS+=$(BL_OD_32)/boot/64/enter_kernel.o
 OBJS+=$(BL_OD_32)/boot/graphics_mode.o
 OBJS+=$(BL_OD_32)/boot/64/long_mode_available.o
 
-OPTIMIZATION=s
+OPTIMIZATION=1
 
 $(BIN_DIR)/bootloader.bin: $(OBJS) $(BL_SOURCE_DIR)/bootloader.ld
 	mkdir -p $(BIN_DIR)

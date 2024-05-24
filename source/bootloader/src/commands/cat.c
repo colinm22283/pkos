@@ -13,29 +13,16 @@ uint32_t cat_file(const char * path) {
     directory_t directory = open_filesystem(KERNEL_LBA_START);
     if (directory == 0) return 2;
 
-    uint32_t base_addr = 0;
-    uint32_t i;
-    for (i = 0; path[i] != '\0'; i++) {
-        if (path[i] == '/') {
-            char buffer[FILESYSTEM_NAME_MAX_SIZE];
-            memcpy(buffer, &path[base_addr], i - base_addr);
-            buffer[i - base_addr] = '\0';
-
-            directory = open_directory(directory, buffer);
-            if (directory == 0) return 3;
-
-            base_addr = i + 1;
-        }
+    file_t file = open_file_path(directory, path);
+    if (file == 0) {
+        console_print("Unable to locate file with path \"");
+        console_print(path);
+        console_print("\"\n");
+        return 3;
     }
 
-    char buffer[FILESYSTEM_NAME_MAX_SIZE];
-    memcpy(buffer, &path[base_addr], i - base_addr + 1);
-
-    file_t file = open_file(directory, buffer);
-    if (file == 0) return 4;
-
     file_reader_t file_reader;
-    file_reader_init(&file_reader, file);
+    if (!file_reader_init(&file_reader, file)) return 4;
 
     char c[2] = { 0, '\0' };
     while (file_reader_read(&file_reader, c, 1)) {
@@ -47,7 +34,7 @@ uint32_t cat_file(const char * path) {
 
 __CDECL uint32_t command_cat(uint32_t argc, const char ** argv) {
     if (argc <= 1) {
-        console_print("Inavlid arguments\nUsage: cat <file 1> <file 2> ... <file n>\n");
+        console_print("Invalid arguments\nUsage: cat <file 1> <file 2> ... <file n>\n");
         return 1;
     }
 

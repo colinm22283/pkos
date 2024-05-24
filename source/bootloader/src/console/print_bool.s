@@ -2,6 +2,8 @@
 
 .global console_print_bool
 console_print_bool:
+    call clear_blinker
+
     movb 8(%esp), %al
 
     test %al, %al
@@ -13,10 +15,13 @@ console_print_bool:
     .false:
         push $false_string
 
-    .end:
-        call console_print
-        add  $4, %esp
-        ret
+.end:
+    call console_print
+    add  $4, %esp
+
+    call update_blinker
+
+    ret
 
 true_string: .asciz "true"
 false_string: .asciz "false"

@@ -209,3 +209,55 @@ uint32_t file_reader_read(file_reader_t * reader, char * buffer, uint32_t bytes)
 
     return read_bytes;
 }
+
+directory_t open_directory_path(directory_t root, const char * path) {
+    directory_t directory = root;
+
+    uint32_t base_addr = 0;
+    uint32_t i;
+    for (i = 0; path[i] != '\0'; i++) {
+        if (path[i] == '/') {
+            char buffer[FILESYSTEM_NAME_MAX_SIZE];
+            memcpy(buffer, &path[base_addr], i - base_addr);
+            buffer[i - base_addr] = '\0';
+
+            directory = open_directory(directory, buffer);
+            if (directory == 0) return 0;
+
+            base_addr = i + 1;
+        }
+    }
+
+    char buffer[FILESYSTEM_NAME_MAX_SIZE];
+    memcpy(buffer, &path[base_addr], i - base_addr + 1);
+
+    directory_t dir = open_directory(directory, buffer);
+
+    return dir;
+}
+
+file_t open_file_path(directory_t root, const char * path) {
+    directory_t directory = root;
+
+    uint32_t base_addr = 0;
+    uint32_t i;
+    for (i = 0; path[i] != '\0'; i++) {
+        if (path[i] == '/') {
+            char buffer[FILESYSTEM_NAME_MAX_SIZE];
+            memcpy(buffer, &path[base_addr], i - base_addr);
+            buffer[i - base_addr] = '\0';
+
+            directory = open_directory(directory, buffer);
+            if (directory == 0) return 0;
+
+            base_addr = i + 1;
+        }
+    }
+
+    char buffer[FILESYSTEM_NAME_MAX_SIZE];
+    memcpy(buffer, &path[base_addr], i - base_addr + 1);
+
+    file_t file = open_file(directory, buffer);
+
+    return file;
+}

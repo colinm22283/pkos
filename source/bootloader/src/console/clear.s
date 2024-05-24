@@ -5,6 +5,8 @@ console_clear:
     push %ebp
     mov  %esp, %ebp
 
+    call clear_blinker
+
     mov  $0xB8000,   %eax
     mov  $(80 * 25), %ecx
     .loop:

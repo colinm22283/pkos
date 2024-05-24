@@ -5,6 +5,8 @@ console_print_dec:
     push %ebp
     mov  %esp,    %ebp
 
+    call clear_blinker
+
     mov  8(%esp), %eax
 
     push %ebx
@@ -43,6 +45,8 @@ console_print_dec:
     add  $10,     %esp
 
     pop  %ebx
+
+    call update_blinker
 
     pop  %ebp
     ret

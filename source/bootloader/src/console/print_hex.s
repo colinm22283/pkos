@@ -5,6 +5,8 @@ console_print_hex:
     push %ebp
     mov  %esp,    %ebp
 
+    call clear_blinker
+
     xor  %ecx,    %ecx
 
     movl 8(%esp), %eax
@@ -40,6 +42,8 @@ console_print_hex:
     add  $8,   %esp
 
     movl %eax, (console_output_ptr)
+
+    call update_blinker
 
     pop  %ebp
     ret

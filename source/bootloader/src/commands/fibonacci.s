@@ -18,9 +18,6 @@ command_fibonacci:
         call console_newline
         call console_print_dec
 
-        hlt
-        hlt
-
         movl (%esp),  %ecx
         movl 4(%esp), %edx
 
@@ -42,4 +39,4 @@ command_fibonacci:
     pop  %ebp
     ret
 
-    .fibonacci_string: .asciz "[Fibonacci Number Generator]\nPress any key to generate a new number..."
+    .fibonacci_string: .asciz "[Fibonacci Number Generator]"
