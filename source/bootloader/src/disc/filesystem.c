@@ -261,3 +261,53 @@ file_t open_file_path(directory_t root, const char * path) {
 
     return file;
 }
+
+bool stat_file(file_stat_result_t * result, filesystem_page_address_t address) {
+    filesystem_node_page_t _node_page;
+    if (disc_read48(ATA_PIO_PRIMARY, DISC_READ48_MASTER, address, 1, (void *) &_node_page)) return false;
+
+    if (_node_page.type == FILESYSTEM_PAGE_TYPE_FILE) {
+        filesystem_file_node_page_t * node_page = (filesystem_file_node_page_t *) &_node_page;
+
+        uint64_t size = 0;
+        uint32_t sectors = 0;
+
+        filesystem_page_address_t data_address = node_page->root_data_address;
+        filesystem_file_data_page_t data_page;
+
+        while (data_address != 0) {
+            if (disc_read48(ATA_PIO_PRIMARY, DISC_READ48_MASTER, data_address, 1, (void *) &data_page)) return false;
+
+            size += data_page.size;
+            sectors++;
+
+            data_address = data_page.next_data_address;
+        }
+
+        result->type = FILESYSTEM_PAGE_TYPE_FILE;
+        result->size = size;
+        result->size_on_disc = (uint64_t) sectors * 512 + 512;
+    }
+    else if (_node_page.type == FILESYSTEM_PAGE_TYPE_DIRECTORY) {
+        filesystem_directory_node_page_t * node_page = (filesystem_directory_node_page_t *) &_node_page;
+
+        uint32_t sectors = 0;
+
+        filesystem_page_address_t data_address = node_page->directory_index_address;
+        filesystem_directory_index_page_t index_page;
+
+        while (data_address != 0) {
+            if (disc_read48(ATA_PIO_PRIMARY, DISC_READ48_MASTER, data_address, 1, (void *) &index_page)) return false;
+
+            sectors++;
+
+            data_address = index_page.next_index_address;
+        }
+
+        result->type = FILESYSTEM_PAGE_TYPE_DIRECTORY;
+        result->size = result->size_on_disc = (uint64_t) sectors * 512 + 512;
+    }
+    else return false;
+
+    return true;
+}

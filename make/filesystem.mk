@@ -2,14 +2,14 @@ DISC_SIZE=32256
 
 export FILESYSTEM_ROOT=$(BIN_DIR)/root
 
-$(BIN_DIR)/filesystem.bin: mkfs kernel drivers
+$(BIN_DIR)/filesystem.bin: mkfs kernel modules
 	mkdir -p $(FILESYSTEM_ROOT)
 
 	mkdir -p $(FILESYSTEM_ROOT)/boot
 	cp $(BIN_DIR)/kernel.bin $(FILESYSTEM_ROOT)/boot/kernel
 
-	mkdir -p $(FILESYSTEM_ROOT)/boot/driver
-	cp $(DRIVER_DIR)/*.drv $(FILESYSTEM_ROOT)/boot/driver
+	mkdir -p $(FILESYSTEM_ROOT)/boot/module
+	cp $(DRIVER_DIR)/*.mod $(FILESYSTEM_ROOT)/boot/module || true
 
 	mkdir -p $(FILESYSTEM_ROOT)/home
 	echo "This is a test file 1" > $(FILESYSTEM_ROOT)/home/test_file_1.txt

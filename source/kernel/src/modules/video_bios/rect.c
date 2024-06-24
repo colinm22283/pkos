@@ -1,6 +1,6 @@
-#include <rect.h>
+#include <modules/video_bios/rect.h>
 
-#include <main.h>
+#include <modules/video_bios/main.h>
 
 #include <sys/asm/hlt.h>
 

@@ -1,0 +1,12 @@
+MODULE_SOURCE_DIR=$(CURDIR)/src
+MODULE_OD_64=$(OBJ_DIR)/64/kernel/modules/$(MODULE_NAME)/src
+
+MODULE_OBJS+=$(MODULE_OD_64)/main.o
+
+INCLUDE_DIRS+=$(CURDIR)/include
+
+$(MODULE_DIR)/$(MODULE_NAME).mod: $(MODULE_OBJS) $(MODULE_LD_SCRIPT)
+	mkdir -p $(MODULE_DIR)
+	$(LD64) $(LDFLAGS) -T$(MODULE_LD_SCRIPT) $(MODULE_OBJS) -o $@ -Map=$@.map
+
+include $(MAKE_SCRIPTS)

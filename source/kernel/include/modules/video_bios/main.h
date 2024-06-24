@@ -1,8 +1,10 @@
 #pragma once
 
+#include <stdint.h>
+
 #include <defs.h>
 
-#include <driver/table/video_driver.h>
+#include <driver/table_entries/video_driver.h>
 
 #define MODE_COUNT (1)
 #define VIDEO_MEMORY ((uint8_t *) 0xA0000)

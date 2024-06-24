@@ -1,5 +1,5 @@
-#include <image.h>
-#include <main.h>
+#include <modules/video_bios/image.h>
+#include <modules/video_bios/main.h>
 
 void draw_image(void * _allocaton, const void * _image, uint32_t x, uint32_t y, uint32_t w, uint32_t h) {
     allocation_t * allocation = _allocaton;

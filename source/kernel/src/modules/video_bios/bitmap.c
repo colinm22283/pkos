@@ -1,5 +1,5 @@
-#include <bitmap.h>
-#include <main.h>
+#include <modules/video_bios/bitmap.h>
+#include <modules/video_bios/main.h>
 
 void draw_bitmap(void * _allocation, const void * _bitmap, uint32_t x, uint32_t y, uint32_t w, uint32_t h) {
     allocation_t * allocation = _allocation;

@@ -136,3 +136,11 @@ filesystem_directory_entry_type_t directory_iterator_next(directory_iterator_t *
 
 bool file_reader_init(file_reader_t * reader, file_t file);
 uint32_t file_reader_read(file_reader_t * reader, char * buffer, uint32_t bytes);
+
+typedef struct {
+    filesystem_page_type_t type;
+    uint64_t size;
+    uint64_t size_on_disc;
+} file_stat_result_t;
+
+bool stat_file(file_stat_result_t * result, filesystem_page_address_t address);

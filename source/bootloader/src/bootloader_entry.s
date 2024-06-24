@@ -43,7 +43,7 @@ bootloader_entry:
     mov $0x0002, %ax
     jz boot_error
 
-    # initialize the interrupt table
+    # initialize the interrupt table_entries
     call int_init
 
     # sort the memory map

@@ -30,9 +30,7 @@ __NORETURN __SECTION(".kernel_entry") void kernel_entry() {
 
     paging_map_kernel();
 
-    if (!page_allocator_init()) {
-        kernel_entry_error(1);
-    }
+    if (!page_allocator_init()) halt();
 
 //    uint16_t device_count = driver_table.disc.device_count();
     driver_table.disc.select_device(0);

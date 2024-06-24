@@ -22,6 +22,7 @@ SECTIONS {
     . = 0xFC00;
 
     .bootloader_bss . (NOLOAD) : {
+        *(.bss_low);
         *(.bss*);
         *(.page_tables);
     }

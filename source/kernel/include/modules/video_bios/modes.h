@@ -3,7 +3,7 @@
 #include <stdint.h>
 #include <stdbool.h>
 
-#include <driver/table/video_driver.h>
+#include <driver/table_entries/video_driver.h>
 
 uint32_t mode_count(void * allocation);
 const driver_table_video_mode_t * get_modes(void * allocation);

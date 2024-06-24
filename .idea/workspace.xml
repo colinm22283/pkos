@@ -19,8 +19,8 @@
       <config projectName="pkos" targetName="linecount" />
       <config projectName="pkos" targetName="image" />
       <config projectName="pkos" targetName="all" />
+      <config projectName="pkos" targetName="modules" />
       <config projectName="pkos" targetName="bootsector" />
-      <config projectName="pkos" targetName="drivers" />
     </generated>
   </component>
   <component name="CMakeSettings">
@@ -29,69 +29,49 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6121c507-c3db-4645-9343-74e78b57e4ca" name="Changes" comment="Fixed path reads and put smile bmp on disc">
-      <change afterPath="$PROJECT_DIR$/source/bootloader/include/commands/ls.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootloader/include/commands/reset.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootloader/include/commands/wmem.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootloader/include/interrupt/timer_handler_entry.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootloader/include/keyboard/keycode.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootloader/include/shell/blinker.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootloader/include/shell/history.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootloader/include/shell/timer_handler.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootloader/include/string/strcpy.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootloader/src/commands/ls.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootloader/src/commands/reset.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootloader/src/commands/wmem.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootloader/src/interrupt/timer_handler.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootloader/src/interrupt/timer_handler_entry.s" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootloader/src/shell/blinker.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootloader/src/shell/history.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootloader/src/shell/timer_handler.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/bootloader/src/string/strcpy.s" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/kernel/src/paging/init.c" afterDir="false" />
+    <list default="true" id="6121c507-c3db-4645-9343-74e78b57e4ca" name="Changes" comment="Made a bunch of bootloader stuffs">
+      <change afterPath="$PROJECT_DIR$/source/bootloader/include/commands/stat.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/bootloader/src/commands/stat.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/kernel/include/module/entry_table.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/kernel/modules/hello_world/src/main.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/kernel/src/driver/driver_table.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/make/filesystem.mk" beforeDir="false" afterPath="$PROJECT_DIR$/make/filesystem.mk" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/source/bootloader/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/bootloader/bootloader.ld" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/bootloader.ld" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/source/bootloader/include/disc/filesystem.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/include/disc/filesystem.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/include/keyboard/keyboard.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/include/keyboard/keyboard.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/include/shell/input.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/include/shell/input.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/include/shell/keyboard_handler.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/include/shell/keyboard_handler.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/src/commands/cat.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/commands/cat.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/src/commands/fibonacci.s" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/commands/fibonacci.s" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/src/commands/help.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/commands/help.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/src/console/backspace.s" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/console/backspace.s" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/src/console/clear.s" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/console/clear.s" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/src/console/clear_color.s" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/console/clear_color.s" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/src/console/newline.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/console/newline.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/src/console/print.s" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/console/print.s" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/src/console/print_bool.s" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/console/print_bool.s" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/src/console/print_color.s" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/console/print_color.s" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/src/console/print_dec.s" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/console/print_dec.s" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/src/console/print_hex.s" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/console/print_hex.s" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/src/console/print_sdec.s" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/console/print_sdec.s" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/src/console/put.s" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/console/put.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/bootloader/src/boot/graphics_mode.s" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/boot/graphics_mode.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/bootloader/src/bootloader_entry.s" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/bootloader_entry.s" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/source/bootloader/src/disc/filesystem.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/disc/filesystem.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/src/interrupt/fatal_handler.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/src/interrupt/fatal_handler_entry.s" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/interrupt/fatal_handler_entry.s" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/src/interrupt/init.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/interrupt/init.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/src/interrupt/keyboard_handler.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/interrupt/keyboard_handler.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/src/keyboard/keyboard.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/keyboard/keyboard.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/src/pic/mask.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/pic/mask.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/source/bootloader/src/shell/command_tree.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/shell/command_tree.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/src/shell/input.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/shell/input.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/src/shell/keyboard_handler.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/shell/keyboard_handler.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/src/shell/shell_entry.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/shell/shell_entry.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/src/string/strlen.s" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/string/strlen.s" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/source/kernel/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/drivers/video_bios/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/drivers/video_bios/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/include/filesystem/filesystem.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/include/filesystem/filesystem.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/include/paging/allocator.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/include/paging/allocator.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/include/paging/map_kernel.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/include/memory/map_kernel.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/include/paging/memory_map.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/include/memory/memory_map.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/kernel/drivers/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/modules/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/kernel/drivers/driver.ld" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/modules/module.ld" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/kernel/drivers/video_bios/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/modules/hello_world/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/kernel/drivers/video_bios/include/bitmap.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/include/modules/video_bios/bitmap.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/kernel/drivers/video_bios/include/image.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/include/modules/video_bios/image.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/kernel/drivers/video_bios/include/main.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/include/modules/video_bios/main.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/kernel/drivers/video_bios/include/modes.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/include/modules/video_bios/modes.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/kernel/drivers/video_bios/include/pixel.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/include/modules/video_bios/pixel.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/kernel/drivers/video_bios/include/rect.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/include/modules/video_bios/rect.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/kernel/drivers/video_bios/src/bitmap.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/src/modules/video_bios/bitmap.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/kernel/drivers/video_bios/src/image.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/src/modules/video_bios/image.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/kernel/drivers/video_bios/src/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/src/modules/video_bios/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/kernel/drivers/video_bios/src/modes.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/src/modules/video_bios/modes.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/kernel/drivers/video_bios/src/pixel.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/src/modules/video_bios/pixel.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/kernel/drivers/video_bios/src/rect.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/src/modules/video_bios/rect.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/kernel/include/driver/disc_pio.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/include/driver/disc_pio.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/kernel/include/driver/driver.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/kernel/include/driver/driver_interface.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/kernel/include/driver/driver_vector_table.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/kernel/include/driver/table/disc_driver.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/include/driver/table_entries/disc_driver.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/kernel/include/driver/table/driver_table.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/include/driver/driver_table.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/kernel/include/driver/table/video_driver.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/include/driver/table_entries/video_driver.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/kernel/src/driver/driver.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/kernel/src/driver/driver_interface.c" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/source/kernel/src/entry.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/src/entry.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/source/kernel/src/filesystem/filesystem.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/src/filesystem/filesystem.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/src/paging/allocator.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/src/paging/map_kernel.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/src/memory/map_kernel.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/src/paging/memory_map.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/src/memory/memory_map.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -191,7 +171,7 @@
     &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
     &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;v4&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/colin/projects/pkos/source/bootloader/src/string&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/colin/prisum/Telemetry_Forwarding_Server&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -212,19 +192,14 @@
       <recent name="$PROJECT_DIR$/build/bin/root/test_folder" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/source/kernel/include/paging" />
-      <recent name="$PROJECT_DIR$/source/kernel/include/memory" />
-      <recent name="$PROJECT_DIR$/source/kernel/src/memory" />
-      <recent name="$PROJECT_DIR$/source/kernel/include/driver/table" />
       <recent name="$PROJECT_DIR$/source/kernel/include/driver" />
+      <recent name="$PROJECT_DIR$/source/kernel/modules/hello_world" />
+      <recent name="$PROJECT_DIR$/source/kernel/include/modules/video_bios" />
+      <recent name="$PROJECT_DIR$/source/kernel/src/modules/video_bios" />
+      <recent name="$PROJECT_DIR$/source/kernel/include/paging" />
     </key>
   </component>
   <component name="RunManager" selected="Native Application.Emulate">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Emulate Debug" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" WORKING_DIR="file://$PROJECT_DIR$/build" PASS_PARENT_ENVS_2="true" PROJECT_NAME="pkos" TARGET_NAME="all" CONFIG_NAME="all" version="1" RUN_PATH="$PROJECT_DIR$/build/emulate-gdb.sh">
       <method v="2">
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
@@ -385,11 +360,6 @@
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
       </method>
     </configuration>
-    <configuration name="drivers" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="pkos" TARGET_NAME="drivers" CONFIG_NAME="drivers" version="1">
-      <method v="2">
-        <option name="CLION.COMPOUND.BUILD" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="full" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="pkos" TARGET_NAME="full" CONFIG_NAME="full" version="1">
       <method v="2">
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
@@ -481,6 +451,11 @@
       </method>
     </configuration>
     <configuration name="mkfs" type="CLionNativeAppRunConfigurationType" PROGRAM_PARAMS="./test_fs build/fs.bin" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" WORKING_DIR="file://$PROJECT_DIR$/tools/mkfs" PASS_PARENT_ENVS_2="true" PROJECT_NAME="pkos" TARGET_NAME="mkfs" CONFIG_NAME="mkfs" version="1" RUN_PATH="$PROJECT_DIR$/tools/mkfs/build/mkfs">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="modules" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="pkos" TARGET_NAME="modules" CONFIG_NAME="modules" version="1">
       <method v="2">
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
       </method>
@@ -506,18 +481,19 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="Native Application.drivers" />
       <item itemvalue="Native Application.Emulate Debug" />
       <item itemvalue="Native Application.Emulate" />
       <item itemvalue="Native Application.Makefile" />
       <item itemvalue="Native Application.all" />
       <item itemvalue="Native Application.bootloader" />
       <item itemvalue="Native Application.bootsector" />
-      <item itemvalue="Native Application.drivers" />
       <item itemvalue="Native Application.full" />
       <item itemvalue="Native Application.image" />
       <item itemvalue="Native Application.kernel" />
       <item itemvalue="Native Application.linecount" />
       <item itemvalue="Native Application.mkfs" />
+      <item itemvalue="Native Application.modules" />
       <item itemvalue="Native Application.rebuild" />
     </list>
   </component>
@@ -661,7 +637,10 @@
       <workItem from="1716250035146" duration="7257000" />
       <workItem from="1716344646906" duration="15000" />
       <workItem from="1716344851358" duration="3169000" />
-      <workItem from="1716510391042" duration="4207000" />
+      <workItem from="1716510391042" duration="6818000" />
+      <workItem from="1716777501637" duration="2511000" />
+      <workItem from="1716944804004" duration="5895000" />
+      <workItem from="1717458690579" duration="629000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit for v2">
       <option name="closed" value="true" />
@@ -1007,7 +986,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715284758539</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="Made a bunch of bootloader stuffs">
+      <option name="closed" value="true" />
+      <created>1716514953180</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1716514953180</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1020,7 +1007,6 @@
     <isAutomaticFoundErrors value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="added todo" />
     <MESSAGE value="Removed assembler warnings" />
     <MESSAGE value="Memory is now mapped by the boot sector" />
     <MESSAGE value="Added workspace.xml" />
@@ -1045,7 +1031,8 @@
     <MESSAGE value="This too" />
     <MESSAGE value="Makefile changes and driver renamed" />
     <MESSAGE value="Fixed path reads and put smile bmp on disc" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed path reads and put smile bmp on disc" />
+    <MESSAGE value="Made a bunch of bootloader stuffs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Made a bunch of bootloader stuffs" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

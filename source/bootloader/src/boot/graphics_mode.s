@@ -1,6 +1,6 @@
 .code32
 
-.section ".bss"
+.section ".bss_low"
 gdt32_buffer: .skip 6
 
 .section ".text"

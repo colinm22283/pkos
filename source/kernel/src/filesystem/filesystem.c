@@ -6,7 +6,7 @@
 #include <util/string/strcmpn.h>
 #include <util/memory/memcpy.h>
 
-#include <driver/driver_interface.h>
+#include <driver/driver_table.h>
 
 #include <sys/ports.h>
 

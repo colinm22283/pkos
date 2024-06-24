@@ -4,7 +4,8 @@ SECTIONS {
     . = 0;
 
     .text . : AT(0) {
-        *(.driver_vector_table);
+        *(.entry_table);
         *(.text*);
+        *(.rodata*);
     }
 }

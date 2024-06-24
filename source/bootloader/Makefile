@@ -64,6 +64,7 @@ OBJS+=$(BL_OD_32)/commands/cat.o
 OBJS+=$(BL_OD_32)/commands/reset.o
 OBJS+=$(BL_OD_32)/commands/ls.o
 OBJS+=$(BL_OD_32)/commands/wmem.o
+OBJS+=$(BL_OD_32)/commands/stat.o
 
 OBJS+=$(BL_OD_32)/string/strcmp.o
 OBJS+=$(BL_OD_32)/string/strcmpn.o

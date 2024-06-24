@@ -1,5 +1,5 @@
-#include <modes.h>
-#include <main.h>
+#include <modules/video_bios/modes.h>
+#include <modules/video_bios/main.h>
 
 uint32_t mode_count(void * allocation) {
     return MODE_COUNT;

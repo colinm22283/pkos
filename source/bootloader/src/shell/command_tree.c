@@ -16,6 +16,7 @@
 #include <commands/reset.h>
 #include <commands/ls.h>
 #include <commands/wmem.h>
+#include <commands/stat.h>
 
 #define SHELL_COMMAND_TREE_ENTRY_NULL ((shell_command_tree_entry_t) { .command_ptr = NULL, .next_char = { NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, }, })
 
@@ -97,6 +98,11 @@ shell_command_tree_entry_t shell_command_tree_w;
 shell_command_tree_entry_t shell_command_tree_wm;
 shell_command_tree_entry_t shell_command_tree_wme;
 shell_command_tree_entry_t shell_command_tree_wmem;
+
+shell_command_tree_entry_t shell_command_tree_s;
+shell_command_tree_entry_t shell_command_tree_st;
+shell_command_tree_entry_t shell_command_tree_sta;
+shell_command_tree_entry_t shell_command_tree_stat;
 
 shell_command_tree_entry_t * shell_command_tree_root[26];
 
@@ -200,4 +206,10 @@ void shell_command_tree_init() {
     shell_command_tree_wm.next_char['E' - 'A'] = &shell_command_tree_wme;
     shell_command_tree_wme.next_char['M' - 'A'] = &shell_command_tree_wmem;
     shell_command_tree_wmem.command_ptr = command_wmem;
+
+    shell_command_tree_root['S' - 'A'] = &shell_command_tree_s;
+    shell_command_tree_s.next_char['T' - 'A'] = &shell_command_tree_st;
+    shell_command_tree_st.next_char['A' - 'A'] = &shell_command_tree_sta;
+    shell_command_tree_sta.next_char['T' - 'A'] = &shell_command_tree_stat;
+    shell_command_tree_stat.command_ptr = command_stat;
 }
