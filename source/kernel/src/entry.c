@@ -3,9 +3,6 @@
 #include <sys/halt.h>
 
 #include <driver/disc_pio.h>
-#include <driver/driver_interface.h>
-#include <driver/driver_vector_table.h>
-#include <driver/driver.h>
 
 #include <memory/map_kernel.h>
 #include <memory/memory_map.h>
@@ -20,7 +17,12 @@
 
 #include <filesystem/filesystem.h>
 
+#include <interrupt/init.h>
+
 #include <entry_error.h>
+
+#include <module/info_table.h>
+#include <module/load.h>
 
 __NORETURN __SECTION(".kernel_entry") void kernel_entry() {
     load_stack_pointer(stack_top);
@@ -30,30 +32,16 @@ __NORETURN __SECTION(".kernel_entry") void kernel_entry() {
 
     paging_map_kernel();
 
+//    int_init();
+
     if (!page_allocator_init()) halt();
 
 //    uint16_t device_count = driver_table.disc.device_count();
     driver_table.disc.select_device(0);
 
-    driver_handle_t handle;
-    if (!load_driver(&handle, "boot/driver/video_bios.drv")) halt();
+    module_info_table_t * hello_world_entry_table = module_load(open_filesystem(FILESYSTEM_ROOT_ADDRESS), "boot/module/hello_world.mod");
 
-    driver_video_set_mode(0);
-
-    uint8_t color = 1;
-    driver_video_set_color(&color);
-
-    driver_video_fill_rect(10, 10, 50, 50);
-
-    uint8_t smile[8];
-    file_t smile_file = open_file_path(open_filesystem(FILESYSTEM_ROOT_ADDRESS), "home/smile.bmp");
-    file_reader_t reader;
-    file_reader_init(&reader, smile_file);
-    file_reader_read(&reader, (char *) smile, 8);
-
-    color = 2;
-    driver_video_set_color(&color);
-    driver_video_draw_bitmap_transparent(smile, 20, 20, 8, 8);
+    hello_world_entry_table->init(hello_world_entry_table);
 
     driver_table.disc.stop();
 

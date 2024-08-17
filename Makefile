@@ -24,7 +24,7 @@ export ASMFLAGS=
 
 export BUILD_DIR=$(CURDIR)/build
 export BIN_DIR=$(BUILD_DIR)/bin
-export MODULE_DIR=$(BIN_DIR)/driver
+export MODULE_DIR=$(BIN_DIR)/module
 export OBJ_DIR=$(BUILD_DIR)/obj
 export SOURCE_DIR=$(CURDIR)/source
 export TOOLS_DIR=$(CURDIR)/tools

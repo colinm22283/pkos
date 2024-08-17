@@ -4,7 +4,7 @@
 
 #include <driver/driver_table.h>
 
-#include <module/entry_table.h>
+#include <module/info_table.h>
 
 #include <modules/video_bios/main.h>
 #include <modules/video_bios/rect.h>
@@ -13,9 +13,7 @@
 #include <modules/video_bios/image.h>
 #include <modules/video_bios/pixel.h>
 
-uint64_t allocation_size(void) {
-    return sizeof(allocation_t);
-}
+allocation_t allocation;
 
 bool free(void) {
     driver_table.video.allocation = NULL;
@@ -40,13 +38,13 @@ bool free(void) {
 }
 
 bool init(void * load_address) {
-    allocation->driver_modes[0].width = 320;
-    allocation->driver_modes[0].height = 200;
-    allocation->driver_modes[0].color_mode = DRIVER_TABLE_VIDEO_MODE_COLOR_MODE_256_COLOR;
+    allocation.driver_modes[0].width = 320;
+    allocation.driver_modes[0].height = 200;
+    allocation.driver_modes[0].color_mode = DRIVER_TABLE_VIDEO_MODE_COLOR_MODE_256_COLOR;
 
-    allocation->current_color = 0;
+    allocation.current_color = 0;
 
-    driver_table.video.unload = unload + (intptr_t) load_address;
+    driver_table.video.unload = free + (intptr_t) load_address;
 
     driver_table.video.mode_count = mode_count + (intptr_t) load_address;
     driver_table.video.get_modes = get_modes + (intptr_t) load_address;
@@ -65,7 +63,7 @@ bool init(void * load_address) {
     driver_table.video.draw_bitmap_transparent = draw_bitmap_transparent + (intptr_t) load_address;
 }
 
-module_entry_table_t module_entry_table = {
+module_info_table_t module_entry_table = {
     .init = init,
     .free = free,
 };

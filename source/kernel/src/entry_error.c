@@ -1,7 +1,5 @@
 #include <entry_error.h>
 
-#include <driver/driver_interface.h>
-
 #include <sys/halt.h>
 
 const uint8_t kernel_error_font_nums[][8] = {
@@ -109,25 +107,25 @@ const uint8_t kernel_error_font_x[8] = {
 };
 
 __NORETURN void kernel_entry_error(uint32_t error_code) {
-    uint8_t color = 1;
-    driver_video_set_color(&color);
-
-    const driver_table_video_mode_t * video_mode = driver_video_get_mode();
-
-    driver_video_fill_rect(0, 0, video_mode->width, video_mode->height);
-
-    color = 15;
-    driver_video_set_color(&color);
-
-    driver_video_draw_bitmap_transparent(kernel_error_font_nums[0], 0, 0, 8, 8);
-    driver_video_draw_bitmap_transparent(kernel_error_font_x, 8, 0, 8, 8);
-
-    for (int i = 7 * 8; i >= 0; i -= 8) {
-        uint8_t num = error_code % 16;
-        error_code /= 16;
-
-        driver_video_draw_bitmap_transparent(kernel_error_font_nums[num], 16 + i, 0, 8, 8);
-    }
+//    uint8_t color = 1;
+//    driver_video_set_color(&color);
+//
+//    const driver_table_video_mode_t * video_mode = driver_video_get_mode();
+//
+//    driver_video_fill_rect(0, 0, video_mode->width, video_mode->height);
+//
+//    color = 15;
+//    driver_video_set_color(&color);
+//
+//    driver_video_draw_bitmap_transparent(kernel_error_font_nums[0], 0, 0, 8, 8);
+//    driver_video_draw_bitmap_transparent(kernel_error_font_x, 8, 0, 8, 8);
+//
+//    for (int i = 7 * 8; i >= 0; i -= 8) {
+//        uint8_t num = error_code % 16;
+//        error_code /= 16;
+//
+//        driver_video_draw_bitmap_transparent(kernel_error_font_nums[num], 16 + i, 0, 8, 8);
+//    }
 
     halt();
 }

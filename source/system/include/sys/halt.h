@@ -2,6 +2,8 @@
 
 #include <stdbool.h>
 
+#include <defs.h>
+
 #include <sys/asm/hlt.h>
 #include <sys/asm/cli.h>
 

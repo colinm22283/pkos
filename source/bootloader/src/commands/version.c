@@ -4,7 +4,7 @@
 
 #include <version.h>
 
-__CDECL uint32_t command_version(uint32_t argc, const char ** argv) {
+__CDECL uint32_t command_version(__MAYBE_UNUSED uint32_t argc, __MAYBE_UNUSED const char ** argv) {
     console_print("PK Bootloader V" VERSION_STRING "\n");
 
     return 0;

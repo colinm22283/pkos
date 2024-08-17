@@ -9,7 +9,7 @@ $(BIN_DIR)/filesystem.bin: mkfs kernel modules
 	cp $(BIN_DIR)/kernel.bin $(FILESYSTEM_ROOT)/boot/kernel
 
 	mkdir -p $(FILESYSTEM_ROOT)/boot/module
-	cp $(DRIVER_DIR)/*.mod $(FILESYSTEM_ROOT)/boot/module || true
+	cp $(MODULE_DIR)/*.mod $(FILESYSTEM_ROOT)/boot/module || true
 
 	mkdir -p $(FILESYSTEM_ROOT)/home
 	echo "This is a test file 1" > $(FILESYSTEM_ROOT)/home/test_file_1.txt

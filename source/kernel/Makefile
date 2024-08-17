@@ -20,14 +20,21 @@ KN_OBJS+=$(KN_OD_64)/paging/init.o
 KN_OBJS+=$(KN_OD_64)/memory/map_kernel.o
 KN_OBJS+=$(KN_OD_64)/memory/memory_map.o
 
+KN_OBJS+=$(KN_OD_64)/interrupt/idt.o
+KN_OBJS+=$(KN_OD_64)/interrupt/init.o
+KN_OBJS+=$(KN_OD_64)/interrupt/handlers.o
+KN_OBJS+=$(KN_OD_64)/interrupt/handler.o
+
+KN_OBJS+=$(KN_OD_64)/module/load.o
+
 KN_OBJS+=$(KN_OD_64)/filesystem/filesystem.o
 
-KN_OBJS+=$(KN_OD_64)/modules/video_bios/bitmap.o
-KN_OBJS+=$(KN_OD_64)/modules/video_bios/image.o
-KN_OBJS+=$(KN_OD_64)/modules/video_bios/main.o
-KN_OBJS+=$(KN_OD_64)/modules/video_bios/modes.o
-KN_OBJS+=$(KN_OD_64)/modules/video_bios/pixel.o
-KN_OBJS+=$(KN_OD_64)/modules/video_bios/rect.o
+#KN_OBJS+=$(KN_OD_64)/modules/video_bios/bitmap.o
+#KN_OBJS+=$(KN_OD_64)/modules/video_bios/image.o
+#KN_OBJS+=$(KN_OD_64)/modules/video_bios/main.o
+#KN_OBJS+=$(KN_OD_64)/modules/video_bios/modes.o
+#KN_OBJS+=$(KN_OD_64)/modules/video_bios/pixel.o
+#KN_OBJS+=$(KN_OD_64)/modules/video_bios/rect.o
 
 KN_OBJS+=$(KN_OD_64)/entry.o
 KN_OBJS+=$(KN_OD_64)/entry_error.o
