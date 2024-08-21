@@ -1,15 +1,16 @@
 #include <stdbool.h>
 
 #include <console/console.h>
+#include <console/update.h>
 
 #include <shell/input.h>
 
 bool blinker = false;
-console_char_t * last_location;
+unsigned char last_location;
 
 void clear_blinker() {
     if (!blinker) {
-        last_location->ch = ' ';
+        console_buffer[CONSOLE_HEIGHT - 1][last_location].ch = ' ';
         blinker = true;
     }
 }
@@ -17,11 +18,13 @@ void clear_blinker() {
 void update_blinker() {
     if (!shell_ready_to_execute) {
         if (blinker) {
-            last_location = console_output_ptr;
-            console_output_ptr->ch = (char) 0xDB;
+            last_location = console_position;
+            console_buffer[CONSOLE_HEIGHT - 1][last_location].ch = (char) 0xDB;
         }
-        else last_location->ch = ' ';
+        else console_buffer[CONSOLE_HEIGHT - 1][last_location].ch = ' ';
 
         blinker = !blinker;
+
+        console_update();
     }
 };

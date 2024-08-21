@@ -8,5 +8,5 @@
 #define CONSOLE_WIDTH        (80)
 #define CONSOLE_HEIGHT       (25)
 
-extern console_char_t * console_output_ptr;
-extern console_char_t * console_newline_ptr;
+extern console_char_t console_buffer[CONSOLE_HEIGHT][CONSOLE_WIDTH];
+extern unsigned char console_position;

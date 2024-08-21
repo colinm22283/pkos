@@ -9,6 +9,8 @@
 #include <console/clear.h>
 #include <console/print_dec.h>
 #include <console/print_sdec.h>
+#include <console/update.h>
+#include <console/console.h>
 
 #include <shell/input.h>
 #include <shell/execute.h>
@@ -21,6 +23,8 @@
 
 #include <memory_map.h>
 #include <version.h>
+
+#include <sys/halt.h>
 
 __NORETURN void shell_entry(void) {
     shell_command_tree_init();

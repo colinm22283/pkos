@@ -56,15 +56,16 @@ uint32_t boot_sequence_start() {
     print_done();
 
     shell_ready_to_execute = true;
-    console_print("Finalize boot? (y/n)\n");
+    console_print("Finalize boot? (y/n)");
     char input = keyboard_getch();
     while (input != 'y' && input != 'n') {
-        console_print("Invalid selection '");
+        console_print("\nInvalid selection '");
         console_put(input);
-        console_print("'\n");
+        console_put('\'');
 
         input = keyboard_getch();
     }
+    console_newline();
     if (input == 'n') {
         shell_ready_to_execute = false;
         return 3;

@@ -2,4 +2,4 @@
 
 #include <defs.h>
 
-void console_backspace();
+void console_update();

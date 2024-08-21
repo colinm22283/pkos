@@ -6,5 +6,5 @@
 
 #include <console/color.h>
 
-__CDECL void console_print(const char * string);
-__CDECL void console_print_color(const char * string, console_color_t color);
+void console_print(const char * string);
+void console_print_color(const char * string, console_color_t color);

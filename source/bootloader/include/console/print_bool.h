@@ -4,4 +4,4 @@
 
 #include <defs.h>
 
-__CDECL void console_print_bool(bool value);
+void console_print_bool(bool value);

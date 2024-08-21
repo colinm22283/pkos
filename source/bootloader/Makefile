@@ -25,6 +25,7 @@ OBJS+=$(BL_OD_32)/pic/mask.o
 OBJS+=$(BL_OD_32)/boot_error.o
 
 OBJS+=$(BL_OD_32)/console/console.o
+OBJS+=$(BL_OD_32)/console/update.o
 OBJS+=$(BL_OD_32)/console/newline.o
 OBJS+=$(BL_OD_32)/console/print.o
 OBJS+=$(BL_OD_32)/console/print_color.o

@@ -4,4 +4,4 @@
 
 #include <defs.h>
 
-__CDECL void console_print_dec(uint32_t num);
+void console_print_dec(uint32_t num);
