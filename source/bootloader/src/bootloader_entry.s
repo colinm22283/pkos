@@ -49,9 +49,8 @@ bootloader_entry:
     # sort the memory map
     call memory_map_sort
 
-    # clear the console
-    push $0x07
-    call console_clear_color
+    # init the console
+    call console_init
 
     # attempt to boot the kernel
     call boot_sequence_start

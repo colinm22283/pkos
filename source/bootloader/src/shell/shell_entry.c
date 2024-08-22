@@ -34,7 +34,7 @@ __NORETURN void shell_entry(void) {
     console_print("PK Bootloader V" VERSION_STRING "\n");
 
     while (true) {
-        console_print("PKBL> ");
+        console_print_color("PKBL> ", CONSOLE_COLOR(CONSOLE_COLOR_LIGHT_BLUE, CONSOLE_COLOR_BLACK));
 
         while (!shell_ready_to_execute) wait_for_interrupt();
 

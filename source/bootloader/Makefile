@@ -39,6 +39,7 @@ OBJS+=$(BL_OD_32)/console/clear.o
 OBJS+=$(BL_OD_32)/console/clear_color.o
 OBJS+=$(BL_OD_32)/console/color_lut.o
 OBJS+=$(BL_OD_32)/console/set_color.o
+OBJS+=$(BL_OD_32)/console/init.o
 
 OBJS+=$(BL_OD_32)/shell/shell_entry.o
 OBJS+=$(BL_OD_32)/shell/keyboard_handler.o
