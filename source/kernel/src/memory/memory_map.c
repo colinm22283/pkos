@@ -5,8 +5,10 @@
 
 #include "sys/halt.h"
 
-__SECTION(".memory_map")      volatile memory_map_entry_t memory_map[(0x200 - 4) / sizeof(memory_map_entry_t)];
-__SECTION(".memory_map_size") volatile const uint32_t     memory_map_size;
+__SECTION(".memory_map")           volatile memory_map_entry_t memory_map[(0x200 - 4) / sizeof(memory_map_entry_t)];
+__SECTION(".memory_map_size")      volatile const uint32_t     memory_map_size;
+__SECTION(".kernel_region_base")   volatile uint64_t           kernel_region_base;
+__SECTION(".kernel_region_length") volatile uint64_t           kernel_region_length;
 
 primary_memory_region_t get_primary_memory_region() {
     primary_memory_region_t best_region = { .base = 0, .length = 0, };

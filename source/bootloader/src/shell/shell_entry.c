@@ -26,12 +26,26 @@
 
 #include <sys/halt.h>
 
+#include <string/itoa.h>
+#include <string/strcpy.h>
+
+#include <disc/filesystem.h>
+#include <boot/kernel.h>
+
+#include <heap/alloc.h>
+#include <heap/free.h>
+
+#include <commands/ed.h>
+
 __NORETURN void shell_entry(void) {
     shell_command_tree_init();
     shell_history_init();
 
     console_clear();
     console_print("PK Bootloader V" VERSION_STRING "\n");
+
+    const char * args[] = { "ed", "home/test_file.txt" };
+    command_ed(2, args);
 
     while (true) {
         console_print_color("PKBL> ", CONSOLE_COLOR(CONSOLE_COLOR_LIGHT_BLUE, CONSOLE_COLOR_BLACK));

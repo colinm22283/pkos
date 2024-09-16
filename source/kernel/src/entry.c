@@ -28,20 +28,28 @@ __NORETURN __SECTION(".kernel_entry") void kernel_entry() {
     load_stack_pointer(stack_top);
 
     driver_disc_pio_load(&driver_table);
-    driver_table.disc.start();
+    if (!driver_table.disc.start()) kernel_entry_error(1);
 
     paging_map_kernel();
 
 //    int_init();
 
-    if (!page_allocator_init()) halt();
+    if (!page_allocator_init()) kernel_entry_error(0x2);
+
+//    kernel_entry_error(0x123456);
 
 //    uint16_t device_count = driver_table.disc.device_count();
     driver_table.disc.select_device(0);
 
-    module_info_table_t * hello_world_entry_table = module_load(open_filesystem(FILESYSTEM_ROOT_ADDRESS), "boot/module/hello_world.mod");
+#define VIDEO_MEMORY ((uint8_t *) 0xA0000)
 
-    hello_world_entry_table->init(hello_world_entry_table);
+    VIDEO_MEMORY[0] = 3;
+    VIDEO_MEMORY[1] = 3;
+    VIDEO_MEMORY[2] = 3;
+
+//    module_info_table_t * hello_world_entry_table = module_load(open_filesystem(FILESYSTEM_ROOT_ADDRESS), "boot/module/hello_world.mod");
+
+//    hello_world_entry_table->init(hello_world_entry_table);
 
     driver_table.disc.stop();
 

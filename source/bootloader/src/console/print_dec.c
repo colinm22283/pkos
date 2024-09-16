@@ -1,5 +1,5 @@
 #include <console/print_dec.h>
-#include <console/console.h>
+#include <console/inline_put.h>
 #include <console/update.h>
 #include <console/put.h>
 
@@ -28,8 +28,7 @@ void console_print_dec(uint32_t num) {
         do {
             i--;
 
-            console_buffer[CONSOLE_HEIGHT - 1][console_position].ch = num_buf[i];
-            console_position++;
+            inline_put(num_buf[i]);
         } while (i > 0);
     }
 

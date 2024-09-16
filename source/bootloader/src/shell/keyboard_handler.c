@@ -51,7 +51,9 @@ void shell_keyboard_key_down_handler(keycode_t c) {
             } break;
 
             default: {
-                if (c >= 32 && c <= 126 && shell_input_char((char) c)) console_put((char) c);
+                if (c >= 32 && c <= 126 && shell_input_char((char) c)) {
+                    if (shell_enable_input_write_back) console_put((char) c);
+                }
             } break;
         }
     }

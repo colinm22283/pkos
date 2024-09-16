@@ -3,6 +3,8 @@ ENTRY(kernel_entry);
 SECTIONS {
     . = 0xC0000000;
 
+    _kernel_start = .;
+
     .kernel_entry . : AT(0) {
         *(.kernel_entry);
     } > kernel_memory
@@ -23,6 +25,10 @@ SECTIONS {
         . = ALIGN(8);
         _stack_top = .;
     } > kernel_memory
+
+    _kernel_end = .;
+
+    _kernel_size = _kernel_end - _kernel_start;
 
     .allocation_space . (NOLOAD) : {
         *(.allocation_space);

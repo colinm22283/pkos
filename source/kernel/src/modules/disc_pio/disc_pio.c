@@ -1,11 +1,11 @@
 #include <stddef.h>
 
-#include <driver/disc_pio.h>
+#include "driver/disc_pio.h"
 
-#include <sys/asm/in.h>
-#include <sys/asm/out.h>
-#include <sys/ata/pio.h>
-#include <sys/ports.h>
+#include "sys/asm/in.h"
+#include "sys/asm/out.h"
+#include "sys/ata/pio.h"
+#include "sys/ports.h"
 
 #define PRIMARY_IO_PORT ((ata_pio_io_port_t *) ATA_PIO_PRIMARY)
 #define SECONDARY_IO_PORT ((ata_pio_io_port_t *) ATA_PIO_SECONDARY)
@@ -38,7 +38,7 @@ device_t devices[4];
 
 uint8_t current_error;
 
-static inline bool wait_ready(ata_pio_io_port_t * io_port) {
+static inline bool wait_ready(const ata_pio_io_port_t * io_port) {
     union { uint8_t uint8; ata_pio_status_t value; } status = { .uint8 = inb_ptr(&io_port->status), };
     while ((status.value.busy || !status.value.ready) && !status.value.error) status.uint8 = inb_ptr(&io_port->status);
     if (status.value.error) return false;
@@ -62,7 +62,7 @@ static inline ata_pio_control_port_t * device_control_port() {
     }
 }
 
-static inline void set_current_error(ata_pio_io_port_t * io_port) {
+static inline void set_current_error(const ata_pio_io_port_t * io_port) {
     union { uint8_t num; ata_pio_error_t error; } error_value = { .num = inb_ptr(&io_port->error), };
 
     if (error_value.error.aborted_command) current_error = DRIVER_ERROR_ABORTED_COMMAND;
@@ -80,7 +80,7 @@ enum {
     DEVICE_DETECT_DRIVE_ID_MASTER = 0xA0,
     DEVICE_DETECT_DRIVE_ID_SLAVE = 0xB0,
 };
-static inline bool device_detect(ata_pio_io_port_t * io_port, uint8_t drive_id) {
+static inline bool device_detect(const ata_pio_io_port_t * io_port, uint8_t drive_id) {
     current_error = DRIVER_OK;
 
     outb_ptr(&io_port->drive_head, drive_id);
@@ -106,7 +106,7 @@ static inline bool device_detect(ata_pio_io_port_t * io_port, uint8_t drive_id) 
     return true;
 }
 
-static inline bool disc_reset(ata_pio_io_port_t * io_port, ata_pio_control_port_t * control_port) {
+static inline bool disc_reset(const ata_pio_io_port_t * io_port, ata_pio_control_port_t * control_port) {
     outb_ptr(&control_port->device_control, ATA_PIO_DEVICE_CONTROL_SOFTWARE_RESET);
     outb_ptr(&control_port->device_control, 0);
 
@@ -127,7 +127,7 @@ enum {
     READ28_DRIVE_SELECT_MASTER = 0xE0,
     READ28_DRIVE_SELECT_SLAVE  = 0xF0,
 };
-static inline bool read28(ata_pio_io_port_t * io_port, uint8_t drive_select, uint64_t lba, uint16_t sector_count, uint16_t * dest) {
+static inline bool read28(const ata_pio_io_port_t * io_port, uint8_t drive_select, uint64_t lba, uint16_t sector_count, uint16_t * dest) {
     if (lba > 0xFFFFFF) return false;
 
     outb_ptr(&io_port->drive_head, drive_select | ((lba >> 24) & 0xF));
@@ -164,7 +164,7 @@ static inline bool read28(ata_pio_io_port_t * io_port, uint8_t drive_select, uin
 
     return true;
 }
-static inline bool write28(ata_pio_io_port_t * io_port, uint8_t drive_select, uint64_t lba, uint16_t sector_count, uint16_t * src) {
+static inline bool write28(const ata_pio_io_port_t * io_port, uint8_t drive_select, uint64_t lba, uint16_t sector_count, uint16_t * src) {
     if (lba > 0xFFFFFF) return false;
 
     outb_ptr(&io_port->drive_head, drive_select | ((lba >> 24) & 0xF));
@@ -209,7 +209,7 @@ enum {
     READ48_DRIVE_SELECT_MASTER = 0x40,
     READ48_DRIVE_SELECT_SLAVE  = 0x50,
 };
-static inline bool read48(ata_pio_io_port_t * io_port, uint8_t drive_select, uint64_t lba, uint16_t sector_count, uint16_t * dest) {
+static inline bool read48(const ata_pio_io_port_t * io_port, uint8_t drive_select, uint64_t lba, uint16_t sector_count, uint16_t * dest) {
     if (lba > 0xFFFFFFFFFFFF) return false;
 
     outb_ptr(&io_port->drive_head, drive_select);
@@ -250,7 +250,7 @@ static inline bool read48(ata_pio_io_port_t * io_port, uint8_t drive_select, uin
     return true;
 }
 
-static inline bool write48(ata_pio_io_port_t * io_port, uint8_t drive_select, uint64_t lba, uint16_t sector_count, uint16_t * src) {
+static inline bool write48(const ata_pio_io_port_t * io_port, uint8_t drive_select, uint64_t lba, uint16_t sector_count, uint16_t * src) {
     if (lba > 0xFFFFFFFFFFFF) return false;
 
     outb_ptr(&io_port->drive_head, drive_select);

@@ -13,6 +13,9 @@ export ASM64=/opt/cross64/bin/x86_64-elf-as
 export LD32=/opt/cross/bin/i686-elf-ld
 export LD64=/opt/cross64/bin/x86_64-elf-ld
 
+export OBJCOPY32=/opt/cross/bin/i686-elf-objcopy
+export OBJCOPY64=/opt/cross64/bin/x86_64-elf-objcopy
+
 export CFLAGS=-c -ffreestanding -fno-exceptions -nostdlib -fno-stack-protector -fno-asynchronous-unwind-tables -mno-red-zone -Wall -Wextra
 export CFLAGS16=-m16 $(CFLAGS)
 export CFLAGS32=-m32 $(CFLAGS)
@@ -37,6 +40,9 @@ export LDFLAGS=$(foreach d, $(LDSCRIPTS), -T$d)
 
 export INCLUDE_DIRS=$(SOURCE_DIR)/system/include
 
+export MKFS_BIN=$(TOOLS_DIR)/mkfs/build/mkfs
+export MKMOD_BIN=$(TOOLS_DIR)/mkmod/build/mkmod
+
 .PHONY: all
 all: $(BUILD_DIR)/pkos.img
 
@@ -47,6 +53,7 @@ clean:
 	rm -f $(BUILD_DIR)/*.img
 
 	cd tools/mkfs && $(MAKE) clean
+	cd tools/mkmod && $(MAKE) clean
 
 .PHONY: rebuild
 rebuild:
@@ -87,5 +94,13 @@ linecount:
 	sh $(MAKE_DIR)/linecount.sh
 
 .PHONY: mkfs
-mkfs:
+mkfs: $(MKFS_BIN)
+
+.PHONY: mkmod
+mkmod: $(MKMOD_BIN)
+
+$(MKFS_BIN):
 	cd $(TOOLS_DIR)/mkfs && $(MAKE)
+
+$(MKMOD_BIN):
+	cd $(TOOLS_DIR)/mkmod && $(MAKE)

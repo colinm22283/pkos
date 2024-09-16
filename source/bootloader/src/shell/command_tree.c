@@ -17,8 +17,15 @@
 #include <commands/ls.h>
 #include <commands/wmem.h>
 #include <commands/stat.h>
+#include <commands/touch.h>
+#include <commands/af.h>
+#include <commands/rm.h>
+#include <commands/ed.h>
 
 #define SHELL_COMMAND_TREE_ENTRY_NULL ((shell_command_tree_entry_t) { .command_ptr = NULL, .next_char = { NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, }, })
+
+shell_command_tree_entry_t shell_command_tree_a;
+shell_command_tree_entry_t shell_command_tree_af;
 
 shell_command_tree_entry_t shell_command_tree_e;
 shell_command_tree_entry_t shell_command_tree_ec;
@@ -27,6 +34,7 @@ shell_command_tree_entry_t shell_command_tree_echo;
 shell_command_tree_entry_t shell_command_tree_ex;
 shell_command_tree_entry_t shell_command_tree_exi;
 shell_command_tree_entry_t shell_command_tree_exit;
+shell_command_tree_entry_t shell_command_tree_ed;
 
 shell_command_tree_entry_t shell_command_tree_b;
 shell_command_tree_entry_t shell_command_tree_bo;
@@ -84,6 +92,11 @@ shell_command_tree_entry_t shell_command_tree_versio;
 shell_command_tree_entry_t shell_command_tree_version;
 
 shell_command_tree_entry_t shell_command_tree_t;
+shell_command_tree_entry_t shell_command_tree_to;
+shell_command_tree_entry_t shell_command_tree_tou;
+shell_command_tree_entry_t shell_command_tree_touc;
+shell_command_tree_entry_t shell_command_tree_touch;
+
 shell_command_tree_entry_t shell_command_tree_tr;
 shell_command_tree_entry_t shell_command_tree_tre;
 shell_command_tree_entry_t shell_command_tree_tree;
@@ -93,6 +106,8 @@ shell_command_tree_entry_t shell_command_tree_re;
 shell_command_tree_entry_t shell_command_tree_res;
 shell_command_tree_entry_t shell_command_tree_rese;
 shell_command_tree_entry_t shell_command_tree_reset;
+
+shell_command_tree_entry_t shell_command_tree_rm;
 
 shell_command_tree_entry_t shell_command_tree_w;
 shell_command_tree_entry_t shell_command_tree_wm;
@@ -112,6 +127,10 @@ void shell_command_tree_init() {
     shell_command_tree_ec = SHELL_COMMAND_TREE_ENTRY_NULL;
     shell_command_tree_ech = SHELL_COMMAND_TREE_ENTRY_NULL;
 
+    shell_command_tree_root['A' - 'A'] = &shell_command_tree_a;
+    shell_command_tree_a.next_char['F' - 'A'] = &shell_command_tree_af;
+    shell_command_tree_af.command_ptr = command_af;
+
     shell_command_tree_root['E' - 'A'] = &shell_command_tree_e;
     shell_command_tree_e.next_char['C' - 'A'] = &shell_command_tree_ec;
     shell_command_tree_ec.next_char['H' - 'A'] = &shell_command_tree_ech;
@@ -121,6 +140,8 @@ void shell_command_tree_init() {
     shell_command_tree_ex.next_char['I' - 'A'] = &shell_command_tree_exi;
     shell_command_tree_exi.next_char['T' - 'A'] = &shell_command_tree_exit;
     shell_command_tree_exit.command_ptr = command_exit;
+    shell_command_tree_e.next_char['D' - 'A'] = &shell_command_tree_ed;
+    shell_command_tree_ed.command_ptr = command_ed;
 
     shell_command_tree_root['B' - 'A'] = &shell_command_tree_b;
     shell_command_tree_b.next_char['O' - 'A'] = &shell_command_tree_bo;
@@ -189,6 +210,12 @@ void shell_command_tree_init() {
     shell_command_tree_version.command_ptr = command_version;
 
     shell_command_tree_root['T' - 'A'] = &shell_command_tree_t;
+    shell_command_tree_t.next_char['O' - 'A'] = &shell_command_tree_to;
+    shell_command_tree_to.next_char['U' - 'A'] = &shell_command_tree_tou;
+    shell_command_tree_tou.next_char['C' - 'A'] = &shell_command_tree_touc;
+    shell_command_tree_touc.next_char['H' - 'A'] = &shell_command_tree_touch;
+    shell_command_tree_touch.command_ptr = command_touch;
+
     shell_command_tree_t.next_char['R' - 'A'] = &shell_command_tree_tr;
     shell_command_tree_tr.next_char['E' - 'A'] = &shell_command_tree_tre;
     shell_command_tree_tre.next_char['E' - 'A'] = &shell_command_tree_tree;
@@ -200,6 +227,9 @@ void shell_command_tree_init() {
     shell_command_tree_res.next_char['E' - 'A'] = &shell_command_tree_rese;
     shell_command_tree_rese.next_char['T' - 'A'] = &shell_command_tree_reset;
     shell_command_tree_reset.command_ptr = command_reset;
+
+    shell_command_tree_r.next_char['M' - 'A'] = &shell_command_tree_rm;
+    shell_command_tree_rm.command_ptr = command_rm;
 
     shell_command_tree_root['W' - 'A'] = &shell_command_tree_w;
     shell_command_tree_w.next_char['M' - 'A'] = &shell_command_tree_wm;

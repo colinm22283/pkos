@@ -74,6 +74,7 @@ bootloader16_entry:
     ..memory_map_loop_exit:
 
     movw (%bp), %ax
+    dec  %ax
     movw %ax,    (memory_map_size)
     xor  %ax,    %ax
     movw %ax,    (memory_map_size + 2)

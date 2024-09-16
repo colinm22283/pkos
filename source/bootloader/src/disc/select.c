@@ -3,7 +3,7 @@
 #include <sys/asm/out.h>
 #include <sys/asm/in.h>
 
-bool disc_select(ata_pio_io_port_t * io_port, uint8_t drive_id) {
+bool disc_select(const ata_pio_io_port_t * io_port, uint8_t drive_id) {
     outb_ptr(&io_port->drive_head, drive_id);
     outb_ptr(&io_port->lba_low, 0);
     outb_ptr(&io_port->lba_mid, 0);

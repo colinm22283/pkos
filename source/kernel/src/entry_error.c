@@ -93,39 +93,105 @@ const uint8_t kernel_error_font_nums[][8] = {
         0b00000010,
         0b01111100,
         0b00000000,
+    }, {
+        0b01111100,
+        0b10000010,
+        0b10000010,
+        0b11111110,
+        0b10000010,
+        0b10000010,
+        0b10000010,
+        0b00000000,
+    }, {
+        0b11111100,
+        0b10000010,
+        0b10000010,
+        0b11111100,
+        0b10000010,
+        0b10000010,
+        0b11111100,
+        0b00000000,
+    }, {
+        0b01111110,
+        0b10000000,
+        0b10000000,
+        0b10000000,
+        0b10000000,
+        0b10000000,
+        0b01111110,
+        0b00000000,
+    }, {
+        0b11111100,
+        0b10000010,
+        0b10000010,
+        0b10000010,
+        0b10000010,
+        0b10000010,
+        0b11111100,
+        0b00000000,
+    }, {
+        0b11111110,
+        0b10000000,
+        0b10000000,
+        0b11111110,
+        0b10000000,
+        0b10000000,
+        0b11111110,
+        0b00000000,
+    }, {
+        0b11111110,
+        0b10000000,
+        0b10000000,
+        0b11111110,
+        0b10000000,
+        0b10000000,
+        0b10000000,
+        0b00000000,
     },
 };
-const uint8_t kernel_error_font_x[8] = {
-    0b10000010,
-    0b01000100,
-    0b00101000,
-    0b00010000,
-    0b00101000,
-    0b01000100,
-    0b10000010,
-    0b00000000,
+const uint8_t kernel_error_font_error_0x[8 * 8] = {
+    0b11111110, 0b11111100, 0b11111100, 0b01111100, 0b10111100, 0b00000000, 0b01111100, 0b10000010,
+    0b10000000, 0b10000010, 0b10000010, 0b10000010, 0b10000010, 0b00000000, 0b10000010, 0b01000100,
+    0b10000000, 0b10000010, 0b10000010, 0b10000010, 0b10000010, 0b00000000, 0b10000010, 0b00101000,
+    0b11111110, 0b11111100, 0b11111100, 0b10000010, 0b11111100, 0b00000000, 0b10000010, 0b00010000,
+    0b10000000, 0b10110000, 0b10110000, 0b10000010, 0b10110000, 0b00000000, 0b10000010, 0b00101000,
+    0b10000000, 0b10011100, 0b10011100, 0b10000010, 0b10011100, 0b00000000, 0b10000010, 0b01000100,
+    0b11111110, 0b10000110, 0b10000110, 0b01111100, 0b10000110, 0b00000000, 0b01111100, 0b10000010,
+    0b00000000, 0b00000000, 0b00000000, 0b00000000, 0b00000000, 0b00000000, 0b00000000, 0b00000000,
 };
 
+#define VIDEO_MEMORY ((uint8_t *) 0xA0000)
+
+void entry_error_draw_bitmap(const uint8_t * bitmap, uint32_t x, uint32_t y, uint32_t width, uint32_t height, uint8_t color) {
+    uint32_t div_width = width / 8;
+
+    uint32_t video_width = 320;
+
+    for (uint32_t _x = 0, __x = 0; _x < width; _x += 8, __x++) {
+        for (uint32_t _y = 0; _y < height; _y++) {
+            if ((bitmap[_y * div_width + __x] >> 7) & 1) VIDEO_MEMORY[(y + _y) * video_width + (x + _x + 0)] = color;
+            if ((bitmap[_y * div_width + __x] >> 6) & 1) VIDEO_MEMORY[(y + _y) * video_width + (x + _x + 1)] = color;
+            if ((bitmap[_y * div_width + __x] >> 5) & 1) VIDEO_MEMORY[(y + _y) * video_width + (x + _x + 2)] = color;
+            if ((bitmap[_y * div_width + __x] >> 4) & 1) VIDEO_MEMORY[(y + _y) * video_width + (x + _x + 3)] = color;
+            if ((bitmap[_y * div_width + __x] >> 3) & 1) VIDEO_MEMORY[(y + _y) * video_width + (x + _x + 4)] = color;
+            if ((bitmap[_y * div_width + __x] >> 2) & 1) VIDEO_MEMORY[(y + _y) * video_width + (x + _x + 5)] = color;
+            if ((bitmap[_y * div_width + __x] >> 1) & 1) VIDEO_MEMORY[(y + _y) * video_width + (x + _x + 6)] = color;
+            if ((bitmap[_y * div_width + __x] >> 0) & 1) VIDEO_MEMORY[(y + _y) * video_width + (x + _x + 7)] = color;
+        }
+    }
+}
+
 __NORETURN void kernel_entry_error(uint32_t error_code) {
-//    uint8_t color = 1;
-//    driver_video_set_color(&color);
-//
-//    const driver_table_video_mode_t * video_mode = driver_video_get_mode();
-//
-//    driver_video_fill_rect(0, 0, video_mode->width, video_mode->height);
-//
-//    color = 15;
-//    driver_video_set_color(&color);
-//
-//    driver_video_draw_bitmap_transparent(kernel_error_font_nums[0], 0, 0, 8, 8);
-//    driver_video_draw_bitmap_transparent(kernel_error_font_x, 8, 0, 8, 8);
-//
-//    for (int i = 7 * 8; i >= 0; i -= 8) {
-//        uint8_t num = error_code % 16;
-//        error_code /= 16;
-//
-//        driver_video_draw_bitmap_transparent(kernel_error_font_nums[num], 16 + i, 0, 8, 8);
-//    }
+    for (uint32_t i = 0; i < 320 * 200; i++) VIDEO_MEMORY[i] = 1;
+
+    entry_error_draw_bitmap(kernel_error_font_error_0x, 0, 0, 8 * 8, 8, 15);
+
+    for (int i = 7 * 8; i >= 0; i -= 8) {
+        uint8_t num = error_code % 16;
+        error_code /= 16;
+
+        entry_error_draw_bitmap(kernel_error_font_nums[num], 64 + i, 0, 8, 8, 15);
+    }
 
     halt();
 }

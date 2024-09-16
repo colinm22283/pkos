@@ -7,6 +7,8 @@
 #include <console/print_hex.h>
 #include <console/newline.h>
 
+#include <sys/paging/load_page_table.h>
+
 __SECTION(".page_tables") pml4t64_t pml4t;
 __SECTION(".page_tables") pdpt64_t  kernel_identity_pdpt;
 __SECTION(".page_tables") pdt64_t   identity_pdt;
@@ -14,7 +16,7 @@ __SECTION(".page_tables") pt64_t    identity_pt;
 __SECTION(".page_tables") pdt64_t   kernel_pdt;
 __SECTION(".page_tables") pt64_t    kernel_pt;
 
-void page_tables_init() {
+void page_tables_init(uint64_t kernel_load_point) {
     memset(&pml4t,         0, sizeof(pml4t64_t));
     memset(&kernel_identity_pdpt, 0, sizeof(pdpt64_t));
     memset(&identity_pdt,  0, sizeof(pdt64_t));
@@ -41,6 +43,6 @@ void page_tables_init() {
     PDT64_SET_ADDRESS(kernel_pdt[0], kernel_pt);
     kernel_pdt[0].present = 1;
     kernel_pdt[0].read_write = 1;
-    pt64_map_2mb(&kernel_pt, 0x100000);
+    pt64_map_2mb(&kernel_pt, kernel_load_point);
 }
 

@@ -127,6 +127,7 @@ directory_t open_directory(directory_t parent, const char * directory_name);
 file_t open_file(directory_t parent, const char * directory_name);
 directory_t open_directory_path(directory_t root, const char * path);
 file_t open_file_path(directory_t root, const char * path);
+filesystem_page_address_t open_node_path(directory_t root, const char * path);
 
 bool get_directory_name(directory_t file, char * buffer);
 bool get_file_name(file_t file, char * buffer);
@@ -144,3 +145,10 @@ typedef struct {
 } file_stat_result_t;
 
 bool stat_file(file_stat_result_t * result, filesystem_page_address_t address);
+
+bool create_file(filesystem_page_address_t root_page_address, directory_t parent_directory, const char * name);
+bool append_file(filesystem_page_address_t root_address, file_t file, const char * content, uint32_t size);
+
+bool delete_file(filesystem_page_address_t root_address, file_t file);
+bool delete_directory(filesystem_page_address_t root_address, directory_t directory);
+bool delete_node(filesystem_page_address_t root_address, filesystem_page_address_t node);

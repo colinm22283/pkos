@@ -6,6 +6,8 @@
 
 #include <console/print_dec.h>
 #include <console/print.h>
+#include <console/print_dec.h>
+#include <console/newline.h>
 
 #include <keyboard/keyboard.h>
 #include <keyboard/keycode.h>
@@ -21,6 +23,9 @@ bool in_extended = false;
 
 void int_keyboard_handler() {
     unsigned char raw_char = (unsigned char) inb(0x60);
+
+//    console_print_dec(raw_char);
+//    console_newline();
 
     if (raw_char == 0xE0) {
         in_extended = true;
@@ -39,6 +44,14 @@ void int_keyboard_handler() {
                         keyboard_key_up_handler(KC_UP_ARROW);
                     } break;
 
+                    case 75: {
+                        keyboard_key_up_handler(KC_LEFT_ARROW);
+                    } break;
+
+                    case 77: {
+                        keyboard_key_up_handler(KC_RIGHT_ARROW);
+                    } break;
+
                     case 80: {
                         keyboard_key_up_handler(KC_DOWN_ARROW);
                     } break;
@@ -51,6 +64,16 @@ void int_keyboard_handler() {
                     case 72: {
                         keyboard_key_down_handler(KC_UP_ARROW);
                         shell_keyboard_key_down_handler(KC_UP_ARROW);
+                    } break;
+
+                    case 75: {
+                        keyboard_key_down_handler(KC_LEFT_ARROW);
+                        shell_keyboard_key_down_handler(KC_LEFT_ARROW);
+                    } break;
+
+                    case 77: {
+                        keyboard_key_down_handler(KC_RIGHT_ARROW);
+                        shell_keyboard_key_down_handler(KC_RIGHT_ARROW);
                     } break;
 
                     case 80: {
@@ -69,10 +92,28 @@ void int_keyboard_handler() {
                 switch (raw_char) {
                     case 42:
                     case 54: {
-                        if (released) shift_down = false;
-                        else shift_down = true;
-                    }
-                        break;
+                        if (released) {
+                            shift_down = false;
+
+                            keyboard_key_up_handler(KC_SHIFT);
+                        }
+                        else {
+                            shift_down = true;
+
+                            keyboard_key_down_handler(KC_SHIFT);
+                            shell_keyboard_key_down_handler(KC_SHIFT);
+                        }
+                    } break;
+
+                    case 29: {
+                        if (released) {
+                            keyboard_key_up_handler(KC_CTRL);
+                        }
+                        else {
+                            keyboard_key_down_handler(KC_CTRL);
+                            shell_keyboard_key_down_handler(KC_CTRL);
+                        }
+                    } break;
 
                     default:
                         break;

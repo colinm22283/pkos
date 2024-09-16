@@ -2,7 +2,7 @@
 
 #include <module/load.h>
 
-char memory[4096];
+char memory[8000];
 
 module_info_table_t * module_load(directory_t dir, const char * path) {
     file_t file = open_file_path(dir, path);

@@ -1,4 +1,4 @@
-#include <console/console.h>
+#include <console/inline_put.h>
 #include <console/put.h>
 #include <console/update.h>
 
@@ -7,8 +7,7 @@
 void console_put(char c) {
     clear_blinker();
 
-    console_buffer[CONSOLE_HEIGHT - 1][console_position].ch = c;
-    console_position++;
+    inline_put(c);
 
     update_blinker();
 

@@ -16,8 +16,11 @@
 
 #include <keyboard/getch.h>
 
+#include <heap/init.h>
+
 #include <gdt64.h>
 #include <page_tables.h>
+#include <memory_map.h>
 
 #include <sys/halt.h>
 #include <console/print_hex.h>
@@ -36,24 +39,40 @@ uint32_t boot_sequence_start() {
     print_init("disc");
     if (!boot_disc_init()) return 1;
     print_done();
-    console_print("Disc info:\n  Primary");
-    console_print(" bus found: ");
+    console_print("Disc info:\n  Primary bus found: ");
     console_print_bool(boot_disc_primary_present);
-    console_print("\n  Secondary");
-    console_print(" bus found: ");
+    console_print("\n  Secondary bus found: ");
     console_print_bool(boot_disc_secondary_present);
     console_print("\n  Bus selected: ");
     console_print(boot_disc_primary_present ? "PRIMARY" : "SECONDARY");
     console_print("\n  Drive selected: ");
     console_print(boot_disc_master_selected ? "MASTER\n" : "SLAVE\n");
 
-    print_init("kernel memory");
-    if (!boot_disc_load_kernel()) return 2;
+    print_init("primary memory region");
+    primary_memory_region_t primary_memory_region = get_primary_memory_region();
+    if (primary_memory_region.base == 0 && primary_memory_region.length == 0) return 2;
+    kernel_region_base = primary_memory_region.base;
+    kernel_region_length = primary_memory_region.length;
     print_done();
+    console_print("Primary memory region:\n  Start: 0x");
+    console_print_hex(primary_memory_region.base);
+    console_print("\n  Size:  0x");
+    console_print_hex(primary_memory_region.length);
+    console_newline();
+
+    print_init("kernel memory");
+    if (!boot_disc_load_kernel(primary_memory_region.base)) return 3;
+    print_done();
+    console_print("  Kernel loaded at physical address 0x");
+    console_print_hex(primary_memory_region.base);
+    console_newline();
 
     print_init("paging tables");
-    page_tables_init();
+    page_tables_init(primary_memory_region.base);
     print_done();
+    console_print("  Kernel mapped at virtual address 0x");
+    console_print_hex(0xC0000000);
+    console_newline();
 
     shell_ready_to_execute = true;
     console_print("Finalize boot? (y/n)");
@@ -67,8 +86,10 @@ uint32_t boot_sequence_start() {
     }
     console_newline();
     if (input == 'n') {
+        heap_init();
+
         shell_ready_to_execute = false;
-        return 3;
+        return 4;
     }
 
     print_init("BIOS graphics mode");
@@ -82,7 +103,7 @@ uint32_t boot_sequence_start() {
     boot_result = enter_kernel32();
 #endif
 
-    if (!boot_result) return 4;
+    if (!boot_result) return 5;
 
     return 0;
 }

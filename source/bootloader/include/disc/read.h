@@ -14,5 +14,5 @@ enum {
     DISC_READ48_SLAVE  = 0x50,
 };
 
-uint32_t disc_read28(ata_pio_io_port_t * io_port, uint8_t drive_select, uint32_t lba, uint8_t sector_count, uint16_t * dest);
-uint32_t disc_read48(ata_pio_io_port_t * io_port, uint8_t drive_select, uint64_t lba, uint16_t sector_count, uint16_t * dest);
+uint32_t disc_read28(const ata_pio_io_port_t * io_port, uint8_t drive_select, uint32_t lba, uint8_t sector_count, uint16_t * dest);
+uint32_t disc_read48(const ata_pio_io_port_t * io_port, uint8_t drive_select, uint64_t lba, uint16_t sector_count, uint16_t * dest);

@@ -3,7 +3,6 @@ KN_OD_64=$(OBJ_DIR)/64/kernel/src
 
 export INCLUDE_DIRS+=$(CURDIR)/include
 
-KN_OBJS+=$(KN_OD_64)/driver/disc_pio.o
 KN_OBJS+=$(KN_OD_64)/driver/driver_table.o
 
 KN_OBJS+=$(KN_OD_64)/util/memory/memcpy.o
@@ -14,8 +13,12 @@ KN_OBJS+=$(KN_OD_64)/util/string/strcmpn.o
 KN_OBJS+=$(KN_OD_64)/util/string/strlen.o
 KN_OBJS+=$(KN_OD_64)/util/string/strcpy.o
 
+KN_OBJS+=$(KN_OD_64)/util/math/pow.o
+
 KN_OBJS+=$(KN_OD_64)/paging/tables.o
-KN_OBJS+=$(KN_OD_64)/paging/init.o
+KN_OBJS+=$(KN_OD_64)/paging/allocator/allocator.o
+KN_OBJS+=$(KN_OD_64)/paging/allocator/init.o
+KN_OBJS+=$(KN_OD_64)/paging/allocator/allocate.o
 
 KN_OBJS+=$(KN_OD_64)/memory/map_kernel.o
 KN_OBJS+=$(KN_OD_64)/memory/memory_map.o
@@ -36,6 +39,8 @@ KN_OBJS+=$(KN_OD_64)/filesystem/filesystem.o
 #KN_OBJS+=$(KN_OD_64)/modules/video_bios/pixel.o
 #KN_OBJS+=$(KN_OD_64)/modules/video_bios/rect.o
 
+KN_OBJS+=$(KN_OD_64)/modules/disc_pio/disc_pio.o
+
 KN_OBJS+=$(KN_OD_64)/entry.o
 KN_OBJS+=$(KN_OD_64)/entry_error.o
 
@@ -45,6 +50,7 @@ $(BIN_DIR)/kernel.bin: $(KN_OBJS) $(KN_SOURCE_DIR)/kernel.ld
 
 .PHONY: modules
 modules:
+	cd $(TOOLS_DIR)/mkmod && $(MAKE)
 	cd modules && $(MAKE)
 
 include $(MAKE_SCRIPTS)

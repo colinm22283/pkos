@@ -4,7 +4,11 @@
 
 #include <filesystem/filesystem.h>
 
+#include <sys/halt.h>
+
 #define VIDEO_MEMORY ((uint8_t *) 0xA0000)
+
+__NORETURN __SYSV_ABI void test_func(const char * ptr);
 
 __ALWAYS_INLINE static inline void draw_bitmap(const void * _bitmap, uint32_t x, uint32_t y, uint32_t w, uint32_t h) {
     const uint8_t * bitmap = _bitmap;
@@ -32,11 +36,9 @@ __ALWAYS_INLINE static inline void draw_bitmap(const void * _bitmap, uint32_t x,
 bool init(module_info_table_t * info_table) {
     VIDEO_MEMORY[0] = 1;
 
-    char bitmap[256] = { 0b10101010, 0b01010101, 0b10101010, 0b01010101, 0b10101010, 0b01010101, 0b10101010, 0b01010101 };
+    char bitmap[8] = { 0b10101010, 0b01010101, 0b10101010, 0b01010101, 0b10101010, 0b01010101, 0b10101010, 0b01010101 };
 
-//    file_reader_t file_reader;
-//    file_reader_init(&file_reader, open_file_path(open_filesystem(FILESYSTEM_ROOT_ADDRESS), "home/smile.bmp"));
-//    file_reader_read(&file_reader, bitmap, 256);
+    test_func(bitmap);
 
     draw_bitmap(bitmap, 10, 10, 8, 8);
 

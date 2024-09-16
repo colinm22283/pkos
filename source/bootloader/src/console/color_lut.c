@@ -2,7 +2,7 @@
 
 #include <string/strcmp.h>
 
-const char * console_color_str_lut[16] = {
+const char * const console_color_str_lut[16] = {
     "black",
     "blue",
     "green",

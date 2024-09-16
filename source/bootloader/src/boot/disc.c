@@ -53,7 +53,7 @@ bool boot_disc_init() {
     return true;
 }
 
-bool boot_disc_load_kernel() {
+bool boot_disc_load_kernel(uint64_t kernel_load_point) {
     directory_t root_directory = open_filesystem(KERNEL_LBA_START);
     if (root_directory == 0) return false;
 
@@ -66,9 +66,10 @@ bool boot_disc_load_kernel() {
     file_reader_t reader;
     if (!file_reader_init(&reader, kernel_file)) return false;
 
-    char * kernel_ptr = (char *) 0x100000; // TODO: make sure this is free
+    char * kernel_ptr = (char *) kernel_load_point;
+
     uint64_t read_bytes;
-    while ((read_bytes = file_reader_read(&reader, kernel_ptr, FILESYSTEM_FILE_DATA_PAGE_SIZE))) {
+    while ((read_bytes = file_reader_read(&reader, kernel_ptr, FILESYSTEM_FILE_DATA_PAGE_SIZE)) > 0) {
         kernel_ptr += read_bytes;
     }
 

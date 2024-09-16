@@ -29,6 +29,7 @@ OBJS+=$(BL_OD_32)/console/update.o
 OBJS+=$(BL_OD_32)/console/newline.o
 OBJS+=$(BL_OD_32)/console/print.o
 OBJS+=$(BL_OD_32)/console/print_color.o
+OBJS+=$(BL_OD_32)/console/printn.o
 OBJS+=$(BL_OD_32)/console/print_hex.o
 OBJS+=$(BL_OD_32)/console/print_dec.o
 OBJS+=$(BL_OD_32)/console/print_sdec.o
@@ -67,12 +68,17 @@ OBJS+=$(BL_OD_32)/commands/reset.o
 OBJS+=$(BL_OD_32)/commands/ls.o
 OBJS+=$(BL_OD_32)/commands/wmem.o
 OBJS+=$(BL_OD_32)/commands/stat.o
+OBJS+=$(BL_OD_32)/commands/touch.o
+OBJS+=$(BL_OD_32)/commands/af.o
+OBJS+=$(BL_OD_32)/commands/rm.o
+OBJS+=$(BL_OD_32)/commands/ed.o
 
 OBJS+=$(BL_OD_32)/string/strcmp.o
 OBJS+=$(BL_OD_32)/string/strcmpn.o
 OBJS+=$(BL_OD_32)/string/strlen.o
 OBJS+=$(BL_OD_32)/string/stoi.o
 OBJS+=$(BL_OD_32)/string/strcpy.o
+OBJS+=$(BL_OD_32)/string/itoa.o
 
 OBJS+=$(BL_OD_32)/memory/memcpy.o
 OBJS+=$(BL_OD_32)/memory/memset.o
@@ -93,6 +99,7 @@ OBJS+=$(BL_OD_32)/disc/reset.o
 OBJS+=$(BL_OD_32)/disc/detect.o
 OBJS+=$(BL_OD_32)/disc/select.o
 OBJS+=$(BL_OD_32)/disc/read.o
+OBJS+=$(BL_OD_32)/disc/write.o
 OBJS+=$(BL_OD_32)/disc/filesystem.o
 
 OBJS+=$(BL_OD_32)/boot/sequence.o
@@ -101,7 +108,12 @@ OBJS+=$(BL_OD_32)/boot/64/enter_kernel.o
 OBJS+=$(BL_OD_32)/boot/graphics_mode.o
 OBJS+=$(BL_OD_32)/boot/64/long_mode_available.o
 
-OPTIMIZATION=1
+OBJS+=$(BL_OD_32)/heap/heap.o
+OBJS+=$(BL_OD_32)/heap/init.o
+OBJS+=$(BL_OD_32)/heap/alloc.o
+OBJS+=$(BL_OD_32)/heap/free.o
+
+OPTIMIZATION=s
 
 $(BIN_DIR)/bootloader.bin: $(OBJS) $(BL_SOURCE_DIR)/bootloader.ld
 	mkdir -p $(BIN_DIR)

@@ -3,10 +3,9 @@
 #include <sys/asm/out.h>
 #include <sys/asm/in.h>
 
-#include <console/print.h>
+#include <defs.h>
 
-uint32_t disc_read28(ata_pio_io_port_t * io_port, uint8_t drive_select, uint32_t lba, uint8_t sector_count, uint16_t * dest) {
-    // TODO: impliment io_port variable
+uint32_t disc_read28(const ata_pio_io_port_t * io_port, uint8_t drive_select, uint32_t lba, uint8_t sector_count, uint16_t * dest) {
     if (lba > 0xFFFFFF) return 1;
 
     outb_ptr(&io_port->drive_head, drive_select | ((lba >> 24) & 0xF));
@@ -54,7 +53,7 @@ uint32_t disc_read28(ata_pio_io_port_t * io_port, uint8_t drive_select, uint32_t
     return 0;
 }
 
-uint32_t disc_read48(ata_pio_io_port_t * io_port, uint8_t drive_select, uint64_t lba, uint16_t sector_count, uint16_t * dest) {
+uint32_t disc_read48(const ata_pio_io_port_t * io_port, uint8_t drive_select, uint64_t lba, uint16_t sector_count, uint16_t * dest) {
     if (lba > 0xFFFFFFFFFFFF) return 1;
 
     outb_ptr(&io_port->drive_head, drive_select);

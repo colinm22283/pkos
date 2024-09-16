@@ -14,6 +14,7 @@ const char * const help_text[] = {
     "\n"
     "This is a temporary help page for the PKOS bootloader V1\n"
     "\n"
+    "Command listings ----------- page 1\n"
     "\n"
     "\n"
     "\n"
@@ -28,7 +29,13 @@ const char * const help_text[] = {
     "\n"
     "\n"
     "\n"
+    "\n",
+
+    "COMMAND LISTINGS\n"
     "\n"
+    "boot ------------------- Boot the operating system\n"
+    "calc ------------------- Simple calculator\n"
+    "cat -------------------- Dump the data from a file to the console\n"
     "\n"
     "\n"
     "\n"

@@ -49,6 +49,9 @@ bootloader_entry:
     # sort the memory map
     call memory_map_sort
 
+    # initialize the heap
+    call heap_init
+
     # init the console
     call console_init
 
@@ -60,3 +63,6 @@ bootloader_entry:
 
     cli
     hlt
+
+file_name: .asciz "test.txt\0"
+file_content: .asciz "TEST FILE CONTENT"

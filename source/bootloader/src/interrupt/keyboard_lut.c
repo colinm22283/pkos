@@ -30,7 +30,7 @@ const char keyboard_lut[128] = {
     '[',
     ']',
     '\n',
-    7,
+    9,
     'a',
     's',
     'd',
