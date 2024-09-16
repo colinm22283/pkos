@@ -1,6 +1,6 @@
 #include "defs.h"
 
-#include <sys/gdt/gdt32.h>
+#include "sys/gdt/gdt32.h"
 
 __SECTION(".gdt32") struct __PACKED {
     gdt32_entry_t null;

@@ -4,7 +4,7 @@
 
 #include <driver/disc_pio.h>
 
-#include <memory/map_kernel.h>
+#include "paging/init.h"
 #include <memory/memory_map.h>
 
 #include <paging/allocator.h>
@@ -30,7 +30,7 @@ __NORETURN __SECTION(".kernel_entry") void kernel_entry() {
     driver_disc_pio_load(&driver_table);
     if (!driver_table.disc.start()) kernel_entry_error(1);
 
-    paging_map_kernel();
+    paging_init();
 
 //    int_init();
 

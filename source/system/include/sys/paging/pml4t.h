@@ -5,6 +5,8 @@
 
 #include <defs.h>
 
+#include <sys/paging/pdpt.h>
+
 typedef struct {
     uint8_t  present         :  1;
     uint8_t  read_write      :  1;
@@ -22,5 +24,11 @@ typedef struct {
 
 typedef pml4t64_entry_t __ALIGNED(4096) pml4t64_t[512];
 
-#define PML4T64_SET_ADDRESS(pml4t_entry, _address) do { pml4t_entry.address = ((intptr_t) _address) >> 12; } while (0)
+#define PML4T64_SET_ADDRESS(pml4t_entry, _address) do { (pml4t_entry).address = ((intptr_t) _address) >> 12; } while (0)
+#define PML4T64_GET_ADDRESS(pml4t_entry) ((pdpt64_t *) ((pml4t_entry).address << 12))
 #define NULL_PML4T64_ENTRY ((pml4t64_entry_t) { .present = 0, .read_write = 0, .user_super = 0, .cache_disable = 0, .accessed = 0, ._available2 = 0, ._reserved = 0, ._available1 = 0, .address = 0, ._available0 = 0, .execute_disable = 0, })
+
+static inline pml4t64_entry_t * pml4t64_map_address(pml4t64_t * pml4t, pdpt64_t * pdpt, uint64_t virtual_address) {
+    PML4T64_SET_ADDRESS((*pml4t)[virtual_address / 0x8000000000], pdpt);
+    return &(*pml4t)[virtual_address / 0x8000000000];
+}

@@ -44,9 +44,6 @@ __NORETURN void shell_entry(void) {
     console_clear();
     console_print("PK Bootloader V" VERSION_STRING "\n");
 
-    const char * args[] = { "ed", "home/test_file.txt" };
-    command_ed(2, args);
-
     while (true) {
         console_print_color("PKBL> ", CONSOLE_COLOR(CONSOLE_COLOR_LIGHT_BLUE, CONSOLE_COLOR_BLACK));
 

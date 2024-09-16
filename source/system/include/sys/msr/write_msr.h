@@ -2,6 +2,8 @@
 
 #include <stdint.h>
 
+#include <sys/msr/msr_numbers.h>
+
 static inline void write_msr(msr_number_t msr, uint64_t _value) {
     uint32_t * const value = (uint32_t *) &_value;
 
