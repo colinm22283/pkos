@@ -331,6 +331,8 @@ filesystem_page_address_t open_node_path(directory_t root, const char * path) {
                     return node_address;
                 }
             } break;
+
+            default: break;
         }
     }
 

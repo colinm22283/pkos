@@ -16,41 +16,41 @@ enum {
 };
 
 typedef struct {
-    port_t address_mark_not_found      : 1;
-    port_t track_zero_not_found        : 1;
-    port_t aborted_command             : 1;
-    port_t media_change_request        : 1;
-    port_t id_not_found                : 1;
-    port_t media_changed               : 1;
-    port_t uncorrectable_data_error    : 1;
-    port_t bad_block_detected          : 1;
+    uint8_t address_mark_not_found      : 1;
+    uint8_t track_zero_not_found        : 1;
+    uint8_t aborted_command             : 1;
+    uint8_t media_change_request        : 1;
+    uint8_t id_not_found                : 1;
+    uint8_t media_changed               : 1;
+    uint8_t uncorrectable_data_error    : 1;
+    uint8_t bad_block_detected          : 1;
 } __PACKED ata_pio_error_t;
 
 typedef struct {
-    port_t address      : 4; // In CHS addressing, bits 0 to 3 of the head. In LBA addressing, bits 24 to 27 of the block number.
-    port_t drive_number : 1;
-    port_t _always_set0 : 1;
-    port_t lba_enable   : 1;
-    port_t _always_set1 : 1;
+    uint8_t address      : 4; // In CHS addressing, bits 0 to 3 of the head. In LBA addressing, bits 24 to 27 of the block number.
+    uint8_t drive_number : 1;
+    uint8_t _always_set0 : 1;
+    uint8_t lba_enable   : 1;
+    uint8_t _always_set1 : 1;
 } __PACKED apa_pio_drive_head_t;
 
 typedef struct {
-    port_t error           : 1;
-    port_t index           : 1; // always zero
-    port_t corrected_data  : 1; // always zero
-    port_t data_ready      : 1;
-    port_t service_request : 1;
-    port_t drive_fault     : 1; // does not set error
-    port_t ready           : 1;
-    port_t busy            : 1;
+    uint8_t error           : 1;
+    uint8_t index           : 1; // always zero
+    uint8_t corrected_data  : 1; // always zero
+    uint8_t data_ready      : 1;
+    uint8_t service_request : 1;
+    uint8_t drive_fault     : 1; // does not set error
+    uint8_t ready           : 1;
+    uint8_t busy            : 1;
 } __PACKED ata_pio_status_t;
 
 typedef struct {
-    port_t _always_zero      : 1;
-    port_t interrupt_disable : 1;
-    port_t software_reset    : 1;
-    port_t _reserved         : 4;
-    port_t hob               : 1;
+    uint8_t _always_zero      : 1;
+    uint8_t interrupt_disable : 1;
+    uint8_t software_reset    : 1;
+    uint8_t _reserved         : 4;
+    uint8_t hob               : 1;
 } __PACKED ata_pio_device_control_t;
 enum {
     ATA_PIO_DEVICE_CONTROL_INTERRUPT_DISABLE = 1 << 1,
@@ -59,11 +59,11 @@ enum {
 };
 
 typedef struct {
-    port_t drive_zero_select : 1;
-    port_t drive_one_select  : 1;
-    port_t head_select_2c    : 4;
-    port_t write_gate        : 1;
-    port_t _reserved         : 1;
+    uint8_t drive_zero_select : 1;
+    uint8_t drive_one_select  : 1;
+    uint8_t head_select_2c    : 4;
+    uint8_t write_gate        : 1;
+    uint8_t _reserved         : 1;
 } __PACKED ata_pio_drive_address_t;
 
 typedef struct {
@@ -90,7 +90,7 @@ typedef struct {
         port_t status;
         port_t command;
     };
-} ata_pio_io_port_t;
+} __PACKED ata_pio_io_port_t;
 
 typedef struct {
     union {
@@ -98,4 +98,4 @@ typedef struct {
         port_t device_control;
     };
     port_t drive_access;
-} ata_pio_control_port_t;
+} __PACKED ata_pio_control_port_t;

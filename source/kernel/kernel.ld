@@ -31,6 +31,10 @@ SECTIONS {
     _kernel_size = _kernel_end - _kernel_start;
 
     .allocation_space . (NOLOAD) : {
+        _allocation_space_start = .;
         *(.allocation_space);
+        _allocation_space_end = .;
+
+        _allocation_space_size = _allocation_space_end - _allocation_space_start;
     }
 }

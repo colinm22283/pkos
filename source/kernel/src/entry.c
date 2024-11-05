@@ -6,8 +6,9 @@
 
 #include "paging/init.h"
 #include <memory/memory_map.h>
+#include <memory/palloc/palloc.h>
 
-#include <paging/allocator.h>
+#include <paging/allocator/allocator.h>
 
 #include <stack.h>
 
@@ -28,15 +29,17 @@ __NORETURN __SECTION(".kernel_entry") void kernel_entry() {
     load_stack_pointer(stack_top);
 
     driver_disc_pio_load(&driver_table);
-    if (!driver_table.disc.start()) kernel_entry_error(1);
+    if (!driver_table.disc.start()) kernel_entry_error(0x1);
 
     paging_init();
 
+    palloc_init();
+
 //    int_init();
 
-    if (!page_allocator_init()) kernel_entry_error(0x2);
+    /* if (!page_allocator_init()) kernel_entry_error(0x2); */
 
-//    kernel_entry_error(0x123456);
+
 
 //    uint16_t device_count = driver_table.disc.device_count();
     driver_table.disc.select_device(0);

@@ -31,6 +31,7 @@ export MODULE_DIR=$(BIN_DIR)/module
 export OBJ_DIR=$(BUILD_DIR)/obj
 export SOURCE_DIR=$(CURDIR)/source
 export TOOLS_DIR=$(CURDIR)/tools
+export EXTERNAL_DIR=$(CURDIR)/external
 
 export MAKE_DIR=$(CURDIR)/make
 export MAKE_SCRIPTS=$(MAKE_DIR)/targets16.mk $(MAKE_DIR)/targets32.mk $(MAKE_DIR)/targets64.mk
@@ -42,23 +43,6 @@ export INCLUDE_DIRS=$(SOURCE_DIR)/system/include
 
 export MKFS_BIN=$(TOOLS_DIR)/mkfs/build/mkfs
 export MKMOD_BIN=$(TOOLS_DIR)/mkmod/build/mkmod
-
-.PHONY: all
-all: $(BUILD_DIR)/pkos.img
-
-.PHONY: clean
-clean:
-	rm -rf $(OBJ_DIR)
-	rm -rf $(BIN_DIR)
-	rm -f $(BUILD_DIR)/*.img
-
-	cd tools/mkfs && $(MAKE) clean
-	cd tools/mkmod && $(MAKE) clean
-
-.PHONY: rebuild
-rebuild:
-	make clean
-	make all
 
 include make/image.mk
 include make/filesystem.mk
@@ -104,3 +88,27 @@ $(MKFS_BIN):
 
 $(MKMOD_BIN):
 	cd $(TOOLS_DIR)/mkmod && $(MAKE)
+
+.PHONY: external
+external:
+	cd $(EXTERNAL_DIR) && $(MAKE)
+
+.PHONY: all
+all: $(BUILD_DIR)/pkos.img
+
+.PHONY: clean
+clean:
+	rm -rf $(OBJ_DIR)
+	rm -rf $(BIN_DIR)
+	rm -f $(BUILD_DIR)/*.img
+
+	for tool in $(shell find ./tools/*/ -maxdepth 0 -type d); do \
+  		sh -c "cd $$tool && $(MAKE) clean"; \
+	done
+
+.PHONY: emulate
+emulate: $(BUILD_DIR)/pkos.img
+	cd build && sh emulate.sh
+
+
+.DEFAULT: all

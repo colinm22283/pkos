@@ -53,7 +53,7 @@ bool boot_disc_init() {
     return true;
 }
 
-bool boot_disc_load_kernel(uint64_t kernel_load_point) {
+bool boot_disc_load_kernel(uint32_t kernel_load_point) {
     directory_t root_directory = open_filesystem(KERNEL_LBA_START);
     if (root_directory == 0) return false;
 

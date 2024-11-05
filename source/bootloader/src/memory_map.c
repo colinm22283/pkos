@@ -11,11 +11,11 @@ __SECTION(".kernel_region_base")   volatile uint64_t           kernel_region_bas
 __SECTION(".kernel_region_length") volatile uint64_t           kernel_region_length;
 
 void memory_map_sort() { // called in bootloader_entry.s
-    memory_map_entry_t * base_pointer = memory_map;
-    memory_map_entry_t * const top_pointer = memory_map + memory_map_size - 1;
+    volatile memory_map_entry_t * base_pointer = memory_map;
+    volatile memory_map_entry_t * const top_pointer = memory_map + memory_map_size - 1;
 
     for (; base_pointer <= top_pointer; base_pointer++) {
-        for (memory_map_entry_t * current = base_pointer; current <= base_pointer; current++) {
+        for (volatile memory_map_entry_t * current = base_pointer; current <= base_pointer; current++) {
             if (current->base < base_pointer->base) {
                 memory_map_entry_t temp = *current;
                 *current = *base_pointer;

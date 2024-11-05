@@ -10,8 +10,6 @@ void heap_free(void * alloc) {
     if (tag->prev_size != 0) {
         heap_tag_t * prev_tag = (heap_tag_t *) ((char *) tag - tag->prev_size - sizeof(heap_tag_t));
         if (!prev_tag->allocated) {
-            heap_tag_t * old_tag = tag;
-
             tag = prev_tag;
 
             tag->next_size += tag->next_size + sizeof(heap_tag_t);

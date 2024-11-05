@@ -31,6 +31,8 @@ void paging_init() {
     pt64_t * old_pt       = PDT64_GET_ADDRESS((*old_pdt)[0]);
     uint64_t kernel_physical_address = (uint64_t) PT64_GET_ADDRESS((*old_pt)[0]);
 
+
+
     pml4t64_entry_t * pml4t_entry = pml4t64_map_address(
         &paging_kernel_pml4t,
         paging_kernel_virtual_to_physical(

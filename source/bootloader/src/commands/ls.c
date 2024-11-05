@@ -9,7 +9,7 @@
 
 __CDECL uint32_t command_ls(uint32_t argc, const char ** argv) {
     if (argc > 2) {
-        console_print("Invalid arguments\nUsage: ls <directory?>\n");
+        console_print("Invalid arguments\nUsage: ls <directory>\n");
         return 1;
     }
 
@@ -19,7 +19,7 @@ __CDECL uint32_t command_ls(uint32_t argc, const char ** argv) {
         return 2;
     }
     directory_t directory;
-    if (argv[1][0] == '\0') {
+    if (argc == 1) {
         directory = root;
     }
     else {

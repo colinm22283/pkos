@@ -150,7 +150,7 @@ const uint8_t kernel_error_font_nums[][8] = {
     },
 };
 const uint8_t kernel_error_font_error_0x[8 * 8] = {
-    0b11111110, 0b11111100, 0b11111100, 0b01111100, 0b10111100, 0b00000000, 0b01111100, 0b10000010,
+    0b11111110, 0b11111100, 0b11111100, 0b01111100, 0b11111100, 0b00000000, 0b01111100, 0b10000010,
     0b10000000, 0b10000010, 0b10000010, 0b10000010, 0b10000010, 0b00000000, 0b10000010, 0b01000100,
     0b10000000, 0b10000010, 0b10000010, 0b10000010, 0b10000010, 0b00000000, 0b10000010, 0b00101000,
     0b11111110, 0b11111100, 0b11111100, 0b10000010, 0b11111100, 0b00000000, 0b10000010, 0b00010000,
@@ -182,6 +182,8 @@ void entry_error_draw_bitmap(const uint8_t * bitmap, uint32_t x, uint32_t y, uin
 }
 
 __NORETURN void kernel_entry_error(uint32_t error_code) {
+    cli();
+
     for (uint32_t i = 0; i < 320 * 200; i++) VIDEO_MEMORY[i] = 1;
 
     entry_error_draw_bitmap(kernel_error_font_error_0x, 0, 0, 8 * 8, 8, 15);
