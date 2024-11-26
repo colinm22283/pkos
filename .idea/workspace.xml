@@ -31,37 +31,8 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6121c507-c3db-4645-9343-74e78b57e4ca" name="Changes" comment="Kernel page mapping is much better now">
+    <list default="true" id="6121c507-c3db-4645-9343-74e78b57e4ca" name="Changes" comment="Working on paging a little more">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/make/linecount.sh" beforeDir="false" afterPath="$PROJECT_DIR$/make/linecount.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/include/boot/disc.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/include/boot/disc.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/include/shell/execute.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/include/shell/execute.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/src/boot/disc.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/boot/disc.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/src/commands/boot.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/commands/boot.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/src/commands/ls.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/commands/ls.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/src/commands/tree.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/commands/tree.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/src/disc/filesystem.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/disc/filesystem.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/src/heap/alloc.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/heap/alloc.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/src/heap/free.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/heap/free.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/src/memory_map.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/memory_map.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/src/shell/_execute.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/shell/execute.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/src/shell/execute.s" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/shell/_execute.s" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/include/paging/allocator.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/kernel.ld" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/kernel.ld" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/src/driver/driver_table.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/src/driver/driver_table.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/src/entry.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/src/entry.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/src/entry_error.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/src/entry_error.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/src/paging/allocator/allocate.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/src/paging/allocator/allocate.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/src/paging/allocator/allocator.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/src/paging/allocator/init.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/src/paging/allocator/init.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/src/paging/init.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/src/paging/init.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/system/include/sys/ata/pio.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/system/include/sys/ata/pio.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/system/include/sys/paging/pdpt.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/system/include/sys/paging/pdpt.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/system/include/sys/paging/pdt.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/system/include/sys/paging/pdt.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/system/include/sys/paging/pml4t.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/system/include/sys/paging/pml4t.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/system/include/sys/paging/pt.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/system/include/sys/paging/pt.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -191,11 +162,6 @@
     </key>
   </component>
   <component name="RunManager" selected="Native Application.Emulate">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Emulate Debug" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" WORKING_DIR="file://$PROJECT_DIR$/build" PASS_PARENT_ENVS_2="true" PROJECT_NAME="pkos" TARGET_NAME="all" CONFIG_NAME="all" version="1" RUN_PATH="$PROJECT_DIR$/build/emulate-gdb.sh">
       <method v="2">
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
@@ -563,9 +529,9 @@
       <item itemvalue="Native Application.all" />
       <item itemvalue="Native Application.bootloader" />
       <item itemvalue="Native Application.bootsector" />
+      <item itemvalue="Native Application.drivers" />
       <item itemvalue="Native Application.emulate" />
       <item itemvalue="Native Application.external" />
-      <item itemvalue="Native Application.drivers" />
       <item itemvalue="Native Application.full" />
       <item itemvalue="Native Application.image" />
       <item itemvalue="Native Application.kernel" />
@@ -749,15 +715,10 @@
       <workItem from="1726981404873" duration="12000" />
       <workItem from="1728934224674" duration="772000" />
       <workItem from="1730295831664" duration="3959000" />
-      <workItem from="1730842654287" duration="7000" />
-    </task>
-    <task id="LOCAL-00001" summary="Initial Commit for v2">
-      <option name="closed" value="true" />
-      <created>1701203230288</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1701203230288</updated>
+      <workItem from="1730842654287" duration="8029000" />
+      <workItem from="1731491942461" duration="3274000" />
+      <workItem from="1731495675590" duration="328000" />
+      <workItem from="1732305981361" duration="159000" />
     </task>
     <task id="LOCAL-00002" summary="Fully working">
       <option name="closed" value="true" />
@@ -1143,7 +1104,15 @@
       <option name="project" value="LOCAL" />
       <updated>1726510810840</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="Working on paging a little more">
+      <option name="closed" value="true" />
+      <created>1730842858566</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1730842858566</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1156,7 +1125,6 @@
     <isAutomaticFoundErrors value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added sort method to memory map" />
     <MESSAGE value="Almost have disk driver working" />
     <MESSAGE value="Almost have disk driver working continued" />
     <MESSAGE value="THE KERNEL IS LOADED11" />
@@ -1181,7 +1149,8 @@
     <MESSAGE value="Some small console changes" />
     <MESSAGE value="Working on a bootloader text editor" />
     <MESSAGE value="Kernel page mapping is much better now" />
-    <option name="LAST_COMMIT_MESSAGE" value="Kernel page mapping is much better now" />
+    <MESSAGE value="Working on paging a little more" />
+    <option name="LAST_COMMIT_MESSAGE" value="Working on paging a little more" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
