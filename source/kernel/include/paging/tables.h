@@ -2,6 +2,8 @@
 
 #include <defs.h>
 
+#include <memory/memory_map.h>
+
 #include <sys/paging/pml4t.h>
 #include <sys/paging/pdpt.h>
 #include <sys/paging/pdt.h>
@@ -21,3 +23,5 @@ extern pt64_t    paging_kernel_pt;
 
 extern pdt64_t   paging_identity_pdt;
 extern pt64_t    paging_identity_pt;
+
+extern pt64_t    paging_table_space_pt;

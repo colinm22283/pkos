@@ -61,8 +61,5 @@ bootloader_entry:
     # enter the shell environment if boot fails
     jmp shell_entry
 
-    cli
-    hlt
-
 file_name: .asciz "test.txt\0"
 file_content: .asciz "TEST FILE CONTENT"

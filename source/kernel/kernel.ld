@@ -30,6 +30,8 @@ SECTIONS {
 
     _kernel_size = _kernel_end - _kernel_start;
 
+    . = ALIGN(0x1000);
+
     .allocation_space . (NOLOAD) : {
         _allocation_space_start = .;
         *(.allocation_space);

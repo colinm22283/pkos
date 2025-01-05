@@ -145,6 +145,7 @@ typedef struct {
 } file_stat_result_t;
 
 bool stat_file(file_stat_result_t * result, filesystem_page_address_t address);
+bool stat_filesystem(filesystem_page_address_t root_page_address, uint64_t * size_on_disk);
 
 bool create_file(filesystem_page_address_t root_page_address, directory_t parent_directory, const char * name);
 bool append_file(filesystem_page_address_t root_address, file_t file, const char * content, uint32_t size);

@@ -1,7 +1,5 @@
 #pragma once
 
-#include <stddef.h>
-
 extern char _allocation_space_start;
 extern char _allocation_space_end;
 extern char _allocation_space_size;

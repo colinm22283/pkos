@@ -389,6 +389,23 @@ bool stat_file(file_stat_result_t * result, filesystem_page_address_t address) {
     return true;
 }
 
+bool stat_filesystem(filesystem_page_address_t root_page_address, uint64_t * size_on_disk) {
+    uint64_t size = 0;
+
+    filesystem_page_address_t address = root_page_address;
+    filesystem_node_page_t page;
+
+    while (disc_read48(ATA_PIO_PRIMARY, DISC_READ48_MASTER, address, 1, (uint16_t *) &page) == 0) {
+        if (page.tag.in_use) size++;
+
+        address++;
+    }
+
+    *size_on_disk = size * 512;
+
+    return true;
+}
+
 bool create_file(filesystem_page_address_t root_page_address, directory_t parent_directory, const char * name) {
     filesystem_root_page_t root_page;
     disc_read48(ATA_PIO_PRIMARY, DISC_READ48_MASTER, root_page_address, 1, (uint16_t *) &root_page);

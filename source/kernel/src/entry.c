@@ -4,10 +4,9 @@
 
 #include <driver/disc_pio.h>
 
-#include "paging/init.h"
 #include <memory/memory_map.h>
-#include <memory/palloc/palloc.h>
 
+#include <paging/paging.h>
 #include <paging/allocator/allocator.h>
 
 #include <stack.h>
@@ -33,18 +32,21 @@ __NORETURN __SECTION(".kernel_entry") void kernel_entry() {
 
     paging_init();
 
-    palloc_init();
+    page_allocator_init();
+
+    page_allocation_t allocation;
+    page_allocator_map(&allocation, 0xA0000, (void *) 0xA0000000, 1);
+
+
 
 //    int_init();
-
-    /* if (!page_allocator_init()) kernel_entry_error(0x2); */
-
-
 
 //    uint16_t device_count = driver_table.disc.device_count();
     driver_table.disc.select_device(0);
 
-#define VIDEO_MEMORY ((uint8_t *) 0xA0000)
+    hlt();
+
+#define VIDEO_MEMORY ((uint8_t *) 0xA0000000)
 
     VIDEO_MEMORY[0] = 3;
     VIDEO_MEMORY[1] = 3;

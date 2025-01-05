@@ -21,6 +21,8 @@
 #include <commands/af.h>
 #include <commands/rm.h>
 #include <commands/ed.h>
+#include <commands/disc.h>
+#include <commands/cp.h>
 
 #define SHELL_COMMAND_TREE_ENTRY_NULL ((shell_command_tree_entry_t) { .command_ptr = NULL, .next_char = { NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, }, })
 
@@ -57,6 +59,13 @@ shell_command_tree_entry_t shell_command_tree_cal;
 shell_command_tree_entry_t shell_command_tree_calc;
 
 shell_command_tree_entry_t shell_command_tree_cat;
+
+shell_command_tree_entry_t shell_command_tree_cp;
+
+shell_command_tree_entry_t shell_command_tree_d;
+shell_command_tree_entry_t shell_command_tree_di;
+shell_command_tree_entry_t shell_command_tree_dis;
+shell_command_tree_entry_t shell_command_tree_disc;
 
 shell_command_tree_entry_t shell_command_tree_f;
 shell_command_tree_entry_t shell_command_tree_fi;
@@ -169,6 +178,15 @@ void shell_command_tree_init() {
 
     shell_command_tree_ca.next_char['T' - 'A'] = &shell_command_tree_cat;
     shell_command_tree_cat.command_ptr = command_cat;
+
+    shell_command_tree_c.next_char['P' - 'A'] = &shell_command_tree_cp;
+    shell_command_tree_cp.command_ptr = command_cp;
+
+    shell_command_tree_root['D' - 'A'] = &shell_command_tree_d;
+    shell_command_tree_d.next_char['I' - 'A'] = &shell_command_tree_di;
+    shell_command_tree_di.next_char['S' - 'A'] = &shell_command_tree_dis;
+    shell_command_tree_dis.next_char['C' - 'A'] = &shell_command_tree_disc;
+    shell_command_tree_disc.command_ptr = command_disc;
 
     shell_command_tree_root['F' - 'A'] = &shell_command_tree_f;
     shell_command_tree_f.next_char['I' - 'A'] = &shell_command_tree_fi;

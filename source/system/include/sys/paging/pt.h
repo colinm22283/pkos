@@ -24,8 +24,13 @@ typedef struct {
 typedef pt64_entry_t __ALIGNED(4096) pt64_t[512];
 
 #define PT64_SET_ADDRESS(pt_entry, _address) do { pt_entry.address = ((intptr_t) _address) >> 12; } while (0)
-#define PT64_GET_ADDRESS(pt_entry) ((void *)(((intptr_t) (pt_entry).address) << 12))
+#define PT64_GET_ADDRESS(pt_entry) ((uint64_t)(((intptr_t) (pt_entry).address) << 12))
 #define NULL_PT64_ENTRY ((pt64_entry_t) { .present = 0, .read_write = 0, .user_super = 0, .cache_disable = 0, .accessed = 0, ._available2 = 0, ._available1 = 0, .address = 0, ._available0 = 0, .protection_key = 0, .execute_disable = 0, })
+
+static inline pt64_entry_t * pt64_map_address(pt64_t * pt, uint64_t physical_address, uint64_t virtual_address) {
+    PT64_SET_ADDRESS((*pt)[virtual_address % 0x200000 / 0x1000], pt);
+    return &(*pt)[virtual_address % 0x200000 / 0x1000];
+}
 
 static inline void pt64_map_2mb(pt64_t * pt64, uint64_t address) {
     for (uint16_t i = 0; i < 512; i++) {

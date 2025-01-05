@@ -72,6 +72,8 @@ OBJS+=$(BL_OD_32)/commands/touch.o
 OBJS+=$(BL_OD_32)/commands/af.o
 OBJS+=$(BL_OD_32)/commands/rm.o
 OBJS+=$(BL_OD_32)/commands/ed.o
+OBJS+=$(BL_OD_32)/commands/disc.o
+OBJS+=$(BL_OD_32)/commands/cp.o
 
 OBJS+=$(BL_OD_32)/string/strcmp.o
 OBJS+=$(BL_OD_32)/string/strcmpn.o
