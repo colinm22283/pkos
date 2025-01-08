@@ -1,20 +1,11 @@
 #pragma once
 
-#include <defs.h>
-
-#include <memory/memory_map.h>
-
 #include <sys/paging/pml4t.h>
 #include <sys/paging/pdpt.h>
 #include <sys/paging/pdt.h>
 #include <sys/paging/pt.h>
 
-typedef union {
-    pml4t64_t pml4t;
-    pdpt64_t pdpt;
-    pdt64_t pdt;
-    pt64_t pt;
-} page_table_entry_t;
+#define PAGING_TEMP_PT_VADDR ((void *) 0xD0000000)
 
 extern pml4t64_t paging_kernel_pml4t;
 extern pdpt64_t  paging_kernel_pdpt;
@@ -24,4 +15,6 @@ extern pt64_t    paging_kernel_pt;
 extern pdt64_t   paging_identity_pdt;
 extern pt64_t    paging_identity_pt;
 
-extern pt64_t    paging_table_space_pt;
+extern pdpt64_t  paging_bitmap_pdpt;
+
+extern pt64_t    paging_temp_pt;

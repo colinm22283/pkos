@@ -32,11 +32,5 @@ SECTIONS {
 
     . = ALIGN(0x1000);
 
-    .allocation_space . (NOLOAD) : {
-        _allocation_space_start = .;
-        *(.allocation_space);
-        _allocation_space_end = .;
-
-        _allocation_space_size = _allocation_space_end - _allocation_space_start;
-    }
+    _allocation_space_start = .;
 }

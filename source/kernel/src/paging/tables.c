@@ -8,4 +8,6 @@ pt64_t    paging_kernel_pt;
 pdt64_t   paging_identity_pdt;
 pt64_t    paging_identity_pt;
 
-pt64_t    paging_table_space_pt;
+pdpt64_t  paging_bitmap_pdpt;
+
+pt64_t    paging_temp_pt;

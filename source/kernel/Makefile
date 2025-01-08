@@ -16,21 +16,13 @@ KN_OBJS+=$(KN_OD_64)/util/string/strcpy.o
 KN_OBJS+=$(KN_OD_64)/util/math/pow.o
 
 KN_OBJS+=$(KN_OD_64)/paging/tables.o
-KN_OBJS+=$(KN_OD_64)/paging/paging.o
-KN_OBJS+=$(KN_OD_64)/paging/translation.o
-KN_OBJS+=$(KN_OD_64)/paging/allocator/allocator.o
-KN_OBJS+=$(KN_OD_64)/paging/allocator/free_pages.o
-KN_OBJS+=$(KN_OD_64)/paging/allocator/init.o
-KN_OBJS+=$(KN_OD_64)/paging/allocator/allocate.o
-KN_OBJS+=$(KN_OD_64)/paging/allocator/map.o
-KN_OBJS+=$(KN_OD_64)/paging/allocator/table_allocator.o
+KN_OBJS+=$(KN_OD_64)/paging/init.o
+KN_OBJS+=$(KN_OD_64)/paging/region.o
+KN_OBJS+=$(KN_OD_64)/paging/bitmap.o
+KN_OBJS+=$(KN_OD_64)/paging/map.o
 
 KN_OBJS+=$(KN_OD_64)/memory/memory_map.o
-
-KN_OBJS+=$(KN_OD_64)/interrupt/idt.o
-KN_OBJS+=$(KN_OD_64)/interrupt/init.o
-KN_OBJS+=$(KN_OD_64)/interrupt/handlers.o
-KN_OBJS+=$(KN_OD_64)/interrupt/handler.o
+KN_OBJS+=$(KN_OD_64)/memory/primary_region.o
 
 KN_OBJS+=$(KN_OD_64)/module/load.o
 
@@ -47,6 +39,8 @@ KN_OBJS+=$(KN_OD_64)/modules/disc_pio/disc_pio.o
 
 KN_OBJS+=$(KN_OD_64)/entry.o
 KN_OBJS+=$(KN_OD_64)/entry_error.o
+
+OPTIMIZATION=1
 
 $(BIN_DIR)/kernel.bin: $(KN_OBJS) $(KN_SOURCE_DIR)/kernel.ld
 	mkdir -p $(BIN_DIR)
