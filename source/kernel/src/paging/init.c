@@ -81,4 +81,6 @@ void paging_init() {
     load_page_table((void *) paging_kernel_virtual_to_physical(paging_kernel_pml4t));
 
     paging_bitmap_init();
+
+    load_page_table((void *) paging_kernel_virtual_to_physical(paging_kernel_pml4t));
 }

@@ -31,52 +31,9 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6121c507-c3db-4645-9343-74e78b57e4ca" name="Changes" comment="Git server back up">
-      <change afterPath="$PROJECT_DIR$/source/kernel/include/memory/primary_region.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/kernel/include/paging/bitmap.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/kernel/include/paging/init.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/kernel/include/paging/region.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/kernel/include/paging/temp_page.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/kernel/include/util/math/div_up.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/kernel/src/memory/primary_region.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/kernel/src/paging/bitmap.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/kernel/src/paging/map.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/kernel/src/paging/region.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/system/include/sys/paging/invalidate_page.h" afterDir="false" />
+    <list default="true" id="6121c507-c3db-4645-9343-74e78b57e4ca" name="Changes" comment="Page allocation complete">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/bootloader/src/boot/sequence.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/bootloader/src/boot/sequence.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/include/interrupt/handlers.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/include/interrupt/idt.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/include/interrupt/init.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/include/memory/allocation_space.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/include/memory/allocation_space.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/include/memory/kernel.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/include/memory/kernel.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/include/paging/allocator/allocator.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/include/paging/allocator/free_pages.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/include/paging/allocator/table_allocator.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/include/paging/map.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/include/paging/map.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/include/paging/paging.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/include/paging/tables.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/include/paging/tables.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/include/paging/translation.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/include/paging/translation.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/kernel.ld" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/kernel.ld" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/src/entry.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/src/entry.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/src/interrupt/handler.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/src/interrupt/handlers.s" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/src/interrupt/idt.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/src/interrupt/init.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/src/paging/allocator/allocate.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/src/paging/allocator/allocator.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/src/paging/allocator/free_pages.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/src/paging/allocator/init.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/src/paging/allocator/map.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/src/paging/allocator/table_allocator.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/src/paging/paging.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/src/paging/init.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/src/paging/tables.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/src/paging/tables.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/src/paging/translation.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/system/include/sys/paging/pdpt.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/system/include/sys/paging/pdpt.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/system/include/sys/paging/pdt.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/system/include/sys/paging/pdt.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/system/include/sys/paging/pml4t.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/system/include/sys/paging/pml4t.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/system/include/sys/paging/pt.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/system/include/sys/paging/pt.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/kernel/include/paging/temp_page.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/include/paging/temp_page.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -784,15 +741,7 @@
       <workItem from="1736148112800" duration="6394000" />
       <workItem from="1736204820289" duration="5000" />
       <workItem from="883613012378" duration="34000" />
-      <workItem from="883613054652" duration="13774000" />
-    </task>
-    <task id="LOCAL-00003" summary="Added kernel include dir">
-      <option name="closed" value="true" />
-      <created>1701204239201</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1701204239201</updated>
+      <workItem from="883613054652" duration="15549000" />
     </task>
     <task id="LOCAL-00004" summary="Fixed 16/32/64 bit building">
       <option name="closed" value="true" />
@@ -1178,7 +1127,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732646078215</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="Page allocation complete">
+      <option name="closed" value="true" />
+      <created>1736313131430</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1736313131430</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1191,7 +1148,6 @@
     <isAutomaticFoundErrors value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Almost have disk driver working continued" />
     <MESSAGE value="THE KERNEL IS LOADED11" />
     <MESSAGE value="A simple driver" />
     <MESSAGE value="A less simple driver" />
@@ -1216,7 +1172,8 @@
     <MESSAGE value="Kernel page mapping is much better now" />
     <MESSAGE value="Working on paging a little more" />
     <MESSAGE value="Git server back up" />
-    <option name="LAST_COMMIT_MESSAGE" value="Git server back up" />
+    <MESSAGE value="Page allocation complete" />
+    <option name="LAST_COMMIT_MESSAGE" value="Page allocation complete" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
