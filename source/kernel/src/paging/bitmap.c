@@ -48,6 +48,9 @@ void paging_bitmap_init(void) {
 
     bitmap_paddr = paging_region_start + 0x1000 * (pt_count + pdt_count);
 
+    allocation_region_start = DIV_UP(bitmap_paddr + bitmap_size, 0x1000) * 0x1000;
+    allocation_region_end = paging_region_end;
+
     {
         uint64_t pt_paddr = paging_region_start;
 
@@ -108,4 +111,60 @@ void paging_bitmap_init(void) {
     }
 
     memset(PAGING_BITMAP_VADDR, 0, bitmap_size);
+}
+
+uint64_t bitmap_reserve_level(uint64_t level) {
+    uint64_t level_pages = bitmap_available_pages;
+    uint64_t level_page_size = 0x1000;
+
+    level_pages >>= level;
+    level_page_size <<= level;
+
+    for (uint64_t i = 0; i < level_pages; i++) {
+        if (!paging_bitmap_get(level, i)) {
+            paging_bitmap_set(level, i);
+
+            for (uint64_t j = 0; j < level; j++) {
+                uint64_t current_level_offset = i >> (level - j);
+                uint64_t current_level_size = 2 << (level - j - 1);
+
+                for (uint64_t k = 0; k < current_level_size; k++) {
+                    paging_bitmap_set(j, current_level_offset + k);
+                }
+            }
+            for (uint64_t j = level + 1; j < PAGING_BITMAP_LEVELS; j++) {
+                paging_bitmap_set(j, i >> (j - level - 1));
+            }
+
+            return allocation_region_start + i * level_page_size;
+        }
+    }
+
+    return 0;
+}
+
+bool bitmap_free_level(uint64_t level, uint64_t address) {
+    uint64_t level_page_size = 0x1000;
+
+    level_page_size <<= level;
+
+    uint64_t page_index = (address - allocation_region_start) / level_page_size;
+
+    if (!paging_bitmap_get(level, page_index)) return false;
+
+    paging_bitmap_clear(level, page_index);
+
+    for (uint64_t j = 0; j < level; j++) {
+        uint64_t current_level_offset = page_index >> (level - j);
+        uint64_t current_level_size = 2 << (level - j - 1);
+
+        for (uint64_t k = 0; k < current_level_size; k++) {
+            paging_bitmap_clear(j, current_level_offset + k);
+        }
+    }
+    for (uint64_t j = level + 1; j < PAGING_BITMAP_LEVELS; j++) {
+        paging_bitmap_clear(j, page_index >> (j - level - 1));
+    }
+
+    return true;
 }

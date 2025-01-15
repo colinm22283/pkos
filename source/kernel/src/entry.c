@@ -37,8 +37,8 @@ __NORETURN __SECTION(".kernel_entry") void kernel_entry() {
 
 #define VIDEO_MEMORY ((uint8_t *) 0xA0000000)
 
-    uint64_t pt_addr = bitmap_reserve(0);
-    uint64_t pdt_addr = bitmap_reserve(0);
+    uint64_t pt_addr = bitmap_reserve_level(1);
+    uint64_t pdt_addr = bitmap_reserve_level(0);
 
     {
         temp_pt_map_page(pt_addr);
@@ -69,6 +69,17 @@ __NORETURN __SECTION(".kernel_entry") void kernel_entry() {
     VIDEO_MEMORY[0] = 3;
     VIDEO_MEMORY[1] = 3;
     VIDEO_MEMORY[2] = 3;
+
+    bitmap_free_level(1, pt_addr);
+    bitmap_free_level(0, pdt_addr);
+
+    uint64_t ori_pt = pt_addr;
+    uint64_t ori_pdt = pdt_addr;
+
+    pt_addr = bitmap_reserve_level(1);
+    pdt_addr = bitmap_reserve_level(0);
+
+    asm volatile ("mov %0, %%r8\nmov %1, %%r9\nmov %2, %%r10\nmov %3, %%r11\nhlt" : : "r" (pt_addr), "r" (pdt_addr), "r" (ori_pt), "r" (ori_pdt));
 
 //    module_info_table_t * hello_world_entry_table = module_load(open_filesystem(FILESYSTEM_ROOT_ADDRESS), "boot/module/hello_world.mod");
 

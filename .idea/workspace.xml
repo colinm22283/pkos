@@ -31,9 +31,13 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6121c507-c3db-4645-9343-74e78b57e4ca" name="Changes" comment="Page allocation complete">
+    <list default="true" id="6121c507-c3db-4645-9343-74e78b57e4ca" name="Changes" comment="Bitmap working">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/include/paging/temp_page.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/include/paging/temp_page.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/kernel/include/paging/bitmap.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/include/paging/bitmap.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/kernel/include/paging/region.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/include/paging/region.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/kernel/src/entry.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/src/entry.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/kernel/src/paging/bitmap.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/src/paging/bitmap.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/kernel/src/paging/region.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/src/paging/region.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -162,12 +166,7 @@
       <recent name="$PROJECT_DIR$/source/kernel/src/modules/disc_pio" />
     </key>
   </component>
-  <component name="RunManager" selected="Native Application.Emulate">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="Native Application.Emulate Debug">
     <configuration name="Emulate Debug" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" WORKING_DIR="file://$PROJECT_DIR$/build" PASS_PARENT_ENVS_2="true" PROJECT_NAME="pkos" TARGET_NAME="all" CONFIG_NAME="all" version="1" RUN_PATH="$PROJECT_DIR$/build/emulate-gdb.sh">
       <method v="2">
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
@@ -741,15 +740,8 @@
       <workItem from="1736148112800" duration="6394000" />
       <workItem from="1736204820289" duration="5000" />
       <workItem from="883613012378" duration="34000" />
-      <workItem from="883613054652" duration="15549000" />
-    </task>
-    <task id="LOCAL-00004" summary="Fixed 16/32/64 bit building">
-      <option name="closed" value="true" />
-      <created>1701209885818</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1701209885818</updated>
+      <workItem from="883613054652" duration="20785000" />
+      <workItem from="1736811285519" duration="2604000" />
     </task>
     <task id="LOCAL-00005" summary="Added a gdb emulation option">
       <option name="closed" value="true" />
@@ -1135,7 +1127,15 @@
       <option name="project" value="LOCAL" />
       <updated>1736313131430</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="Bitmap working">
+      <option name="closed" value="true" />
+      <created>1736645819359</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1736645819359</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1148,7 +1148,6 @@
     <isAutomaticFoundErrors value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="THE KERNEL IS LOADED11" />
     <MESSAGE value="A simple driver" />
     <MESSAGE value="A less simple driver" />
     <MESSAGE value="Kernel now maps itself without crashing" />
@@ -1173,7 +1172,8 @@
     <MESSAGE value="Working on paging a little more" />
     <MESSAGE value="Git server back up" />
     <MESSAGE value="Page allocation complete" />
-    <option name="LAST_COMMIT_MESSAGE" value="Page allocation complete" />
+    <MESSAGE value="Bitmap working" />
+    <option name="LAST_COMMIT_MESSAGE" value="Bitmap working" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
