@@ -31,14 +31,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6121c507-c3db-4645-9343-74e78b57e4ca" name="Changes" comment="Bitmap working">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/include/paging/bitmap.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/include/paging/bitmap.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/include/paging/region.h" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/include/paging/region.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/src/entry.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/src/entry.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/src/paging/bitmap.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/src/paging/bitmap.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/kernel/src/paging/region.c" beforeDir="false" afterPath="$PROJECT_DIR$/source/kernel/src/paging/region.c" afterDir="false" />
-    </list>
+    <list default="true" id="6121c507-c3db-4645-9343-74e78b57e4ca" name="Changes" comment="Bitmap allocation and deallocation working" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -741,15 +734,7 @@
       <workItem from="1736204820289" duration="5000" />
       <workItem from="883613012378" duration="34000" />
       <workItem from="883613054652" duration="20785000" />
-      <workItem from="1736811285519" duration="2604000" />
-    </task>
-    <task id="LOCAL-00005" summary="Added a gdb emulation option">
-      <option name="closed" value="true" />
-      <created>1701209936044</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1701209936044</updated>
+      <workItem from="1736811285519" duration="3301000" />
     </task>
     <task id="LOCAL-00006" summary="Added a console library for testing">
       <option name="closed" value="true" />
@@ -1135,7 +1120,15 @@
       <option name="project" value="LOCAL" />
       <updated>1736645819359</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="Bitmap allocation and deallocation working">
+      <option name="closed" value="true" />
+      <created>1736906039299</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1736906039300</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1148,7 +1141,6 @@
     <isAutomaticFoundErrors value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="A simple driver" />
     <MESSAGE value="A less simple driver" />
     <MESSAGE value="Kernel now maps itself without crashing" />
     <MESSAGE value="Working filesystem kinda" />
@@ -1173,7 +1165,8 @@
     <MESSAGE value="Git server back up" />
     <MESSAGE value="Page allocation complete" />
     <MESSAGE value="Bitmap working" />
-    <option name="LAST_COMMIT_MESSAGE" value="Bitmap working" />
+    <MESSAGE value="Bitmap allocation and deallocation working" />
+    <option name="LAST_COMMIT_MESSAGE" value="Bitmap allocation and deallocation working" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
