@@ -1,0 +1,6 @@
+[submodule "pkernel"]
+	path = pkernel
+	url = git@pksrv:/srv/git/pkernel.git
+[submodule "pkbl"]
+	path = pkbl
+	url = git@pksrv:/srv/git/pkbl.git
