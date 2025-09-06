@@ -14,8 +14,11 @@ all: image
 
 .PHONY: clean
 clean:
+	rm -rf $(BUILD_DIR)
+	
 	cd pkbl && $(MAKE) clean
 	cd pkernel && $(MAKE) clean
+	cd applications && $(MAKE) clean
 	cd pkfs_tools/mkfs && $(MAKE) clean
 
 .PHONY: image
@@ -28,7 +31,7 @@ $(IMAGE): filesystem bootloader
 .PHONY: filesystem
 filesystem: $(FS_BIN)
 
-$(FS_BIN): $(BUILD_DIR)/fsroot kernel pkfs_mkfs
+$(FS_BIN): $(BUILD_DIR)/fsroot applications kernel pkfs_mkfs
 	cp $(KERNEL_BIN) $(BUILD_DIR)/fsroot/boot/kernel
 	
 	$(PKFS_MKFS) $(BUILD_DIR)/fsroot $(FS_BIN)
@@ -49,6 +52,10 @@ $(BOOTLOADER_BIN): .FORCE
 
 $(KERNEL_BIN): .FORCE
 	cd pkernel && $(MAKE)
+
+.PHONY: applications
+applications: fsroot
+	cd applications && $(MAKE) KERNEL_DIR=$(CURDIR)/pkernel EXE_DIR=$(CURDIR)/$(BUILD_DIR)/fsroot/bin
 
 .PHONY: mkfs
 pkfs_mkfs:
