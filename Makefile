@@ -36,8 +36,9 @@ $(FS_BIN): $(BUILD_DIR)/fsroot applications kernel pkfs_mkfs
 	
 	$(PKFS_MKFS) $(BUILD_DIR)/fsroot $(FS_BIN)
 
-$(BUILD_DIR)/fsroot: fsroot
+$(BUILD_DIR)/fsroot: $(wildcard fsroot/**)
 	mkdir -p $(BUILD_DIR)
+	rm -rf $(BUILD_DIR)/fsroot
 	cp -r fsroot $(BUILD_DIR)/fsroot
 
 .PHONY: bootloader
@@ -54,7 +55,7 @@ $(KERNEL_BIN): .FORCE
 	cd pkernel && $(MAKE)
 
 .PHONY: applications
-applications: fsroot
+applications: .FORCE fsroot
 	cd applications && $(MAKE) KERNEL_DIR=$(CURDIR)/pkernel EXE_DIR=$(CURDIR)/$(BUILD_DIR)/fsroot/bin
 
 .PHONY: mkfs

@@ -1,4 +1,8 @@
 APPLICATIONS+=init
+APPLICATIONS+=sh
+APPLICATIONS+=cat
+APPLICATIONS+=ls
+APPLICATIONS+=tree
 
 .PHONY: all
 all: $(foreach a, $(APPLICATIONS), app-$a)
