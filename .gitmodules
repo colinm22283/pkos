@@ -4,3 +4,6 @@
 [submodule "pkbl"]
 	path = pkbl
 	url = git@pksrv:/srv/git/pkbl.git
+[submodule "pkfs_tools"]
+	path = pkfs_tools
+	url = git@pksrv:/srv/git/pkfs_tools.git
