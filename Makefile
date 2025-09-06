@@ -74,4 +74,8 @@ emulate-nobuild: $(IMAGE)
 emulate-gdb: $(IMAGE)
 	qemu-system-x86_64 -no-reboot -s -S -drive file=$(IMAGE),format=raw -vga std -d int -m 6G
 
+.PHONY: linecount
+linecount:
+	./scripts/linecount.sh
+
 .FORCE:
