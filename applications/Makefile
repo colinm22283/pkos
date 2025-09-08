@@ -5,6 +5,8 @@ APPLICATIONS+=ls
 APPLICATIONS+=tree
 APPLICATIONS+=mount
 APPLICATIONS+=unmount
+APPLICATIONS+=mkdir
+APPLICATIONS+=touch
 
 .PHONY: all
 all: $(foreach a, $(APPLICATIONS), app-$a)
