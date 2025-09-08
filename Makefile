@@ -67,7 +67,7 @@ emulate: $(IMAGE)
 	qemu-system-x86_64 -no-reboot -drive file=$(IMAGE),format=raw -vga std -d int -m 6G
 
 .PHONY: emulate-nobuild
-emulate-nobuild: $(IMAGE)
+emulate-nobuild:
 	qemu-system-x86_64 -no-reboot -drive file=$(IMAGE),format=raw -vga std -d int -m 6G
 
 .PHONY: emulate-gdb
