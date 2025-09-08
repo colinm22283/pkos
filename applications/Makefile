@@ -3,6 +3,7 @@ APPLICATIONS+=sh
 APPLICATIONS+=cat
 APPLICATIONS+=ls
 APPLICATIONS+=tree
+APPLICATIONS+=mount
 
 .PHONY: all
 all: $(foreach a, $(APPLICATIONS), app-$a)

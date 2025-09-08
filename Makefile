@@ -78,4 +78,13 @@ emulate-gdb: $(IMAGE)
 linecount:
 	./scripts/linecount.sh
 
+.PHONY: disc
+disc: image
+	$(if $(DISC_TARGET),,echo "DISC_TARGET environment variable not specified!" && false)
+	
+	$(if $(wildcard $(DISC_TARGET)),,echo "Specified device does not exist!" && false)
+	
+	sudo dd if=$(BUILD_DIR)/pkos.img of=$(DISC_TARGET) status=progress
+
+
 .FORCE:
