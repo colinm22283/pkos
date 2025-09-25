@@ -1,5 +1,6 @@
 #include <stdint.h>
 #include <stdbool.h>
+#include <stddef.h>
 
 #include <pkos.h>
 #include <error_number.h>
@@ -36,7 +37,7 @@ void list_dir(const char * path, int indent) {
         return;
     }
 
-    char buffer[512];
+    char * buffer = map(0, NULL, 512, 0, MAP_ANON | MAP_WRITE);
     int64_t readdir_result = readdir(dir_fd, (directory_entry_t *) buffer, 512);
 
     if (readdir_result < 0) {
