@@ -129,7 +129,7 @@ void run(char ** argv, uint64_t argc, fd_t in, fd_t out) {
     uint64_t pipe_pos = 0;
     for (uint64_t i = 0; i < argc; i++) {
         if (strcmp(argv[i], "'") == 0) {
-            print("Found pipe\n");
+            /* print("Found pipe\n"); */
 
             pipe_pos = i;
 
@@ -138,6 +138,17 @@ void run(char ** argv, uint64_t argc, fd_t in, fd_t out) {
 
             run(argv, pipe_pos, in, pipe_fds[0]);
             run(argv + pipe_pos + 1, argc - pipe_pos - 1, pipe_fds[1], out);
+
+            return;
+        }
+        else if (strcmp(argv[i], ".") == 0) {
+            /* print("Found redirect\n"); */
+
+            pipe_pos = i;
+
+            fd_t out_file = open(argv[pipe_pos + 1], OPEN_WRITE | OPEN_CREATE);
+
+            run(argv, pipe_pos, in, out_file);
 
             return;
         }
@@ -174,6 +185,7 @@ void run(char ** argv, uint64_t argc, fd_t in, fd_t out) {
             else exit(0);
         }
         else { // parent
+            // wait();
         }
     }
 }

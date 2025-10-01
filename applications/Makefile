@@ -8,6 +8,8 @@ APPLICATIONS+=unmount
 APPLICATIONS+=mkdir
 APPLICATIONS+=touch
 APPLICATIONS+=nn
+APPLICATIONS+=fbtest
+APPLICATIONS+=echo
 
 .PHONY: all
 all: $(foreach a, $(APPLICATIONS), app-$a)
