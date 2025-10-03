@@ -10,6 +10,8 @@ APPLICATIONS+=touch
 APPLICATIONS+=nn
 APPLICATIONS+=fbtest
 APPLICATIONS+=echo
+APPLICATIONS+=heapstat
+APPLICATIONS+=rm
 
 .PHONY: all
 all: $(foreach a, $(APPLICATIONS), app-$a)
