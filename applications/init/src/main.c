@@ -1,12 +1,8 @@
 #include <pkos.h>
 
 int main(void) {
-    fd_t fd = open("/dev/tty", OPEN_WRITE);
-
-    char c;
-    read(stdin, &c, 1);
-    read(stdin, &c, 1);
-    read(stdin, &c, 1);
+    fd_t fd = openat(stdout, "/dev/tty", OPEN_WRITE);
+    fd_t infd = openat(stdin, "/dev/kbd", OPEN_READ);
 
     write(fd, "Booting PKOS!\n", 14);
 
@@ -22,14 +18,26 @@ int main(void) {
         /* } */
     /* } */
 
+    char c;
+    read(infd, &c, 1);
+
     {
         pid_t fork_result = fork();
 
         if (fork_result == 0) {
-            const char * args[] = { "/bin/sh" };
+            write(stdout, "Child!\n", 7);
+
+            const char * args[] = { "/bin/pksh" };
             exec("/bin/sh", args, 1);
         }
+        else {
+            write(stdout, "Parent!\n", 8);
+
+            exit(1);
+        }
     }
+
+    while (1) {}
 
     return 0;
 }

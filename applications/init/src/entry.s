@@ -17,8 +17,6 @@ _start:
 
     call main
 
-exit:
-
     mov %rax,  %rbx
     mov $EXIT, %rax
     int $0x30

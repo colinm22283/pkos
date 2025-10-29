@@ -86,7 +86,7 @@ int main(uint64_t argc, const char ** argv) {
 
             while (true) {
                 char c;
-                while (read(stdin, &c, 1) != 1);
+                read(stdin, &c, 1);
                 write(stdout, &c, 1);
 
                 if (c == '\n') {
@@ -106,17 +106,23 @@ int main(uint64_t argc, const char ** argv) {
         fd_t in_fd = open(argv[1], OPEN_READ);
 
         while (true) {
-            int64_t amount_read = read(in_fd, line_buf, 1);
+            while (true) {
+                int64_t amount_read = read(in_fd, line_buf + line_size, 1);
 
-            if (amount_read = 0) {
-                line_buf[line_size] = '\0';
-                break;
+                if (amount_read == 0) {
+                    line_buf[line_size] = '\0';
+                    break;
+                }
+                else line_size++;
             }
-            else line_size++;
+
+            if (line_size == 0) break;
+
+            run_line(line_buf);
+            line_size = 0;
         }
 
-        run_line(line_buf);
-        line_size = 0;
+        close(in_fd);
     }
     else {
         print("Invalid arguments\n");
@@ -185,7 +191,7 @@ void run(char ** argv, uint64_t argc, fd_t in, fd_t out) {
             else exit(0);
         }
         else { // parent
-            // wait();
+            wait();
         }
     }
 }

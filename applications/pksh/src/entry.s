@@ -7,6 +7,10 @@ READ  = 3
 SEEK  = 4
 EXIT  = 5
 
+.section .rodata
+string:
+    .string "HELLO\n"
+
 .section .start
 .global _start
 _start:
