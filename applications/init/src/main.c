@@ -1,3 +1,5 @@
+#include <stddef.h>
+
 #include <pkos.h>
 
 int main(void) {
@@ -6,20 +8,10 @@ int main(void) {
 
     write(fd, "Booting PKOS!\n", 14);
 
-    /* write(fd, "Heap usage: ", 12); */
-    /* { */
-        /* pid_t fork_result = fork(); */
-
-        /* if (fork_result == 0) { */
-            /* const char * args[] = { "/bin/heapstat" }; */
-            /* exec("/bin/heapstat", args, 1); */
-
-            /* exit(1); */
-        /* } */
-    /* } */
-
     char c;
     read(infd, &c, 1);
+
+    mount("/tmp", NULL, "ramfs", 0, "");
 
     {
         pid_t fork_result = fork();
@@ -28,7 +20,7 @@ int main(void) {
             write(stdout, "Child!\n", 7);
 
             const char * args[] = { "/bin/pksh" };
-            exec("/bin/sh", args, 1);
+            exec("/bin/pksh", args, 1);
         }
         else {
             write(stdout, "Parent!\n", 8);
