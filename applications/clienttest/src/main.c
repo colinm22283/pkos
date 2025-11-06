@@ -71,20 +71,41 @@ uint64_t strcmp(const char * a, const char * b) {
 }
 
 int main(uint64_t argc, const char ** argv) {
-    print("fork()\n");
-    pid_t fork_result = fork();
+    char socket_buffer[512];
 
-    if (fork_result == 0) {
-        const char * args[1] = { "/bin/clienttest" };
-        exec(args[0], args, 1);
+    sockaddr_unix_t * socket_address = (sockaddr_unix_t *) &socket_buffer;
+    strcpy(socket_address->path, "/tmp/test.sock");
+
+    print("CLIENT: socket()\n");
+    fd_t client_fd = socket(SOCKET_UNIX, SOCKET_STREAM, 0);
+    if (client_fd < 0) {
+        print("CLIENT: Error opening socket\n");
+        return 1;
     }
-    else {
-        fork_result = fork();
 
-        if (fork_result == 0) {
-            const char * args[1] = { "/bin/servertest" };
-            exec(args[0], args, 1);
-        }
+    error_number_t connect_result;
+    do {
+        print("CLIENT: connect()\n");
+        connect_result = connect(client_fd, (const sockaddr_t *) socket_address, strlen(socket_address->path) + 1);
+
+        if (connect_result != ERROR_OK) print("CLIENT: connect failed\n");
+
+        for (uint64_t i = 0; i < 10000000; i++) asm volatile ("nop");
+    }
+    while (connect_result != ERROR_OK);
+
+    uint32_t num = 0;
+
+    while (true) {
+        write(client_fd, (char *) &num, sizeof(uint32_t));
+
+        read(client_fd, (char *) &num, sizeof(uint32_t));
+
+        print("CLIENT: num = ");
+        print_hex(num);
+        print("\n");
+
+        for (uint64_t i = 0; i < 10000000; i++) asm volatile ("nop");
     }
 
     return 0;

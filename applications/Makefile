@@ -16,6 +16,9 @@ APPLICATIONS+=rm
 APPLICATIONS+=socktest
 APPLICATIONS+=pkwball
 
+APPLICATIONS+=servertest
+APPLICATIONS+=clienttest
+
 .PHONY: all
 all: $(foreach a, $(APPLICATIONS), app-$a)
 

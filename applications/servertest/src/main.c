@@ -71,20 +71,47 @@ uint64_t strcmp(const char * a, const char * b) {
 }
 
 int main(uint64_t argc, const char ** argv) {
-    print("fork()\n");
-    pid_t fork_result = fork();
+    char socket_buffer[512];
 
-    if (fork_result == 0) {
-        const char * args[1] = { "/bin/clienttest" };
-        exec(args[0], args, 1);
+    sockaddr_unix_t * socket_address = (sockaddr_unix_t *) &socket_buffer;
+    strcpy(socket_address->path, "/tmp/test.sock");
+
+    print("SERVER: socket()\n");
+    fd_t server_fd = socket(SOCKET_UNIX, SOCKET_STREAM, 0);
+    if (server_fd < 0) {
+        print("SERVER: Error openning socket\n");
+        return 1;
     }
-    else {
-        fork_result = fork();
 
-        if (fork_result == 0) {
-            const char * args[1] = { "/bin/servertest" };
-            exec(args[0], args, 1);
-        }
+    print("SERVER: bind()\n");
+    error_number_t bind_result = bind(server_fd, (const sockaddr_t *) socket_address, strlen(socket_address->path) + 1);
+    if (bind_result != ERROR_OK) {
+        print("SERVER: Error while binding server socket\n");
+        return 1;
+    }
+
+    print("SERVER: listen()\n");
+    error_number_t listen_result = listen(server_fd, 3);
+    if (listen_result != ERROR_OK) {
+        print("SERVER: Error while starting socket listen\n");
+        return 1;
+    }
+
+    print("SERVER: accept()\n");
+    fd_t conn_fd = accept(server_fd);
+    if (conn_fd < 0) {
+        print("SERVER: Failed to accept client\n");
+        return 1;
+    }
+
+    while (true) {
+        uint32_t num;
+
+        read(conn_fd, (char *) &num, sizeof(uint32_t));
+
+        num++;
+
+        write(conn_fd, (char *) &num, sizeof(uint32_t));
     }
 
     return 0;
