@@ -64,6 +64,10 @@ pkfs_mkfs:
 
 .PHONY: emulate
 emulate: $(IMAGE)
+	qemu-system-x86_64 -no-reboot -drive file=$(IMAGE),format=raw -vga std -serial stdio -m 6G
+
+.PHONY: emulate-int
+emulate-int: $(IMAGE)
 	qemu-system-x86_64 -no-reboot -drive file=$(IMAGE),format=raw -vga std -d int -m 6G
 
 .PHONY: emulate-nobuild
