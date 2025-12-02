@@ -3,7 +3,7 @@ OBJ_DIR=$(BUILD_DIR)/obj
 SOURCE_DIR=src
 EXE_DIR?=$(BUILD_DIR)
 
-EXE_BIN?=$(EXE_DIR)/pkos_bdate
+EXE_BIN?=$(EXE_DIR)/bdate
 
 INCLUDE_DIRS+=include
 

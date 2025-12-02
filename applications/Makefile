@@ -15,6 +15,7 @@ APPLICATIONS+=heapstat
 APPLICATIONS+=rm
 APPLICATIONS+=socktest
 APPLICATIONS+=pkwball
+APPLICATIONS+=bdate
 
 APPLICATIONS+=servertest
 APPLICATIONS+=clienttest

@@ -23,13 +23,13 @@ void graph(void) {
     };
 
     const int64_t max = to_fixed(1) / 3 * 2;
-    const uint64_t width = 40;
-    const uint64_t height = 24;
+    const uint64_t width = 320;
+    const uint64_t height = 200;
 
     int64_t costs[width];
 
     for (uint64_t i = 0; i < width; i++) {
-        for (uint64_t j = 0; j < 40; j++) {
+        for (uint64_t j = 0; j < 4; j++) {
             network_activate(&net, in[j % 4]);
             network_learn(&net, out[j % 4]);
         }
@@ -44,17 +44,29 @@ void graph(void) {
 
     int64_t div = fixed_div(max, to_fixed(height));
 
+    fd_t bind_fd = open("/sys/vgatty/bind", OPEN_WRITE);
+    write(bind_fd, "0", 1);
+
+    fd_t fb_fd = open("/dev/vga", OPEN_WRITE | OPEN_READ);
+    uint8_t * framebuffer = map(fb_fd, NULL, 320 * 200 + 10, 0, MAP_WRITE);
+
     for (uint64_t i = 0; i < height; i++) {
         for (uint64_t j = 0; j < width; j++) {
             if (costs[j] > fixed_mul(to_fixed(height - i - 1), div)) {
-                print("#");
-            }
-            else {
-                print(" ");
+                framebuffer[i * width + j] = 1;
             }
         }
-        print("\n");
     }
+
+    {
+        char c;
+        read(stdin, &c, 1);
+    }
+
+    close(fb_fd);
+
+    write(bind_fd, "1", 1);
+    close(bind_fd);
 
     print("Network test:\n");
     for (uint64_t i = 0; i < 4; i++) {

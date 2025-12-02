@@ -14,7 +14,7 @@ static inline void print(const char * str) {
 }
 
 int main(uint64_t argc, const char ** argv) {
-    print("PKOS\nCompiled on " __DATE__ " at " __TIME__ "\n");
+    print("Compiled on " __DATE__ " at " __TIME__ "\n");
 
     return 0;
 }
