@@ -7,3 +7,6 @@
 [submodule "pkfs_tools"]
 	path = pkfs_tools
 	url = git@pksrv:/srv/git/pkfs_tools.git
+[submodule "installer"]
+	path = installer
+	url = git@pksrv:/srv/git/pkos_installer.git
