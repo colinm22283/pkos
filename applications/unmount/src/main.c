@@ -22,7 +22,7 @@ int main(uint64_t argc, const char ** argv) {
     }
 
     if (unmount(argv[1])) {
-        print("Error while mounting\n");
+        print("Error while unmounting\n");
         return 1;
     }
 
