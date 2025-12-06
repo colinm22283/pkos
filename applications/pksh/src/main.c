@@ -75,8 +75,6 @@ uint64_t strcmp(const char * a, const char * b) {
 void run_line(char * line);
 
 int main(uint64_t argc, const char ** argv) {
-    print("SHELL START\n");
-
     int64_t line_size = 0;
     static char line_buf[512];
 

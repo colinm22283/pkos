@@ -1,3 +1,1 @@
-echo Hello world!
-exit
-
+echo Hello world
