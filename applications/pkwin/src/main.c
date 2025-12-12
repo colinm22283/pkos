@@ -45,8 +45,13 @@ int main(uint64_t argc, const char ** argv) {
     {
         pid_t temp = fork();
         if (temp == 0) {
-            const char * args[] = { "/bin/pkwball" };
+            static const char * args[] = { "/bin/pkwball" };
+
+            print(args[0]);
+
             exec("/bin/pkwball", args, 1);
+
+            exit(1);
         }
     }
 
