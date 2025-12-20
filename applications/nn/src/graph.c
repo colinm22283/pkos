@@ -4,7 +4,7 @@ void graph(void) {
     network_t net;
     network_init(&net, 2);
 
-    network_add_layer(&net, 8);
+    network_add_layer(&net, 4);
     network_add_layer(&net, 1);
 
     print("Network ready\n");
