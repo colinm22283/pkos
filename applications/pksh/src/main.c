@@ -82,6 +82,9 @@ int main(uint64_t argc, const char ** argv) {
         while (true) {
             print("> ");
 
+            print_hex(line_size);
+            print("\n");
+
             while (true) {
                 char c;
                 read(stdin, &c, 1);
@@ -92,7 +95,13 @@ int main(uint64_t argc, const char ** argv) {
                     break;
                 }
                 else {
+                    print_hex(line_size);
+                    print("\n");
+
                     line_buf[line_size++] = c;
+
+                    print_hex(line_size);
+                    print("\n");
                 }
             }
 
@@ -162,6 +171,9 @@ void run(char ** argv, uint64_t argc, fd_t in, fd_t out) {
         if (chdir(argv[1]) != ERROR_OK) {
             print("cd: Unable to change directory\n");
         }
+    }
+    else if (streq(argv[0], "test")) {
+        print("test\n");
     }
     else if (streq(argv[0], "exit")) {
         exit(0);

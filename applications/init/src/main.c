@@ -2,14 +2,16 @@
 
 #include <pkos.h>
 
-int main(void) {
-    fd_t fd = openat(stdout, "/dev/tty", OPEN_WRITE);
-    fd_t infd = openat(stdin, "/dev/kbd", OPEN_READ);
+void program(void);
 
-    write(fd, "Booting PKOS!\n", 14);
+int main(void) {
+    openat(stdout, "/dev/tty", OPEN_WRITE);
+    openat(stdin, "/dev/kbd", OPEN_READ);
+
+    write(stdout, "Booting PKOS!\n", 14);
 
     char c;
-    read(infd, &c, 1);
+    read(stdin, &c, 1);
 
     mount("/tmp", NULL, "ramfs", 0, "");
 
