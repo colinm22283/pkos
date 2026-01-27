@@ -7,7 +7,7 @@
 int main(uint64_t argc, const char ** argv) {
     if (argc == 1) return 1;
 
-    for (int i = 1; i < argc; i++) {
+    for (uint64_t i = 1; i < argc; i++) {
         fd_t fd = open(argv[i], OPEN_WRITE | OPEN_CREATE);
 
         close(fd);

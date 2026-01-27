@@ -82,9 +82,6 @@ int main(uint64_t argc, const char ** argv) {
         while (true) {
             print("> ");
 
-            print_hex(line_size);
-            print("\n");
-
             while (true) {
                 char c;
                 read(stdin, &c, 1);
@@ -95,17 +92,19 @@ int main(uint64_t argc, const char ** argv) {
                     break;
                 }
                 else {
-                    print_hex(line_size);
-                    print("\n");
-
                     line_buf[line_size++] = c;
-
-                    print_hex(line_size);
-                    print("\n");
                 }
             }
 
+            print("0x");
+            print_hex((intptr_t) &line_size);
+            print("\n");
             run_line(line_buf);
+            print(line_buf);
+            print("\n");
+            print("0x");
+            print_hex((intptr_t) &line_size);
+            print("\n");
             line_size = 0;
         }
     }
@@ -139,41 +138,38 @@ int main(uint64_t argc, const char ** argv) {
 }
 
 void run(char ** argv, uint64_t argc, fd_t in, fd_t out) {
-    uint64_t pipe_pos = 0;
-    for (uint64_t i = 0; i < argc; i++) {
-        if (strcmp(argv[i], "'") == 0) {
-            /* print("Found pipe\n"); */
-
-            pipe_pos = i;
-
-            fd_t pipe_fds[2];
-            pipe(pipe_fds, 0);
-
-            run(argv, pipe_pos, in, pipe_fds[0]);
-            run(argv + pipe_pos + 1, argc - pipe_pos - 1, pipe_fds[1], out);
-
-            return;
-        }
-        else if (strcmp(argv[i], ".") == 0) {
-            /* print("Found redirect\n"); */
-
-            pipe_pos = i;
-
-            fd_t out_file = open(argv[pipe_pos + 1], OPEN_WRITE | OPEN_CREATE);
-
-            run(argv, pipe_pos, in, out_file);
-
-            return;
-        }
-    }
+    // uint64_t pipe_pos = 0;
+    // for (uint64_t i = 0; i < argc; i++) {
+    //     if (strcmp(argv[i], "'") == 0) {
+    //         /* print("Found pipe\n"); */
+    //
+    //         pipe_pos = i;
+    //
+    //         fd_t pipe_fds[2];
+    //         pipe(pipe_fds, 0);
+    //
+    //         run(argv, pipe_pos, in, pipe_fds[0]);
+    //         run(argv + pipe_pos + 1, argc - pipe_pos - 1, pipe_fds[1], out);
+    //
+    //         return;
+    //     }
+    //     else if (strcmp(argv[i], ".") == 0) {
+    //         /* print("Found redirect\n"); */
+    //
+    //         pipe_pos = i;
+    //
+    //         fd_t out_file = open(argv[pipe_pos + 1], OPEN_WRITE | OPEN_CREATE);
+    //
+    //         run(argv, pipe_pos, in, out_file);
+    //
+    //         return;
+    //     }
+    // }
 
     if (streq(argv[0], "cd")) {
         if (chdir(argv[1]) != ERROR_OK) {
             print("cd: Unable to change directory\n");
         }
-    }
-    else if (streq(argv[0], "test")) {
-        print("test\n");
     }
     else if (streq(argv[0], "exit")) {
         exit(0);
@@ -186,19 +182,21 @@ void run(char ** argv, uint64_t argc, fd_t in, fd_t out) {
             strcpy(path, "/bin/");
             strcpy(path + 5, argv[0]);
 
-            dup(stdout, out);
-            dup(stdin, in);
+            // dup(stdout, out);
+            // dup(stdin, in);
 
-            error_number_t exec_result = exec(path, (const char **) argv, argc);
+            // error_number_t exec_result = exec(path, (const char **) argv, argc);
+            //
+            // if (exec_result != ERROR_OK) {
+            //     print("Unable to execute \"");
+            //     print(argv[0]);
+            //     print("\"\n");
+            //
+            //     exit(1);
+            // }
+            // else exit(0);
 
-            if (exec_result != ERROR_OK) {
-                print("Unable to execute \"");
-                print(argv[0]);
-                print("\"\n");
-
-                exit(1);
-            }
-            else exit(0);
+            exit(1);
         }
         else { // parent
             wait();

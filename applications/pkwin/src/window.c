@@ -11,7 +11,7 @@ void windows_init(void) {
 }
 
 window_t * windows_add(char title[100]) {
-
+    return NULL;
 }
 
 void windows_draw(void) {

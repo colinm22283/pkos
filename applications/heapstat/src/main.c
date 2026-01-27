@@ -19,7 +19,7 @@ int main(uint64_t argc, const char ** argv) {
     int64_t count;
 
     count = read(usage_fd, buffer, 30);
-    if (read < 0) {
+    if (count < 0) {
         print("Unable to read /sys/heap/usage");
         return 1;
     }
@@ -29,7 +29,7 @@ int main(uint64_t argc, const char ** argv) {
     print("/");
 
     count = read(capacity_fd, buffer, 30);
-    if (read < 0) {
+    if (count < 0) {
         print("Unable to read /sys/heap/capacity");
         return 1;
     }

@@ -39,17 +39,15 @@ int main(uint64_t argc, const char ** argv) {
         
         if (x >= 320) {
             vx *= -1;
-            x == 319;
+            x = 319;
         }
 
         if (y < 0) {
             vy *= -1;
-            y = 0;
         }
         
         if (y >= 200) {
             vy *= -1;
-            y == 199;
         }
 
         for (uint64_t i = 0; i < 1000000; i++) asm volatile("nop");

@@ -24,7 +24,7 @@ int main(uint64_t argc, const char ** argv) {
 
     static char buf[BUFFER_SIZE];
 
-    for (int i = 1; i < argc; i++) {
+    for (uint64_t i = 1; i < argc; i++) {
         fd_t in_fd = open(argv[i], OPEN_READ);
 
         if (in_fd < 0) {
