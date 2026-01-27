@@ -26,8 +26,8 @@ CHEADERS=$(foreach d, $(INCLUDE_DIRS), $(shell find $d -type f -name '*.h'))
 
 $(OBJ_DIR)/%.o: $(SOURCE_DIR)/%.c $(CHEADERS)
 	mkdir -p $(@D)
-	$(CC) $(CFLAGS) $(INCLUDE_PARAMS) $< -o $@
+	$(CC) $(CFLAGS) -O0 -g $(INCLUDE_PARAMS) $< -o $@
 
 $(OBJ_DIR)/%.o: $(SOURCE_DIR)/%.s $(CHEADERS)
 	mkdir -p $(@D)
-	$(AS) $(ASFLAGS) $< -o $@
+	$(AS) $(ASFLAGS) -O0 -g $< -o $@
