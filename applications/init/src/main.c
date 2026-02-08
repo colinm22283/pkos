@@ -2,26 +2,18 @@
 
 #include <pkos.h>
 
-void page_fault_handler(signal_number_t sig) {
-    write(stdout, "RECEIVED PAGE FAULT!!!!\n", 24);
+int oh_dear;
 
-    while (1) {}
-}
+int main(void);
 
 int main(void) {
     openat(stdout, "/dev/tty0", OPEN_WRITE);
+    openat(stdin, "/dev/tty0", OPEN_READ);
     openat(stdin, "/dev/tty0", OPEN_READ);
 
     write(stdout, "Booting PKOS!\n", 14);
 
     mount("/tmp", NULL, "ramfs", 0, "");
-
-    // if (signal(SIG_PAGE, page_fault_handler) != ERROR_OK) {
-    //     write(stdout, "oh dear\n", 8);
-    //     return 1;
-    // }
-
-    // *(char *) 0 = 10;
 
     {
         pid_t fork_result = fork();
