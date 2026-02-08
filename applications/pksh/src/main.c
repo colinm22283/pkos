@@ -131,30 +131,34 @@ int main(uint64_t argc, const char ** argv) {
     return 0;
 }
 
-void run(char ** argv, uint64_t argc, fd_t in, fd_t out) {
+void run(char ** argv, uint64_t argc, fd_t in, fd_t out, bool background) {
     uint64_t pipe_pos = 0;
     for (uint64_t i = 0; i < argc; i++) {
-        if (strcmp(argv[i], "'") == 0) {
-            /* print("Found pipe\n"); */
-
+        if (strcmp(argv[i], "|") == 0) {
             pipe_pos = i;
 
             fd_t pipe_fds[2];
             pipe(pipe_fds, 0);
 
-            run(argv, pipe_pos, in, pipe_fds[0]);
-            run(argv + pipe_pos + 1, argc - pipe_pos - 1, pipe_fds[1], out);
+            run(argv, pipe_pos, in, pipe_fds[0], false);
+            run(argv + pipe_pos + 1, argc - pipe_pos - 1, pipe_fds[1], out, false);
 
             return;
         }
-        else if (strcmp(argv[i], ".") == 0) {
-            /* print("Found redirect\n"); */
-
+        else if (strcmp(argv[i], ">") == 0) {
             pipe_pos = i;
 
             fd_t out_file = open(argv[pipe_pos + 1], OPEN_WRITE | OPEN_CREATE);
 
-            run(argv, pipe_pos, in, out_file);
+            run(argv, pipe_pos, in, out_file, false);
+
+            return;
+        }
+        else if (strcmp(argv[i], "&") == 0) {
+            print("Got comma\n");
+            pipe_pos = i;
+
+            run(argv, pipe_pos, in, out, true);
 
             return;
         }
@@ -191,7 +195,7 @@ void run(char ** argv, uint64_t argc, fd_t in, fd_t out) {
             else exit(0);
         }
         else { // parent
-            wait();
+            if (!background) wait();
         }
     }
 }
@@ -210,5 +214,5 @@ void run_line(char * line) {
         }
     }
 
-    run(argv, argc, stdin, stdout);
+    run(argv, argc, stdin, stdout, false);
 }
