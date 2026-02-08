@@ -82,6 +82,10 @@ pkfs_mkfs:
 emulate: $(IMAGE)
 	qemu-system-x86_64 -no-reboot -drive file=$(IMAGE),format=raw -vga std -serial stdio -m 6G
 
+.PHONY: emulate-nogui
+emulate-nogui: $(IMAGE)
+	qemu-system-x86_64 -nographic -no-reboot -drive file=$(IMAGE),format=raw -vga std -m 6G
+
 .PHONY: emulate-int
 emulate-int: $(IMAGE)
 	qemu-system-x86_64 -no-reboot -drive file=$(IMAGE),format=raw -vga std -d int -m 6G
