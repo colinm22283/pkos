@@ -155,7 +155,6 @@ void run(char ** argv, uint64_t argc, fd_t in, fd_t out, bool background) {
             return;
         }
         else if (strcmp(argv[i], "&") == 0) {
-            print("Got comma\n");
             pipe_pos = i;
 
             run(argv, pipe_pos, in, out, true);

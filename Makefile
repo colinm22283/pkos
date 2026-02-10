@@ -70,6 +70,10 @@ $(INSTALLER_BIN): .FORCE
 $(KERNEL_BIN): .FORCE
 	cd pkernel && $(MAKE)
 
+.PHONY: config
+config:
+	cd pkernel && $(MAKE) config
+
 .PHONY: applications
 applications: .FORCE fsroot
 	cd applications && $(MAKE) KERNEL_DIR=$(CURDIR)/pkernel EXE_DIR=$(CURDIR)/$(BUILD_DIR)/fsroot/bin

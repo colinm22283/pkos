@@ -2,13 +2,8 @@
 
 #include <pkos.h>
 
-int oh_dear;
-
-int main(void);
-
 int main(void) {
     openat(stdout, "/dev/tty0", OPEN_WRITE);
-    openat(stdin, "/dev/tty0", OPEN_READ);
     openat(stdin, "/dev/tty0", OPEN_READ);
 
     write(stdout, "Booting PKOS!\n", 14);

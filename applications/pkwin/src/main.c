@@ -55,27 +55,29 @@ int main(uint64_t argc, const char ** argv) {
         }
     }
 
-    print("Init main display\n");
-    display_t main_display;
-    display_init(&main_display, "/dev/vga", 320, 200);
-
-    print("Starting main loop\n");
+    print("Forking main loop\n");
     pid_t fork_result = fork();
 
     if (fork_result == 0) {
         accept_loop();
     }
     else {
+        print("Init main display\n");
+        display_t main_display;
+        display_init(&main_display, "/dev/vga", 320, 200);
+
         while (true) {
             while (lock) { }
             lock = true;
 
-            // display_draw(&main_display);
+            display_draw(&main_display);
 
             lock = false;
 
             for (uint64_t i = 0; i < 10000; i++) asm volatile ("nop");
         }
+
+        exit(0);
     }
 }
 
@@ -99,11 +101,15 @@ __NORETURN void accept_loop(void) {
     sockaddr_unix_t * sockaddr = (sockaddr_unix_t *) addr_buffer;
     strcpy(sockaddr->path, "/tmp/pkw.sock");
 
+    print("bind()\n");
+
     error_number_t bind_result = bind(sock_fd, (const sockaddr_t *) sockaddr, strlen(sockaddr->path) + 1);
     if (bind_result < 0) {
         print("Error binding server socket\n");
         cleanup_all();
     }
+
+    print("listen()\n");
 
     error_number_t listen_result = listen(sock_fd, 3);
     if (listen_result < 0) {
@@ -114,15 +120,15 @@ __NORETURN void accept_loop(void) {
     print("Starting accept loop\n");
 
     while (true) {
-        fd_t new_sock = accept(sock_fd);
-
-        print("Socket accepted\n");
-
-        pid_t fork_result = fork();
-
-        if (fork_result == 0) {
-            listen_loop(new_sock);
-        }
+        // fd_t new_sock = accept(sock_fd);
+        //
+        // print("Socket accepted\n");
+        //
+        // pid_t fork_result = fork();
+        //
+        // if (fork_result == 0) {
+        //     listen_loop(new_sock);
+        // }
     }
 }
 
