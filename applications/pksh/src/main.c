@@ -74,15 +74,7 @@ uint64_t strcmp(const char * a, const char * b) {
 
 void run_line(char * line);
 
-void child_handler(signal_number_t sig) {
-    print("Child returned\n");
-
-    exit(1);
-}
-
 int main(uint64_t argc, const char ** argv) {
-    signal(SIG_CHILD, child_handler);
-
     int64_t line_size = 0;
     static char line_buf[512];
 
