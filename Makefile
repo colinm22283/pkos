@@ -74,6 +74,14 @@ $(KERNEL_BIN): .FORCE
 config:
 	cd pkernel && $(MAKE) config
 
+.PHONY: config-load
+config-load:
+	cd pkernel && CONFIG_PATH=$(abspath configs/$(CONFIG_NAME)) $(MAKE) config-load
+
+.PHONY: config-save
+config-save:
+	cd pkernel && CONFIG_PATH=$(abspath configs/$(CONFIG_NAME)) $(MAKE) config-save
+
 .PHONY: applications
 applications: .FORCE fsroot
 	cd applications && $(MAKE) KERNEL_DIR=$(CURDIR)/pkernel EXE_DIR=$(CURDIR)/$(BUILD_DIR)/fsroot/bin
