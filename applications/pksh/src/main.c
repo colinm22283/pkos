@@ -85,7 +85,6 @@ int main(uint64_t argc, const char ** argv) {
             while (true) {
                 char c;
                 read(stdin, &c, 1);
-                write(stdout, &c, 1);
 
                 if (c == '\n') {
                     line_buf[line_size] = '\0';

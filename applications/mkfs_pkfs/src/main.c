@@ -24,7 +24,7 @@ int main(uint64_t argc, const char ** argv) {
     }
 
     static filesystem_root_page_t root_page = {
-        .first_free = 1,
+        .first_free = 3,
         .root_directory_address = 1,
         .signature = FILESYSTEM_ROOT_SIGNATURE,
         .tag = {
