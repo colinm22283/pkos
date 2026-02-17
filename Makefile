@@ -96,7 +96,8 @@ emulate: $(IMAGE)
 
 .PHONY: emulate-nogui
 emulate-nogui: $(IMAGE)
-	qemu-system-x86_64 -nographic -no-reboot -drive file=$(IMAGE),format=raw -vga std -m 6G
+	truncate $(TMP_DISC) -s $(IMAGE_SIZE)
+	qemu-system-x86_64 -nographic -no-reboot -drive file=$(IMAGE),format=raw -drive file=$(TMP_DISC),format=raw -vga std -m 6G
 
 .PHONY: emulate-int
 emulate-int: $(IMAGE)

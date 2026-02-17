@@ -17,6 +17,7 @@ APPLICATIONS+=socktest
 APPLICATIONS+=pkwball
 APPLICATIONS+=bdate
 APPLICATIONS+=puyo
+APPLICATIONS+=mkfs_pkfs
 
 APPLICATIONS+=servertest
 APPLICATIONS+=clienttest
