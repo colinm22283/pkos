@@ -18,6 +18,7 @@ APPLICATIONS+=pkwball
 APPLICATIONS+=bdate
 APPLICATIONS+=puyo
 APPLICATIONS+=mkfs_pkfs
+APPLICATIONS+=kill
 
 APPLICATIONS+=servertest
 APPLICATIONS+=clienttest
