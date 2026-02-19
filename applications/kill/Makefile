@@ -3,7 +3,7 @@ OBJ_DIR=$(BUILD_DIR)/obj
 SOURCE_DIR=src
 EXE_DIR?=$(BUILD_DIR)
 
-EXE_BIN?=$(EXE_DIR)/cat
+EXE_BIN?=$(EXE_DIR)/kill
 
 INCLUDE_DIRS+=include
 
