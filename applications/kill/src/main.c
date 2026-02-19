@@ -22,7 +22,7 @@ int main(uint64_t argc, const char ** argv) {
         return 1;
     }
 
-    kill(argv[1][0] - '0');
+    /* kill(argv[1][0] - '0'); */
 
     return 0;
 }
