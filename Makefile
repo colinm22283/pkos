@@ -109,7 +109,7 @@ emulate-nobuild:
 
 .PHONY: emulate-gdb
 emulate-gdb: $(IMAGE)
-	qemu-system-x86_64 -no-reboot -s -S -drive file=$(IMAGE),format=raw -vga std -serial stdio -m 6G
+	qemu-system-x86_64 -no-reboot -s -drive file=$(IMAGE),format=raw -drive file=$(TMP_DISC),format=raw -serial stdio -m 6G
 
 .PHONY: emulate-installer
 emulate-installer: $(INSTALLABLE)
