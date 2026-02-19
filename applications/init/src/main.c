@@ -10,6 +10,8 @@ int main(void) {
 
     mount("/tmp", NULL, "ramfs", 0, "");
 
+    mount("/proc", NULL, "procfs", 0, "");
+
     {
         pid_t fork_result = fork();
 
