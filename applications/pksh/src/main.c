@@ -109,7 +109,7 @@ int main(uint64_t argc, const char ** argv) {
             while (true) {
                 int64_t amount_read = read(in_fd, line_buf + line_size, 1);
 
-                if (amount_read == 0) {
+                if (amount_read == 0 || line_buf[line_size] == '\n') {
                     line_buf[line_size] = '\0';
                     break;
                 }

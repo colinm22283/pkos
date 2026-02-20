@@ -1,1 +1,3 @@
-echo Hello world
+heapstat
+signal_test
+heapstat

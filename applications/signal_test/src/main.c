@@ -4,19 +4,19 @@
 #include <pkos.h>
 #include <error_number.h>
 
-#define BUFFER_SIZE (1024)
+volatile bool gaming = false;
 
 static inline void print(const char * str) {
     uint64_t str_size = 0;
     while (str[str_size] != '\0') str_size++;
 
     write(stdout, str, str_size);
-
-    exit(1);
 }
 
 void alarm_handler(signal_number_t sig) {
     print("ALARM RECIEVED\n");
+
+    gaming = true;
 }
 
 int main(uint64_t argc, const char ** argv) {
@@ -24,12 +24,13 @@ int main(uint64_t argc, const char ** argv) {
 
     alarm(1);
 
-    char c;
-    read(stdin, &c, 1);
-    read(stdin, &c, 1);
-    read(stdin, &c, 1);
-    read(stdin, &c, 1);
-    read(stdin, &c, 1);
+    while (true) {
+        print("yep\n");
+
+        if (gaming) break;
+    }
+
+    print("bye\n");
 
     return 0;
 }
