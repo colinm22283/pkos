@@ -41,19 +41,17 @@ int main(uint64_t argc, const char ** argv) {
     // write(bind_fd, "0", 1);
     // close(bind_fd);
 
-    print("Fork init window\n");
-    {
-        pid_t temp = fork();
-        if (temp == 0) {
-            static const char * args[] = { "/bin/pkwball" };
-
-            print(args[0]);
-
-            exec("/bin/pkwball", args, 1);
-
-            exit(1);
-        }
-    }
+    // print("Fork init window\n");
+    // {
+    //     pid_t temp = fork();
+    //     if (temp == 0) {
+    //         static const char * args[] = { "/bin/pkwball" };
+    //
+    //         exec("/bin/pkwball", args, 1);
+    //
+    //         exit(1);
+    //     }
+    // }
 
     print("Forking main loop\n");
     pid_t fork_result = fork();
@@ -72,9 +70,11 @@ int main(uint64_t argc, const char ** argv) {
 
             display_draw(&main_display);
 
+            windows_draw(&main_display);
+
             lock = false;
 
-            for (uint64_t i = 0; i < 10000; i++) asm volatile ("nop");
+            for (uint64_t i = 0; i < 10000000; i++) asm volatile ("nop");
         }
 
         exit(0);
@@ -120,15 +120,15 @@ __NORETURN void accept_loop(void) {
     print("Starting accept loop\n");
 
     while (true) {
-        // fd_t new_sock = accept(sock_fd);
-        //
-        // print("Socket accepted\n");
-        //
-        // pid_t fork_result = fork();
-        //
-        // if (fork_result == 0) {
-        //     listen_loop(new_sock);
-        // }
+        fd_t new_sock = accept(sock_fd);
+
+        print("Socket accepted\n");
+
+        pid_t fork_result = fork();
+
+        if (fork_result == 0) {
+            listen_loop(new_sock);
+        }
     }
 }
 
@@ -140,6 +140,8 @@ void listen_loop(fd_t sock_fd) {
 
         while (!lock) { }
         lock = true;
+
+        print("READING\n");
 
         switch (header->command) {
             case PKW_CMD_CREATE_WIN: {

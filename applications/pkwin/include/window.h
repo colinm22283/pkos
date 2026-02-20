@@ -2,6 +2,8 @@
 
 #include <stdint.h>
 
+#include <display.h>
+
 #define TITLE_MAX (100)
 
 #define MAX_WINDOWS (1024)
@@ -21,6 +23,6 @@ static inline window_t * get_window(size_t index) {
 
 void windows_init(void);
 
-window_t * windows_add(char title[100]);
+window_t * windows_add(char title[TITLE_MAX]);
 
-void windows_draw(void);
+void windows_draw(display_t * display);

@@ -65,8 +65,6 @@ uint64_t strlen(const char * str) {
 int main(uint64_t argc, const char ** argv) {
     print("Start pkwball\n");
 
-    while (true) { }
-
     fd_t sock_fd = socket(SOCKET_UNIX, SOCKET_STREAM, 0);
 
     while (true) {

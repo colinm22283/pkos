@@ -105,12 +105,13 @@ emulate-int: $(IMAGE)
 
 .PHONY: emulate-nobuild
 emulate-nobuild:
-	qemu-system-x86_64 -no-reboot -drive file=$(IMAGE),format=raw -vga std -d int -m 6G
+	truncate $(TMP_DISC) -s $(IMAGE_SIZE)
+	qemu-system-x86_64 -nographic -no-reboot -drive file=$(IMAGE),format=raw -drive file=$(TMP_DISC),format=raw -vga std -m 6G
 
 .PHONY: emulate-gdb
 emulate-gdb: $(IMAGE)
 	truncate $(TMP_DISC) -s $(IMAGE_SIZE)
-	qemu-system-x86_64 -no-reboot -s -S -drive file=$(IMAGE),format=raw -drive file=$(TMP_DISC),format=raw -serial stdio -m 6G
+	qemu-system-x86_64 -nographic -no-reboot -s -S -drive file=$(IMAGE),format=raw -drive file=$(TMP_DISC),format=raw -serial mon:stdio -m 6G
 
 .PHONY: emulate-installer
 emulate-installer: $(INSTALLABLE)
