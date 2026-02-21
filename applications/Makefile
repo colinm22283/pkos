@@ -20,6 +20,7 @@ APPLICATIONS+=puyo
 APPLICATIONS+=mkfs_pkfs
 APPLICATIONS+=kill
 APPLICATIONS+=signal_test
+APPLICATIONS+=thread_test
 APPLICATIONS+=servertest
 APPLICATIONS+=clienttest
 

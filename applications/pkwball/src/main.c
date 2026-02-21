@@ -75,6 +75,8 @@ int main(uint64_t argc, const char ** argv) {
         if (connect(sock_fd, (const sockaddr_t *) sockaddr, strlen(sockaddr->path) + 1) == ERROR_OK) break;
     }
 
+    print("create window\n");
+
     pkw_cmd_create_win_t create_win_message = {
         .header = {
             .command = PKW_CMD_CREATE_WIN,
@@ -85,4 +87,6 @@ int main(uint64_t argc, const char ** argv) {
     };
 
     write(sock_fd, (char *) &create_win_message, sizeof(pkw_cmd_create_win_t));
+
+    while (true) { }
 }

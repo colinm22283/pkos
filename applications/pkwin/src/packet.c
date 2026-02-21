@@ -3,10 +3,12 @@
 #include <packet.h>
 #include <window.h>
 
-pkw_cmd_header_t * receive_command(fd_t sock_fd) {
-    static char command_buffer[512];
+static char command_buffer[512];
 
+pkw_cmd_header_t * receive_command(fd_t sock_fd) {
     read(sock_fd, command_buffer, sizeof(pkw_cmd_header_t));
+
+    write(stdout, "yep\n", 4);
 
     pkw_cmd_header_t * header = (pkw_cmd_header_t *) command_buffer;
 
@@ -15,6 +17,7 @@ pkw_cmd_header_t * receive_command(fd_t sock_fd) {
     switch (header->command) {
         case PKW_CMD_CREATE_WIN: {
             if (header->size != sizeof(pkw_cmd_create_win_t)) return NULL;
+            write(stdout, (char *) header, sizeof(pkw_cmd_create_win_t));
         } break;
 
         case PKW_CMD_MOVE_WIN: {

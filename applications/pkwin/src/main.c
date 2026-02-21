@@ -11,6 +11,8 @@
 
 volatile bool lock;
 
+__NORETURN void display_thread(void);
+
 static inline void print(const char * str) {
     uint64_t str_size = 0;
     while (str[str_size] != '\0') str_size++;
@@ -37,59 +39,9 @@ uint64_t strlen(const char * str) {
 int main(uint64_t argc, const char ** argv) {
     lock = false;
 
-    // fd_t bind_fd = open("/sys/vgatty/bind", OPEN_WRITE);
-    // write(bind_fd, "0", 1);
-    // close(bind_fd);
+    print("Start display thread\n");
+    // thread(display_thread);
 
-    // print("Fork init window\n");
-    // {
-    //     pid_t temp = fork();
-    //     if (temp == 0) {
-    //         static const char * args[] = { "/bin/pkwball" };
-    //
-    //         exec("/bin/pkwball", args, 1);
-    //
-    //         exit(1);
-    //     }
-    // }
-
-    print("Forking main loop\n");
-    pid_t fork_result = fork();
-
-    if (fork_result == 0) {
-        accept_loop();
-    }
-    else {
-        print("Init main display\n");
-        display_t main_display;
-        display_init(&main_display, "/dev/vga", 320, 200);
-
-        while (true) {
-            while (lock) { }
-            lock = true;
-
-            display_draw(&main_display);
-
-            windows_draw(&main_display);
-
-            lock = false;
-
-            for (uint64_t i = 0; i < 10000000; i++) asm volatile ("nop");
-        }
-
-        exit(0);
-    }
-}
-
-void cleanup_all(void) {
-    fd_t bind_fd = open("/sys/vgatty/bind", OPEN_WRITE);
-    write(bind_fd, "1", 1);
-    close(bind_fd);
-
-    exit(0);
-}
-
-__NORETURN void accept_loop(void) {
     print("Open socket\n");
     fd_t sock_fd = socket(SOCKET_UNIX, SOCKET_STREAM, 0);
     if (sock_fd < 0) {
@@ -120,37 +72,61 @@ __NORETURN void accept_loop(void) {
     print("Starting accept loop\n");
 
     while (true) {
+        print("wait\n");
+
         fd_t new_sock = accept(sock_fd);
 
         print("Socket accepted\n");
 
-        pid_t fork_result = fork();
+        while (true) {
+            print("wait\n");
 
-        if (fork_result == 0) {
-            listen_loop(new_sock);
+            pkw_cmd_header_t * header = receive_command(new_sock);
+
+            print("Got message\n");
+
+            while (lock) { }
+            lock = true;
+
+            print("READING\n");
+
+            switch (header->command) {
+                case PKW_CMD_CREATE_WIN: {
+                    print("Create window\n");
+
+                    pkw_cmd_create_win_t * cmd = (pkw_cmd_create_win_t *) header;
+
+                    windows_add(cmd->title);
+                } break;
+            }
+
+            lock = false;
+
+            for (size_t i = 0; i < 1000000; i++) asm volatile("nop");
         }
     }
 }
 
-void listen_loop(fd_t sock_fd) {
+__NORETURN void display_thread(void) {
+    display_t display;
+    display_init(&display, "/dev/vga", 320, 200);
+
+    display_draw(&display);
+
     while (true) {
-        pkw_cmd_header_t * header = receive_command(sock_fd);
-
-        print("Got message\n");
-
-        while (!lock) { }
+        while (lock) { }
         lock = true;
 
-        print("READING\n");
+        display_draw(&display);
 
-        switch (header->command) {
-            case PKW_CMD_CREATE_WIN: {
-                pkw_cmd_create_win_t * cmd = (pkw_cmd_create_win_t *) header;
-
-                windows_add(cmd->title);
-            } break;
-        }
+        windows_draw(&display);
 
         lock = false;
+
+        for (size_t i = 0; i < 1000000; i++) asm volatile("nop");
     }
+}
+
+void cleanup_all(void) {
+    exit(0);
 }

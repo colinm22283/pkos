@@ -35,6 +35,8 @@ void windows_draw(display_t * display) {
         window_t * window = windows[i];
 
         if (window != NULL) {
+            write(stdout, "window\n", 7);
+
             for (size_t x = 0; x < 30; x++) {
                 for (size_t y = 0; y < 30; y++) {
                     ((uint8_t *) display->fb)[y * display->width + x] = 0x4;
