@@ -10,3 +10,6 @@
 [submodule "installer"]
 	path = installer
 	url = git@pksrv:/srv/git/pkos_installer.git
+[submodule "pkstdlib"]
+	path = pkstdlib
+	url = git@pksrv:/srv/git/pkstdlib.git
