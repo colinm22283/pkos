@@ -5,10 +5,14 @@ BUILD_DIR=build
 BOOTLOADER_BIN=pkbl/build/bin/pkbl.bin
 INSTALLER_BIN=installer/build/bin/installer.bin
 KERNEL_BIN=pkernel/build/bin/kernel.bin
+STDLIB_DIR=$(CURDIR)/pkstdlib
 FS_BIN=$(BUILD_DIR)/pkfs.bin
 IMAGE=$(BUILD_DIR)/pkos.img
 INSTALLABLE=$(BUILD_DIR)/installable.img
 TMP_DISC=$(BUILD_DIR)/tmp_disc.img
+
+export STDLIB_LIB=$(STDLIB_DIR)/build/pkstdlib.a
+export STDLIB_INCLUDE=$(STDLIB_DIR)/include
 
 PKFS_MKFS=pkfs_tools/mkfs/build/mkfs
 
@@ -59,6 +63,14 @@ installer: $(INSTALLER_BIN)
 
 .PHONY: kernel
 kernel: $(KERNEL_BIN)
+
+.PHONY: stdlib
+stdlib:
+	cd $(STDLIB_DIR) && $(MAKE)
+
+.PHONY: stdlib-install
+stdlib-install:
+	cd $(STDLIB_DIR) && $(MAKE) install
 
 $(BOOTLOADER_BIN): .FORCE
 	cd pkbl && $(MAKE)

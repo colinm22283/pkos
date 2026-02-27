@@ -5,6 +5,8 @@
     <mapping directory="$PROJECT_DIR$/installer" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/pkbl" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/pkernel" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/pkernel/source/external/pkelf" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/pkfs_tools" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/pkstdlib" vcs="Git" />
   </component>
 </project>

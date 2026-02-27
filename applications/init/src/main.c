@@ -19,7 +19,9 @@ int main(void) {
             write(stdout, "Child!\n", 7);
 
             const char * args[] = { "/bin/pksh" };
-            exec("/bin/pksh", args, 1);
+            exec(args[0], args, 1);
+
+            write(stdout, "FAILED TO EXEC SHELL\n", 21);
         }
         else {
             write(stdout, "Parent!\n", 8);
@@ -27,8 +29,6 @@ int main(void) {
             exit(1);
         }
     }
-
-    while (1) {}
 
     return 0;
 }
