@@ -11,6 +11,8 @@ IMAGE=$(BUILD_DIR)/pkos.img
 INSTALLABLE=$(BUILD_DIR)/installable.img
 TMP_DISC=$(BUILD_DIR)/tmp_disc.img
 
+export FSROOT_DIR=$(CURDIR)/fsroot
+
 export STDLIB_LIB=$(STDLIB_DIR)/build/pkstdlib.a
 export STDLIB_INCLUDE=$(STDLIB_DIR)/include
 
@@ -26,7 +28,7 @@ clean:
 	cd pkbl && $(MAKE) clean
 	cd installer && $(MAKE) clean
 	cd pkernel && $(MAKE) clean
-	cd applications && $(MAKE) clean
+	cd coreutils && $(MAKE) clean
 	cd pkfs_tools/mkfs && $(MAKE) clean
 
 .PHONY: image
@@ -45,7 +47,7 @@ $(INSTALLABLE): installer $(IMAGE)
 .PHONY: filesystem
 filesystem: $(FS_BIN)
 
-$(FS_BIN): $(BUILD_DIR)/fsroot applications kernel pkfs_mkfs
+$(FS_BIN): $(BUILD_DIR)/fsroot coreutils kernel pkfs_mkfs
 	cp $(KERNEL_BIN) $(BUILD_DIR)/fsroot/boot/kernel
 	
 	$(PKFS_MKFS) $(BUILD_DIR)/fsroot $(FS_BIN)
@@ -97,6 +99,10 @@ config-save:
 .PHONY: applications
 applications: .FORCE fsroot
 	cd applications && $(MAKE) KERNEL_DIR=$(CURDIR)/pkernel EXE_DIR=$(CURDIR)/$(BUILD_DIR)/fsroot/bin
+
+.PHONY: coreutils
+coreutils: .FORCE fsroot
+	cd coreutils && $(MAKE) BIN_DIR=$(CURDIR)/$(BUILD_DIR)/fsroot/bin
 
 .PHONY: mkfs
 pkfs_mkfs:
