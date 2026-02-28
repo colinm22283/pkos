@@ -9,37 +9,33 @@
 #include <pkos/syscall_number.h>
 #include <pkos/error_number.h>
 
-static inline fd_t open(const char * path, open_options_t options) {
-    int64_t ret;
+#define DEFINE_SYSCALL0(num, ret, name) \
+    static inline ret name(void) { \
+        ret r; \
+        asm volatile ("int $0x30" : "=a" (r) : "a" (num) : "memory", "cc"); \
+        return r; \
+    }
 
-    asm volatile ("int $0x30" : "=a" (ret) : "a" (SYSCALL_OPEN), "S" ((uint64_t) path), "d" (options) : "memory", "cc");
+#define DEFINE_SYSCALL1(num, ret, name, arg1t, arg1) \
+    static inline ret name(arg1t arg1) { \
+        ret r; \
+        asm volatile ("int $0x30" : "=a" (r) : "a" (num), "S" ((int64_t) arg1) : "memory", "cc"); \
+        return r; \
+    }
 
-    return ret;
-}
+#define DEFINE_SYSCALL2(num, ret, name, arg1t, arg1, arg2t, arg2) \
+    static inline ret name(arg1t arg1, arg2t arg2) { \
+        ret r; \
+        asm volatile ("int $0x30" : "=a" (r) : "a" (num), "S" ((int64_t) arg1), "d" ((int64_t) arg2) : "memory", "cc"); \
+        return r; \
+    }
 
-static inline int64_t close(fd_t fd) {
-    int64_t ret;
-
-    asm volatile ("int $0x30" : "=a" (ret) : "a" (SYSCALL_CLOSE), "S" ((uint64_t) fd) : "memory", "cc");
-
-    return ret;
-}
-
-static inline int64_t write(fd_t fd, const char * buffer, uint64_t size) {
-    int64_t ret;
-
-    asm volatile ("int $0x30" : "=a" (ret) : "a" (SYSCALL_WRITE), "S" (fd), "d" ((uint64_t) buffer), "c" (size) : "memory", "cc");
-
-    return ret;
-}
-
-static inline int64_t read(fd_t fd, char * buffer, uint64_t size) {
-    int64_t ret;
-
-    asm volatile ("int $0x30" : "=a" (ret) : "a" (SYSCALL_READ), "S" (fd), "d" ((uint64_t) buffer), "c" (size) : "memory", "cc");
-
-    return ret;
-}
+#define DEFINE_SYSCALL3(num, ret, name, arg1t, arg1, arg2t, arg2, arg3t, arg3) \
+    static inline ret name(arg1t arg1, arg2t arg2, arg3t arg3) { \
+        ret r; \
+        asm volatile ("int $0x30" : "=a" (r) : "a" (num), "S" ((int64_t) arg1), "d" ((int64_t) arg2), "c" ((int64_t) arg3) : "memory", "cc"); \
+        return r; \
+    }
 
 static inline int64_t seek(fd_t fd, int64_t offset, seek_origin_t origin) {
     int64_t ret;
@@ -47,14 +43,6 @@ static inline int64_t seek(fd_t fd, int64_t offset, seek_origin_t origin) {
     asm volatile ("int $0x30" : "=a" (ret) : "a" (SYSCALL_SEEK), "S" (fd), "d" (offset), "c" ((uint64_t) origin) : "memory", "cc");
 
     return ret;
-}
-
-static inline __attribute__((noreturn)) void exit(uint64_t code) {
-    uint64_t ret;
-
-    asm volatile ("int $0x30" : "=a" (ret) : "a" (SYSCALL_EXIT), "S" (code) : "memory", "cc");
-
-    __UNREACHABLE();
 }
 
 static inline int64_t readdir(fd_t fd, directory_entry_t * entries, uint64_t size) {
@@ -159,14 +147,6 @@ static inline error_number_t remove(const char * path) {
     return ret;
 }
 
-static inline fd_t openat(fd_t fd, const char * path, open_options_t options) {
-    int64_t ret;
-
-    asm volatile ("int $0x30" : "=a" (ret) : "a" (SYSCALL_OPENAT), "S" ((uint64_t) fd), "d" ((uint64_t) path), "c" (options) : "memory", "cc");
-
-    return ret;
-}
-
 static inline fd_t socket(socket_domain_t domain, socket_type_t type, uint64_t protocol) {
     int64_t ret;
 
@@ -211,14 +191,6 @@ static inline fd_t signal(signal_number_t sig, signal_handler_t * handler) {
     fd_t ret;
 
     asm volatile ("int $0x30" : "=a" (ret) : "a" (SYSCALL_SIGNAL), "S" ((uint64_t) sig), "d" ((uint64_t) handler) : "memory", "cc");
-
-    return ret;
-}
-
-static inline error_number_t alarm(size_t seconds) {
-    fd_t ret;
-
-    asm volatile ("int $0x30" : "=a" (ret) : "a" (SYSCALL_ALARM), "S" ((uint64_t) seconds) : "memory", "cc");
 
     return ret;
 }

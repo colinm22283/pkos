@@ -5,7 +5,7 @@
 typedef enum {
     ERROR_OK = 0,
 
-    ERROR_UNIMPLEMENTED = INT64_MIN,
+    ERROR_UNIMPLEMENTED = INT32_MIN,
     ERROR_UNKNOWN,
 
     ERROR_BITMAP_NOT_ALLOCATED,
@@ -64,5 +64,6 @@ typedef enum {
     ERROR_OTHER,
 
     ERROR_BAD_ELF,
+    ERROR_BAD_MAP,
 } error_number_t;
 

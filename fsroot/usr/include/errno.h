@@ -1,2 +1,8 @@
-#define EEXIST 0
-#define EINTR 0
+#pragma once
+
+#include <pkos/error_number.h>
+
+enum {
+    EEXIST = 1,
+    EINTR,
+};

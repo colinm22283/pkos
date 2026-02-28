@@ -13,3 +13,6 @@
 [submodule "pkstdlib"]
 	path = pkstdlib
 	url = git@pksrv:/srv/git/pkstdlib.git
+[submodule "coreutils"]
+	path = coreutils
+	url = git@pksrv:/git/pkcoreutils.git
