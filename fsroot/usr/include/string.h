@@ -9,3 +9,5 @@ char * strcat(char * restrict dst, const char * restrict src);
 char * strchr(const char * s, int c);
 int strcmp(const char * dst, const char * src);
 
+const char * strerrorname_np(int errnum);
+const char * strerrordesc_np(int errnum);

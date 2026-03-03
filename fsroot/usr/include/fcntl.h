@@ -7,9 +7,13 @@
 #define F_WRLCK 0
 #define F_SETLKW 0
 
-#define O_RDONLY 0
-#define O_RDWR 0
-#define O_CREAT 0
+#define O_RDONLY 0b01
+#define O_RD     0b01
+#define O_WRONLY 0b10
+#define O_WR     0b10
+#define O_RDWR   0b11
+
+#define O_CREAT 0b100
 #define O_TRUNC 0
 
 #define S_IRUSR 0

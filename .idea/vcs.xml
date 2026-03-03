@@ -2,6 +2,7 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/coreutils" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/installer" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/pkbl" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/pkernel" vcs="Git" />

@@ -96,7 +96,7 @@ static inline pid_t wait(void) {
     return ret;
 }
 
-static inline void * pipe(fd_t fds[2], open_options_t options) {
+static inline void * pipe(fd_t fds[2], int options) {
     int64_t ret;
 
     asm volatile ("int $0x30" : "=a" (ret) : "a" (SYSCALL_PIPE), "S" ((uint64_t) fds), "d" ((uint64_t) options) : "memory", "cc");

@@ -3,7 +3,8 @@
 #include <sys/types.h>
 
 #include <pkos/syscalls.h>
-#include <pkos/fileno.h>
+
+#include <shared/fileno.h>
 
 DEFINE_SYSCALL1(SYSCALL_ALARM, unsigned int, alarm, unsigned int, time);
 DEFINE_SYSCALL1(SYSCALL_CLOSE, int, close, int, fd);

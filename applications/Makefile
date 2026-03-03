@@ -1,40 +1,25 @@
-APPLICATIONS+=init
-APPLICATIONS+=pksh
-APPLICATIONS+=pkwin
-APPLICATIONS+=cat
-APPLICATIONS+=ls
-APPLICATIONS+=tree
-APPLICATIONS+=mount
-APPLICATIONS+=unmount
-APPLICATIONS+=mkdir
-APPLICATIONS+=touch
-APPLICATIONS+=nn
-APPLICATIONS+=fbtest
-APPLICATIONS+=echo
-APPLICATIONS+=heapstat
-APPLICATIONS+=rm
-APPLICATIONS+=socktest
-APPLICATIONS+=pkwball
-APPLICATIONS+=bdate
-APPLICATIONS+=puyo
-APPLICATIONS+=mkfs_pkfs
-APPLICATIONS+=kill
-APPLICATIONS+=signal_test
-APPLICATIONS+=thread_test
-APPLICATIONS+=servertest
-APPLICATIONS+=clienttest
+export BUILD_DIR=$(CURDIR)/build
+export BIN_DIR=$(BUILD_DIR)/bin
+
+export CC=x86_64-pkos-gcc
+
+export CFLAGS=-g
+
+PROGS+=pksh
+
+TARGETS=$(foreach p, $(PROGS), build-$p)
 
 .PHONY: all
-all: $(foreach a, $(APPLICATIONS), app-$a)
+all: $(TARGETS)
 
 .PHONY: clean
-clean:  $(foreach a, $(APPLICATIONS), clean-$a)
-	
-.PHONY: app-%
-app-%:
-	cd $(KERNEL_DIR) && $(MAKE) APPLICATION_DIR=$(CURDIR)/$* application
+clean:
+	rm -rf $(BUILD_DIR)
 
-.PHONY: clean-%
-clean-%:
-	cd $* && $(MAKE) clean
+.PHONY: build-%
+build-%:
+	cd source/$* && $(MAKE) \
+		OBJ_DIR=$(BUILD_DIR)/obj/$* \
+		SRC_DIR=$(CURDIR)/source/$*/src \
+		INCLUDE_DIR=$(CURDIR)/source/$*/include
 

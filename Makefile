@@ -29,6 +29,7 @@ clean:
 	cd installer && $(MAKE) clean
 	cd pkernel && $(MAKE) clean
 	cd coreutils && $(MAKE) clean
+	cd applications && $(MAKE) clean
 	cd pkfs_tools/mkfs && $(MAKE) clean
 
 .PHONY: image
@@ -47,7 +48,7 @@ $(INSTALLABLE): installer $(IMAGE)
 .PHONY: filesystem
 filesystem: $(FS_BIN)
 
-$(FS_BIN): $(BUILD_DIR)/fsroot coreutils kernel pkfs_mkfs
+$(FS_BIN): $(BUILD_DIR)/fsroot coreutils applications kernel pkfs_mkfs
 	cp $(KERNEL_BIN) $(BUILD_DIR)/fsroot/boot/kernel
 	
 	$(PKFS_MKFS) $(BUILD_DIR)/fsroot $(FS_BIN)
@@ -98,7 +99,7 @@ config-save:
 
 .PHONY: applications
 applications: .FORCE fsroot
-	cd applications && $(MAKE) KERNEL_DIR=$(CURDIR)/pkernel EXE_DIR=$(CURDIR)/$(BUILD_DIR)/fsroot/bin
+	cd applications && $(MAKE) BIN_DIR=$(CURDIR)/$(BUILD_DIR)/fsroot/bin
 
 .PHONY: coreutils
 coreutils: .FORCE fsroot
