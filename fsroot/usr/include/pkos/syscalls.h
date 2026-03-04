@@ -23,10 +23,28 @@
         return r; \
     }
 
+#define DEFINE_SYSCALL12(num, ret, name, arg1t, arg1, format, arg2t, arg2) \
+    static inline ret name(arg1t arg1, ...) { \
+        va_list args; va_start(args, (format)); arg2t arg2 = va_arg(args, arg2t); \
+        ret r; \
+        asm volatile ("int $0x30" : "=a" (r) : "a" (num), "S" ((int64_t) arg1), "d" ((int64_t) arg2) : "memory", "cc"); \
+        va_end(args); \
+        return r; \
+    }
+
 #define DEFINE_SYSCALL2(num, ret, name, arg1t, arg1, arg2t, arg2) \
     static inline ret name(arg1t arg1, arg2t arg2) { \
         ret r; \
         asm volatile ("int $0x30" : "=a" (r) : "a" (num), "S" ((int64_t) arg1), "d" ((int64_t) arg2) : "memory", "cc"); \
+        return r; \
+    }
+
+#define DEFINE_SYSCALL23(num, ret, name, arg1t, arg1, arg2t, arg2, format, arg3t, arg3) \
+    static inline ret name(arg1t arg1, arg2t arg2, ...) { \
+        va_list args; va_start(args, (format)); arg3t arg3 = va_arg(args, arg3t); \
+        ret r; \
+        asm volatile ("int $0x30" : "=a" (r) : "a" (num), "S" ((int64_t) arg1), "d" ((int64_t) arg2), "d" ((int64_t) arg3) : "memory", "cc"); \
+        va_end(args); \
         return r; \
     }
 
@@ -127,14 +145,6 @@ static inline error_number_t unmount(const char * mount_point) {
     int64_t ret;
 
     asm volatile ("int $0x30" : "=a" (ret) : "a" (SYSCALL_UNMOUNT), "S" ((uint64_t) mount_point) : "memory", "cc");
-
-    return ret;
-}
-
-static inline error_number_t mkdir(const char * path) {
-    int64_t ret;
-
-    asm volatile ("int $0x30" : "=a" (ret) : "a" (SYSCALL_MKDIR), "S" ((uint64_t) path) : "memory", "cc");
 
     return ret;
 }

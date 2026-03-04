@@ -10,6 +10,7 @@ DEFINE_SYSCALL1(SYSCALL_ALARM, unsigned int, alarm, unsigned int, time);
 DEFINE_SYSCALL1(SYSCALL_CLOSE, int, close, int, fd);
 DEFINE_SYSCALL3(SYSCALL_READ, ssize_t, read, int, fd, char *, buffer, size_t, size);
 DEFINE_SYSCALL3(SYSCALL_WRITE, ssize_t, write, int, fd, const char *, buffer, size_t, size);
+DEFINE_SYSCALL12(SYSCALL_MKDIR, int, mkdir, const char *, path, "%i", mode_t, mode);
 
 static inline __attribute__((noreturn)) void exit(int status) {
     uint64_t ret;

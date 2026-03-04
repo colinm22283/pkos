@@ -8,6 +8,8 @@ typedef int fd_t;
 
 typedef int64_t ssize_t;
 
+typedef int mode_t;
+
 typedef enum {
     SO_BEG = 0,
     SO_END = 1,

@@ -1,15 +1,12 @@
+#pragma once
+
 #include <stddef.h>
 #include <stdarg.h>
 #include <stdbool.h>
 
 #include <sys/types.h>
 
-typedef struct {
-    bool binary;
-
-    int flags;
-    fd_t fd;
-} FILE;
+typedef struct _FILE_s FILE;
 
 #define SEEK_SET (1)
 
