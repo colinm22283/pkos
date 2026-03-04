@@ -2,6 +2,7 @@
 
 #include <stdint.h>
 #include <stddef.h>
+#include <stdarg.h>
 
 #include <sys/types.h>
 #include <pkos/signal.h>
@@ -23,15 +24,6 @@
         return r; \
     }
 
-#define DEFINE_SYSCALL12(num, ret, name, arg1t, arg1, format, arg2t, arg2) \
-    static inline ret name(arg1t arg1, ...) { \
-        va_list args; va_start(args, (format)); arg2t arg2 = va_arg(args, arg2t); \
-        ret r; \
-        asm volatile ("int $0x30" : "=a" (r) : "a" (num), "S" ((int64_t) arg1), "d" ((int64_t) arg2) : "memory", "cc"); \
-        va_end(args); \
-        return r; \
-    }
-
 #define DEFINE_SYSCALL2(num, ret, name, arg1t, arg1, arg2t, arg2) \
     static inline ret name(arg1t arg1, arg2t arg2) { \
         ret r; \
@@ -39,19 +31,27 @@
         return r; \
     }
 
-#define DEFINE_SYSCALL23(num, ret, name, arg1t, arg1, arg2t, arg2, format, arg3t, arg3) \
-    static inline ret name(arg1t arg1, arg2t arg2, ...) { \
-        va_list args; va_start(args, (format)); arg3t arg3 = va_arg(args, arg3t); \
-        ret r; \
-        asm volatile ("int $0x30" : "=a" (r) : "a" (num), "S" ((int64_t) arg1), "d" ((int64_t) arg2), "d" ((int64_t) arg3) : "memory", "cc"); \
-        va_end(args); \
-        return r; \
-    }
-
 #define DEFINE_SYSCALL3(num, ret, name, arg1t, arg1, arg2t, arg2, arg3t, arg3) \
     static inline ret name(arg1t arg1, arg2t arg2, arg3t arg3) { \
         ret r; \
         asm volatile ("int $0x30" : "=a" (r) : "a" (num), "S" ((int64_t) arg1), "d" ((int64_t) arg2), "c" ((int64_t) arg3) : "memory", "cc"); \
+        return r; \
+    }
+
+#define DEFINE_SYSCALL4(num, ret, name, arg1t, arg1, arg2t, arg2, arg3t, arg3, arg4t, arg4) \
+    static inline ret name(arg1t arg1, arg2t arg2, arg3t arg3, arg4t arg4) { \
+        ret r; \
+        register uint64_t r8 asm("r8") = (int64_t) arg4; \
+        asm volatile ("int $0x30" : "=a" (r) : "a" (num), "S" ((int64_t) arg1), "d" ((int64_t) arg2), "c" ((int64_t) arg3, "r" (r8), "r" (r9)) : "memory", "cc"); \
+        return r; \
+    }
+
+#define DEFINE_SYSCALL5(num, ret, name, arg1t, arg1, arg2t, arg2, arg3t, arg3, arg4t, arg4, arg5t, arg5) \
+    static inline ret name(arg1t arg1, arg2t arg2, arg3t arg3, arg4t arg4, arg5t arg5) { \
+        ret r; \
+        register uint64_t r8 asm("r8") = (int64_t) arg4; \
+        register uint64_t r9 asm("r9") = (int64_t) arg5; \
+        asm volatile ("int $0x30" : "=a" (r) : "a" (num), "S" ((int64_t) arg1), "d" ((int64_t) arg2), "c" ((int64_t) arg3), "r" (r8), "r" (r9) : "memory", "cc"); \
         return r; \
     }
 
@@ -128,17 +128,6 @@ static inline void * dup(fd_t dst, fd_t src) {
     asm volatile ("int $0x30" : "=a" (ret) : "a" (SYSCALL_DUP), "S" ((uint64_t) dst), "d" ((uint64_t) src) : "memory", "cc");
 
     return (void *) ret;
-}
-
-static inline error_number_t mount(const char * dst, const char * src, const char * fs, mount_options_t options, const char * data) {
-    int64_t ret;
-
-    register uint64_t r8 asm("r8") = options;
-    register uint64_t r9 asm("r9") = (uint64_t) data;
-
-    asm volatile ("int $0x30" : "=a" (ret) : "a" (SYSCALL_MOUNT), "S" ((uint64_t) dst), "d" ((uint64_t) src), "c" ((uint64_t) fs), "r" (r8), "r" (r9) : "memory", "cc");
-
-    return ret;
 }
 
 static inline error_number_t unmount(const char * mount_point) {

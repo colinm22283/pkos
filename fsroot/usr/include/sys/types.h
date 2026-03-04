@@ -36,8 +36,6 @@ typedef uint64_t map_options_t;
 #define MAP_EXECUTE  ((map_options_t) 0b000000000000000000000000000000000000000000000000000010)
 #define MAP_ANON     ((map_options_t) 0b000000000000000000000000000000000000000000000000000100)
 
-typedef uint64_t mount_options_t;
-
 typedef enum {
     SOCKET_UNIX,
 } socket_domain_t;
