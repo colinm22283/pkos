@@ -21,8 +21,8 @@ FILE * fdopen(int fd, const char * options);
 FILE * fopen(const char * path, const char * options);
 int fclose(FILE * stream);
 
-size_t fread(size_t size, size_t n, void * ptr, FILE * stream);
-size_t fwrite(size_t size, size_t n, const void * ptr, FILE * stream);
+size_t fread(void * ptr, size_t size, size_t n, FILE * stream);
+size_t fwrite(const void * ptr, size_t size, size_t n, FILE * stream);
 int fseek(FILE * stream, long offset, int whence);
 long ftell(FILE * stream);
 
