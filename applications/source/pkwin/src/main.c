@@ -25,6 +25,7 @@ int sock_fd;
 
 bool connection_gained = false;
 __attribute__((noreturn)) void connection_handler(void);
+void render(void);
 
 int main(int argc, const char ** argv) {
     int fb_fd = open("/dev/vga", O_RDWR);
@@ -60,6 +61,8 @@ int main(int argc, const char ** argv) {
         return 1;
     }
 
+    render();
+
     connection_handler();
 }
 
@@ -82,8 +85,49 @@ __attribute__((noreturn)) void connection_handler(void) {
             case PKW_CMD_CREATE_WIN: {
                 pkw_cmd_create_win_t * cmd = (pkw_cmd_create_win_t *) header;
 
-                printf("Create window with name: %s\n", cmd->title);
+                // printf("Create window with name: %s\n", cmd->title);
+
+                window_count++;
+                windows = realloc(windows, window_count * sizeof(window_t));
+
+                window_t * window = &windows[window_count - 1];
+
+                window->x = 10;
+                window->y = 10;
+                window->w = 40;
+                window->h = 40;
             } break;
+
+            case PKW_CMD_MOVE_WIN: {
+                pkw_cmd_move_win_t * cmd = (pkw_cmd_move_win_t *) header;
+
+                uint16_t window_id = cmd->header.window_id;
+
+                window_t * window = &windows[window_id];
+
+                window->x = cmd->x;
+                window->y = cmd->y;
+            } break;
+        }
+
+        render();
+    }
+}
+
+void render(void) {
+    for (size_t x = 0; x < WIDTH; x++) {
+        for (size_t y = 0; y < HEIGHT; y++) {
+            fb[y * WIDTH + x] = 2;
+        }
+    }
+
+    for (size_t i = 0; i < window_count; i++) {
+        window_t * window = &windows[i];
+
+        for (size_t x = window->x; x < window->x + window->w; x++) {
+            for (size_t y = window->y; y < window->y + window->h; y++) {
+                fb[y * WIDTH + x] = 3;
+            }
         }
     }
 }

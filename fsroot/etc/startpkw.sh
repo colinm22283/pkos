@@ -1,0 +1,1 @@
+pkwin > /tmp/pkwin.log

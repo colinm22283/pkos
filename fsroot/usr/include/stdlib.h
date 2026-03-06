@@ -4,6 +4,7 @@ void abort(void);
 
 void * malloc(size_t size);
 void free(void * alloc);
+void * realloc(void * alloc, size_t size);
 void * calloc(size_t num, size_t size);
 
 int atexit(void (*function)(void));

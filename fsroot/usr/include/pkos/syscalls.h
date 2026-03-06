@@ -154,7 +154,7 @@ static inline fd_t socket(socket_domain_t domain, socket_type_t type, uint64_t p
     return ret;
 }
 
-static inline error_number_t connect(fd_t sock_fd, const sockaddr_t * sockaddr, size_t sockaddr_len) {
+static inline int connect(fd_t sock_fd, const sockaddr_t * sockaddr, size_t sockaddr_len) {
     int64_t ret;
 
     asm volatile ("int $0x30" : "=a" (ret) : "a" (SYSCALL_CONNECT), "S" ((uint64_t) sock_fd), "d" ((uint64_t) sockaddr), "c" ((uint64_t) sockaddr_len) : "memory", "cc");

@@ -56,7 +56,30 @@ int main(int argc, const char ** argv) {
         },
     };
 
-    strcpy(packet.title, "IT WAS ALL SMELLO");
+    strcpy(packet.title, "pkwball");
 
     write(sock_fd, (char *) &packet, sizeof(pkw_cmd_create_win_t));
+
+    pkw_stat_t status;
+    read(sock_fd, (char *) &status, sizeof(pkw_stat_t));
+
+    if (status.status != PKW_STAT_OK) {
+        printf("Oh deary me!\n");
+        return 1;
+    }
+
+    uint16_t window_id = status.header.window_id;
+
+    printf("Created window with id %i\n", (int) window_id);
+
+    pkw_cmd_move_win_t move_win = {
+        .header = {
+            .command = PKW_CMD_MOVE_WIN,
+            .size = sizeof(pkw_cmd_move_win_t),
+            .window_id = window_id,
+        },
+        .x = 50,
+        .y = 50,
+    };
+    write(sock_fd, (char *) &move_win, sizeof(pkw_cmd_move_win_t));
 }
