@@ -3,9 +3,11 @@ export BIN_DIR=$(BUILD_DIR)/bin
 
 export CC=x86_64-pkos-gcc
 
-export CFLAGS=-g
+export CFLAGS=-g -O0
 
 PROGS+=pksh
+PROGS+=pkwin
+PROGS+=pkwball
 
 TARGETS=$(foreach p, $(PROGS), build-$p)
 
