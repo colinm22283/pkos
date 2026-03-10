@@ -1,2 +1,2 @@
-pkwin &
+pksh /etc/startpkw.sh &
 pksh

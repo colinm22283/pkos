@@ -8,6 +8,7 @@ export CFLAGS=-g -O0
 PROGS+=pksh
 PROGS+=pkwin
 PROGS+=pkwball
+PROGS+=heapstat
 
 TARGETS=$(foreach p, $(PROGS), build-$p)
 
