@@ -1,2 +1,3 @@
-pksh /etc/startpkw.sh &
 pksh
+
+pksh /etc/startpkw.sh &
