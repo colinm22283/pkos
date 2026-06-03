@@ -1,18 +1,18 @@
 [submodule "pkernel"]
 	path = pkernel
-	url = git@pksrv:/srv/git/pkernel.git
+	url = git@pksrv:/git/pkernel.git
 [submodule "pkbl"]
 	path = pkbl
-	url = git@pksrv:/srv/git/pkbl.git
+	url = git@pksrv:/git/pkbl.git
 [submodule "pkfs_tools"]
 	path = pkfs_tools
-	url = git@pksrv:/srv/git/pkfs_tools.git
+	url = git@pksrv:/git/pkfs_tools.git
 [submodule "installer"]
 	path = installer
-	url = git@pksrv:/srv/git/pkos_installer.git
+	url = git@pksrv:/git/pkos_installer.git
 [submodule "pkstdlib"]
 	path = pkstdlib
-	url = git@pksrv:/srv/git/pkstdlib.git
+	url = git@pksrv:/git/pkstdlib.git
 [submodule "coreutils"]
 	path = coreutils
 	url = git@pksrv:/git/pkcoreutils.git
