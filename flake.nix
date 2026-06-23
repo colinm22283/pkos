@@ -12,8 +12,8 @@
         pkgs = import nixpkgs { inherit system; };
         
         # Access the RISC-V 32-bit cross-compilation toolchain
-        i686Pkgs = pkgs.pkgsCross.i686-elf;
-        x64Pkgs = pkgs.pkgsCross.x86_64-elf;
+        i686Pkgs = pkgs.pkgsCross.i686-embedded;
+        x64Pkgs = pkgs.pkgsCross.x86_64-embedded;
       in
       {
         devShells.default = pkgs.mkShell {
