@@ -11,12 +11,9 @@ IMAGE=$(BUILD_DIR)/pkos.img
 INSTALLABLE=$(BUILD_DIR)/installable.img
 TMP_DISC=$(BUILD_DIR)/tmp_disc.img
 
-export FSROOT_DIR=$(CURDIR)/fsroot
-
-export STDLIB_LIB=$(STDLIB_DIR)/build/pkstdlib.a
-export STDLIB_INCLUDE=$(STDLIB_DIR)/include
-
 PKFS_MKFS=pkfs_tools/mkfs/build/mkfs
+
+export FSROOT_DIR=$(shell x86_64-pkos-gcc -print-sysroot)
 
 .PHONY: all
 all: image
