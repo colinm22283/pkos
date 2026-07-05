@@ -5,8 +5,8 @@
     nixpkgs.url = "nixpkgs/nixos-26.05";
     utils.url = "github:numtide/flake-utils";
 
-    pkos_binutils_flake.url = "git+ssh://git@pksrv:/git/pkos_binutils.git?rev=c3b3e890d00cdedfbfafb70b06beb428c4b195bd&shallow=1";
-    pkos_gcc_flake.url = "git+ssh://git@pksrv:/git/pkos_gcc.git?rev=4d2e320e39c7effd1296f0764f34b20939680688&shallow=1";
+    pkos_binutils_flake.url = "git+https://cmcgann.com/githttp/pkos_binutils.git?rev=ab1dce2aa5c3a1e15034cef21134b3fb063d56e3&shallow=1";
+    pkos_gcc_flake.url = "git+https://cmcgann.com/githttp/pkos_gcc.git?rev=e179396ab6701c8a0da436594034013427ad507b&shallow=1";
   };
 
   outputs = { self, nixpkgs, utils, pkos_binutils_flake, pkos_gcc_flake }:

@@ -2,62 +2,212 @@
   "nodes": {
     "fsroot": {
       "inputs": {
+        "fsroot_content": "fsroot_content",
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1780883023,
-        "narHash": "sha256-QCaO7V6rufz07XJGAEH67g+/MP9RViwNJDRVDQbSUMY=",
+        "lastModified": 1783216225,
+        "narHash": "sha256-ysaopGP5+Wf9ppY/KFPNjHRZAv0BRRZRTw5QpJ1ODKk=",
         "ref": "refs/heads/master",
-        "rev": "0f88f56e815b908a64782f52bbd15c68d3118601",
+        "rev": "c00307dae7f41056d35339e26315e6b806a5334e",
         "shallow": true,
         "type": "git",
-        "url": "ssh://git@pksrv/git/pkos_fsroot.git"
+        "url": "https://cmcgann.com/githttp/pkos_fsroot_headers.git"
       },
       "original": {
-        "rev": "0f88f56e815b908a64782f52bbd15c68d3118601",
+        "rev": "c00307dae7f41056d35339e26315e6b806a5334e",
         "shallow": true,
         "type": "git",
-        "url": "ssh://git@pksrv/git/pkos_fsroot.git"
+        "url": "https://cmcgann.com/githttp/pkos_fsroot_headers.git"
       }
     },
     "fsroot_2": {
       "inputs": {
+        "fsroot_content": "fsroot_content_2",
         "nixpkgs": "nixpkgs_5"
       },
       "locked": {
-        "lastModified": 1780883023,
-        "narHash": "sha256-QCaO7V6rufz07XJGAEH67g+/MP9RViwNJDRVDQbSUMY=",
+        "lastModified": 1783216225,
+        "narHash": "sha256-ysaopGP5+Wf9ppY/KFPNjHRZAv0BRRZRTw5QpJ1ODKk=",
         "ref": "refs/heads/master",
-        "rev": "0f88f56e815b908a64782f52bbd15c68d3118601",
+        "rev": "c00307dae7f41056d35339e26315e6b806a5334e",
         "shallow": true,
         "type": "git",
-        "url": "ssh://git@pksrv/git/pkos_fsroot.git"
+        "url": "https://cmcgann.com/githttp/pkos_fsroot_headers.git"
       },
       "original": {
-        "rev": "0f88f56e815b908a64782f52bbd15c68d3118601",
+        "rev": "c00307dae7f41056d35339e26315e6b806a5334e",
         "shallow": true,
         "type": "git",
-        "url": "ssh://git@pksrv/git/pkos_fsroot.git"
+        "url": "https://cmcgann.com/githttp/pkos_fsroot_headers.git"
       }
     },
     "fsroot_3": {
       "inputs": {
+        "fsroot_content": "fsroot_content_4",
         "nixpkgs": "nixpkgs_9"
       },
       "locked": {
-        "lastModified": 1780883023,
-        "narHash": "sha256-QCaO7V6rufz07XJGAEH67g+/MP9RViwNJDRVDQbSUMY=",
+        "lastModified": 1783216225,
+        "narHash": "sha256-ysaopGP5+Wf9ppY/KFPNjHRZAv0BRRZRTw5QpJ1ODKk=",
         "ref": "refs/heads/master",
-        "rev": "0f88f56e815b908a64782f52bbd15c68d3118601",
+        "rev": "c00307dae7f41056d35339e26315e6b806a5334e",
         "shallow": true,
         "type": "git",
-        "url": "ssh://git@pksrv/git/pkos_fsroot.git"
+        "url": "https://cmcgann.com/githttp/pkos_fsroot_headers.git"
       },
       "original": {
-        "rev": "0f88f56e815b908a64782f52bbd15c68d3118601",
+        "rev": "c00307dae7f41056d35339e26315e6b806a5334e",
         "shallow": true,
         "type": "git",
-        "url": "ssh://git@pksrv/git/pkos_fsroot.git"
+        "url": "https://cmcgann.com/githttp/pkos_fsroot_headers.git"
+      }
+    },
+    "fsroot_4": {
+      "inputs": {
+        "fsroot_content": "fsroot_content_6",
+        "nixpkgs": "nixpkgs_13"
+      },
+      "locked": {
+        "lastModified": 1783216225,
+        "narHash": "sha256-ysaopGP5+Wf9ppY/KFPNjHRZAv0BRRZRTw5QpJ1ODKk=",
+        "ref": "refs/heads/master",
+        "rev": "c00307dae7f41056d35339e26315e6b806a5334e",
+        "shallow": true,
+        "type": "git",
+        "url": "https://cmcgann.com/githttp/pkos_fsroot_headers.git"
+      },
+      "original": {
+        "rev": "c00307dae7f41056d35339e26315e6b806a5334e",
+        "shallow": true,
+        "type": "git",
+        "url": "https://cmcgann.com/githttp/pkos_fsroot_headers.git"
+      }
+    },
+    "fsroot_content": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1783215886,
+        "narHash": "sha256-iQmwHJ6D6dZ43tEuNbzSMDo6Fe3qnGZVLMFeirhy+3E=",
+        "ref": "refs/heads/master",
+        "rev": "d2c43eae2a39c886fb3a67df72d6cced687c79d0",
+        "shallow": true,
+        "type": "git",
+        "url": "https://cmcgann.com/githttp/pkos_fsroot_content.git"
+      },
+      "original": {
+        "rev": "d2c43eae2a39c886fb3a67df72d6cced687c79d0",
+        "shallow": true,
+        "type": "git",
+        "url": "https://cmcgann.com/githttp/pkos_fsroot_content.git"
+      }
+    },
+    "fsroot_content_2": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1783215886,
+        "narHash": "sha256-iQmwHJ6D6dZ43tEuNbzSMDo6Fe3qnGZVLMFeirhy+3E=",
+        "ref": "refs/heads/master",
+        "rev": "d2c43eae2a39c886fb3a67df72d6cced687c79d0",
+        "shallow": true,
+        "type": "git",
+        "url": "https://cmcgann.com/githttp/pkos_fsroot_content.git"
+      },
+      "original": {
+        "rev": "d2c43eae2a39c886fb3a67df72d6cced687c79d0",
+        "shallow": true,
+        "type": "git",
+        "url": "https://cmcgann.com/githttp/pkos_fsroot_content.git"
+      }
+    },
+    "fsroot_content_3": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1783215886,
+        "narHash": "sha256-iQmwHJ6D6dZ43tEuNbzSMDo6Fe3qnGZVLMFeirhy+3E=",
+        "ref": "refs/heads/master",
+        "rev": "d2c43eae2a39c886fb3a67df72d6cced687c79d0",
+        "shallow": true,
+        "type": "git",
+        "url": "https://cmcgann.com/githttp/pkos_fsroot_content.git"
+      },
+      "original": {
+        "rev": "d2c43eae2a39c886fb3a67df72d6cced687c79d0",
+        "shallow": true,
+        "type": "git",
+        "url": "https://cmcgann.com/githttp/pkos_fsroot_content.git"
+      }
+    },
+    "fsroot_content_4": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1783215886,
+        "narHash": "sha256-iQmwHJ6D6dZ43tEuNbzSMDo6Fe3qnGZVLMFeirhy+3E=",
+        "ref": "refs/heads/master",
+        "rev": "d2c43eae2a39c886fb3a67df72d6cced687c79d0",
+        "shallow": true,
+        "type": "git",
+        "url": "https://cmcgann.com/githttp/pkos_fsroot_content.git"
+      },
+      "original": {
+        "rev": "d2c43eae2a39c886fb3a67df72d6cced687c79d0",
+        "shallow": true,
+        "type": "git",
+        "url": "https://cmcgann.com/githttp/pkos_fsroot_content.git"
+      }
+    },
+    "fsroot_content_5": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1783215886,
+        "narHash": "sha256-iQmwHJ6D6dZ43tEuNbzSMDo6Fe3qnGZVLMFeirhy+3E=",
+        "ref": "refs/heads/master",
+        "rev": "d2c43eae2a39c886fb3a67df72d6cced687c79d0",
+        "shallow": true,
+        "type": "git",
+        "url": "https://cmcgann.com/githttp/pkos_fsroot_content.git"
+      },
+      "original": {
+        "rev": "d2c43eae2a39c886fb3a67df72d6cced687c79d0",
+        "shallow": true,
+        "type": "git",
+        "url": "https://cmcgann.com/githttp/pkos_fsroot_content.git"
+      }
+    },
+    "fsroot_content_6": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1783215886,
+        "narHash": "sha256-iQmwHJ6D6dZ43tEuNbzSMDo6Fe3qnGZVLMFeirhy+3E=",
+        "ref": "refs/heads/master",
+        "rev": "d2c43eae2a39c886fb3a67df72d6cced687c79d0",
+        "shallow": true,
+        "type": "git",
+        "url": "https://cmcgann.com/githttp/pkos_fsroot_content.git"
+      },
+      "original": {
+        "rev": "d2c43eae2a39c886fb3a67df72d6cced687c79d0",
+        "shallow": true,
+        "type": "git",
+        "url": "https://cmcgann.com/githttp/pkos_fsroot_content.git"
+      }
+    },
+    "fsroot_content_7": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1783215886,
+        "narHash": "sha256-iQmwHJ6D6dZ43tEuNbzSMDo6Fe3qnGZVLMFeirhy+3E=",
+        "ref": "refs/heads/master",
+        "rev": "d2c43eae2a39c886fb3a67df72d6cced687c79d0",
+        "shallow": true,
+        "type": "git",
+        "url": "https://cmcgann.com/githttp/pkos_fsroot_content.git"
+      },
+      "original": {
+        "rev": "d2c43eae2a39c886fb3a67df72d6cced687c79d0",
+        "shallow": true,
+        "type": "git",
+        "url": "https://cmcgann.com/githttp/pkos_fsroot_content.git"
       }
     },
     "nixpkgs": {
@@ -91,11 +241,11 @@
     },
     "nixpkgs_11": {
       "locked": {
-        "lastModified": 1780511130,
-        "narHash": "sha256-2v9lT4ya59Lh1FqPeLnz1MoX9y/wz2huqfe9RtQZITk=",
+        "lastModified": 1782847189,
+        "narHash": "sha256-twXPFqFsrrY5r28Zh7Homgcp2gUMBgQ6WDS98Q/3xFI=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "535f3e6942cb1cead3929c604320d3db54b542b9",
+        "rev": "b6018f87da91d19d0ab4cf979885689b469cdd41",
         "type": "github"
       },
       "original": {
@@ -105,6 +255,35 @@
       }
     },
     "nixpkgs_12": {
+      "locked": {
+        "lastModified": 1783148766,
+        "narHash": "sha256-H9+N+GFtsbVC8ZniHliChM7ndizxtqVZs6bnGOLM3WQ=",
+        "rev": "a50de1b7d8a586adc18d2395c19de7d6058e6030",
+        "type": "tarball",
+        "url": "https://releases.nixos.org/nixos/26.05/nixos-26.05.4193.a50de1b7d8a5/nixexprs.tar.xz"
+      },
+      "original": {
+        "id": "nixpkgs",
+        "ref": "nixos-26.05",
+        "type": "indirect"
+      }
+    },
+    "nixpkgs_13": {
+      "locked": {
+        "lastModified": 1782847189,
+        "narHash": "sha256-twXPFqFsrrY5r28Zh7Homgcp2gUMBgQ6WDS98Q/3xFI=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "b6018f87da91d19d0ab4cf979885689b469cdd41",
+        "type": "github"
+      },
+      "original": {
+        "id": "nixpkgs",
+        "ref": "nixos-25.11",
+        "type": "indirect"
+      }
+    },
+    "nixpkgs_14": {
       "locked": {
         "lastModified": 1782116945,
         "narHash": "sha256-G3tw/IXmaH6IQ2upZvhuN9sG8CkuX+BLuJDpE8hz0Ds=",
@@ -119,13 +298,13 @@
         "type": "indirect"
       }
     },
-    "nixpkgs_13": {
+    "nixpkgs_15": {
       "locked": {
-        "lastModified": 1780511130,
-        "narHash": "sha256-2v9lT4ya59Lh1FqPeLnz1MoX9y/wz2huqfe9RtQZITk=",
+        "lastModified": 1782847189,
+        "narHash": "sha256-twXPFqFsrrY5r28Zh7Homgcp2gUMBgQ6WDS98Q/3xFI=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "535f3e6942cb1cead3929c604320d3db54b542b9",
+        "rev": "b6018f87da91d19d0ab4cf979885689b469cdd41",
         "type": "github"
       },
       "original": {
@@ -136,11 +315,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1780511130,
-        "narHash": "sha256-2v9lT4ya59Lh1FqPeLnz1MoX9y/wz2huqfe9RtQZITk=",
+        "lastModified": 1782847189,
+        "narHash": "sha256-twXPFqFsrrY5r28Zh7Homgcp2gUMBgQ6WDS98Q/3xFI=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "535f3e6942cb1cead3929c604320d3db54b542b9",
+        "rev": "b6018f87da91d19d0ab4cf979885689b469cdd41",
         "type": "github"
       },
       "original": {
@@ -166,12 +345,11 @@
     },
     "nixpkgs_4": {
       "locked": {
-        "lastModified": 1782116945,
-        "narHash": "sha256-G3tw/IXmaH6IQ2upZvhuN9sG8CkuX+BLuJDpE8hz0Ds=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "34268251cf5547d39063f2c5ea9a196246f7f3a6",
-        "type": "github"
+        "lastModified": 1783148766,
+        "narHash": "sha256-H9+N+GFtsbVC8ZniHliChM7ndizxtqVZs6bnGOLM3WQ=",
+        "rev": "a50de1b7d8a586adc18d2395c19de7d6058e6030",
+        "type": "tarball",
+        "url": "https://releases.nixos.org/nixos/26.05/nixos-26.05.4193.a50de1b7d8a5/nixexprs.tar.xz"
       },
       "original": {
         "id": "nixpkgs",
@@ -181,11 +359,11 @@
     },
     "nixpkgs_5": {
       "locked": {
-        "lastModified": 1780511130,
-        "narHash": "sha256-2v9lT4ya59Lh1FqPeLnz1MoX9y/wz2huqfe9RtQZITk=",
+        "lastModified": 1782847189,
+        "narHash": "sha256-twXPFqFsrrY5r28Zh7Homgcp2gUMBgQ6WDS98Q/3xFI=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "535f3e6942cb1cead3929c604320d3db54b542b9",
+        "rev": "b6018f87da91d19d0ab4cf979885689b469cdd41",
         "type": "github"
       },
       "original": {
@@ -211,11 +389,11 @@
     },
     "nixpkgs_7": {
       "locked": {
-        "lastModified": 1782651437,
-        "narHash": "sha256-10srBgrJz7JOWzS1KG5BhrwHCUPTcPqZgwNKo5N9YE4=",
+        "lastModified": 1782847189,
+        "narHash": "sha256-twXPFqFsrrY5r28Zh7Homgcp2gUMBgQ6WDS98Q/3xFI=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "0a47451dbe2082a660b88a79a83efdc8d85de445",
+        "rev": "b6018f87da91d19d0ab4cf979885689b469cdd41",
         "type": "github"
       },
       "original": {
@@ -241,11 +419,11 @@
     },
     "nixpkgs_9": {
       "locked": {
-        "lastModified": 1780511130,
-        "narHash": "sha256-2v9lT4ya59Lh1FqPeLnz1MoX9y/wz2huqfe9RtQZITk=",
+        "lastModified": 1782847189,
+        "narHash": "sha256-twXPFqFsrrY5r28Zh7Homgcp2gUMBgQ6WDS98Q/3xFI=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "535f3e6942cb1cead3929c604320d3db54b542b9",
+        "rev": "b6018f87da91d19d0ab4cf979885689b469cdd41",
         "type": "github"
       },
       "original": {
@@ -260,19 +438,19 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1782268465,
-        "narHash": "sha256-Nz7Csq7iQiBN2EPX+tC9t8XLFAVZ0bBll1CATxAhNfc=",
+        "lastModified": 1783216329,
+        "narHash": "sha256-alpmJlBfuoTet8OMaQqHYBzKVitMnhsMCgFburmLsUw=",
         "ref": "refs/heads/master",
-        "rev": "c3b3e890d00cdedfbfafb70b06beb428c4b195bd",
+        "rev": "ab1dce2aa5c3a1e15034cef21134b3fb063d56e3",
         "shallow": true,
         "type": "git",
-        "url": "ssh://git@pksrv/git/pkos_binutils.git"
+        "url": "https://cmcgann.com/githttp/pkos_binutils.git"
       },
       "original": {
-        "rev": "c3b3e890d00cdedfbfafb70b06beb428c4b195bd",
+        "rev": "ab1dce2aa5c3a1e15034cef21134b3fb063d56e3",
         "shallow": true,
         "type": "git",
-        "url": "ssh://git@pksrv/git/pkos_binutils.git"
+        "url": "https://cmcgann.com/githttp/pkos_binutils.git"
       }
     },
     "pkos_binutils_flake_2": {
@@ -281,19 +459,19 @@
         "nixpkgs": "nixpkgs_6"
       },
       "locked": {
-        "lastModified": 1782268465,
-        "narHash": "sha256-Nz7Csq7iQiBN2EPX+tC9t8XLFAVZ0bBll1CATxAhNfc=",
+        "lastModified": 1783216329,
+        "narHash": "sha256-alpmJlBfuoTet8OMaQqHYBzKVitMnhsMCgFburmLsUw=",
         "ref": "refs/heads/master",
-        "rev": "c3b3e890d00cdedfbfafb70b06beb428c4b195bd",
+        "rev": "ab1dce2aa5c3a1e15034cef21134b3fb063d56e3",
         "shallow": true,
         "type": "git",
-        "url": "ssh://git@pksrv/git/pkos_binutils.git"
+        "url": "https://cmcgann.com/githttp/pkos_binutils.git"
       },
       "original": {
-        "rev": "c3b3e890d00cdedfbfafb70b06beb428c4b195bd",
+        "rev": "ab1dce2aa5c3a1e15034cef21134b3fb063d56e3",
         "shallow": true,
         "type": "git",
-        "url": "ssh://git@pksrv/git/pkos_binutils.git"
+        "url": "https://cmcgann.com/githttp/pkos_binutils.git"
       }
     },
     "pkos_binutils_flake_3": {
@@ -302,123 +480,186 @@
         "nixpkgs": "nixpkgs_10"
       },
       "locked": {
-        "lastModified": 1782781092,
-        "narHash": "sha256-KmfIcudMWsJT5ujgUDd5A65aeoP9VFPWQSW+HxTGBKQ=",
+        "lastModified": 1783216329,
+        "narHash": "sha256-alpmJlBfuoTet8OMaQqHYBzKVitMnhsMCgFburmLsUw=",
         "ref": "refs/heads/master",
-        "rev": "9b90b1a42da23c5ff810035580a7ac3a0c6685f5",
+        "rev": "ab1dce2aa5c3a1e15034cef21134b3fb063d56e3",
         "shallow": true,
         "type": "git",
-        "url": "ssh://git@pksrv/git/pkos_binutils.git"
+        "url": "https://cmcgann.com/githttp/pkos_binutils.git"
       },
       "original": {
-        "rev": "9b90b1a42da23c5ff810035580a7ac3a0c6685f5",
+        "rev": "ab1dce2aa5c3a1e15034cef21134b3fb063d56e3",
         "shallow": true,
         "type": "git",
-        "url": "ssh://git@pksrv/git/pkos_binutils.git"
+        "url": "https://cmcgann.com/githttp/pkos_binutils.git"
+      }
+    },
+    "pkos_binutils_flake_4": {
+      "inputs": {
+        "fsroot": "fsroot_4",
+        "nixpkgs": "nixpkgs_14"
+      },
+      "locked": {
+        "lastModified": 1783216329,
+        "narHash": "sha256-alpmJlBfuoTet8OMaQqHYBzKVitMnhsMCgFburmLsUw=",
+        "ref": "refs/heads/master",
+        "rev": "ab1dce2aa5c3a1e15034cef21134b3fb063d56e3",
+        "shallow": true,
+        "type": "git",
+        "url": "https://cmcgann.com/githttp/pkos_binutils.git"
+      },
+      "original": {
+        "rev": "ab1dce2aa5c3a1e15034cef21134b3fb063d56e3",
+        "shallow": true,
+        "type": "git",
+        "url": "https://cmcgann.com/githttp/pkos_binutils.git"
       }
     },
     "pkos_fsroot_flake": {
       "inputs": {
+        "fsroot_content": "fsroot_content_3",
         "nixpkgs": "nixpkgs_7",
         "stdlib_flake": "stdlib_flake"
       },
       "locked": {
-        "lastModified": 1782782643,
-        "narHash": "sha256-TrPqfaXNdz3/qzpBDJh6ny9dAhVvZfbNiU5rnPume4A=",
+        "lastModified": 1783217313,
+        "narHash": "sha256-wo6I4ECBkbAmcsjCt5Ci/pl4ejuJDxspW7T1HOcQKj8=",
         "ref": "refs/heads/master",
-        "rev": "fc8c552a8b9a8fcaffd34ab99dd8cc3917a956d8",
+        "rev": "02a16cb511590b4e4e1e46b985cf679aaf18afae",
         "shallow": true,
         "type": "git",
-        "url": "ssh://git@pksrv/git/pkos_fsroot.git"
+        "url": "https://cmcgann.com/githttp/pkos_fsroot.git"
       },
       "original": {
-        "rev": "fc8c552a8b9a8fcaffd34ab99dd8cc3917a956d8",
+        "rev": "02a16cb511590b4e4e1e46b985cf679aaf18afae",
         "shallow": true,
         "type": "git",
-        "url": "ssh://git@pksrv/git/pkos_fsroot.git"
+        "url": "https://cmcgann.com/githttp/pkos_fsroot.git"
       }
     },
     "pkos_fsroot_flake_2": {
       "inputs": {
+        "fsroot_content": "fsroot_content_5",
         "nixpkgs": "nixpkgs_11"
       },
       "locked": {
-        "lastModified": 1782779354,
-        "narHash": "sha256-fllvu3rZeTpAo4/ruMbwrUUGedE1sgeoqvyhsltGURw=",
+        "lastModified": 1783216225,
+        "narHash": "sha256-ysaopGP5+Wf9ppY/KFPNjHRZAv0BRRZRTw5QpJ1ODKk=",
         "ref": "refs/heads/master",
-        "rev": "cee5004e817b96c5aa675f67126cce5351b4e24c",
+        "rev": "c00307dae7f41056d35339e26315e6b806a5334e",
         "shallow": true,
         "type": "git",
-        "url": "ssh://git@pksrv/git/pkos_fsroot.git"
+        "url": "https://cmcgann.com/githttp/pkos_fsroot_headers.git"
       },
       "original": {
-        "rev": "cee5004e817b96c5aa675f67126cce5351b4e24c",
+        "rev": "c00307dae7f41056d35339e26315e6b806a5334e",
         "shallow": true,
         "type": "git",
-        "url": "ssh://git@pksrv/git/pkos_fsroot.git"
+        "url": "https://cmcgann.com/githttp/pkos_fsroot_headers.git"
       }
     },
     "pkos_fsroot_flake_3": {
       "inputs": {
-        "nixpkgs": "nixpkgs_13"
+        "fsroot_content": "fsroot_content_7",
+        "nixpkgs": "nixpkgs_15"
       },
       "locked": {
-        "lastModified": 1782779354,
-        "narHash": "sha256-fllvu3rZeTpAo4/ruMbwrUUGedE1sgeoqvyhsltGURw=",
+        "lastModified": 1783216225,
+        "narHash": "sha256-ysaopGP5+Wf9ppY/KFPNjHRZAv0BRRZRTw5QpJ1ODKk=",
         "ref": "refs/heads/master",
-        "rev": "cee5004e817b96c5aa675f67126cce5351b4e24c",
+        "rev": "c00307dae7f41056d35339e26315e6b806a5334e",
         "shallow": true,
         "type": "git",
-        "url": "ssh://git@pksrv/git/pkos_fsroot.git"
+        "url": "https://cmcgann.com/githttp/pkos_fsroot_headers.git"
       },
       "original": {
-        "rev": "cee5004e817b96c5aa675f67126cce5351b4e24c",
+        "rev": "c00307dae7f41056d35339e26315e6b806a5334e",
         "shallow": true,
         "type": "git",
-        "url": "ssh://git@pksrv/git/pkos_fsroot.git"
+        "url": "https://cmcgann.com/githttp/pkos_fsroot_headers.git"
+      }
+    },
+    "pkos_gcc_content": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1783214559,
+        "narHash": "sha256-TFa5s7Gjy396erjWe+trFwjahItC8jX7Hdh218j7tUk=",
+        "ref": "refs/heads/master",
+        "rev": "d7e4ee72823e9d56184ecc5a30da2ced4fc87e3b",
+        "shallow": true,
+        "type": "git",
+        "url": "https://cmcgann.com/githttp/pkos_gcc_content.git"
+      },
+      "original": {
+        "rev": "d7e4ee72823e9d56184ecc5a30da2ced4fc87e3b",
+        "shallow": true,
+        "type": "git",
+        "url": "https://cmcgann.com/githttp/pkos_gcc_content.git"
+      }
+    },
+    "pkos_gcc_content_2": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1783214559,
+        "narHash": "sha256-TFa5s7Gjy396erjWe+trFwjahItC8jX7Hdh218j7tUk=",
+        "ref": "refs/heads/master",
+        "rev": "d7e4ee72823e9d56184ecc5a30da2ced4fc87e3b",
+        "shallow": true,
+        "type": "git",
+        "url": "https://cmcgann.com/githttp/pkos_gcc_content.git"
+      },
+      "original": {
+        "rev": "d7e4ee72823e9d56184ecc5a30da2ced4fc87e3b",
+        "shallow": true,
+        "type": "git",
+        "url": "https://cmcgann.com/githttp/pkos_gcc_content.git"
       }
     },
     "pkos_gcc_flake": {
       "inputs": {
         "nixpkgs": "nixpkgs_4",
         "pkos_binutils_flake": "pkos_binutils_flake_2",
-        "pkos_fsroot_flake": "pkos_fsroot_flake"
+        "pkos_fsroot_flake": "pkos_fsroot_flake",
+        "pkos_gcc_content": "pkos_gcc_content_2"
       },
       "locked": {
-        "lastModified": 1782783237,
-        "narHash": "sha256-siEuOLLg/ZjH9ctDoc1AtX5cDcRfcgLWzkJkAVEdz6g=",
+        "lastModified": 1783217727,
+        "narHash": "sha256-/QN1pTyJUKEFMSGc6mzpQeuxBNPScvx6zchh7QMhAM4=",
         "ref": "refs/heads/master",
-        "rev": "4d2e320e39c7effd1296f0764f34b20939680688",
+        "rev": "e179396ab6701c8a0da436594034013427ad507b",
         "shallow": true,
         "type": "git",
-        "url": "ssh://git@pksrv/git/pkos_gcc.git"
+        "url": "https://cmcgann.com/githttp/pkos_gcc.git"
       },
       "original": {
-        "rev": "4d2e320e39c7effd1296f0764f34b20939680688",
+        "rev": "e179396ab6701c8a0da436594034013427ad507b",
         "shallow": true,
         "type": "git",
-        "url": "ssh://git@pksrv/git/pkos_gcc.git"
+        "url": "https://cmcgann.com/githttp/pkos_gcc.git"
       }
     },
     "pkos_gcc_flake_2": {
       "inputs": {
         "nixpkgs": "nixpkgs_12",
-        "pkos_fsroot_flake": "pkos_fsroot_flake_3"
+        "pkos_binutils_flake": "pkos_binutils_flake_4",
+        "pkos_fsroot_flake": "pkos_fsroot_flake_3",
+        "pkos_gcc_content": "pkos_gcc_content"
       },
       "locked": {
-        "lastModified": 1782780539,
-        "narHash": "sha256-uauKcNl3qy9ANrm2aoxcxmPn5HKSSVd8vT6tI+1Qv4Y=",
+        "lastModified": 1783216653,
+        "narHash": "sha256-tL8+WIusbOrluxrXD353bDbL7xoA1tXC18zWDCowVXk=",
         "ref": "refs/heads/master",
-        "rev": "42adab587a39676ca7a2ba9fdb86633af0159504",
+        "rev": "be7e92b85dd0e146674c063d4c9a2c2d2a1400e9",
         "shallow": true,
         "type": "git",
-        "url": "ssh://git@pksrv/git/pkos_gcc.git"
+        "url": "https://cmcgann.com/githttp/pkos_gcc_bootstrap.git"
       },
       "original": {
-        "rev": "42adab587a39676ca7a2ba9fdb86633af0159504",
+        "rev": "be7e92b85dd0e146674c063d4c9a2c2d2a1400e9",
         "shallow": true,
         "type": "git",
-        "url": "ssh://git@pksrv/git/pkos_gcc.git"
+        "url": "https://cmcgann.com/githttp/pkos_gcc_bootstrap.git"
       }
     },
     "root": {
@@ -437,19 +678,19 @@
         "pkos_gcc_flake": "pkos_gcc_flake_2"
       },
       "locked": {
-        "lastModified": 1782782543,
-        "narHash": "sha256-3BAzxU/p/4Zp+BYr1vHTdtZ6KPiQdHa6MYrUL9Ya0yc=",
+        "lastModified": 1783217038,
+        "narHash": "sha256-H/UZABdi8kRS4GduxbUMIavLQ5aThEfnIB4q5tSlgqo=",
         "ref": "refs/heads/master",
-        "rev": "814b38891c8c7034c946fada84a0500ce1f6ae2c",
+        "rev": "44941c966587d98a02e35ab7fcecc4ade7fa4022",
         "shallow": true,
         "type": "git",
-        "url": "ssh://git@pksrv/git/pkstdlib.git"
+        "url": "https://cmcgann.com/githttp/pkos_stdlib.git"
       },
       "original": {
-        "rev": "814b38891c8c7034c946fada84a0500ce1f6ae2c",
+        "rev": "44941c966587d98a02e35ab7fcecc4ade7fa4022",
         "shallow": true,
         "type": "git",
-        "url": "ssh://git@pksrv/git/pkstdlib.git"
+        "url": "https://cmcgann.com/githttp/pkos_stdlib.git"
       }
     },
     "systems": {
