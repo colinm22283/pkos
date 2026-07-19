@@ -10,9 +10,6 @@
 [submodule "installer"]
 	path = installer
 	url = https://cmcgann.com/githttp/pkos_installer.git
-[submodule "pkstdlib"]
-	path = pkstdlib
-	url = https://cmcgann.com/githttp/pkstdlib.git
 [submodule "coreutils"]
 	path = coreutils
 	url = https://cmcgann.com/githttp/pkcoreutils.git
