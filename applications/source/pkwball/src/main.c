@@ -78,7 +78,7 @@ int main(int argc, const char ** argv) {
             .size = sizeof(pkw_cmd_move_win_t),
             .window_id = window_id,
         },
-        .x = 50,
+        .x = 50 + 60 * window_id,
         .y = 50,
     };
     write(sock_fd, (char *) &move_win, sizeof(pkw_cmd_move_win_t));

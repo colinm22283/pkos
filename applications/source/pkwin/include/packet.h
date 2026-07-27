@@ -38,4 +38,4 @@ typedef struct __PACKED {
 } pkw_cmd_move_win_t;
 
 pkw_cmd_header_t * receive_command(fd_t sock_fd);
-void send_status(fd_t sock_fd, uint16_t status);
+void send_status(fd_t sock_fd, uint16_t status, uint16_t window_id);
