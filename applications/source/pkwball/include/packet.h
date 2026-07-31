@@ -6,6 +6,7 @@ enum {
     PKW_STAT,
     PKW_CMD_CREATE_WIN,
     PKW_CMD_MOVE_WIN,
+    PKW_CMD_SEND_PIXELS,
 };
 
 enum {
@@ -36,6 +37,12 @@ typedef struct __PACKED {
 
     uint32_t x, y;
 } pkw_cmd_move_win_t;
+
+typedef struct __PACKED {
+    pkw_cmd_header_t header;
+
+    uint8_t pixels[];
+} pkw_cmd_send_pixels_t;
 
 pkw_cmd_header_t * receive_command(fd_t sock_fd);
 void send_status(fd_t sock_fd, uint16_t status);

@@ -1,4 +1,5 @@
 #include <stdint.h>
+#include <stdio.h>
 
 #include <unistd.h>
 
@@ -6,7 +7,7 @@
 
 uint16_t current_window_id = 0;
 
-char command_buffer[512];
+char command_buffer[4096];
 
 pkw_cmd_header_t * receive_command(int sock_fd) {
     read(sock_fd, command_buffer, sizeof(pkw_cmd_header_t));
@@ -26,6 +27,9 @@ pkw_cmd_header_t * receive_command(int sock_fd) {
 
         case PKW_CMD_MOVE_WIN: {
             if (header->size != sizeof(pkw_cmd_move_win_t)) return NULL;
+        } break;
+
+        case PKW_CMD_SEND_PIXELS: {
         } break;
 
         default: {

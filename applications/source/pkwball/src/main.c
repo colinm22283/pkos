@@ -5,6 +5,7 @@
 #include <string.h>
 #include <fcntl.h>
 #include <unistd.h>
+#include <time.h>
 
 #include <packet.h>
 
@@ -72,14 +73,71 @@ int main(int argc, const char ** argv) {
 
     printf("Created window with id %i\n", (int) window_id);
 
-    pkw_cmd_move_win_t move_win = {
-        .header = {
-            .command = PKW_CMD_MOVE_WIN,
-            .size = sizeof(pkw_cmd_move_win_t),
-            .window_id = window_id,
-        },
-        .x = 50 + 60 * window_id,
-        .y = 50,
-    };
-    write(sock_fd, (char *) &move_win, sizeof(pkw_cmd_move_win_t));
+    static char _send_pixels[sizeof(pkw_cmd_header_t) + 40 * 40];
+    pkw_cmd_send_pixels_t * send_pixels = &_send_pixels;
+
+    int ballx = 5, bally = 2;
+    int velx = 3, vely = 1;
+
+    while (true) {
+        send_pixels->header.command   = PKW_CMD_SEND_PIXELS;
+        send_pixels->header.size      = sizeof(_send_pixels);
+        send_pixels->header.window_id = window_id;
+        
+        for (int i = 0; i < 40 * 40; i++) send_pixels->pixels[i] = 1;
+
+        send_pixels->pixels[bally * 40 + ballx] = 4;
+        send_pixels->pixels[bally * 40 + ballx + 1] = 4;
+        send_pixels->pixels[(bally + 1) * 40 + ballx] = 4;
+        send_pixels->pixels[(bally + 1) * 40 + ballx + 1] = 4;
+
+        write(sock_fd, (char *) send_pixels, sizeof(_send_pixels));
+        read(sock_fd, (char *) &status, sizeof(pkw_stat_t));
+        if (status.status != PKW_STAT_OK) {
+            printf("Oh deary me!\n");
+            return 1;
+        }
+
+        ballx += velx;
+        bally += vely;
+
+        if (ballx >= 39) {
+            velx *= -1;
+            ballx = 38;
+        }
+
+        if (bally >= 39) {
+            vely *= -1;
+            bally = 38;
+        }
+
+        if (ballx < 0) {
+            velx *= -1;
+            ballx = 0;
+        }
+
+        if (bally < 0) {
+            vely *= -1;
+            bally = 0;
+        }
+
+        pkw_cmd_move_win_t move_win = {
+            .header = {
+                .command = PKW_CMD_MOVE_WIN,
+                .size = sizeof(pkw_cmd_move_win_t),
+                .window_id = window_id,
+            },
+            .x = 10 + ballx + 60 * window_id,
+            .y = 10 + bally,
+        };
+        write(sock_fd, (char *) &move_win, sizeof(pkw_cmd_move_win_t));
+        read(sock_fd, (char *) &status, sizeof(pkw_stat_t));
+        if (status.status != PKW_STAT_OK) {
+            printf("Oh deary me!\n");
+            return 1;
+        }
+
+        nanosleep(10000000);
+    }
 }
+

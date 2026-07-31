@@ -16,6 +16,8 @@ uint8_t * fb;
 
 typedef struct {
     int x, y, w, h;
+
+    uint8_t fb[40 * 40];
 } window_t;
 
 size_t window_count;
@@ -81,11 +83,13 @@ __attribute__((noreturn)) void connection_handler(void) {
     while (1) {
         pkw_cmd_header_t * header = receive_command(new_sock);
 
+        if (header == NULL) continue;
+
         switch (header->command) {
             case PKW_CMD_CREATE_WIN: {
                 pkw_cmd_create_win_t * cmd = (pkw_cmd_create_win_t *) header;
 
-                // printf("Create window with name: %s\n", cmd->title);
+                /* printf("Create window with name: %s\n", cmd->title); */
 
                 window_count++;
                 windows = realloc(windows, window_count * sizeof(window_t));
@@ -108,6 +112,18 @@ __attribute__((noreturn)) void connection_handler(void) {
                 window->x = cmd->x;
                 window->y = cmd->y;
             } break;
+
+            case PKW_CMD_SEND_PIXELS: {
+                pkw_cmd_send_pixels_t * cmd = (pkw_cmd_send_pixels_t *) header;
+
+                uint16_t window_id = cmd->header.window_id;
+
+                window_t * window = &windows[window_id];
+
+                for (int i = 0; i < cmd->header.size - sizeof(pkw_cmd_header_t); i++) {
+                    window->fb[i] = cmd->pixels[i];
+                }
+            } break;
         }
 
         render();
@@ -126,7 +142,7 @@ void render(void) {
 
         for (size_t x = window->x; x < window->x + window->w; x++) {
             for (size_t y = window->y; y < window->y + window->h; y++) {
-                fb[y * WIDTH + x] = 3;
+                fb[y * WIDTH + x] = window->fb[(y - window->y) * window->w + x - window->x];
             }
         }
     }

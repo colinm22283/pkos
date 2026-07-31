@@ -94,6 +94,8 @@ void run(char ** argv, uint64_t argc, fd_t in, fd_t out, bool background) {
         else if (strcmp(argv[i], "&") == 0) {
             pipe_pos = i;
 
+            printf("Running as fork\n");
+
             run(argv, pipe_pos, in, out, true);
 
             return;

@@ -51,9 +51,11 @@ $(FS_BIN): $(BUILD_DIR)/fsroot coreutils applications kernel pkfs_mkfs
 	$(PKFS_MKFS) $(BUILD_DIR)/fsroot $(FS_BIN)
 
 $(BUILD_DIR)/fsroot: $(wildcard fsroot/**)
-	mkdir -p $(BUILD_DIR)
 	rm -rf $(BUILD_DIR)/fsroot
-	cp -r fsroot $(BUILD_DIR)/fsroot
+	mkdir -p $(BUILD_DIR)
+	cp -r $(FSROOT_DIR) $(BUILD_DIR)/fsroot
+	chmod -R 770 $(BUILD_DIR)/fsroot
+	cp -r fsroot/* $(BUILD_DIR)/fsroot
 
 .PHONY: bootloader
 bootloader: $(BOOTLOADER_BIN)

@@ -6,7 +6,7 @@
     utils.url = "github:numtide/flake-utils";
 
     pkos_binutils_flake.url = "git+https://cmcgann.com/githttp/pkos_binutils.git?rev=ab1dce2aa5c3a1e15034cef21134b3fb063d56e3&shallow=1";
-    pkos_gcc_flake.url = "git+https://cmcgann.com/githttp/pkos_gcc.git?rev=e179396ab6701c8a0da436594034013427ad507b&shallow=1";
+    pkos_gcc_flake.url = "git+https://cmcgann.com/githttp/pkos_gcc.git?rev=69b488c2b1cd85876f665eec6ca78ae5d41a7bd2&shallow=1";
   };
 
   outputs = { self, nixpkgs, utils, pkos_binutils_flake, pkos_gcc_flake }:
