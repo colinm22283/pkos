@@ -10,6 +10,7 @@ PROGS+=pkwin
 PROGS+=pkwball
 PROGS+=heapstat
 PROGS+=empty
+PROGS+=init
 
 TARGETS=$(foreach p, $(PROGS), build-$p)
 
