@@ -1,10 +1,12 @@
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdatomic.h>
 
 #include <string.h>
 #include <fcntl.h>
 #include <unistd.h>
+#include <time.h>
 
 #include <packet.h>
 
@@ -13,6 +15,8 @@
 #define WIDTH (320)
 #define HEIGHT (200)
 uint8_t * fb;
+
+uint8_t prep_fb[HEIGHT * WIDTH];
 
 typedef struct {
     int x, y, w, h;
@@ -25,9 +29,22 @@ window_t * windows;
 
 int sock_fd;
 
+atomic_flag render_lock = ATOMIC_FLAG_INIT;
+
+void acquire(atomic_flag * lock) {
+    while (atomic_flag_test_and_set_explicit(lock, memory_order_acquire)) {
+        __builtin_ia32_pause();
+    }
+}
+
+void release(atomic_flag * lock) {
+    atomic_flag_clear_explicit(lock, memory_order_release);
+}
+
 bool connection_gained = false;
 __attribute__((noreturn)) void connection_handler(void);
 void render(void);
+__attribute__((noreturn)) void render_loop(void);
 
 int main(int argc, const char ** argv) {
     int fb_fd = open("/dev/vga", O_RDWR);
@@ -63,9 +80,9 @@ int main(int argc, const char ** argv) {
         return 1;
     }
 
-    render();
+    thread(connection_handler);
 
-    connection_handler();
+    render_loop();
 }
 
 __attribute__((noreturn)) void connection_handler(void) {
@@ -84,6 +101,8 @@ __attribute__((noreturn)) void connection_handler(void) {
         pkw_cmd_header_t * header = receive_command(new_sock);
 
         if (header == NULL) continue;
+
+        acquire(&render_lock);
 
         switch (header->command) {
             case PKW_CMD_CREATE_WIN: {
@@ -126,14 +145,16 @@ __attribute__((noreturn)) void connection_handler(void) {
             } break;
         }
 
-        render();
+        release(&render_lock);
     }
 }
 
 void render(void) {
+    acquire(&render_lock);
+
     for (size_t x = 0; x < WIDTH; x++) {
         for (size_t y = 0; y < HEIGHT; y++) {
-            fb[y * WIDTH + x] = 2;
+            prep_fb[y * WIDTH + x] = 2;
         }
     }
 
@@ -142,8 +163,23 @@ void render(void) {
 
         for (size_t x = window->x; x < window->x + window->w; x++) {
             for (size_t y = window->y; y < window->y + window->h; y++) {
-                fb[y * WIDTH + x] = window->fb[(y - window->y) * window->w + x - window->x];
+                prep_fb[y * WIDTH + x] = window->fb[(y - window->y) * window->w + x - window->x];
             }
         }
     }
+
+    for (size_t i = 0; i < WIDTH * HEIGHT; i++) {
+        fb[i] = prep_fb[i];
+    }
+
+    release(&render_lock);
 }
+
+__attribute__((noreturn)) void render_loop(void) {
+    while (true) {
+        render();
+
+        nanosleep(16666666);
+    }
+}
+

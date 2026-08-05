@@ -3,7 +3,7 @@ export BIN_DIR=$(BUILD_DIR)/bin
 
 export CC=x86_64-pkos-gcc
 
-export CFLAGS=-g -O0
+export override CFLAGS=-O0
 
 PROGS+=pksh
 PROGS+=pkwin

@@ -24,12 +24,14 @@
         devShells.default = pkgs.mkShell {
           buildInputs = [
             pkgs.qemu
+            pkgs.gdb
 
             i686Pkgs.buildPackages.gcc
             i686Pkgs.buildPackages.binutils
 
             x64Pkgs.buildPackages.gcc
             x64Pkgs.buildPackages.binutils
+            x64Pkgs.buildPackages.gdb
 
             pkos_binutils
             pkos_gcc
