@@ -11,6 +11,7 @@ PROGS+=pkwball
 PROGS+=heapstat
 PROGS+=empty
 PROGS+=init
+PROGS+=stdlib_test
 
 TARGETS=$(foreach p, $(PROGS), build-$p)
 
