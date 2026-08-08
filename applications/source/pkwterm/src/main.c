@@ -57,7 +57,7 @@ int main(int argc, const char ** argv) {
         },
     };
 
-    strcpy(packet.title, "pkwball");
+    strcpy(packet.title, "pkwterm");
 
     write(sock_fd, (char *) &packet, sizeof(pkw_cmd_create_win_t));
 
@@ -71,57 +71,24 @@ int main(int argc, const char ** argv) {
 
     uint16_t window_id = status.header.window_id;
 
-    printf("Created window with id %i\n", (int) window_id);
+    pkw_cmd_draw_char_t draw_char = {
+        .header = {
+            .command = PKW_CMD_DRAW_CHAR,
+            .size = sizeof(pkw_cmd_draw_char_t),
+            .window_id = window_id,
+        },
+        .x = 10,
+        .y = 10,
+        .c = '!'
+    };
 
-    static char _send_pixels[sizeof(pkw_cmd_header_t) + 40 * 40];
-    pkw_cmd_send_pixels_t * send_pixels = &_send_pixels;
+    write(sock_fd, (char *) &draw_char, sizeof(pkw_cmd_draw_char_t));
 
-    int ballx = 5, bally = 2;
-    int velx = 3, vely = 1;
+    read(sock_fd, (char *) &status, sizeof(pkw_stat_t));
 
-    while (true) {
-        send_pixels->header.command   = PKW_CMD_SEND_PIXELS;
-        send_pixels->header.size      = sizeof(_send_pixels);
-        send_pixels->header.window_id = window_id;
-        
-        for (int i = 0; i < 40 * 40; i++) send_pixels->pixels[i] = 1;
-
-        send_pixels->pixels[bally * 40 + ballx] = 4;
-        send_pixels->pixels[bally * 40 + ballx + 1] = 4;
-        send_pixels->pixels[(bally + 1) * 40 + ballx] = 4;
-        send_pixels->pixels[(bally + 1) * 40 + ballx + 1] = 4;
-
-        write(sock_fd, (char *) send_pixels, sizeof(_send_pixels));
-        read(sock_fd, (char *) &status, sizeof(pkw_stat_t));
-        if (status.status != PKW_STAT_OK) {
-            printf("Oh deary me!\n");
-            return 1;
-        }
-
-        ballx += velx;
-        bally += vely;
-
-        if (ballx >= 39) {
-            velx *= -1;
-            ballx = 38;
-        }
-
-        if (bally >= 39) {
-            vely *= -1;
-            bally = 38;
-        }
-
-        if (ballx < 0) {
-            velx *= -1;
-            ballx = 0;
-        }
-
-        if (bally < 0) {
-            vely *= -1;
-            bally = 0;
-        }
-
-        nanosleep(10000000);
+    if (status.status != PKW_STAT_OK) {
+        printf("Oh deary me!\n");
+        return 1;
     }
 }
 

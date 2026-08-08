@@ -8,7 +8,6 @@ enum {
     PKW_CMD_MOVE_WIN,
     PKW_CMD_SEND_PIXELS,
     PKW_CMD_DRAW_CHAR,
-    PKW_CMD_RESIZE,
 };
 
 enum {
@@ -53,11 +52,5 @@ typedef struct __PACKED {
     char c;
 } pkw_cmd_draw_char_t;
 
-typedef struct __PACKED {
-    pkw_cmd_header_t header;
-
-    int w, h;
-} pkw_cmd_resize_t;
-
 pkw_cmd_header_t * receive_command(fd_t sock_fd);
-void send_status(fd_t sock_fd, uint16_t status, uint16_t window_id);
+void send_status(fd_t sock_fd, uint16_t status);

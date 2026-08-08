@@ -1,3 +1,3 @@
-pkwin
+pkwin &
 
 pkwin > /tmp/pkwin.log

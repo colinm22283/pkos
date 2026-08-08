@@ -2,29 +2,20 @@ SRC_DIR=src
 INCLUDE_DIR=include
 
 OBJS+=$(OBJ_DIR)/main.o
-OBJS+=$(OBJ_DIR)/mouse.o
 OBJS+=$(OBJ_DIR)/packet.o
-OBJS+=$(OBJ_DIR)/render.o
-OBJS+=$(OBJ_DIR)/socket.o
-OBJS+=$(OBJ_DIR)/state.o
-OBJS+=$(OBJ_DIR)/window.o
-OBJS+=$(OBJ_DIR)/bmp.o
-OBJS+=$(OBJ_DIR)/cursor.o
-OBJS+=$(OBJ_DIR)/font.o
 
 HEADERS=$(shell find $(INCLUDE_DIR) -name "*.h")
 
 .PHONY: all
-all: $(BIN_DIR)/pkwin
+all: $(BIN_DIR)/pkwterm
 
 .PHONY: clean
 clean:
 
-$(BIN_DIR)/pkwin: $(OBJS)
+$(BIN_DIR)/pkwterm: $(OBJS)
 	mkdir -p $(@D)
 	$(CC) $(CFLAGS) -I$(INCLUDE_DIR) $(OBJS) -o $@
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(HEADERS)
 	mkdir -p $(@D)
 	$(CC) $(CFLAGS) -I$(INCLUDE_DIR) -c $< -o $@
-
