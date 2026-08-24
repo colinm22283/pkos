@@ -523,16 +523,16 @@
         "stdlib_flake": "stdlib_flake"
       },
       "locked": {
-        "lastModified": 1786160680,
-        "narHash": "sha256-Z5duee1HtlSuuvMddtpLk4eifvKcZJdjnQZd1mRhLOE=",
+        "lastModified": 1786150860,
+        "narHash": "sha256-SE+/wdYUhNciZOepEVYCGSB4VcfB9xK7f5DoXWbyq+8=",
         "ref": "refs/heads/master",
-        "rev": "c9930dd3a0f89c8d23a10c9da33b852711e04360",
+        "rev": "911e2761bdba23757d2997bfb847c8b031291d73",
         "shallow": true,
         "type": "git",
         "url": "https://cmcgann.com/githttp/pkos_fsroot.git"
       },
       "original": {
-        "rev": "c9930dd3a0f89c8d23a10c9da33b852711e04360",
+        "rev": "911e2761bdba23757d2997bfb847c8b031291d73",
         "shallow": true,
         "type": "git",
         "url": "https://cmcgann.com/githttp/pkos_fsroot.git"
@@ -624,16 +624,16 @@
         "pkos_gcc_content": "pkos_gcc_content_2"
       },
       "locked": {
-        "lastModified": 1786160707,
-        "narHash": "sha256-NRv21HYpux/Yp9P46pAsFtWsZruA16gAuDxpysO7M8c=",
+        "lastModified": 1786150884,
+        "narHash": "sha256-H/DWfoHKfgQc/kF5s0QEtZofCext/MFUy86kqSOkHag=",
         "ref": "refs/heads/master",
-        "rev": "e876c029f842891730c1f28037ef8cc1e5ce56fb",
+        "rev": "91fac0ad54908ac167c72c40d1f9e45a2fa0cd4e",
         "shallow": true,
         "type": "git",
         "url": "https://cmcgann.com/githttp/pkos_gcc.git"
       },
       "original": {
-        "rev": "e876c029f842891730c1f28037ef8cc1e5ce56fb",
+        "rev": "91fac0ad54908ac167c72c40d1f9e45a2fa0cd4e",
         "shallow": true,
         "type": "git",
         "url": "https://cmcgann.com/githttp/pkos_gcc.git"
@@ -678,16 +678,16 @@
         "pkos_gcc_flake": "pkos_gcc_flake_2"
       },
       "locked": {
-        "lastModified": 1786160660,
-        "narHash": "sha256-yXmkAuEDUSmN5NhPuTV85UovKt6RS8TeXYM2pitIbr0=",
+        "lastModified": 1786150834,
+        "narHash": "sha256-0iVc6NnGNhv6AB768f737QApl8+72qGd617qaJZeqH4=",
         "ref": "refs/heads/master",
-        "rev": "59adcaf2ff175aec2f4fb8dfd42add5fa6855f65",
+        "rev": "11341d878069071ea57eab5286728f10186e1a84",
         "shallow": true,
         "type": "git",
         "url": "https://cmcgann.com/githttp/pkos_stdlib.git"
       },
       "original": {
-        "rev": "59adcaf2ff175aec2f4fb8dfd42add5fa6855f65",
+        "rev": "11341d878069071ea57eab5286728f10186e1a84",
         "shallow": true,
         "type": "git",
         "url": "https://cmcgann.com/githttp/pkos_stdlib.git"

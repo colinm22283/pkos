@@ -14,6 +14,7 @@ PROGS+=heapstat
 PROGS+=empty
 PROGS+=init
 PROGS+=stdlib_test
+PROGS+=tree
 
 TARGETS=$(foreach p, $(PROGS), build-$p)
 

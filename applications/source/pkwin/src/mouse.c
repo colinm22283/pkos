@@ -5,6 +5,7 @@
 
 #include <mouse.h>
 #include <state.h>
+#include <render.h>
 
 bool prev_bl = false;
 mouse_coord_t mouse_coord = { 0, 0 };
@@ -21,8 +22,8 @@ __attribute__((noreturn)) void mouse_thread(void) {
 
             if (mouse_coord.x < 0) mouse_coord.x = 0;
             if (mouse_coord.y < 0) mouse_coord.y = 0;
-            if (mouse_coord.x >= 640) mouse_coord.x = 639;
-            if (mouse_coord.y >= 480) mouse_coord.y = 479;
+            if (mouse_coord.x >= WIDTH) mouse_coord.x = WIDTH - 1;
+            if (mouse_coord.y >= HEIGHT) mouse_coord.y = HEIGHT - 1;
 
             bool new_bl = !!(packet[0] & 1);
 
