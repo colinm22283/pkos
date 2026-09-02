@@ -66,6 +66,10 @@ installer: $(INSTALLER_BIN)
 .PHONY: kernel
 kernel: $(KERNEL_BIN)
 
+.PHONY: modules
+modules:
+	cd pkernel && $(MAKE) modules
+
 .PHONY: stdlib
 stdlib:
 	cd $(STDLIB_DIR) && $(MAKE)

@@ -2,12 +2,15 @@
 #include <stdio.h>
 #include <string.h>
 
+#include <unistd.h>
+
 #include <state.h>
 #include <window.h>
 #include <config.h>
+#include <packet.h>
 #include <font.h>
 
-window_t * window_init(const char * name, int w, int h) {
+window_t * window_init(const char * name, int w, int h, int sock_fd, int id) {
     window_t * window = malloc(sizeof(window_t));
 
     window->title = malloc(strlen(name) + 1);
@@ -16,11 +19,16 @@ window_t * window_init(const char * name, int w, int h) {
     window->x = 10;
     window->y = 10;
 
+    window->id      = id;
+    window->sock_fd = sock_fd;
+
     window->w = w;
     window->h = h;
     window->fb = malloc(window->w * window->h);
 
     for (int i = 0; i < window->w * window->h; i++) window->fb[i] = 20;
+
+    focus_window = window;
 
     return window;
 }
@@ -37,7 +45,25 @@ void window_click(window_t * window, int x, int y) {
     if (rx >= 0 && rx < window->w && ry >= 0 && window->h) printf("CLICKED\n");
     else if (rx >= 0 && rx < window->w && ry >= -bar_height && ry < 0) {
         held_window = window;
+        focus_window = window;
     }
+}
+
+void window_press(window_t * window, uint16_t code) {
+    printf("Pressed: %i\n", code);
+
+    static pkw_cmd_kbd_t message = {
+        .header = {
+            .command = PKW_CMD_KBD,
+            .size = sizeof(pkw_cmd_kbd_t),
+        },
+        .action = 0,
+    };
+
+    message.header.window_id = window->id;
+    message.scancode = code,
+
+    printf("Test %i\n", write(window->sock_fd, (char *) &message, sizeof(pkw_cmd_kbd_t)));
 }
 
 void window_draw_char(window_t * window, char c, int ix, int iy) {

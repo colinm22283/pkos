@@ -9,6 +9,7 @@ enum {
     PKW_CMD_SEND_PIXELS,
     PKW_CMD_DRAW_CHAR,
     PKW_CMD_RESIZE,
+    PKW_CMD_KBD,
 };
 
 enum {
@@ -58,6 +59,13 @@ typedef struct __PACKED {
 
     int w, h;
 } pkw_cmd_resize_t;
+
+typedef struct __PACKED {
+    pkw_cmd_header_t header;
+
+    uint8_t action;
+    int scancode;
+} pkw_cmd_kbd_t;
 
 pkw_cmd_header_t * receive_command(fd_t sock_fd);
 void send_status(fd_t sock_fd, uint16_t status, uint16_t window_id);

@@ -74,7 +74,7 @@ __attribute__((noreturn)) void connection_handler(void) {
                 window_count++;
                 windows = realloc(windows, window_count * sizeof(window_t *));
 
-                window_t * window = windows[window_count - 1] = window_init(cmd->title, 40, 40);
+                window_t * window = windows[window_count - 1] = window_init(cmd->title, 40, 40, sock_fd, cmd->header.window_id);
             } break;
 
             case PKW_CMD_MOVE_WIN: {

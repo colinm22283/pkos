@@ -10,6 +10,7 @@
 #include <packet.h>
 
 #include <packet.h>
+#include <keys.h>
 
 #define WIDTH (320)
 #define HEIGHT (200)
@@ -89,6 +90,37 @@ int main(int argc, const char ** argv) {
     if (status.status != PKW_STAT_OK) {
         printf("Oh deary me!\n");
         return 1;
+    }
+
+    while (true) {
+        pkw_cmd_header_t * cmd = receive_command(sock_fd);
+
+        printf("GOT COMMAND\n");
+
+        if (cmd != NULL) {
+            if (cmd->command == PKW_CMD_KBD) {
+                pkw_cmd_kbd_t * kbd = (pkw_cmd_kbd_t *) cmd;
+
+                printf("Got: %i\n", kbd->scancode);
+
+                if (kbd->scancode == KEY_A) {
+                    pkw_cmd_draw_char_t draw_char = {
+                        .header = {
+                            .command = PKW_CMD_DRAW_CHAR,
+                            .size = sizeof(pkw_cmd_draw_char_t),
+                            .window_id = window_id,
+                        },
+                        .x = 5,
+                        .y = 5,
+                        .c = 'a'
+                    };
+
+                    write(sock_fd, (char *) &draw_char, sizeof(pkw_cmd_draw_char_t));
+
+                    read(sock_fd, (char *) &status, sizeof(pkw_stat_t));
+                }
+            }
+        }
     }
 }
 

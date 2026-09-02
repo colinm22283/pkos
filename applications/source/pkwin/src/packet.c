@@ -23,6 +23,7 @@ pkw_cmd_header_t * receive_command(int sock_fd) {
             if (header->size != sizeof(pkw_cmd_create_win_t)) return NULL;
 
             win_id = current_window_id++;
+            header->window_id = win_id;
         } break;
 
         case PKW_CMD_MOVE_WIN: {
@@ -39,6 +40,12 @@ pkw_cmd_header_t * receive_command(int sock_fd) {
         case PKW_CMD_RESIZE: {
             if (header->size != sizeof(pkw_cmd_resize_t)) return NULL;
         } break;
+
+        case PKW_CMD_KBD: {
+            if (header->size != sizeof(pkw_cmd_kbd_t)) return NULL;
+        } break;
+
+        case PKW_STAT: return NULL;
 
         default: {
             send_status(sock_fd, PKW_STAT_INV_CMD, 0);
@@ -62,3 +69,4 @@ void send_status(int sock_fd, uint16_t status, uint16_t window_id) {
 
     write(sock_fd, (char *) &message, sizeof(pkw_stat_t));
 }
+

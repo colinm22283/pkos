@@ -9,6 +9,7 @@ extern size_t window_count;
 extern window_t ** windows;
 
 extern window_t * held_window;
+extern window_t * focus_window;
 
 void state_init(void);
 
