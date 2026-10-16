@@ -1,3 +1,3 @@
 #pragma once
 
-// #define EVENT_DEBUG
+#define EVENT_DEBUG

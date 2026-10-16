@@ -1,3 +1,4 @@
 #pragma once
 
-// #define THREAD_DEBUG
+#define THREAD_DEBUG
+
