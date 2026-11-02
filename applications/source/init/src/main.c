@@ -15,20 +15,20 @@ int main(void) {
 
     int result;
 
-    /* { */
-        /* pid_t fork_result = fork(); */
+    {
+        pid_t fork_result = fork();
 
-        /* if (fork_result == 0) { */
+        if (fork_result == 0) {
             const char * args[] = { "/bin/pksh", "/etc/init.sh" };
-            exec(args[0], args, 2);
+            exec(args[0], args, 1);
 
             write(STDOUT_FILENO, "FAILED TO EXEC SHELL\n", 21);
-        /* } */
-        /* else { */
-            /* write(STDOUT_FILENO, "gurp\n", 5); */
-            /* exit(1); */
-        /* } */
-    /* } */
+        }
+        else {
+            write(STDOUT_FILENO, "gurp\n", 5);
+            exit(1);
+        }
+    }
 
     return 0;
 }

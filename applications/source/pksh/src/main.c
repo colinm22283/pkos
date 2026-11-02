@@ -13,8 +13,27 @@
 void run_line(char * line);
 
 int main(uint64_t argc, const char ** argv) {
+    openat(STDOUT_FILENO, "/dev/tty0", O_WRONLY);
+    openat(STDIN_FILENO, "/dev/tty0", O_RDONLY);
+    openat(STDERR_FILENO, "/dev/tty0", O_WRONLY);
+
     int64_t line_size = 0;
     static char line_buf[512];
+
+    printf("argv = %x\n", argv[0]);
+
+    printf("%i\n", argc);
+
+    for (int i = 0; i < 50; i++) {
+        printf("%i\n", (int) argv[0][i]);
+    }
+
+    printf("%i\n", argc);
+
+    printf("I am %s\n", argv[0]);
+    if (argc == 2) {
+        printf("and %s\n", argv[1]);
+    }
 
     if (argc == 1) {
         while (true) {
@@ -110,6 +129,8 @@ void run(char ** argv, uint64_t argc, fd_t in, fd_t out, bool background) {
     }
     else {
         pid_t fork_result = fork();
+        
+        printf("yep\n");
 
         if (fork_result == 0) { // child
             char path[5 + strlen(argv[0]) + 1];
