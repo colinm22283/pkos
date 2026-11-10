@@ -6,7 +6,11 @@
 #include <fcntl.h>
 #include <sys/mount.h>
 
+void _init(void);
+
 int main(void) {
+    /* _init(); */
+
     openat(STDOUT_FILENO, "/dev/tty0", O_WRONLY);
     openat(STDIN_FILENO, "/dev/tty0", O_RDONLY);
     openat(STDERR_FILENO, "/dev/tty0", O_WRONLY);

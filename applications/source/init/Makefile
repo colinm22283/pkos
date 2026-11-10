@@ -4,6 +4,8 @@ OBJS+=$(OBJ_DIR)/main.o
 
 HEADERS=$(shell find $(INCLUDE_DIR) -name "*.h")
 
+CFLAGS+=-nostdlib
+
 .PHONY: all
 all: $(BIN_DIR)/init
 
@@ -12,9 +14,9 @@ clean:
 
 $(BIN_DIR)/init: $(OBJS)
 	mkdir -p $(@D)
-	$(CC) $(OBJS) -o $@
+	$(CC) $(CFLAGS) $(OBJS) -o $@
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(HEADERS)
 	mkdir -p $(@D)
-	$(CC) -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 

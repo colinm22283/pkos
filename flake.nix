@@ -6,7 +6,7 @@
     utils.url = "github:numtide/flake-utils";
 
     pkos_binutils_flake.url = "git+https://cmcgann.com/githttp/pkos_binutils.git?rev=ab1dce2aa5c3a1e15034cef21134b3fb063d56e3&shallow=1";
-    pkos_gcc_flake.url = "git+https://cmcgann.com/githttp/pkos_gcc.git?rev=91fac0ad54908ac167c72c40d1f9e45a2fa0cd4e&shallow=1";
+    pkos_gcc_flake.url = "git+https://cmcgann.com/githttp/pkos_gcc.git?rev=8d708f507e5e0b9f9ced81ea2d214c9e1fd561ed&shallow=1";
   };
 
   outputs = { self, nixpkgs, utils, pkos_binutils_flake, pkos_gcc_flake }:
@@ -18,7 +18,7 @@
         x64Pkgs = pkgs.pkgsCross.x86_64-embedded;
 
         pkos_binutils = pkos_binutils_flake.packages.${pkgs.system}.default;
-        pkos_gcc = pkos_gcc_flake.packages.${pkgs.system}.default;
+        pkos_gcc = pkos_gcc_flake.packages.${pkgs.system}.debug;
       in
       {
         devShells.default = pkgs.mkShell {
