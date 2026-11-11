@@ -1,6 +1,6 @@
 mount ramfs /tmp
-pksh /etc/startpkw.sh &
 pksh
 
+pksh /etc/startpkw.sh &
 mount procfs /proc
 

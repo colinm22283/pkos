@@ -20,7 +20,7 @@ int main(void) {
 
         if (fork_result == 0) {
             const char * args[] = { "/bin/pksh", "/etc/init.sh" };
-            exec(args[0], args, 2);
+            exec(args[0], args, 1);
 
             write(STDOUT_FILENO, "FAILED TO EXEC SHELL\n", 21);
         }
