@@ -4,8 +4,6 @@ OBJS+=$(OBJ_DIR)/main.o
 
 HEADERS=$(shell find $(INCLUDE_DIR) -name "*.h")
 
-CFLAGS+=-nostdlib
-
 .PHONY: all
 all: $(BIN_DIR)/init
 

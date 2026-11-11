@@ -14,7 +14,7 @@ all: stdlib.gdb
 	x86_64-elf-gdb -x base.gdb -x stdlib.gdb $(GDB_ARGS) $(KERNEL_ARGS)
 
 .PHONY: user
-user:
+user: stdlib.gdb
 	x86_64-elf-gdb -x base.gdb -x stdlib.gdb $(GDB_ARGS)
 
 stdlib.gdb:

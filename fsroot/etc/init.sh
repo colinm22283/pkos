@@ -1,6 +1,4 @@
-pksh
-
-mount ramfs /tmp
+ls /dev
 pksh
 
 pksh /etc/startpkw.sh &
