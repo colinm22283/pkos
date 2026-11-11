@@ -149,7 +149,11 @@ void run(char ** argv, uint64_t argc, fd_t in, fd_t out, bool background) {
             }
         }
         else { // parent
+            printf("About to wait\n");
+
             if (!background) wait();
+
+            printf("Resume after wait!\n");
         }
     }
 }
