@@ -11,6 +11,7 @@
 #include <font.h>
 
 window_t * window_init(const char * name, int w, int h, int sock_fd, int id) {
+    printf("window_init(name: %s, w: %i, h: %i, id: %i)\n", name, w, h, id);
     window_t * window = malloc(sizeof(window_t));
 
     window->title = malloc(strlen(name) + 1);
@@ -85,6 +86,7 @@ void window_draw_char(window_t * window, char c, int ix, int iy) {
 }
 
 void window_resize(window_t * window, int w, int h) {
+    printf("window_resize(w: %i, h: %i)\n", w, h);
     window->w = w;
     window->h = h;
     window->fb = realloc(window->fb, w * h);

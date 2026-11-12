@@ -29,7 +29,7 @@ void socket_init(void) {
 
     printf("bind()\n");
 
-    int bind_result = bind(sock_fd, (const sockaddr_t *) sockaddr, strlen(sockaddr->path) + 1);
+    int bind_result = bind(sock_fd, (const sockaddr_t *) sockaddr, strlen(sockaddr->path) + 2);
     if (bind_result < 0) {
         printf("Error binding server socket: %s\n", strerrordesc_np(-bind_result));
         return;

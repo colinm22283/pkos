@@ -34,7 +34,7 @@ int main(int argc, const char ** argv) {
 
     int result;
 
-    result = connect(sock_fd, (const sockaddr_t *) sockaddr, strlen(sockaddr->path) + 1);
+    result = connect(sock_fd, (const sockaddr_t *) sockaddr, strlen(sockaddr->path) + 2);
     if (result < 0) {
         printf("Unable to connect to /tmp/pkw.sock: %s\n", strerrordesc_np(-result));
     }

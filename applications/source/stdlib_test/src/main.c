@@ -17,10 +17,14 @@ int main(int argc, const char ** argv) {
         /* } */
     /* } */
 
-    printf("argc = %i\n", argc);
-    printf("argv =\n");
-    for (int i = 0; i < argc; i++) {
-        printf("  %s\n", argv[i]);
+    int fd = open("/dev/vga", O_RDWR);
+
+    char * fb = map(fd, NULL, 320 * 200, 0, MAP_WRITE);
+
+    printf("Got %i as fb vaddr\n", (int) fb);
+
+    for (int i = 0; i < 320 * 200; i++) {
+        fb[i] = 2;
     }
 
     return 0;
